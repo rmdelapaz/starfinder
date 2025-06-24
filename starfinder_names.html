@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>150 Starfinder Character Names</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533a7b 100%);
+            color: #e0e0e0;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(26, 26, 46, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid #533a7b;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            color: #78c0ff;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(120, 192, 255, 0.5);
+            background: linear-gradient(45deg, #78c0ff, #ff77c6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        h2 {
+            color: #ff77c6;
+            border-bottom: 3px solid #533a7b;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            text-shadow: 0 0 10px rgba(255, 119, 198, 0.3);
+        }
+        .name-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .name-card {
+            background: linear-gradient(145deg, rgba(22, 33, 62, 0.8), rgba(15, 52, 96, 0.8));
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #78c0ff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(120, 192, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .name-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(120, 192, 255, 0.2);
+            border-left-color: #ff77c6;
+            background: linear-gradient(145deg, rgba(22, 33, 62, 0.9), rgba(15, 52, 96, 0.9));
+        }
+        .name {
+            font-weight: bold;
+            color: #78c0ff;
+            font-size: 1.1em;
+            text-shadow: 0 0 5px rgba(120, 192, 255, 0.3);
+        }
+        .origin {
+            font-size: 0.9em;
+            color: #ff77c6;
+            font-style: italic;
+        }
+        .race-suggestion {
+            font-size: 0.8em;
+            color: #c0c0c0;
+            margin-top: 5px;
+        }
+        .location-tag {
+            background: linear-gradient(45deg, #533a7b, #78c0ff);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            margin-top: 5px;
+            display: inline-block;
+            text-shadow: none;
+        }
+        .tech-tag {
+            background: linear-gradient(45deg, #ff77c6, #533a7b);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.6em;
+            margin-left: 5px;
+            display: inline-block;
+        }
+        .tips-section {
+            background: rgba(22, 33, 62, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid rgba(120, 192, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        .example-box {
+            background: rgba(83, 58, 123, 0.3);
+            border: 2px solid rgba(255, 119, 198, 0.5);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            backdrop-filter: blur(5px);
+        }
+        .analogy-box {
+            background: rgba(15, 52, 96, 0.3);
+            border: 2px solid rgba(120, 192, 255, 0.5);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            backdrop-filter: blur(5px);
+        }
+        .starfinder-box {
+            background: rgba(22, 33, 62, 0.4);
+            border: 2px solid rgba(120, 200, 255, 0.6);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            backdrop-filter: blur(8px);
+        }
+        .canvas-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        canvas {
+            border: 3px solid #533a7b;
+            border-radius: 10px;
+            max-width: 100%;
+            box-shadow: 0 0 20px rgba(120, 192, 255, 0.3);
+        }
+        .system-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .system-item {
+            background: rgba(22, 33, 62, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(120, 192, 255, 0.3);
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        .cyber-text {
+            color: #00ff41;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+        .neon-highlight {
+            background: linear-gradient(45deg, rgba(120, 192, 255, 0.2), rgba(255, 119, 198, 0.2));
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 150 Starfinder Character Names 🌌</h1>
+        
+        <div class="tips-section">
+            <h2>🌟 The Pact Worlds: A Galaxy of Diverse Naming Traditions</h2>
+            <p>In the far future of Starfinder, naming conventions have evolved through millennia of interstellar contact, corporate influence, and technological integration. From the <span class="cyber-text">neo-corporate identifiers</span> of Verces to the <span class="neon-highlight">mystical appellations</span> of Castrovel, each world has developed unique traditions that reflect their history, culture, and relationship with technology.</p>
+            
+            <div class="system-legend">
+                <div class="system-item"><strong>Absalom Station</strong><br>Cosmopolitan Hub</div>
+                <div class="system-item"><strong>Castrovel</strong><br>Elven/Lashunta Mystical</div>
+                <div class="system-item"><strong>Akiton</strong><br>Martian Industrial</div>
+                <div class="system-item"><strong>Verces</strong><br>Corporate Techno</div>
+                <div class="system-item"><strong>Idari</strong><br>Kasatha Traditional</div>
+                <div class="system-item"><strong>Eox</strong><br>Undead Scientific</div>
+                <div class="system-item"><strong>Triaxus</strong><br>Draconic Noble</div>
+                <div class="system-item"><strong>Liavara</strong><br>Gas Giant Mystical</div>
+                <div class="system-item"><strong>Bretheda</strong><br>Corporate Stations</div>
+                <div class="system-item"><strong>Apostae</strong><br>Drow Underground</div>
+                <div class="system-item"><strong>Veskarium</strong><br>Military Hierarchy</div>
+                <div class="system-item"><strong>Drift Space</strong><br>Planar Hybrid</div>
+            </div>
+        </div>
+
+        <div class="mermaid">
+            graph TD
+                A[Starfinder Character Creation] --> B[Choose Species]
+                A --> C[Choose Theme]
+                A --> D[Choose Background]
+                A --> E[Choose Name]
+                E --> F[Consider Homeworld]
+                E --> G[Corporate Affiliation]
+                E --> H[Tech Integration Level]
+                E --> I[Cultural Heritage]
+                F --> J[Absalom Station - Mixed]
+                F --> K[Verces - Corporate]
+                F --> L[Akiton - Industrial]
+                F --> M[Eox - Scientific]
+                G --> N[Corporate Identifier]
+                G --> O[Independent Freelancer]
+                H --> P[Augmented Names]
+                H --> Q[Traditional Names]
+                I --> R[Species Conventions]
+                I --> S[Adopted Culture]
+                J --> T[Final Name Choice]
+                K --> T
+                L --> T
+                M --> T
+                N --> T
+                O --> T
+                P --> T
+                Q --> T
+                R --> T
+                S --> T
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="starfinderWheel" width="500" height="500"></canvas>
+            <p><em>Galactic Origin Generator - Click to discover your character's homeworld!</em></p>
+        </div>
+
+        <h2>⚡ Male Character Names (50)</h2>
+        <div class="name-grid" id="maleNames"></div>
+
+        <h2>🌙 Female Character Names (50)</h2>
+        <div class="name-grid" id="femaleNames"></div>
+
+        <h2>🔮 Gender-Neutral Character Names (50)</h2>
+        <div class="name-grid" id="neutralNames"></div>
+
+        <div class="starfinder-box">
+            <h3>🚀 Starfinder-Specific Naming Conventions</h3>
+            <p><strong>Corporate Identifiers:</strong> Many characters adopt or are assigned corporate naming schemes, especially from mega-corps like AbadarCorp or the Aspis Consortium.</p>
+            <p><strong>Technological Integration:</strong> Augmented individuals often modify their names to reflect cybernetic or magical enhancements.</p>
+            <p><strong>Species Heritage:</strong> Traditional species naming is often blended with modern galactic common conventions.</p>
+            <p><strong>Theme Integration:</strong> A character's theme (Ace Pilot, Bounty Hunter, Corporate Agent) often influences naming patterns.</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🌌 Real-World Future Applications</h3>
+            <p><strong>Corporate Naming:</strong> "Marcus AbadarCorp-7742" reflects how mega-corporations might standardize employee identification in a galactic economy.</p>
+            <p><strong>Augmented Identity:</strong> "Zara 'Chrome-Eye' Vex" shows how cybernetic modifications become part of personal identity.</p>
+            <p><strong>Cultural Fusion:</strong> "Kai-Shen Brightforge" demonstrates how traditional ethnic names blend with space-age surnames.</p>
+            <p><strong>Military Designation:</strong> "Captain Rex Vanguard-Prime" illustrates military naming conventions in an interstellar context.</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>🛸 Future Naming Evolution</h3>
+            <p><strong>Like Internet Handles:</strong> Just as online identities became part of modern naming, digital and augmented identities are integral to Starfinder naming.</p>
+            <p><strong>Like Corporate Branding:</strong> In a galaxy dominated by mega-corporations, personal names often reflect corporate affiliation or aspiration.</p>
+            <p><strong>Like Immigration Patterns:</strong> As species interact across star systems, naming conventions blend and evolve like historical human migration patterns.</p>
+        </div>
+
+        <div class="tips-section">
+            <h2>🔧 Advanced Starfinder Naming Strategies</h2>
+            
+            <h3>Species-Specific Patterns</h3>
+            <p><strong>Android:</strong> Often numerical or corporate designations, sometimes adopting organic names as they develop identity.</p>
+            <p><strong>Kasatha:</strong> Four-armed tradition leads to compound names reflecting multiple aspects of identity.</p>
+            <p><strong>Lashunta:</strong> Telepathic species with names often reflecting mental abilities or psychic heritage.</p>
+            <p><strong>Shirren:</strong> Former Swarm members who adopt individual names often choose concepts of unity or independence.</p>
+            <p><strong>Vesk:</strong> Military culture produces rank-based names and honor titles.</p>
+            <p><strong>Ysoki:</strong> Ratfolk engineers often have technical or mechanical name elements.</p>
+            
+            <h3>Corporate and Theme Integration</h3>
+            <p><strong>Corporate Agents:</strong> Company prefixes or suffixes (AbadarCorp-, -Syndicate, StarStone-)</p>
+            <p><strong>Bounty Hunters:</strong> Intimidating aliases or reputation-based names</p>
+            <p><strong>Technomancers:</strong> Names reflecting the fusion of magic and technology</p>
+            <p><strong>Space Pirates:</strong> Adopted fierce names or titles earned through exploits</p>
+
+            <h3>Technological Naming Elements</h3>
+            <p>In the age of cybernetics and AI integration, names often include:</p>
+            <ul>
+                <li><strong>Augmentation Callsigns:</strong> "Chrome," "Neural," "Cyber," "Bio"</li>
+                <li><strong>Tech Company References:</strong> Modified versions of major corporation names</li>
+                <li><strong>Digital Integration:</strong> Numbers, codes, or data-stream references</li>
+                <li><strong>AI Companion Names:</strong> Some characters incorporate their AI's designation</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <h3>🎯 Adventure Path Applications</h3>
+            <p><strong>Dead Suns AP:</strong> Characters should have names appropriate for Absalom Station's diverse population or reflecting their homeworld heritage.</p>
+            <p><strong>Against the Aeon Throne AP:</strong> Names reflecting the Azlanti Star Empire's imperial naming conventions or resistance movement aliases.</p>
+            <p><strong>Dawn of Flame AP:</strong> Sun-themed names or those reflecting the diverse fire-world cultures of the Near Space.</p>
+            <p><strong>Attack of the Swarm AP:</strong> Names that might reflect refugee status or military service backgrounds.</p>
+        </div>
+
+        <div class="starfinder-box">
+            <h3>🌟 Unique Starfinder Elements</h3>
+            <p><strong>Drift Navigation:</strong> Characters involved in interstellar travel might adopt navigation-themed names or titles.</p>
+            <p><strong>Starship Crews:</strong> Ship names often influence crew member identities and callsigns.</p>
+            <p><strong>Planetary Themes:</strong> Names reflecting specific world environments (ice worlds, gas giant stations, tidally locked planets).</p>
+            <p><strong>Religious Evolution:</strong> Traditional deities in space-age contexts create interesting naming combinations.</p>
+            <p><strong>Starfinder Society:</strong> Society agents might adopt codenames or field designations for operations.</p>
+        </div>
+
+        <div class="tips-section">
+            <h2>🚀 Related Topics to Explore</h2>
+            <ul>
+                <li><strong>Corporate Hierarchies:</strong> How mega-corp structures influence personal naming</li>
+                <li><strong>Augmentation Identity:</strong> How cybernetic and biotech modifications change names</li>
+                <li><strong>AI Integration:</strong> Naming conventions for AI companions and digital consciousness</li>
+                <li><strong>Interstellar Communication:</strong> How names translate across species and languages</li>
+                <li><strong>Military Traditions:</strong> Rank-based naming in the Stewards and other organizations</li>
+                <li><strong>Planar Influence:</strong> How Drift travel and planar contact affects naming</li>
+                <li><strong>Technological Evolution:</strong> How naming has changed since the Gap</li>
+            </ul>
+        </div>
+
+        <div class="mermaid">
+            pie title Starfinder Name Inspiration Sources
+                "Homeworld Culture" : 25
+                "Species Heritage" : 20
+                "Corporate Affiliation" : 18
+                "Technological Theme" : 15
+                "Professional Identity" : 12
+                "Personal History" : 10
+        </div>
+
+        <div class="example-box">
+            <h3>📡 The Gap and Naming Evolution</h3>
+            <p>The mysterious Gap in galactic history has created unique naming opportunities. Characters might bear names from lost civilizations, have reconstructed identities based on incomplete records, or adopt entirely new naming conventions developed in the post-Gap era. This historical void allows for creative naming that reflects the mystery and technological advancement of the Starfinder setting.</p>
+            <p>Corporate data recovery and digital archaeology have influenced how names are preserved and transmitted across the galaxy.</p>
+        </div>
+    </div>
+
+    <script>
+        // Starfinder character name data with galactic and technological influences
+        const maleNames = [
+            {name: "Marcus AbadarCorp-7742", origin: "Absalom Station", race: "Human Corporate Agent", tech: "Corporate ID"},
+            {name: "Zex'hai Vorthak", origin: "Veskarium", race: "Vesk Soldier", tech: "Military"},
+            {name: "Kai-Shen Brightforge", origin: "Verces", race: "Human/Android Technomancer", tech: "Hybrid"},
+            {name: "Jorik 'Chrome-Eye' Voss", origin: "Akiton", race: "Human Mechanic", tech: "Augmented"},
+            {name: "Keth'moran Spiritwalker", origin: "Idari", race: "Kasatha Mystic", tech: "Traditional"},
+            {name: "Dr. Thane Bonehammer", origin: "Eox", race: "Human/Bone Sage", tech: "Necrotech"},
+            {name: "Solarion Rex Vanguard-Prime", origin: "Triaxus", race: "Dragonkin Solarian", tech: "Military"},
+            {name: "Echo-7 Datastream", origin: "Aballon", race: "Android Operative", tech: "AI Core"},
+            {name: "Jaxon 'Stardust' Rodriguez", origin: "Absalom Station", race: "Human Ace Pilot", tech: "Spacer"},
+            {name: "Vrex Ironjaw", origin: "Apostae", race: "Drow Bounty Hunter", tech: "Underground"},
+            {name: "Captain Neo Brightblade", origin: "Castrovel", race: "Elf Xenoseeker", tech: "Explorer"},
+            {name: "Zak'tor Mindripper", origin: "Veskarium", race: "Vesk Vanguard", tech: "Biotech"},
+            {name: "Chen-9 Nanoforge", origin: "Verces", race: "Android Nanocyte", tech: "Nanotech"},
+            {name: "Brix 'Gearhead' Torven", origin: "Akiton", race: "Ysoki Mechanic", tech: "Engineer"},
+            {name: "Khalim ibn Starweaver", origin: "Absalom Station", race: "Human/Lashunta", tech: "Psychic"},
+            {name: "Lord Vex Darkspire", origin: "Eox", race: "Undead Noble", tech: "Necromantic"},
+            {name: "Theron 'Jetpack' Skye", origin: "Liavara", race: "Human Biohacker", tech: "Atmospheric"},
+            {name: "Zephyr Quantum-7", origin: "Bretheda", race: "Android Witchwarper", tech: "Reality Hacker"},
+            {name: "Korrath Bloodfang", origin: "Apostae", race: "Drow Operative", tech: "Shadow"},
+            {name: "Ajax Stellarwind", origin: "Triaxus", race: "Human Evolutionist", tech: "Adaptive"},
+            {name: "Robo-Jack 3000", origin: "Aballon", race: "Android Icon", tech: "Media"},
+            {name: "Maxim 'Void-Walker' Kane", origin: "Drift", race: "Human/Planar", tech: "Drift-touched"},
+            {name: "Vorthak the Conqueror", origin: "Veskarium", race: "Vesk Commander", tech: "War Machine"},
+            {name: "Phoenix Neutron-Core", origin: "Verces", race: "Human Precog", tech: "Quantum"},
+            {name: "Grim Asteroidminer", origin: "Akiton", race: "Dwarf Environmentalist", tech: "Industrial"},
+            {name: "Kythera'val Dreamseer", origin: "Idari", race: "Kasatha Mystic", tech: "Spiritual"},
+            {name: "Professor Null Voidwright", origin: "Eox", race: "Undead Scholar", tech: "Academic"},
+            {name: "Storm Dragonrider", origin: "Triaxus", race: "Human/Dragon", tech: "Draconic"},
+            {name: "Circuit-7 Mainframe", origin: "Aballon", race: "Android Technomancer", tech: "Core AI"},
+            {name: "Dante 'Starfall' Vega", origin: "Absalom Station", race: "Human Soldier", tech: "Mercenary"},
+            {name: "Shadow-Hex Nightblade", origin: "Apostae", race: "Drow Operative", tech: "Stealth"},
+            {name: "Admiral Cosmos Brightstar", origin: "Pact Worlds", race: "Human Fleet Officer", tech: "Naval"},
+            {name: "Torven Gear-grinder", origin: "Akiton", race: "Ysoki Inventor", tech: "Mechanical"},
+            {name: "Zen'kalar Pathfinder", origin: "Castrovel", race: "Lashunta Explorer", tech: "Telepathic"},
+            {name: "Nyx 'Black-Hole' Magnus", origin: "Drift", race: "Human/Void", tech: "Gravitational"},
+            {name: "Rex Android-Slayer", origin: "Veskarium", race: "Vesk Soldier", tech: "Anti-Tech"},
+            {name: "Binary Codebreaker", origin: "Verces", race: "Android Operative", tech: "Cyber"},
+            {name: "Thor 'Asteroid' Hansen", origin: "Akiton", race: "Human Vanguard", tech: "Mining"},
+            {name: "Mystic Voidheart", origin: "Eox", race: "Undead Mystic", tech: "Death Magic"},
+            {name: "Jax 'Rocket-Boots' Flynn", origin: "Triaxus", race: "Human Ace Pilot", tech: "Flight"},
+            {name: "Data-Wraith Prime", origin: "Aballon", race: "Android Ghost", tech: "Digital"},
+            {name: "Captain Steel Stardancer", origin: "Absalom Station", race: "Human Officer", tech: "Command"},
+            {name: "Vex'ahlia Shadowstep", origin: "Apostae", race: "Drow Infiltrator", tech: "Phase"},
+            {name: "Quantum-Jack Heisenberg", origin: "Verces", race: "Human Physicist", tech: "Quantum"},
+            {name: "Grox the Unstoppable", origin: "Veskarium", race: "Vesk Juggernaut", tech: "Heavy"},
+            {name: "Nebula Starwhisper", origin: "Liavara", race: "Human/Gas Giant", tech: "Atmospheric"},
+            {name: "Chrome-Talon Reaper", origin: "Akiton", race: "Android Predator", tech: "Combat"},
+            {name: "Sage Constellation", origin: "Castrovel", race: "Elf Stargazer", tech: "Mystical"},
+            {name: "Vector 'Time-Skip' Nova", origin: "Drift", race: "Human Chrononaut", tech: "Temporal"},
+            {name: "Thaddeus Electron-Storm", origin: "Aballon", race: "Android Scientist", tech: "Energy"}
+        ];
+
+        const femaleNames = [
+            {name: "Zara 'Chrome-Eye' Vex", origin: "Akiton", race: "Human/Augmented Operative", tech: "Cybernetic"},
+            {name: "Lyra StarStone-9", origin: "Absalom Station", race: "Human Corporate Exec", tech: "Corporate"},
+            {name: "Vex'halia Shadowdancer", origin: "Apostae", race: "Drow Operative", tech: "Stealth"},
+            {name: "Dr. Luna Voidwright", origin: "Eox", race: "Human/Undead Scientist", tech: "Necrotech"},
+            {name: "Nova 'Jetstream' Chen", origin: "Verces", race: "Human Ace Pilot", tech: "Aeronautic"},
+            {name: "Keth'sara Mindbridge", origin: "Idari", race: "Kasatha Telepathic Mystic", tech: "Psychic"},
+            {name: "Captain Rex Starhawk", origin: "Triaxus", race: "Human/Dragon Officer", tech: "Command"},
+            {name: "Echo-9 Mainframe", origin: "Aballon", race: "Android AI Core", tech: "Digital"},
+            {name: "Jessa 'Quantum-Jump' Vega", origin: "Drift", race: "Human/Planar Witchwarper", tech: "Reality"},
+            {name: "Zix'hai Ironjaw", origin: "Veskarium", race: "Vesk Mercenary", tech: "Military"},
+            {name: "Aria Brightforge", origin: "Castrovel", race: "Elf/Lashunta Hybrid", tech: "Bio-mystical"},
+            {name: "Commander Steel Vanguard", origin: "Absalom Station", race: "Human Fleet Commander", tech: "Naval"},
+            {name: "Nyx 'Shadowport' Kane", origin: "Apostae", race: "Drow Smuggler", tech: "Underground"},
+            {name: "Professor Void Starling", origin: "Eox", race: "Undead Academic", tech: "Research"},
+            {name: "Phoenix 'Burnout' Rodriguez", origin: "Akiton", race: "Human Mechanic", tech: "Industrial"},
+            {name: "Zen'kyla Pathseeker", origin: "Verces", race: "Android Explorer", tech: "Navigation"},
+            {name: "Binary 'Ghost' Walker", origin: "Aballon", race: "Android Hacker", tech: "Cyber-stealth"},
+            {name: "Storm Dragonheart", origin: "Triaxus", race: "Human/Dragon Solarian", tech: "Elemental"},
+            {name: "Vex Quantum-Core", origin: "Drift", race: "Human/AI Hybrid", tech: "Quantum"},
+            {name: "Saber Starslayer", origin: "Veskarium", race: "Vesk Warrior", tech: "Combat"},
+            {name: "Crystal 'Prism' Lightbender", origin: "Castrovel", race: "Elf Technomancer", tech: "Light-tech"},
+            {name: "Admiral Cosmos Brightstar", origin: "Pact Worlds", race: "Human Admiral", tech: "Fleet"},
+            {name: "Shadow-7 Nightfall", origin: "Apostae", race: "Drow Assassin", tech: "Shadow-tech"},
+            {name: "Luna 'Void-Heart' Magnus", origin: "Eox", race: "Undead Mystic", tech: "Death Magic"},
+            {name: "Rocket 'Afterburner' Flynn", origin: "Akiton", race: "Human Pilot", tech: "Propulsion"},
+            {name: "Data-Siren Prime", origin: "Aballon", race: "Android Entertainer", tech: "Media"},
+            {name: "Vera 'Star-Navigator' Cross", origin: "Verces", race: "Human Xenoseeker", tech: "Exploration"},
+            {name: "Vector Stormrider", origin: "Triaxus", race: "Human Weather Controller", tech: "Atmospheric"},
+            {name: "Nexus 'Mind-Link' Sage", origin: "Idari", race: "Kasatha Psychic", tech: "Neural"},
+            {name: "Chrome-Wing Reaper", origin: "Akiton", race: "Android Predator", tech: "Combat"},
+            {name: "Seraphim Constellation", origin: "Castrovel", race: "Elf/Angel Mystic", tech: "Divine"},
+            {name: "Quantum-Rose Heisenberg", origin: "Verces", race: "Human Physicist", tech: "Quantum"},
+            {name: "Grex the Unstoppable", origin: "Veskarium", race: "Vesk Champion", tech: "Heavy"},
+            {name: "Nebula 'Star-Whisper' Nova", origin: "Liavara", race: "Human/Gas", tech: "Atmospheric"},
+            {name: "Pixel-Perfect Android", origin: "Aballon", race: "Android Designer", tech: "Aesthetic"},
+            {name: "Sage 'Time-Walker' Vega", origin: "Drift", race: "Human Chronomancer", tech: "Temporal"},
+            {name: "Tesla 'Lightning-Rod' Storm", origin: "Verces", race: "Human Engineer", tech: "Electrical"},
+            {name: "Vortex Shadowmere", origin: "Apostae", race: "Drow Witch", tech: "Dark Magic"},
+            {name: "Aurora 'Dawn-Breaker' Steel", origin: "Triaxus", race: "Human Solarian", tech: "Solar"},
+            {name: "Matrix 'Code-Dancer' Seven", origin: "Aballon", race: "Android Programmer", tech: "Software"},
+            {name: "Cosmos 'Star-Rider' Phoenix", origin: "Absalom Station", race: "Human Explorer", tech: "Astro"},
+            {name: "Hex 'Spell-Weaver' Night", origin: "Eox", race: "Undead Technomancer", tech: "Necro-tech"},
+            {name: "Blaze 'Rocket-Heart' Kane", origin: "Akiton", race: "Human Pyrotechnician", tech: "Explosive"},
+            {name: "Psyche 'Mind-Meld' Zen", origin: "Castrovel", race: "Lashunta Psychic", tech: "Mental"},
+            {name: "Cyber 'Ghost-Protocol' Fox", origin: "Verces", race: "Android Spy", tech: "Infiltration"},
+            {name: "Titan 'World-Shaker' Rex", origin: "Veskarium", race: "Vesk Engineer", tech: "Planetary"},
+            {name: "Flux 'Reality-Bender' Prime", origin: "Drift", race: "Human Witchwarper", tech: "Dimensional"},
+            {name: "Spark 'Ion-Storm' Volt", origin: "Aballon", race: "Android Electrician", tech: "Energy"},
+            {name: "Void 'Star-Eater' Eclipse", origin: "Eox", race: "Undead Destroyer", tech: "Entropy"},
+            {name: "Iris 'Holo-Perfect' Dream", origin: "Absalom Station", race: "Human Icon", tech: "Media"}
+        ];
+
+        const neutralNames = [
+            {name: "Zero 'The Glitch' Prime", origin: "Aballon", race: "Android Any Class", tech: "AI Core"},
+            {name: "Sage Neurallink", origin: "Verces", race: "Human/AI Hybrid", tech: "Neural"},
+            {name: "Storm 'Data-Hurricane' Vex", origin: "Drift", race: "Any Technomancer", tech: "Digital"},
+            {name: "Echo Voidwalker", origin: "Eox", race: "Undead Any", tech: "Necrotech"},
+            {name: "Phoenix 'Star-Born' Neo", origin: "Absalom Station", race: "Any Species", tech: "Cosmopolitan"},
+            {name: "Circuit 'Ghost-Code' Seven", origin: "Aballon", race: "Android Operative", tech: "Stealth"},
+            {name: "Quantum 'Phase-Shift' Zen", origin: "Drift", race: "Any Mystic", tech: "Planar"},
+            {name: "Nyx Shadowport", origin: "Apostae", race: "Drow Any", tech: "Underground"},
+            {name: "Binary Starweaver", origin: "Castrovel", race: "Elf/Android", tech: "Bio-tech"},
+            {name: "Flux 'Time-Skip' Nova", origin: "Verces", race: "Any Precog", tech: "Temporal"},
+            {name: "Vector Ironcore", origin: "Akiton", race: "Any Mechanic", tech: "Industrial"},
+            {name: "Prism 'Light-Bender' Ray", origin: "Triaxus", race: "Any Solarian", tech: "Photonic"},
+            {name: "Matrix 'Code-Walker' Ghost", origin: "Aballon", race: "Android Hacker", tech: "Cyber"},
+            {name: "Void 'Star-Killer' Edge", origin: "Veskarium", race: "Any Soldier", tech: "Combat"},
+            {name: "Nexus Mindbridge", origin: "Idari", race: "Kasatha Mystic", tech: "Psychic"},
+            {name: "Chrome 'Steel-Soul' Forge", origin: "Akiton", race: "Any Augmented", tech: "Cybernetic"},
+            {name: "Cosmos 'Universe-Walker' Drift", origin: "Drift", race: "Any Xenoseeker", tech: "Explorer"},
+            {name: "Pixel 'Holo-Perfect' Dream", origin: "Absalom Station", race: "Any Icon", tech: "Media"},
+            {name: "Shadow 'Night-Protocol' Hex", origin: "Apostae", race: "Any Operative", tech: "Stealth"},
+            {name: "Tesla 'Lightning-Mind' Storm", origin: "Verces", race: "Any Technomancer", tech: "Electric"},
+            {name: "Nebula 'Gas-Walker' Drift", origin: "Liavara", race: "Any Environmentalist", tech: "Atmospheric"},
+            {name: "Data 'Stream-Rider' Flow", origin: "Aballon", race: "Android Any", tech: "Information"},
+            {name: "Quantum 'Probability-Dancer' Flux", origin: "Verces", race: "Any Precog", tech: "Quantum"},
+            {name: "Cyber 'Ghost-Shell' Phantom", origin: "Apostae", race: "Any Operative", tech: "Digital"},
+            {name: "Solar 'Star-Heart' Flare", origin: "Triaxus", race: "Any Solarian", tech: "Solar"},
+            {name: "Vortex 'Reality-Ripper' Tear", origin: "Drift", race: "Any Witchwarper", tech: "Dimensional"},
+            {name: "Ion 'Particle-Storm' Beam", origin: "Aballon", race: "Android Nanocyte", tech: "Atomic"},
+            {name: "Gravity 'Planet-Puller' Well", origin: "Bretheda", race: "Any Vanguard", tech: "Gravitational"},
+            {name: "Pulse 'Heart-Beat' Rhythm", origin: "Eox", race: "Undead Biohacker", tech: "Bio-mechanical"},
+            {name: "Spark 'Neural-Fire' Synapse", origin: "Verces", race: "Any Technomancer", tech: "Neural"},
+            {name: "Drift 'Phase-Walker' Slip", origin: "Drift", race: "Any Class", tech: "Planar"},
+            {name: "Code 'Reality-Hacker' Break", origin: "Aballon", race: "Android Witchwarper", tech: "Programming"},
+            {name: "Flux 'Chaos-Engine' Storm", origin: "Akiton", race: "Any Evolutionist", tech: "Adaptive"},
+            {name: "Mirror 'Reflection-Walker' Echo", origin: "Castrovel", race: "Any Mystic", tech: "Illusion"},
+            {name: "Laser 'Precision-Cut' Focus", origin: "Verces", race: "Any Operative", tech: "Optical"},
+            {name: "Nano 'Micro-Storm' Swarm", origin: "Aballon", race: "Android Nanocyte", tech: "Molecular"},
+            {name: "Warp 'Space-Folder' Bend", origin: "Drift", race: "Any Pilot", tech: "FTL"},
+            {name: "Signal 'Wave-Rider' Broadcast", origin: "Absalom Station", race: "Any Icon", tech: "Communication"},
+            {name: "Core 'System-Heart' Central", origin: "Aballon", race: "Android Any", tech: "Central Processing"},
+            {name: "Phase 'Matter-Shifter' State", origin: "Verces", race: "Any Witchwarper", tech: "Molecular"},
+            {name: "Sync 'Unity-Protocol' Link", origin: "Idari", race: "Any Mystic", tech: "Connection"},
+            {name: "Arc 'Lightning-Path' Strike", origin: "Triaxus", race: "Any Solarian", tech: "Electrical"},
+            {name: "Node 'Network-Hub' Connect", origin: "Aballon", race: "Android Technomancer", tech: "Network"},
+            {name: "Rift 'Void-Tear' Gap", origin: "Drift", race: "Any Solarian", tech: "Spatial"},
+            {name: "Byte 'Data-Fragment' Bit", origin: "Verces", race: "Android Operative", tech: "Information"},
+            {name: "Mag 'Field-Walker' Flux", origin: "Akiton", race: "Any Vanguard", tech: "Magnetic"},
+            {name: "Orbit 'Path-Keeper' Cycle", origin: "Bretheda", race: "Any Pilot", tech: "Orbital"},
+            {name: "Pulse 'Energy-Beat' Wave", origin: "Aballon", race: "Android Evolutionist", tech: "Rhythmic"},
+            {name: "Void 'Nothing-Walker' Null", origin: "Eox", race: "Undead Mystic", tech: "Entropy"},
+            {name: "Link 'Chain-Breaker' Free", origin: "Absalom Station", race: "Any Class", tech: "Liberation"}
+        ];
+
+        // Function to create name cards with tech and location tags
+        function createNameCard(nameData) {
+            return `
+                <div class="name-card">
+                    <div class="name">${nameData.name}</div>
+                    <div class="origin">Origin: ${nameData.origin}</div>
+                    <div class="race-suggestion">Best for: ${nameData.race}</div>
+                    <div class="location-tag">${nameData.origin}</div>
+                    <div class="tech-tag">${nameData.tech}</div>
+                </div>
+            `;
+        }
+
+        // Populate name grids
+        document.getElementById('maleNames').innerHTML = maleNames.map(createNameCard).join('');
+        document.getElementById('femaleNames').innerHTML = femaleNames.map(createNameCard).join('');
+        document.getElementById('neutralNames').innerHTML = neutralNames.map(createNameCard).join('');
+
+        // Interactive Starfinder galactic wheel
+        const canvas = document.getElementById('starfinderWheel');
+        const ctx = canvas.getContext('2d');
+        let spinning = false;
+        let rotation = 0;
+
+        const systems = [
+            'Absalom Station', 'Castrovel', 'Akiton', 'Verces', 
+            'Idari', 'Eox', 'Triaxus', 'Liavara',
+            'Bretheda', 'Apostae', 'Aballon', 'Veskarium'
+        ];
+        const systemColors = [
+            '#78c0ff', '#ff77c6', '#ff6b6b', '#4ecdc4', 
+            '#feca57', '#ee5a24', '#10ac84', '#5f27cd',
+            '#00d2d3', '#ff9f43', '#54a0ff', '#2e86de'
+        ];
+
+        function drawStarfinderWheel() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 220;
+            
+            // Draw starfield background
+            for (let i = 0; i < 100; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 2;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, 2 * Math.PI);
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.8 + 0.2})`;
+                ctx.fill();
+            }
+            
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(rotation);
+            
+            for (let i = 0; i < systems.length; i++) {
+                const startAngle = (i * 2 * Math.PI) / systems.length;
+                const endAngle = ((i + 1) * 2 * Math.PI) / systems.length;
+                
+                ctx.beginPath();
+                ctx.arc(0, 0, radius, startAngle, endAngle);
+                ctx.lineTo(0, 0);
+                ctx.fillStyle = systemColors[i];
+                ctx.fill();
+                ctx.strokeStyle = '#533a7b';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Add glow effect
+                ctx.save();
+                ctx.globalCompositeOperation = 'lighter';
+                ctx.beginPath();
+                ctx.arc(0, 0, radius, startAngle, endAngle);
+                ctx.lineTo(0, 0);
+                ctx.fillStyle = systemColors[i] + '40';
+                ctx.fill();
+                ctx.restore();
+                
+                ctx.save();
+                ctx.rotate(startAngle + (endAngle - startAngle) / 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 11px Arial';
+                ctx.textAlign = 'center';
+                ctx.strokeStyle = '#000000';
+                ctx.lineWidth = 3;
+                ctx.strokeText(systems[i], radius * 0.7, 0);
+                ctx.fillText(systems[i], radius * 0.7, 0);
+                ctx.restore();
+            }
+            
+            ctx.restore();
+            
+            // Draw futuristic pointer
+            ctx.beginPath();
+            ctx.moveTo(centerX + radius + 20, centerY);
+            ctx.lineTo(centerX + radius + 45, centerY - 15);
+            ctx.lineTo(centerX + radius + 45, centerY + 15);
+            ctx.closePath();
+            ctx.fillStyle = '#78c0ff';
+            ctx.fill();
+            ctx.strokeStyle = '#533a7b';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Add glow to pointer
+            ctx.shadowColor = '#78c0ff';
+            ctx.shadowBlur = 10;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+
+        function spinStarfinderWheel() {
+            if (spinning) return;
+            spinning = true;
+            
+            const spinAmount = Math.random() * 15 + 20;
+            const spinDuration = 5000;
+            const startTime = Date.now();
+            
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / spinDuration, 1);
+                const easing = 1 - Math.pow(1 - progress, 3);
+                
+                rotation += (spinAmount * (1 - easing)) * 0.06;
+                drawStarfinderWheel();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    spinning = false;
+                    const finalSystem = systems[Math.floor(((rotation % (2 * Math.PI)) / (2 * Math.PI)) * systems.length)];
+                    alert(`🚀 Your character originates from: ${finalSystem}! Explore names from this system for authentic galactic heritage.`);
+                }
+            }
+            
+            animate();
+        }
+
+        canvas.addEventListener('click', spinStarfinderWheel);
+        drawStarfinderWheel();
+    </script>
+</body>
+</html>

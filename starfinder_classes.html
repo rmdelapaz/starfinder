@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfinder Classes and Careers - Tutorial 3</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Careers Among the Stars</h1>
+        <p>Mastering Starfinder Classes and Character Builds</p>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Your Galactic Profession</h2>
+            <p>If ancestry determines who you are, class determines what you do. Think of your class as your character's career path in the vast cosmos – but instead of choosing between accounting or marketing, you're deciding between "cosmic warrior" and "reality-hacking wizard." Each class represents a different approach to solving the universe's problems, from the direct "shoot it with bigger guns" methodology to the subtle "reprogram reality with magic code" technique.</p>
+            
+            <div class="analogy-box">
+                <h3>The Superhero Team Analogy</h3>
+                <p>Imagine you're assembling the perfect superhero team for a space opera movie. You need different specialists: the tactical leader (Envoy), the heavy hitter (Soldier), the tech genius (Mechanic), the mystic advisor (Mystic), the stealth specialist (Operative), the reality manipulator (Technomancer), and the energy controller (Solarian). Each brings unique capabilities that complement the others, creating a team capable of handling any galactic crisis.</p>
+            </div>
+        </section>
+
+        <section class="class-mechanics">
+            <h2>Understanding Class Architecture</h2>
+            <p>Every Starfinder class is built like a modular smartphone operating system, with core functions and customizable features:</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[Choose Class] --> B[Base Attack Bonus]
+                    A --> C[Saving Throws]
+                    A --> D[Skill Points per Level]
+                    A --> E[Class Features]
+                    A --> F[Spell Progression]
+                    
+                    B --> G[Combat Effectiveness]
+                    C --> H[Survivability]
+                    D --> I[Versatility]
+                    E --> J[Unique Abilities]
+                    F --> K[Magical Power]
+                    
+                    G --> L[Character Build]
+                    H --> L
+                    I --> L
+                    J --> L
+                    K --> L
+            </div>
+
+            <div class="progression-systems">
+                <h3>How Character Progression Works</h3>
+                <p>Unlike many RPGs where you just get "more powerful," Starfinder classes grow in complexity and options:</p>
+
+                <canvas id="progressionChart" width="800" height="300"></canvas>
+                <script>
+                    const canvas3 = document.getElementById('progressionChart');
+                    const ctx3 = canvas3.getContext('2d');
+                    
+                    // Clear canvas
+                    ctx3.fillStyle = '#f8f9fa';
+                    ctx3.fillRect(0, 0, canvas3.width, canvas3.height);
+                    
+                    // Draw progression curves
+                    const classes = [
+                        {name: 'Soldier', color: '#dc3545', complexity: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
+                        {name: 'Technomancer', color: '#007bff', complexity: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]},
+                        {name: 'Mystic', color: '#6f42c1', complexity: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]},
+                        {name: 'Operative', color: '#28a745', complexity: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]}
+                    ];
+                    
+                    // Draw axes
+                    ctx3.strokeStyle = '#000';
+                    ctx3.lineWidth = 2;
+                    ctx3.beginPath();
+                    ctx3.moveTo(50, 250);
+                    ctx3.lineTo(750, 250);
+                    ctx3.moveTo(50, 250);
+                    ctx3.lineTo(50, 50);
+                    ctx3.stroke();
+                    
+                    // Labels
+                    ctx3.fillStyle = '#000';
+                    ctx3.font = '14px Arial';
+                    ctx3.fillText('Character Level', 350, 280);
+                    ctx3.save();
+                    ctx3.translate(20, 150);
+                    ctx3.rotate(-Math.PI/2);
+                    ctx3.fillText('Complexity', 0, 0);
+                    ctx3.restore();
+                    
+                    // Draw progression lines
+                    classes.forEach(cls => {
+                        ctx3.strokeStyle = cls.color;
+                        ctx3.lineWidth = 3;
+                        ctx3.beginPath();
+                        
+                        cls.complexity.forEach((complexity, level) => {
+                            const x = 50 + (level * 70);
+                            const y = 250 - (complexity * 10);
+                            
+                            if (level === 0) {
+                                ctx3.moveTo(x, y);
+                            } else {
+                                ctx3.lineTo(x, y);
+                            }
+                        });
+                        
+                        ctx3.stroke();
+                        
+                        // Legend
+                        const legendY = 20 + (classes.indexOf(cls) * 20);
+                        ctx3.fillStyle = cls.color;
+                        ctx3.fillRect(600, legendY, 15, 15);
+                        ctx3.fillStyle = '#000';
+                        ctx3.fillText(cls.name, 620, legendY + 12);
+                    });
+                    
+                    // Level markers
+                    for (let i = 1; i <= 10; i++) {
+                        ctx3.fillStyle = '#666';
+                        ctx3.font = '12px Arial';
+                        ctx3.fillText(i.toString(), 45 + (i * 70), 270);
+                    }
+                </script>
+
+                <h4>Understanding the Curves</h4>
+                <ul>
+                    <li><strong>Soldier:</strong> Steady, predictable growth - easy to master</li>
+                    <li><strong>Operative:</strong> Moderate complexity that scales smoothly</li>
+                    <li><strong>Technomancer/Mystic:</strong> High complexity with many spell and ability options</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="core-classes">
+            <h2>The Seven Paths to Galactic Heroism</h2>
+            
+            <div class="class-card">
+                <h3>Envoy - The Galactic Leader</h3>
+                <div class="class-stats">
+                    <p><strong>Base Attack Bonus:</strong> Medium (3/4 progression)</p>
+                    <p><strong>Good Saves:</strong> Will</p>
+                    <p><strong>Skill Points:</strong> 8 + Intelligence modifier</p>
+                    <p><strong>Key Ability:</strong> Charisma</p>
+                    <p><strong>Spell Progression:</strong> None</p>
+                </div>
+
+                <div class="class-overview">
+                    <h4>The Captain Kirk of Starfinder</h4>
+                    <p>Envoys are like the ultimate combination of a motivational speaker, tactical coordinator, and diplomatic negotiator. They don't necessarily have the biggest gun or the flashiest magic, but they make everyone around them better. Think of them as the "force multiplier" class – they turn a group of individuals into a coordinated team.</p>
+
+                    <h4>What Makes Them Special</h4>
+                    <p>Envoys are masters of <strong>improvisations</strong> – special abilities that let them bend the rules of reality through sheer charisma and leadership. It's like having a limited supply of "movie hero moments" where they can inspire allies, demoralize enemies, or pull off impossible social maneuvers.</p>
+                </div>
+
+                <div class="signature-abilities">
+                    <h4>Core Class Features</h4>
+                    <ul>
+                        <li><strong>Improvisations:</strong> Special abilities that use resolve points to create cinematic moments</li>
+                        <li><strong>Skill Expertise:</strong> Unparalleled at social skills and knowledge</li>
+                        <li><strong>Inspiring Boost:</strong> Help allies recover stamina and keep fighting</li>
+                        <li><strong>Combat Leadership:</strong> Coordinate team tactics and timing</li>
+                    </ul>
+
+                    <h4>Sample Improvisations</h4>
+                    <ul>
+                        <li><strong>Get 'Em:</strong> Mark a target for your entire team to focus fire</li>
+                        <li><strong>Don't Quit:</strong> Prevent an ally from becoming unconscious</li>
+                        <li><strong>Clever Feint:</strong> Trick an enemy into leaving themselves vulnerable</li>
+                        <li><strong>Universal Expression:</strong> Communicate with any creature</li>
+                    </ul>
+                </div>
+
+                <div class="build-examples">
+                    <h4>Popular Build Concepts</h4>
+                    <div class="build">
+                        <h5>The Diplomatic Captain</h5>
+                        <p><strong>Focus:</strong> Social encounters and team coordination</p>
+                        <p><strong>Key Skills:</strong> Diplomacy, Bluff, Sense Motive, Culture</p>
+                        <p><strong>Improvisations:</strong> Universal Expression, Clever Feint, Don't Quit</p>
+                        <p><strong>Role:</strong> Party face and tactical coordinator</p>
+                    </div>
+
+                    <div class="build">
+                        <h5>The Combat Coordinator</h5>
+                        <p><strong>Focus:</strong> Battlefield leadership and support</p>
+                        <p><strong>Key Skills:</strong> Intimidate, Medicine, Tactics (if available)</p>
+                        <p><strong>Improvisations:</strong> Get 'Em, Inspiring Boost, Rally</p>
+                        <p><strong>Role:</strong> Combat buffer and team synergy</p>
+                    </div>
+
+                    <div class="build">
+                        <h5>The Information Broker</h5>
+                        <p><strong>Focus:</strong> Knowledge gathering and analysis</p>
+                        <p><strong>Key Skills:</strong> Computers, Culture, Profession, Sense Motive</p>
+                        <p><strong>Improvisations:</strong> Clever Attack, Draw Fire, Universal Expression</p>
+                        <p><strong>Role:</strong> Intelligence gathering and strategic planning</p>
+                    </div>
+                </div>
+
+                <div class="gameplay-style">
+                    <h4>Playing an Envoy</h4>
+                    <p><strong>In Combat:</strong> You're the quarterback calling plays, not the running back scoring touchdowns. Focus on positioning, timing, and making your team more effective.</p>
+                    <p><strong>In Social Encounters:</strong> You're the star. Your Charisma and social skills make you the natural party face.</p>
+                    <p><strong>In Exploration:</strong> Use your knowledge skills to understand what you're encountering and your leadership to keep the team organized.</p>
+
+                    <h4>Perfect For Players Who</h4>
+                    <ul>
+                        <li>Enjoy being the party leader and coordinator</li>
+                        <li>Like social roleplay and negotiation</li>
+                        <li>Want to make their teammates more effective</li>
+                        <li>Prefer tactical thinking over personal combat prowess</li>
+                        <li>Enjoy having lots of skill points and versatility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <h3>Mechanic - The Tech Virtuoso</h3>
+                <div class="class-stats">
+                    <p><strong>Base Attack Bonus:</strong> Medium (3/4 progression)</p>
+                    <p><strong>Good Saves:</strong> Reflex</p>
+                    <p><strong>Skill Points:</strong> 4 + Intelligence modifier</p>
+                    <p><strong>Key Ability:</strong> Intelligence</p>
+                    <p><strong>Spell Progression:</strong> None</p>
+                </div>
+
+                <div class="class-overview">
+                    <h4>The Tony Stark of Space</h4>
+                    <p>Mechanics are the engineers, inventors, and technologists of the Starfinder universe. They're like a combination of a brilliant scientist and a skilled craftsperson, capable of building everything from simple gadgets to AI companions. If there's a technological solution to a problem, the mechanic will find it – or build it from scratch.</p>
+
+                    <h4>The Artificial Intelligence Partnership</h4>
+                    <p>What makes mechanics unique is their relationship with artificial intelligence. They either build a robotic companion (drone) that fights alongside them, or they integrate AI technology directly into their own minds (exocortex). It's like choosing between having R2-D2 as a buddy or becoming a cyborg yourself.</p>
+                </div>
+
+                <div class="ai-specializations">
+                    <h4>Artificial Intelligence Paths</h4>
+                    <div class="ai-path">
+                        <h5>Drone (The Robot Buddy)</h5>
+                        <p>You build and customize a robotic companion that follows you into danger. Your drone can be anything from a floating weapons platform to a stealthy scout to a mobile workshop.</p>
+                        
+                        <canvas id="droneTypes" width="600" height="200"></canvas>
+                        <script>
+                            const canvas4 = document.getElementById('droneTypes');
+                            const ctx4 = canvas4.getContext('2d');
+                            
+                            ctx4.fillStyle = '#f8f9fa';
+                            ctx4.fillRect(0, 0, canvas4.width, canvas4.height);
+                            
+                            const drones = [
+                                {name: 'Combat', x: 100, color: '#dc3545', description: 'Tank'},
+                                {name: 'Stealth', x: 250, color: '#6c757d', description: 'Scout'},
+                                {name: 'Support', x: 400, color: '#28a745', description: 'Utility'},
+                                {name: 'Hover', x: 550, color: '#007bff', description: 'Flying'}
+                            ];
+                            
+                            drones.forEach(drone => {
+                                // Draw drone body
+                                ctx4.fillStyle = drone.color;
+                                ctx4.fillRect(drone.x - 25, 80, 50, 40);
+                                
+                                // Draw details based on type
+                                ctx4.fillStyle = '#000';
+                                if (drone.name === 'Combat') {
+                                    // Weapons
+                                    ctx4.fillRect(drone.x - 30, 90, 10, 5);
+                                    ctx4.fillRect(drone.x + 20, 90, 10, 5);
+                                } else if (drone.name === 'Stealth') {
+                                    // Sensors
+                                    ctx4.beginPath();
+                                    ctx4.arc(drone.x, 100, 3, 0, 2 * Math.PI);
+                                    ctx4.fill();
+                                } else if (drone.name === 'Support') {
+                                    // Tools
+                                    ctx4.fillRect(drone.x - 5, 75, 2, 10);
+                                    ctx4.fillRect(drone.x + 3, 75, 2, 10);
+                                } else if (drone.name === 'Hover') {
+                                    // Rotors
+                                    ctx4.fillRect(drone.x - 35, 95, 70, 2);
+                                }
+                                
+                                // Labels
+                                ctx4.fillStyle = '#000';
+                                ctx4.font = '14px Arial';
+                                ctx4.textAlign = 'center';
+                                ctx4.fillText(drone.name, drone.x, 150);
+                                ctx4.font = '10px Arial';
+                                ctx4.fillText(drone.description, drone.x, 165);
+                            });
+                        </script>
+
+                        <h6>Drone Advantages:</h6>
+                        <ul>
+                            <li>Acts independently in combat</li>
+                            <li>Can be rebuilt if destroyed</li>
+                            <li>Highly customizable with mods</li>
+                            <li>Provides scouting and utility outside combat</li>
+                        </ul>
+                    </div>
+
+                    <div class="ai-path">
+                        <h5>Exocortex (The Brain Upgrade)</h5>
+                        <p>You install AI technology directly into your mind, turning yourself into a cybernetic genius. Instead of a robot companion, you become part robot yourself.</p>
+
+                        <h6>Exocortex Advantages:</h6>
+                        <ul>
+                            <li>Enhanced combat accuracy and damage</li>
+                            <li>Perfect memory and data storage</li>
+                            <li>Instant access to technical information</li>
+                            <li>Can't be separated from your abilities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="class-features">
+                    <h4>Core Abilities</h4>
+                    <ul>
+                        <li><strong>Bypass:</strong> Disable technological devices with ease</li>
+                        <li><strong>Custom Rig:</strong> A personalized toolkit that grows with you</li>
+                        <li><strong>Mechanic Tricks:</strong> Special techniques learned through experience</li>
+                        <li><strong>Overload:</strong> Cause technological items to malfunction or explode</li>
+                        <li><strong>Miracle Worker:</strong> Perform impossible feats of engineering</li>
+                    </ul>
+                </div>
+
+                <div class="gameplay-style">
+                    <h4>Playing a Mechanic</h4>
+                    <p><strong>In Combat:</strong> Support the team with your drone or use your enhanced accuracy to deal precision damage. Control the battlefield with technological tricks.</p>
+                    <p><strong>In Exploration:</strong> You're the go-to person for anything technological. Hacking computers, repairing equipment, and understanding alien tech are your specialties.</p>
+                    <p><strong>Problem Solving:</strong> When the team encounters a technological challenge, you're expected to have a solution – or build one.</p>
+
+                    <h4>Perfect For Players Who</h4>
+                    <ul>
+                        <li>Love tinkering with gadgets and technology</li>
+                        <li>Want a loyal AI companion (drone path)</li>
+                        <li>Enjoy being the team's technical expert</li>
+                        <li>Like having lots of customization options</li>
+                        <li>Want to solve problems through engineering</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <h3>Mystic - The Cosmic Sage</h3>
+                <div class="class-stats">
+                    <p><strong>Base Attack Bonus:</strong> Low (1/2 progression)</p>
+                    <p><strong>Good Saves:</strong> Will</p>
+                    <p><strong>Skill Points:</strong> 6 + Intelligence modifier</p>
+                    <p><strong>Key Ability:</strong> Wisdom</p>
+                    <p><strong>Spell Progression:</strong> Full (6th level spells)</p>
+                </div>
+
+                <div class="class-overview">
+                    <h4>The Space Wizard</h4>
+                    <p>Mystics are the spiritual and magical practitioners of the Starfinder universe. They're like a combination of a wise sage, a powerful wizard, and a cosmic philosopher. While technomancers hack reality through technology, mystics connect directly to the fundamental forces of the universe through meditation, faith, and mystical understanding.</p>
+
+                    <h4>The Connection System</h4>
+                    <p>What makes mystics unique is their "Connection" – a spiritual bond with a cosmic force that grants them power and defines their magical approach. It's like choosing your cosmic patron or philosophical school, each offering different abilities and spell access.</p>
+                </div>
+
+                <div class="connection-types">
+                    <h4>Mystic Connections</h4>
+                    
+                    <div class="connection">
+                        <h5>Akashic - The Universal Memory</h5>
+                        <p>You tap into the cosmic record of all knowledge and experience. Perfect for mystics who want to be the team's living library and tactical analyst.</p>
+                        <ul>
+                            <li><strong>Bonus Spells:</strong> Comprehend languages, augury, tongues</li>
+                            <li><strong>Special Abilities:</strong> Access to any skill temporarily, perfect memory</li>
+                            <li><strong>Playstyle:</strong> Information gathering and strategic support</li>
+                        </ul>
+                    </div>
+
+                    <div class="connection">
+                        <h5>Empath - The Emotional Healer</h5>
+                        <p>You specialize in understanding and manipulating emotions and mental states. The ultimate support character for team cohesion and psychological warfare.</p>
+                        <ul>
+                            <li><strong>Bonus Spells:</strong> Detect thoughts, suggestion, mind probe</li>
+                            <li><strong>Special Abilities:</strong> Emotion control, mental healing, telepathic communication</li>
+                            <li><strong>Playstyle:</strong> Social support and mental manipulation</li>
+                        </ul>
+                    </div>
+
+                    <div class="connection">
+                        <h5>Healer - The Life Binder</h5>
+                        <p>You channel positive energy to heal wounds and cure ailments. The classic support role that keeps the team alive and fighting.</p>
+                        <ul>
+                            <li><strong>Bonus Spells:</strong> Cure light wounds, remove condition, cure serious wounds</li>
+                            <li><strong>Special Abilities:</strong> Enhanced healing, disease/poison immunity, resurrection</li>
+                            <li><strong>Playstyle:</strong> Medical support and life preservation</li>
+                        </ul>
+                    </div>
+
+                    <div class="connection">
+                        <h5>Mindbreaker - The Psychic Warrior</h5>
+                        <p>You weaponize mental energy to assault enemies' minds and create psychic constructs. The aggressive psionicist of the mystic world.</p>
+                        <ul>
+                            <li><strong>Bonus Spells:</strong> Mental block, hold person, confusion</li>
+                            <li><strong>Special Abilities:</strong> Psychic damage, mind control, fear effects</li>
+                            <li><strong>Playstyle:</strong> Offensive mental magic and crowd control</li>
+                        </ul>
+                    </div>
+
+                    <div class="connection">
+                        <h5>Star Shaman - The Cosmic Traveler</h5>
+                        <p>You draw power from the spaces between stars and the cosmic void itself. Perfect for space-themed adventures and travel magic.</p>
+                        <ul>
+                            <li><strong>Bonus Spells:</strong> Shooting stars, void beam, gravitational singularity</li>
+                            <li><strong>Special Abilities:</strong> Void resistance, cosmic awareness, space travel</li>
+                            <li><strong>Playstyle:</strong> Cosmic magic and void-themed abilities</li>
+                        </ul>
+                    </div>
+
+                    <div class="connection">
+                        <h5>Xenodruid - The Alien Naturalist</h5>
+                        <p>You commune with alien life forms and understand the natural systems of strange worlds. The extraterrestrial nature lover.</p>
+                        <ul>
+                            <li><strong>Bonus Spells:</strong> Life bubble, command undead, speak with dead</li>
+                            <li><strong>Special Abilities:</strong> Animal empathy, environmental adaptation, creature communication</li>
+                            <li><strong>Playstyle:</strong> Nature magic and alien creature interaction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="spell-system">
+                    <h4>Mystic Spell Casting</h4>
+                    <p>Mystics are prepared spellcasters, meaning they must choose their spells each day like selecting apps for their cosmic smartphone. They have access to the mystic spell list, which focuses on:</p>
+
+                    <div class="mermaid">
+                        graph LR
+                            A[Mystic Spells] --> B[Healing & Support]
+                            A --> C[Mental Effects]
+                            A --> D[Divination]
+                            A --> E[Cosmic Forces]
+                            
+                            B --> F[Cure wounds, Remove conditions]
+                            C --> G[Charm, Confusion, Fear]
+                            D --> H[Detect magic, Augury]
+                            E --> I[Energy manipulation, Void effects]
+                    </div>
+                </div>
+
+                <div class="gameplay-style">
+                    <h4>Playing a Mystic</h4>
+                    <p><strong>In Combat:</strong> Support your team with healing, buffs, and crowd control. You're not the damage dealer, but you're the reason everyone else can keep dealing damage.</p>
+                    <p><strong>In Exploration:</strong> Use divination magic to gather information and your connection abilities to solve problems others can't.</p>
+                    <p><strong>Social Encounters:</strong> Your Wisdom and connection abilities often provide unique insights into situations and people.</p>
+
+                    <h4>Perfect For Players Who</h4>
+                    <ul>
+                        <li>Enjoy playing support and healing roles</li>
+                        <li>Want access to utility magic and problem-solving spells</li>
+                        <li>Like the idea of cosmic or spiritual connections</li>
+                        <li>Prefer strategic thinking over direct combat</li>
+                        <li>Want to be the team's mystical advisor</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <h3>Operative - The Galactic Spy</h3>
+                <div class="class-stats">
+                    <p><strong>Base Attack Bonus:</strong> Medium (3/4 progression)</p>
+                    <p><strong>Good Saves:</strong> Reflex and Will</p>
+                    <p><strong>Skill Points:</strong> 8 + Intelligence modifier</p>
+                    <p><strong>Key Ability:</strong> Dexterity</p>
+                    <p><strong>Spell Progression:</strong> None</p>
+                </div>
+
+                <div class="class-overview">
+                    <h4>The Secret Agent Supreme</h4>
+                    <p>Operatives are the spies, assassins, and infiltrators of the Starfinder universe. They're like James Bond meets Master Thief, with a dash of social manipulation thrown in. If you need someone eliminated quietly, information stolen discreetly, or security bypassed elegantly, you call an operative.</p>
+
+                    <h4>The Specialization System</h4>
+                    <p>Operatives choose a specialization that defines their approach to spy work. It's like choosing your spy agency training program – each teaches different skills and techniques for achieving similar goals.</p>
+                </div>
+
+                <div class="specializations">
+                    <h4>Operative Specializations</h4>
+                    
+                    <div class="specialization">
+                        <h5>Daredevil - The Action Hero</h5>
+                        <p>You're the operative who swings from chandeliers and leaps between moving vehicles. Master of acrobatic combat and death-defying stunts.</p>
+                        <ul>
+                            <li><strong>Skill Focus:</strong> Acrobatics and Athletics</li>
+                            <li><strong>Special Abilities:</strong> Improved movement, stunt bonuses</li>
+                            <li><strong>Playstyle:</strong> Mobile combat and spectacular maneuvers</li>
+                        </ul>
+                    </div>
+
+                    <div class="specialization">
+                        <h5>Detective - The Investigator</h5>
+                        <p>You're the operative who solves mysteries and uncovers hidden truths. Master of deduction and information gathering.</p>
+                        <ul>
+                            <li><strong>Skill Focus:</strong> Sense Motive and Perception</li>
+                            <li><strong>Special Abilities:</strong> Insight bonuses, lie detection</li>
+                            <li><strong>Playstyle:</strong> Investigation and social analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="specialization">
+                        <h5>Ghost - The Invisible Assassin</h5>
+                        <p>You're the operative who appears from nowhere and disappears just as quickly. Master of stealth and silent elimination.</p>
+                        <ul>
+                            <li><strong>Skill Focus:</strong> Stealth</li>
+                            <li><strong>Special Abilities:</strong> Improved hiding, invisibility effects</li>
+                            <li><strong>Playstyle:</strong> Stealth attacks and infiltration</li>
+                        </ul>
+                    </div>
+
+                    <div class="specialization">
+                        <h5>Hacker - The Digital Infiltrator</h5>
+                        <p>You're the operative who fights in cyberspace as well as physical space. Master of computer systems and digital warfare.</p>
+                        <ul>
+                            <li><strong>Skill Focus:</strong> Computers</li>
+                            <li><strong>Special Abilities:</strong> Enhanced hacking, digital attacks</li>
+                            <li><strong>Playstyle:</strong> Information warfare and tech infiltration</li>
+                        </ul>
+                    </div>
+
+                    <div class="specialization">
+                        <h5>Spy - The Master Infiltrator</h5>
+                        <p>You're the classic secret agent who can blend into any situation. Master of disguise and social manipulation.</p>
+                        <ul>
+                            <li><strong>Skill Focus:</strong> Bluff and Disguise</li>
+                            <li><strong>Special Abilities:</strong> Identity manipulation, social infiltration</li>
+                            <li><strong>Playstyle:</strong> Undercover operations and deception</li>
+                        </ul>
+                    </div>
+
+                    <div class="specialization">
+                        <h5>Thief - The Master Criminal</h5>
+                        <p>You're the operative who can steal anything and get into anywhere. Master of locks, traps, and security systems.</p>
+                        <ul>
+                            <li><strong>Skill Focus:</strong> Sleight of Hand</li>
+                            <li><strong>Special Abilities:</strong> Improved theft, security bypass</li>
+                            <li><strong>Playstyle:</strong> Heists and security circumvention</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="trick-attack">
+                    <h4>Trick Attack - The Signature Move</h4>
+                    <p>The operative's signature ability is the Trick Attack – a special combat maneuver that combines skill use with combat prowess. It's like performing a magic trick that also stabs someone.</p>
+
+                    <div class="trick-attack-example">
+                        <h5>How Trick Attack Works:</h5>
+                        <ol>
+                            <li><strong>Choose a Skill:</strong> Pick a skill to use for your trick (Bluff, Stealth, etc.)</li>
+                            <li><strong>Make a Skill Check:</strong> Roll against the target's KAC + 20</li>
+                            <li><strong>If Successful:</strong> Your attack deals extra damage and applies special effects</li>
+                            <li><strong>If Failed:</strong> You still make a normal attack</li>
+                        </ol>
+
+                        <p><strong>Example:</strong> Sarah's operative uses Stealth to sneak up on a guard. She rolls Stealth vs. the guard's KAC + 20. Success means her laser pistol shot deals normal damage plus trick attack damage, and the guard is flat-footed for the rest of the round.</p>
+                    </div>
+                </div>
+
+                <div class="gameplay-style">
+                    <h4>Playing an Operative</h4>
+                    <p><strong>In Combat:</strong> Strike from the shadows with trick attacks, then reposition for your next opportunity. You're the sniper and skirmisher.</p>
+                    <p><strong>In Exploration:</strong> Your skills make you invaluable for bypassing security, gathering information, and solving problems through cleverness.</p>
+                    <p><strong>Social Encounters:</strong> Depending on your specialization, you might be the party's second face or their information gatherer.</p>
+
+                    <h4>Perfect For Players Who</h4>
+                    <ul>
+                        <li>Enjoy stealth and precision over brute force</li>
+                        <li>Want lots of skills and versatility</li>
+                        <li>Like playing clever, resourceful characters</li>
+                        <li>Want to solve problems through skill and cunning</li>
+                        <li>Enjoy spy fiction and heist movies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <h3>Soldier - The Professional Warrior</h3>
+                <div class="class-stats">
+                    <p><strong>Base Attack Bonus:</strong> High (full progression)</p>
+                    <p><strong>Good Saves:</strong> Fortitude</p>
+                    <p><strong>Skill Points:</strong> 4 + Intelligence modifier</p>
+                    <p><strong>Key Ability:</strong> Strength or Dexterity</p>
+                    <p><strong>Spell Progression:</strong> None</p>
+                </div>
+
+                <div class="class-overview">
+                    <h4>The Master of War</h4>
+                    <p>Soldiers are the ultimate combat specialists of Starfinder. They're like a combination of a Navy SEAL, a special forces operative, and a weapons expert. When problems need to be solved with superior firepower and tactical precision, you call a soldier.</p>
+
+                    <h4>The Fighting Style System</h4>
+                    <p>Soldiers choose a fighting style that determines their combat focus. It's like choosing your military specialty – each style teaches different weapons, tactics, and combat techniques.</p>
+                </div>
+
+                <div class="fighting-styles">
+                    <h4>Fighting Styles</h4>
+                    
+                    <div class="style">
+                        <h5>Arcane Assailant - The Magic Warrior</h5>
+                        <p>You blend magic with martial prowess, using spell-like abilities to enhance your combat effectiveness.</p>
+                        <ul>
+                            <li><strong>Weapons:</strong> Any weapon, plus spell-like abilities</li>
+                            <li><strong>Special Features:</strong> Spell resistance, magical enhancement</li>
+                            <li><strong>Tactics:</strong> Magical buffs combined with weapon attacks</li>
+                        </ul>
+                    </div>
+
+                    <div class="style">
+                        <h5>Armor Storm - The Walking Tank</h5>
+                        <p>You specialize in heavy armor and devastating area attacks. You're the soldier who walks through enemy fire like it's a light rain.</p>
+                        <ul>
+                            <li><strong>Weapons:</strong> Heavy weapons and area-effect weapons</li>
+                            <li><strong>Special Features:</strong> Enhanced armor use, area damage bonuses</li>
+                            <li><strong>Tactics:</strong> Stand in the open and unleash devastating firepower</li>
+                        </ul>
+                    </div>
+
+                    <div class="style">
+                        <h5>Blitz - The Mobile Striker</h5>
+                        <p>You focus on speed and mobility, striking quickly and moving before enemies can respond.</p>
+                        <ul>
+                            <li><strong>Weapons:</strong> Light weapons and mobile platforms</li>
+                            <li><strong>Special Features:</strong> Enhanced movement, charge attacks</li>
+                            <li><strong>Tactics:</strong> Hit-and-run attacks, positioning</li>
+                        </ul>
+                    </div>
+
+                    <div class="style">
+                        <h5>Bombard - The Artillery Expert</h5>
+                        <p>You specialize in explosives and area-denial weapons. When you absolutely need everything in a large area to stop existing.</p>
+                        <ul>
+                            <li><strong>Weapons:</strong> Grenades, explosives, heavy weapons</li>
+                            <li><strong>Special Features:</strong> Improved explosives, area expertise</li>
+                            <li><strong>Tactics:</strong> Zone control and area denial</li>
+                        </ul>
+                    </div>
+
+                    <div class="style">
+                        <h5>Guard - The Protector</h5>
+                        <p>You focus on protecting allies and controlling enemy movement. You're the soldier who ensures no one gets past you.</p>
+                        <ul>
+                            <li><strong>Weapons:</strong> Any weapon, plus shields</li>
+                            <li><strong>Special Features:</strong> Protective abilities, ally buffs</li>
+                            <li><strong>Tactics:</strong> Defensive positioning, ally protection</li>
+                        </ul>
+                    </div>
+
+                    <div class="style">
+                        <h5>Hit-and-Run - The Guerrilla Fighter</h5>
+                        <p>You excel at unconventional warfare and tactical flexibility. You're the soldier who adapts to any situation.</p>
+                        <ul>
+                            <li><strong>Weapons:</strong> Versatile weapon selection</li>
+                            <li><strong>Special Features:</strong> Tactical flexibility, situational bonuses</li>
+                            <li><strong>Tactics:</strong> Adaptive combat, terrain use</li>
+                        </ul>
+                    </div>
+
+                    <div class="style">
+                        <h5>Sharpshoot - The Precision Marksman</h5>
+                        <p>You specialize in ranged combat and precision shooting. When someone needs to be eliminated from a mile away, you're the soldier for the job.</p>
+                        <ul>
+                            <li><strong>Weapons:</strong> Ranged weapons, sniper rifles</li>
+                            <li><strong>Special Features:</strong> Enhanced accuracy, range bonuses</li>
+                            <li><strong>Tactics:</strong> Long-range elimination, overwatch</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="gear-track">
+                    <h4>Gear Boost System</h4>
+                    <p>Soldiers get "gear boosts" – special techniques that represent their growing expertise with military equipment. It's like unlocking new ways to use your gear as you gain experience.</p>
+
+                    <div class="boost-examples">
+                        <h5>Sample Gear Boosts:</h5>
+                        <ul>
+                            <li><strong>Armored Advantage:</strong> Reduce armor check penalties</li>
+                            <li><strong>Bullet Barrage:</strong> Increase automatic weapon damage</li>
+                            <li><strong>Flash Freeze:</strong> Add freezing effects to your attacks</li>
+                            <li><strong>Targeting Aid:</strong> Share targeting data with allies</li>
+                            <li><strong>Weapon Specialist:</strong> Become incredibly skilled with specific weapons</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="gameplay-style">
+                    <h4>Playing a Soldier</h4>
+                    <p><strong>In Combat:</strong> You're the primary damage dealer and front-line fighter. Your job is to eliminate threats efficiently and protect less combat-capable allies.</p>
+                    <p><strong>In Exploration:</strong> Your tactical knowledge and combat experience help with security situations and dangerous environments.</p>
+                    <p><strong>Problem Solving:</strong> When the answer involves applying force skillfully, you're the expert.</p>
+
+                    <h4>Perfect For Players Who</h4>
+                    <ul>
+                        <li>Want to be the primary combat character</li>
+                        <li>Enjoy tactical combat and weapon mastery</li>
+                        <li>Like straightforward, effective characters</li>
+                        <li>Want to protect and support teammates</li>
+                        <li>Prefer action over social intrigue</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <h3>Solarian - The Stellar Knight</h3>
+                <div class="class-stats">
+                    <p><strong>Base Attack Bonus:</strong> High (full progression)</p>
+                    <p><strong>Good Saves:</strong> Fortitude and Will</p>
+                    <p><strong>Skill Points:</strong> 4 + Intelligence modifier</p>
+                    <p><strong>Key Ability:</strong> Charisma</p>
+                    <p><strong>Spell Progression:</strong> Limited (zenith revelations)</p>
+                </div>
+
+                <div class="class-overview">
+                    <h4>The Cosmic Warrior-Monk</h4>
+                    <p>Solarians are like Jedi knights who studied stellar physics instead of the Force. They channel the fundamental forces of stars – the gravitational power of black holes and the burning energy of solar fusion – into both combat techniques and mystical abilities. They're warrior-philosophers who have learned to become one with cosmic forces.</p>
+
+                    <h4>The Stellar Mode System</h4>
+                    <p>What makes solarians unique is their stellar mode cycle. As they fight, they attune themselves to different cosmic forces, gaining different abilities based on whether they're channeling the gravity of collapsed stars or the burning energy of stellar cores.</p>
+                </div>
+
+                <div class="stellar-modes">
+                    <h4>Stellar Mode Cycle</h4>
+                    
+                    <canvas id="stellarCycle" width="400" height="400"></canvas>
+                    <script>
+                        const canvas5 = document.getElementById('stellarCycle');
+                        const ctx5 = canvas5.getContext('2d');
+                        
+                        // Clear canvas
+                        ctx5.fillStyle = '#f8f9fa';
+                        ctx5.fillRect(0, 0, canvas5.width, canvas5.height);
+                        
+                        // Draw cosmic background
+                        ctx5.fillStyle = '#000011';
+                        ctx5.fillRect(0, 0, canvas5.width, canvas5.height);
+                        
+                        // Add stars
+                        for(let i = 0; i < 50; i++) {
+                            ctx5.fillStyle = '#ffffff';
+                            ctx5.fillRect(Math.random() * canvas5.width, Math.random() * canvas5.height, 1, 1);
+                        }
+                        
+                        // Draw stellar mode cycle
+                        const centerX = 200;
+                        const centerY = 200;
+                        const radius = 120;
+                        
+                        // Unattuned (center)
+                        ctx5.fillStyle = '#6c757d';
+                        ctx5.beginPath();
+                        ctx5.arc(centerX, centerY, 30, 0, 2 * Math.PI);
+                        ctx5.fill();
+                        ctx5.fillStyle = '#ffffff';
+                        ctx5.font = '12px Arial';
+                        ctx5.textAlign = 'center';
+                        ctx5.fillText('UNATTUNED', centerX, centerY - 40);
+                        ctx5.fillText('Balanced', centerX, centerY);
+                        
+                        // Photon mode (top)
+                        ctx5.fillStyle = '#ffff00';
+                        ctx5.beginPath();
+                        ctx5.arc(centerX, centerY - radius, 40, 0, 2 * Math.PI);
+                        ctx5.fill();
+                        
+                        // Add rays for photon
+                        for(let i = 0; i < 8; i++) {
+                            const angle = (i * Math.PI * 2) / 8;
+                            const startX = centerX + Math.cos(angle) * 50;
+                            const startY = (centerY - radius) + Math.sin(angle) * 50;
+                            const endX = centerX + Math.cos(angle) * 70;
+                            const endY = (centerY - radius) + Math.sin(angle) * 70;
+                            
+                            ctx5.strokeStyle = '#ffff00';
+                            ctx5.lineWidth = 3;
+                            ctx5.beginPath();
+                            ctx5.moveTo(startX, startY);
+                            ctx5.lineTo(endX, endY);
+                            ctx5.stroke();
+                        }
+                        
+                        ctx5.fillStyle = '#000';
+                        ctx5.font = '14px Arial';
+                        ctx5.textAlign = 'center';
+                        ctx5.fillText('PHOTON', centerX, centerY - radius - 60);
+                        ctx5.font = '10px Arial';
+                        ctx5.fillText('Stellar Energy', centerX, centerY - radius - 45);
+                        ctx5.fillText('Offense', centerX, centerY - radius);
+                        
+                        // Graviton mode (bottom)
+                        ctx5.fillStyle = '#4a148c';
+                        ctx5.beginPath();
+                        ctx5.arc(centerX, centerY + radius, 40, 0, 2 * Math.PI);
+                        ctx5.fill();
+                        
+                        // Add swirl for graviton
+                        ctx5.strokeStyle = '#9c27b0';
+                        ctx5.lineWidth = 2;
+                        for(let i = 0; i < 3; i++) {
+                            ctx5.beginPath();
+                            ctx5.arc(centerX, centerY + radius, 25 + (i * 10), 0, 1.5 * Math.PI);
+                            ctx5.stroke();
+                        }
+                        
+                        ctx5.fillStyle = '#ffffff';
+                        ctx5.font = '14px Arial';
+                        ctx5.textAlign = 'center';
+                        ctx5.fillText('GRAVITON', centerX, centerY + radius + 60);
+                        ctx5.font = '10px Arial';
+                        ctx5.fillText('Gravity Control', centerX, centerY + radius + 45);
+                        ctx5.fillText('Defense', centerX, centerY + radius);
+                        
+                        // Draw arrows showing cycle
+                        // Unattuned to Photon
+                        ctx5.strokeStyle = '#28a745';
+                        ctx5.lineWidth = 3;
+                        ctx5.beginPath();
+                        ctx5.moveTo(centerX - 20, centerY - 30);
+                        ctx5.lineTo(centerX - 10, centerY - 80);
+                        ctx5.stroke();
+                        
+                        // Photon to Graviton
+                        ctx5.beginPath();
+                        ctx5.arc(centerX + 100, centerY, 100, -Math.PI/2, Math.PI/2);
+                        ctx5.stroke();
+                        
+                        // Graviton to Unattuned
+                        ctx5.beginPath();
+                        ctx5.moveTo(centerX + 20, centerY + 30);
+                        ctx5.lineTo(centerX + 10, centerY + 80);
+                        ctx5.stroke();
+                        
+                        // Unattuned to Graviton
+                        ctx5.beginPath();
+                        ctx5.moveTo(centerX - 20, centerY + 30);
+                        ctx5.lineTo(centerX - 10, centerY + 80);
+                        ctx5.stroke();
+                        
+                        // Add action labels
+                        ctx5.fillStyle = '#28a745';
+                        ctx5.font = '10px Arial';
+                        ctx5.fillText('Stellar Actions', centerX + 100, centerY - 20);
+                        ctx5.fillText('Build Attunement', centerX + 100, centerY);
+                        ctx5.fillText('Use Revelations', centerX + 100, centerY + 20);
+                    </script>
+
+                    <div class="mode-descriptions">
+                        <h5>Photon Mode (Solar Fire)</h5>
+                        <p>When attuned to photon energy, you channel the burning power of stars. Your abilities focus on offense, energy damage, and overwhelming force.</p>
+                        <ul>
+                            <li><strong>Stellar Rush:</strong> Charge with stellar energy</li>
+                            <li><strong>Plasma Sheath:</strong> Weapons deal fire damage</li>
+                            <li><strong>Corona:</strong> Radiate damaging energy</li>
+                        </ul>
+
+                        <h5>Graviton Mode (Cosmic Gravity)</h5>
+                        <p>When attuned to graviton energy, you manipulate gravitational forces. Your abilities focus on defense, control, and protecting allies.</p>
+                        <ul>
+                            <li><strong>Gravity Hold:</strong> Immobilize enemies</li>
+                            <li><strong>Reflection:</strong> Deflect attacks back at enemies</li>
+                            <li><strong>Gravity Well:</strong> Create zones of altered gravity</li>
+                        </ul>
+
+                        <h5>Unattuned (Balanced State)</h5>
+                        <p>When not specifically attuned, you can use either photon or graviton revelations but at reduced effectiveness. This is your neutral state.</p>
+                    </div>
+                </div>
+
+                <div class="manifestations">
+                    <h4>Solar Manifestations</h4>
+                    <p>Solarians can manifest their stellar power in physical form, creating weapons or armor from pure cosmic energy:</p>
+
+                    <div class="manifestation">
+                        <h5>Solar Weapon</h5>
+                        <p>You create a melee weapon from stellar energy – anything from a blazing sword to a gravitational hammer. This weapon grows stronger as you advance.</p>
+                        <ul>
+                            <li>Always available and can't be disarmed</li>
+                            <li>Scales with your level automatically</li>
+                            <li>Can be enhanced with solar weapon crystals</li>
+                            <li>Changes appearance based on your stellar attunement</li>
+                        </ul>
+                    </div>
+
+                    <div class="manifestation">
+                        <h5>Solar Armor</h5>
+                        <p>You surround yourself with protective stellar energy that acts as armor. This provides defense and environmental protection.</p>
+                        <ul>
+                            <li>Provides AC bonus that scales with level</li>
+                            <li>Includes environmental protections</li>
+                            <li>Can be enhanced with armor upgrades</li>
+                            <li>Appearance changes with stellar attunement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="gameplay-style">
+                    <h4>Playing a Solarian</h4>
+                    <p><strong>In Combat:</strong> Cycle between offensive and defensive modes, adapting to the battle's needs. You're a versatile warrior who can tank or deal damage as needed.</p>
+                    <p><strong>In Exploration:</strong> Your stellar revelations provide unique solutions to environmental challenges and obstacles.</p>
+                    <p><strong>Character Development:</strong> Plan your revelation choices to create either a balanced character or one specialized in photon or graviton techniques.</p>
+
+                    <h4>Perfect For Players Who</h4>
+                    <ul>
+                        <li>Want a warrior with mystical abilities</li>
+                        <li>Enjoy tactical complexity and adaptation</li>
+                        <li>Like the idea of channeling cosmic forces</li>
+                        <li>Want a self-sufficient melee combatant</li>
+                        <li>Enjoy characters with philosophical depth</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="class-card">
+                <h3>Technomancer - The Digital Wizard</h3>
+                <div class="class-stats">
+                    <p><strong>Base Attack Bonus:</strong> Low (1/2 progression)</p>
+                    <p><strong>Good Saves:</strong> Will</p>
+                    <p><strong>Skill Points:</strong> 4 + Intelligence modifier</p>
+                    <p><strong>Key Ability:</strong> Intelligence</p>
+                    <p><strong>Spell Progression:</strong> Full (6th level spells)</p>
+                </div>
+
+                <div class="class-overview">
+                    <h4>The Reality Hacker</h4>
+                    <p>Technomancers are the wizards of the digital age – they've learned to cast spells through technology and hack reality like it's a computer program. They're like a combination of a brilliant programmer, a theoretical physicist, and a classical wizard. Where mystics connect to cosmic forces through faith and meditation, technomancers understand that magic and technology are just different interfaces for manipulating the same fundamental forces.</p>
+
+                    <h4>The Magic-Technology Synthesis</h4>
+                    <p>What makes technomancers unique is their understanding that magic and technology aren't opposites – they're different ways of achieving the same goals. A technomancer might cast a fireball spell through their datapad or hack into a computer system using divination magic.</p>
+                </div>
+
+                <div class="spell-hacking">
+                    <h4>Spell Cache and Spell Hacking</h4>
+                    <p>Technomancers store their spells in a technological device called a spell cache – essentially a magical smartphone that can cast spells. As they advance, they learn to "hack" their spells, modifying them in real-time like editing code.</p>
+
+                    <div class="cache-types">
+                        <h5>Spell Cache Options</h5>
+                        <ul>
+                            <li><strong>Datapad:</strong> The classic choice - portable and versatile</li>
+                            <li><strong>Ring:</strong> Discrete and always accessible</li>
+                            <li><strong>Weapon:</strong> Combine spellcasting with combat</li>
+                            <li><strong>Implant:</strong> Cybernetic integration for ultimate access</li>
+                        </ul>
+                    </div>
+
+                    <div class="magic-hacks">
+                        <h5>Magic Hacks - Spell Modifications</h5>
+                        <p>Magic hacks are like software patches for your spells, allowing you to modify them beyond their normal parameters:</p>
+                        <ul>
+                            <li><strong>Empowered Weapon:</strong> Make technological weapons temporarily magical</li>
+                            <li><strong>Fabricate Tech:</strong> Create temporary technological items</li>
+                            <li><strong>Harmful Spells:</strong> Add effects to damage spells</li>
+                            <li><strong>Quick Scan:</strong> Cast detect magic as a move action</li>
+                            <li><strong>Spell Countermeasures:</strong> Protect against magic detection</li>
+                            <li><strong>Technomantic Proficiency:</strong> Gain weapon proficiencies through magic</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="spell-schools">
+                    <h4>Technomancer Spell Focus</h4>
+                    <p>Technomancer spells blend magical effects with technological themes, focusing on:</p>
+
+                    <div class="mermaid">
+                        graph TD
+                            A[Technomancer Spells] --> B[Energy Manipulation]
+                            A --> C[Information Control]
+                            A --> D[Technology Enhancement]
+                            A --> E[Reality Alteration]
+                            
+                            B --> F[Burning hands, Shock, Lightning bolt]
+                            C --> G[Comprehend languages, Detect tech, Identify]
+                            D --> H[Make whole, Weapon enhancement, Discharge]
+                            E --> I[Invisibility, Flight, Teleportation]
+                    </div>
+
+                    <div class="signature-spells">
+                        <h5>Iconic Technomancer Spells</h5>
+                        <ul>
+                            <li><strong>Magic Missile:</strong> Auto-targeting energy projectiles</li>
+                            <li><strong>Comprehend Languages:</strong> Universal translator magic</li>
+                            <li><strong>Make Whole:</strong> Repair technology with magic</li>
+                            <li><strong>Invisibility to Technology:</strong> Become undetectable to sensors</li>
+                            <li><strong>Discharge:</strong> Overload electronic devices</li>
+                            <li><strong>Flight:</strong> Personal levitation technology</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="gameplay-style">
+                    <h4>Playing a Technomancer</h4>
+                    <p><strong>In Combat:</strong> Control the battlefield with spells while supporting allies with technology-enhancing magic. You're the ranged damage dealer and utility caster.</p>
+                    <p><strong>In Exploration:</strong> Your spells provide solutions to both magical and technological challenges. You're equally useful for understanding alien artifacts and hacking computer systems.</p>
+                    <p><strong>Problem Solving:</strong> You have the most versatile toolkit in the game, with spells for almost every situation.</p>
+
+                    <h4>Perfect For Players Who</h4>
+                    <ul>
+                        <li>Want to be the primary spellcaster</li>
+                        <li>Enjoy having many options and tactical flexibility</li>
+                        <li>Like the blend of magic and technology themes</li>
+                        <li>Want to solve problems through knowledge and spells</li>
+                        <li>Enjoy complex character management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="multiclassing">
+            <h2>Advanced Character Building - Multiclassing</h2>
+            <p>Once you understand the classes individually, you might consider multiclassing – taking levels in multiple classes to create unique character combinations. It's like double-majoring in college, but for galactic heroes.</p>
+
+            <div class="multiclass-theory">
+                <h3>When to Multiclass</h3>
+                <p>Multiclassing is powerful but complex. Consider it when:</p>
+                <ul>
+                    <li>Your character concept requires abilities from multiple classes</li>
+                    <li>You want to cover weaknesses in your primary class</li>
+                    <li>You're building for a specific campaign style</li>
+                    <li>You understand both classes well enough to optimize the combination</li>
+                </ul>
+
+                <h3>Popular Multiclass Combinations</h3>
+                <div class="combo">
+                    <h4>Soldier/Operative - The Special Forces Operator</h4>
+                    <p>Combine military training with special ops skills. Perfect for characters who are both warriors and infiltrators.</p>
+                    <p><strong>Synergy:</strong> Soldier's combat power + Operative's skills and trick attack</p>
+                </div>
+
+                <div class="combo">
+                    <h4>Technomancer/Mechanic - The Techno-Wizard</h4>
+                    <p>Master both magical and mundane technology. The ultimate tech specialist.</p>
+                    <p><strong>Synergy:</strong> Spell versatility + technological expertise + AI companion</p>
+                </div>
+
+                <div class="combo">
+                    <h4>Mystic/Envoy - The Spiritual Leader</h4>
+                    <p>Combine mystical wisdom with leadership abilities. Perfect for the wise guide character.</p>
+                    <p><strong>Synergy:</strong> Healing magic + team coordination + social skills</p>
+                </div>
+
+                <div class="combo">
+                    <h4>Solarian/Soldier - The Cosmic Warrior</h4>
+                    <p>Blend stellar powers with military training for the ultimate warrior-monk.</p>
+                    <p><strong>Synergy:</strong> Stellar revelations + weapon specialization + tactical abilities</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="practice-activities">
+            <h2>Class Mastery Workshop</h2>
+            
+            <div class="activity">
+                <h3>Activity 1: Class Personality Matching</h3>
+                <p>For each scenario, determine which class would handle it best and how:</p>
+                <ol>
+                    <li>The party needs to infiltrate a corporate facility</li>
+                    <li>Ancient alien technology won't activate</li>
+                    <li>The team is pinned down by overwhelming firepower</li>
+                    <li>A diplomatic meeting with hostile aliens</li>
+                    <li>The starship's engines are failing in deep space</li>
+                    <li>A powerful enemy is immune to physical damage</li>
+                    <li>The party needs information from a secured database</li>
+                </ol>
+                <p>Consider both obvious and creative solutions!</p>
+            </div>
+
+            <div class="activity">
+                <h3>Activity 2: Build Planning</h3>
+                <p>Choose a class and plan your character's development from levels 1-10:</p>
+                <pre><code>&lt;strong&gt;Class:&lt;/strong&gt; [Chosen Class]
+&lt;strong&gt;Specialization/Style:&lt;/strong&gt; [Subclass choice]
+&lt;strong&gt;Key Abilities (Levels 1-3):&lt;/strong&gt; [Early priorities]
+&lt;strong&gt;Core Build (Levels 4-7):&lt;/strong&gt; [Main development]
+&lt;strong&gt;Advanced Options (Levels 8-10):&lt;/strong&gt; [Late-game powers]
+&lt;strong&gt;Equipment Focus:&lt;/strong&gt; [What gear do you prioritize?]</code></pre>
+            </div>
+
+            <div class="activity">
+                <h3>Activity 3: Team Composition Analysis</h3>
+                <p>Design a balanced 4-person party using these roles:</p>
+                <ul>
+                    <li><strong>Primary Combatant:</strong> Who deals the most damage?</li>
+                    <li><strong>Support Specialist:</strong> Who keeps everyone alive and effective?</li>
+                    <li><strong>Skill Expert:</strong> Who handles non-combat challenges?</li>
+                    <li><strong>Versatile Utility:</strong> Who adapts to unexpected situations?</li>
+                </ul>
+                <p>Consider how the classes complement each other!</p>
+            </div>
+
+            <div class="activity">
+                <h3>Activity 4: Weakness Analysis</h3>
+                <p>For each class, identify their main weakness and suggest solutions:</p>
+                <ul>
+                    <li>What situations challenge this class the most?</li>
+                    <li>How can equipment choices help address weaknesses?</li>
+                    <li>What party members could cover these gaps?</li>
+                    <li>Are there multiclass options that help?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="optimization-guide">
+            <h2>Building Effective Characters</h2>
+            
+            <div class="optimization-philosophy">
+                <h3>The Three Pillars of Character Optimization</h3>
+                <p>Effective character building rests on three foundations, like a three-legged stool. Remove any leg and your character becomes unstable:</p>
+
+                <div class="pillar">
+                    <h4>Pillar 1: Concept Coherence</h4>
+                    <p>Your mechanical choices should support your character concept, not fight against it. A sneaky operative shouldn't dump Dexterity for Strength, just like a wise mystic shouldn't ignore Wisdom for Charisma.</p>
+                    <ul>
+                        <li>Choose ability scores that match your class and role</li>
+                        <li>Select skills that make sense for your character's background</li>
+                        <li>Pick equipment that fits your character's style and tactics</li>
+                    </ul>
+                </div>
+
+                <div class="pillar">
+                    <h4>Pillar 2: Mathematical Efficiency</h4>
+                    <p>Starfinder is a numbers game at its core. Your character needs to succeed at rolls consistently enough to contribute meaningfully to the party.</p>
+                    <ul>
+                        <li>Prioritize your class's key ability score</li>
+                        <li>Focus on a few skills rather than spreading points thin</li>
+                        <li>Understand the math behind your class's core mechanics</li>
+                        <li>Plan for appropriate equipment upgrades</li>
+                    </ul>
+                </div>
+
+                <div class="pillar">
+                    <h4>Pillar 3: Team Synergy</h4>
+                    <p>No character exists in isolation. Consider how your build works with typical party compositions and fills needed roles.</p>
+                    <ul>
+                        <li>Identify what role your character fills in the party</li>
+                        <li>Consider how your abilities help teammates succeed</li>
+                        <li>Plan for common party weaknesses your character could address</li>
+                        <li>Avoid stepping on other characters' specialties</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="common-optimization-mistakes">
+                <h3>Common Optimization Pitfalls</h3>
+                
+                <div class="mistake">
+                    <h4>The "Swiss Army Knife" Trap</h4>
+                    <p><strong>Problem:</strong> Trying to be good at everything makes you mediocre at everything.</p>
+                    <p><strong>Solution:</strong> Focus on 2-3 core competencies and excel at them.</p>
+                    <p><strong>Example:</strong> An operative who puts equal points into Stealth, Computers, Bluff, Diplomacy, and Medicine will be worse than one who maximizes Stealth and Computers.</p>
+                </div>
+
+                <div class="mistake">
+                    <h4>The "Cool Factor" Override</h4>
+                    <p><strong>Problem:</strong> Choosing abilities because they sound cool rather than because they work well.</p>
+                    <p><strong>Solution:</strong> Research how abilities actually function in play before committing.</p>
+                    <p><strong>Example:</strong> A spell that sounds amazing might require saving throws enemies pass easily at your level.</p>
+                </div>
+
+                <div class="mistake">
+                    <h4>The "Single Point of Failure"</h4>
+                    <p><strong>Problem:</strong> Building a character with only one effective strategy.</p>
+                    <p><strong>Solution:</strong> Have backup plans for when your primary strategy doesn't work.</p>
+                    <p><strong>Example:</strong> A soldier specialized only in ranged combat who can't function effectively in melee.</p>
+                </div>
+
+                <div class="mistake">
+                    <h4>The "Equipment Neglect"</h4>
+                    <p><strong>Problem:</strong> Focusing only on class abilities while ignoring gear upgrades.</p>
+                    <p><strong>Solution:</strong> Plan your equipment progression as carefully as your ability selection.</p>
+                    <p><strong>Example:</strong> A high-level character still using 1st-level armor and weapons.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="class-selection-guide">
+            <h2>Choosing Your Perfect Class</h2>
+            
+            <div class="decision-matrix">
+                <h3>The Ultimate Class Selection Guide</h3>
+                <p>Use this flowchart to narrow down your class options based on your preferences:</p>
+
+                <div class="mermaid">
+                    graph TD
+                        A[What type of character do you want?] --> B{Magic User?}
+                        A --> C{Combat Focused?}
+                        A --> D{Skill Specialist?}
+                        A --> E{Team Support?}
+                        
+                        B -->|Yes, Prepared| F[Mystic - Divine magic and healing]
+                        B -->|Yes, Spontaneous| G[Technomancer - Arcane magic and tech]
+                        B -->|Hybrid| H[Solarian - Stellar powers and combat]
+                        
+                        C -->|Pure Combat| I[Soldier - Master of warfare]
+                        C -->|Combat + Skills| J[Operative - Sneaky fighter]
+                        C -->|Combat + Magic| K[Solarian - Cosmic warrior]
+                        
+                        D -->|Technical| L[Mechanic - Engineering and AI]
+                        D -->|Social| M[Envoy - Leadership and diplomacy]
+                        D -->|Stealth| N[Operative - Infiltration specialist]
+                        
+                        E -->|Healing| O[Mystic - Life and support magic]
+                        E -->|Coordination| P[Envoy - Team leadership]
+                        E -->|Utility| Q[Technomancer - Versatile magic]
+                </div>
+            </div>
+
+            <div class="playstyle-matching">
+                <h3>Matching Classes to Player Preferences</h3>
+                
+                <div class="preference">
+                    <h4>For Players Who Love Complexity</h4>
+                    <p><strong>Best Choices:</strong> Technomancer, Mystic, Solarian</p>
+                    <p><strong>Why:</strong> These classes have the most options and decision points, requiring tactical thinking and resource management.</p>
+                </div>
+
+                <div class="preference">
+                    <h4>For Players Who Want Simplicity</h4>
+                    <p><strong>Best Choices:</strong> Soldier, Operative (certain specializations)</p>
+                    <p><strong>Why:</strong> Straightforward mechanics with clear optimal choices and fewer moving parts.</p>
+                </div>
+
+                <div class="preference">
+                    <h4>For Social Roleplay Enthusiasts</h4>
+                    <p><strong>Best Choices:</strong> Envoy, Mystic (Empath), Operative (Spy)</p>
+                    <p><strong>Why:</strong> High Charisma, social skills, and abilities that shine in interpersonal situations.</p>
+                </div>
+
+                <div class="preference">
+                    <h4>For Combat Tacticians</h4>
+                    <p><strong>Best Choices:</strong> Soldier, Solarian, Envoy</p>
+                    <p><strong>Why:</strong> Classes with tactical options, battlefield control, and combat leadership abilities.</p>
+                </div>
+
+                <div class="preference">
+                    <h4>For Problem Solvers</h4>
+                    <p><strong>Best Choices:</strong> Technomancer, Mechanic, Operative</p>
+                    <p><strong>Why:</strong> Versatile skill sets and unique abilities for creative solutions.</p>
+                </div>
+
+                <div class="preference">
+                    <h4>For Support Players</h4>
+                    <p><strong>Best Choices:</strong> Mystic, Envoy, Mechanic (Drone)</p>
+                    <p><strong>Why:</strong> Abilities focused on making teammates more effective rather than personal glory.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="advanced-tips">
+            <h2>Expert-Level Class Mastery</h2>
+            
+            <div class="mastery-concepts">
+                <h3>Understanding Action Economy</h3>
+                <p>Advanced players think about "action economy" – how to get the most effect from their limited actions per turn. Each class approaches this differently:</p>
+
+                <ul>
+                    <li><strong>Soldiers:</strong> Focus on maximizing damage per action</li>
+                    <li><strong>Operatives:</strong> Combine movement with skill use and attacks</li>
+                    <li><strong>Envoys:</strong> Use swift actions to help allies while taking standard actions</li>
+                    <li><strong>Technomancers:</strong> Choose spells that affect multiple targets or last multiple rounds</li>
+                    <li><strong>Mystics:</strong> Prepare spells that solve problems decisively</li>
+                    <li><strong>Mechanics:</strong> Let your drone act independently while you take other actions</li>
+                    <li><strong>Solarians:</strong> Build stellar attunement while accomplishing other goals</li>
+                </ul>
+
+                <h3>Resource Management Mastery</h3>
+                <p>Every class has limited resources that must be managed carefully:</p>
+
+                <div class="resource-guide">
+                    <h4>Spellcasters (Technomancer, Mystic)</h4>
+                    <ul>
+                        <li>Save high-level spells for crucial moments</li>
+                        <li>Use cantrips and low-level spells for routine challenges</li>
+                        <li>Consider when to rest versus pushing forward</li>
+                        <li>Prepare utility spells for expected challenges</li>
+                    </ul>
+
+                    <h4>Resolve Users (Envoy, Soldier abilities)</h4>
+                    <ul>
+                        <li>Use resolve points early when they'll make the biggest difference</li>
+                        <li>Save some resolve for emergencies and unconsciousness recovery</li>
+                        <li>Consider how your abilities interact with Stamina point recovery</li>
+                    </ul>
+
+                    <h4>Stellar Attunement (Solarian)</h4>
+                    <ul>
+                        <li>Plan ahead for when you'll need specific stellar modes</li>
+                        <li>Use unattuned abilities to build toward your desired state</li>
+                        <li>Consider the full cycle, not just your current mode</li>
+                    </ul>
+                </div>
+
+                <h3>Equipment Synergy</h3>
+                <p>Expert players understand how their equipment choices amplify their class abilities:</p>
+
+                <div class="equipment-synergy">
+                    <h4>Weapon Selection Principles</h4>
+                    <ul>
+                        <li><strong>Soldiers:</strong> Choose weapons that benefit from your fighting style</li>
+                        <li><strong>Operatives:</strong> Prioritize weapons that work well with trick attack</li>
+                        <li><strong>Solarians:</strong> Consider how weapons complement your solar manifestation</li>
+                        <li><strong>Spellcasters:</strong> Choose weapons you can use effectively with low BAB</li>
+                    </ul>
+
+                    <h4>Armor Optimization</h4>
+                    <ul>
+                        <li><strong>Heavy Armor Users:</strong> Maximize AC while managing penalties</li>
+                        <li><strong>Light Armor Users:</strong> Balance protection with mobility and stealth</li>
+                        <li><strong>Dexterity-Based:</strong> Choose armor that doesn't limit your Dex bonus</li>
+                        <li><strong>Spellcasters:</strong> Ensure armor doesn't interfere with spellcasting</li>
+                    </ul>
+
+                    <h4>Technology Integration</h4>
+                    <ul>
+                        <li><strong>Augmentations:</strong> Choose cybernetics that enhance your core abilities</li>
+                        <li><strong>Magic Items:</strong> Look for items that expand your capabilities</li>
+                        <li><strong>Consumables:</strong> Stock appropriate medicines, ammunition, and tools</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="common-questions">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq">
+                <h3>Class Selection Questions</h3>
+                
+                <div class="question">
+                    <h4>Q: Can I change my class choice later?</h4>
+                    <p><strong>A:</strong> Generally no, but speak with your GM. Some tables allow "retraining" during downtime, and you can always multiclass to gain abilities from other classes.</p>
+                </div>
+
+                <div class="question">
+                    <h4>Q: Which class is best for new players?</h4>
+                    <p><strong>A:</strong> Soldier and Operative are most beginner-friendly due to straightforward mechanics. Envoy is also good if you enjoy social interaction.</p>
+                </div>
+
+                <div class="question">
+                    <h4>Q: Do I need a "balanced" party?</h4>
+                    <p><strong>A:</strong> Not strictly, but having some combat ability, social skills, technical skills, and problem-solving magic makes the game more enjoyable for everyone.</p>
+                </div>
+
+                <div class="question">
+                    <h4>Q: Can spellcasters wear armor?</h4>
+                    <p><strong>A:</strong> Yes! Unlike some RPGs, Starfinder spellcasters can wear armor without penalties. Choose appropriate armor for your class and playstyle.</p>
+                </div>
+
+                <div class="question">
+                    <h4>Q: How important are ability scores versus equipment?</h4>
+                    <p><strong>A:</strong> Both matter significantly. Good ability scores provide consistency, while appropriate equipment provides scaling. Neither can completely compensate for neglecting the other.</p>
+                </div>
+
+                <div class="question">
+                    <h4>Q: Should I specialize or generalize?</h4>
+                    <p><strong>A:</strong> Generally specialize. It's better to excel at a few things than be mediocre at many. However, have backup options for when your specialty doesn't apply.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-steps">
+            <h2>Your Class Journey Begins</h2>
+            
+            <div class="graduation-checklist">
+                <h3>Class Mastery Checklist</h3>
+                <ul>
+                    <li>✓ I understand what each class does and how they play</li>
+                    <li>✓ I can match classes to player preferences and playstyles</li>
+                    <li>✓ I know the key mechanics for my chosen class</li>
+                    <li>✓ I understand how my class fits into a party dynamic</li>
+                    <li>✓ I can plan character progression from 1st to 10th level</li>
+                    <li>✓ I know my class's strengths and weaknesses</li>
+                    <li>✓ I understand basic optimization principles</li>
+                    <li>✓ I can identify good equipment choices for my class</li>
+                </ul>
+            </div>
+
+            <div class="continuing-education">
+                <h3>Advanced Class Study</h3>
+                <p>Once you've mastered the basics, consider exploring:</p>
+                <ul>
+                    <li><strong>Multiclassing strategies</strong> for complex character concepts</li>
+                    <li><strong>Campaign-specific optimization</strong> for different adventure types</li>
+                    <li><strong>Party composition theory</strong> for group optimization</li>
+                    <li><strong>Equipment crafting and modification</strong> for custom gear</li>
+                    <li><strong>Advanced tactical concepts</strong> for high-level play</li>
+                </ul>
+            </div>
+
+            <div class="experimentation-encouragement">
+                <h3>The Learning Never Stops</h3>
+                <p>Remember that reading about classes is different from playing them. The best way to truly understand a class is to play it, experiment with different builds, and see how it performs in actual games. Don't be afraid to try something new – every experienced player has built characters that didn't work out as planned, and that's part of the learning process.</p>
+
+                <p>Each class offers multiple valid ways to build and play them. The "best" build is the one that you enjoy playing and that contributes positively to your group's fun. Trust your instincts, communicate with your fellow players, and most importantly, remember that the goal is to have an amazing adventure among the stars!</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>You now have the knowledge to choose and build an effective character for any Starfinder campaign. In our next tutorial, we'll explore <a href="/starfinder_themes.html">Themes</a> – the background elements that add personality and unique abilities to your cosmic hero!</p>
+            <p><em>The universe awaits your unique contribution to its ongoing story!</em></p>
+        </footer>
+    </main>
+</body>
+</html>

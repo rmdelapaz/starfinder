@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfinder Equipment and Gear - Tutorial 5</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Tools of the Trade</h1>
+        <p>Mastering Starfinder Equipment, Weapons, and Technology</p>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Your Galactic Arsenal</h2>
+            <p>In the dangerous universe of Starfinder, the right equipment can mean the difference between heroic victory and tragic defeat. Your gear isn't just statistics on a character sheet – it's your lifeline in hostile environments, your edge in combat, and your solution to countless problems. Think of equipment selection like choosing the perfect toolkit for a job, except your "job" involves exploring alien worlds, fighting cosmic horrors, and surviving in the vacuum of space.</p>
+            
+            <div class="analogy-box">
+                <h3>The Professional Athlete Analogy</h3>
+                <p>Selecting equipment in Starfinder is like outfitting a professional athlete for competition. A tennis player needs the right racquet, shoes, and strings for their playing style and the court conditions. Similarly, your character needs weapons suited to their combat style, armor appropriate for their role, and technology that complements their abilities. Just as an athlete's performance improves with better equipment, your character becomes more effective with appropriate gear. And just like sports equipment, Starfinder gear comes in different quality levels – from amateur starter gear to professional-grade equipment to legendary custom items that make champions.</p>
+            </div>
+        </section>
+
+        <section class="equipment-overview">
+            <h2>The Equipment Ecosystem</h2>
+            <p>Starfinder equipment exists in an interconnected system where every piece serves multiple purposes:</p>
+
+            <div class="mermaid">
+                graph TD
+                    A[Character Equipment] --> B[Combat Gear]
+                    A --> C[Utility Equipment]
+                    A --> D[Survival Gear]
+                    A --> E[Enhancement Items]
+                    
+                    B --> F[Weapons]
+                    B --> G[Armor]
+                    B --> H[Ammunition]
+                    
+                    C --> I[Tools]
+                    C --> J[Computers]
+                    C --> K[Vehicles]
+                    
+                    D --> L[Environmental Protection]
+                    D --> M[Medical Supplies]
+                    D --> N[Consumables]
+                    
+                    E --> O[Augmentations]
+                    E --> P[Magic Items]
+                    E --> Q[Weapon Accessories]
+            </div>
+
+            <div class="equipment-philosophy">
+                <h3>Understanding Equipment Roles</h3>
+                <p>Every piece of equipment falls into one or more functional categories:</p>
+                
+                <div class="role-category">
+                    <h4>Problem Solvers</h4>
+                    <p>Equipment that helps you overcome specific challenges or obstacles. Tools, computers, and specialized devices that expand what your character can accomplish.</p>
+                    <ul>
+                        <li><strong>Example:</strong> A hacking kit for bypassing security systems</li>
+                        <li><strong>Selection Tip:</strong> Choose based on problems you expect to encounter</li>
+                    </ul>
+                </div>
+
+                <div class="role-category">
+                    <h4>Force Multipliers</h4>
+                    <p>Equipment that makes your existing abilities more effective. Enhancement items, quality weapons, and augmentations that amplify your character's natural capabilities.</p>
+                    <ul>
+                        <li><strong>Example:</strong> A weapon fusion that adds fire damage to attacks</li>
+                        <li><strong>Selection Tip:</strong> Enhance your strengths rather than covering weaknesses</li>
+                    </ul>
+                </div>
+
+                <div class="role-category">
+                    <h4>Safety Nets</h4>
+                    <p>Equipment that protects you from failure or provides backup options. Armor, medical supplies, and emergency gear that keep you alive when things go wrong.</p>
+                    <ul>
+                        <li><strong>Example:</strong> Environmental armor for hostile planets</li>
+                        <li><strong>Selection Tip:</strong> Prepare for the most dangerous scenarios first</li>
+                    </ul>
+                </div>
+
+                <div class="role-category">
+                    <h4>Enablers</h4>
+                    <p>Equipment that allows you to attempt actions you couldn't otherwise perform. Vehicles for transportation, specialized tools for unique tasks, and technology that grants new capabilities.</p>
+                    <ul>
+                        <li><strong>Example:</strong> A starship for interplanetary travel</li>
+                        <li><strong>Selection Tip:</strong> Consider what new possibilities each item opens</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="weapons-deep-dive">
+            <h2>Weapons - Your Instruments of Persuasion</h2>
+            
+            <div class="weapon-categories">
+                <h3>Understanding Weapon Types</h3>
+                <p>Starfinder weapons are categorized by their underlying technology and damage delivery method:</p>
+
+                <div class="weapon-type">
+                    <h4>Kinetic Weapons - Classical Projectiles</h4>
+                    <p>These weapons use physical projectiles accelerated by chemical explosives, magnetic fields, or mechanical force. They're the "traditional" weapons that deal physical damage through impact and penetration.</p>
+                    
+                    <div class="weapon-subtype">
+                        <h5>Projectile Weapons</h5>
+                        <p>Traditional firearms that use ammunition cartridges.</p>
+                        <ul>
+                            <li><strong>Advantages:</strong> Reliable, inexpensive ammunition, familiar operation</li>
+                            <li><strong>Disadvantages:</strong> Finite ammunition, affected by environmental conditions</li>
+                            <li><strong>Examples:</strong> Pistols, rifles, machine guns</li>
+                            <li><strong>Best For:</strong> Characters who want proven, dependable weapons</li>
+                        </ul>
+                    </div>
+
+                    <div class="weapon-subtype">
+                        <h5>Powered Weapons</h5>
+                        <p>Melee weapons enhanced with technology for increased effectiveness.</p>
+                        <ul>
+                            <li><strong>Advantages:</strong> No ammunition needed, enhanced damage, special effects</li>
+                            <li><strong>Disadvantages:</strong> Battery dependence, close range only</li>
+                            <li><strong>Examples:</strong> Vibroswords, shock truncheons, powered hammers</li>
+                            <li><strong>Best For:</strong> Melee combatants who want technological edge</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="weapon-type">
+                    <h4>Energy Weapons - Pure Force</h4>
+                    <p>These weapons project energy as lasers, plasma, or other exotic forms. They represent advanced technology that converts stored energy directly into destructive force.</p>
+                    
+                    <div class="weapon-subtype">
+                        <h5>Laser Weapons</h5>
+                        <p>Focused light beams that burn through targets with concentrated energy.</p>
+                        <ul>
+                            <li><strong>Advantages:</strong> Precise, no projectile drop, unlimited "ammunition"</li>
+                            <li><strong>Disadvantages:</strong> Battery consumption, environmental interference</li>
+                            <li><strong>Examples:</strong> Laser pistols, laser rifles, laser cannons</li>
+                            <li><strong>Best For:</strong> Precision shooters and energy weapon specialists</li>
+                        </ul>
+                    </div>
+
+                    <div class="weapon-subtype">
+                        <h5>Plasma Weapons</h5>
+                        <p>Superheated matter that deals massive thermal damage to targets.</p>
+                        <ul>
+                            <li><strong>Advantages:</strong> High damage, burning effects, intimidation factor</li>
+                            <li><strong>Disadvantages:</strong> High battery consumption, overheating risks</li>
+                            <li><strong>Examples:</strong> Plasma pistols, plasma cannons, plasma swords</li>
+                            <li><strong>Best For:</strong> Heavy damage dealers who want maximum firepower</li>
+                        </ul>
+                    </div>
+
+                    <div class="weapon-subtype">
+                        <h5>Shock Weapons</h5>
+                        <p>Electrical discharge weapons that stun and damage through bio-electrical disruption.</p>
+                        <ul>
+                            <li><strong>Advantages:</strong> Nonlethal options, effective against electronics, stunning effects</li>
+                            <li><strong>Disadvantages:</strong> Environmental conductivity issues, limited lethality</li>
+                            <li><strong>Examples:</strong> Shock rifles, arc pistols, static weapons</li>
+                            <li><strong>Best For:</strong> Law enforcement types and non-lethal specialists</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weapon-selection-guide">
+                <h3>Choosing Your Primary Weapon</h3>
+                
+                <canvas id="weaponDecisionTree" width="800" height="500"></canvas>
+                <script>
+                    const canvas11 = document.getElementById('weaponDecisionTree');
+                    const ctx11 = canvas11.getContext('2d');
+                    
+                    // Clear canvas
+                    ctx11.fillStyle = '#f8f9fa';
+                    ctx11.fillRect(0, 0, canvas11.width, canvas11.height);
+                    
+                    // Decision tree for weapon selection
+                    const nodes = [
+                        {text: 'Weapon Selection', x: 400, y: 50, color: '#2c3e50', isRoot: true},
+                        {text: 'Combat Range?', x: 400, y: 120, color: '#34495e'},
+                        {text: 'Melee', x: 200, y: 200, color: '#e74c3c'},
+                        {text: 'Ranged', x: 600, y: 200, color: '#3498db'},
+                        {text: 'Damage Type?', x: 200, y: 280, color: '#c0392b'},
+                        {text: 'Combat Style?', x: 600, y: 280, color: '#2980b9'},
+                        {text: 'Kinetic', x: 100, y: 360, color: '#8e44ad'},
+                        {text: 'Energy', x: 300, y: 360, color: '#9b59b6'},
+                        {text: 'Precision', x: 500, y: 360, color: '#27ae60'},
+                        {text: 'Volume', x: 700, y: 360, color: '#16a085'},
+                        {text: 'Swords &\nBludgeons', x: 100, y: 440, color: '#d35400'},
+                        {text: 'Plasma &\nShock', x: 300, y: 440, color: '#e67e22'},
+                        {text: 'Laser &\nSniper', x: 500, y: 440, color: '#f39c12'},
+                        {text: 'Auto &\nHeavy', x: 700, y: 440, color: '#f1c40f'}
+                    ];
+                    
+                    // Draw connections
+                    const connections = [
+                        {from: 0, to: 1},
+                        {from: 1, to: 2},
+                        {from: 1, to: 3},
+                        {from: 2, to: 4},
+                        {from: 3, to: 5},
+                        {from: 4, to: 6},
+                        {from: 4, to: 7},
+                        {from: 5, to: 8},
+                        {from: 5, to: 9},
+                        {from: 6, to: 10},
+                        {from: 7, to: 11},
+                        {from: 8, to: 12},
+                        {from: 9, to: 13}
+                    ];
+                    
+                    connections.forEach(conn => {
+                        const from = nodes[conn.from];
+                        const to = nodes[conn.to];
+                        
+                        ctx11.strokeStyle = '#bdc3c7';
+                        ctx11.lineWidth = 2;
+                        ctx11.beginPath();
+                        ctx11.moveTo(from.x, from.y + 20);
+                        ctx11.lineTo(to.x, to.y - 20);
+                        ctx11.stroke();
+                    });
+                    
+                    // Draw nodes
+                    nodes.forEach(node => {
+                        const radius = node.isRoot ? 30 : 25;
+                        
+                        ctx11.fillStyle = node.color;
+                        ctx11.beginPath();
+                        ctx11.arc(node.x, node.y, radius, 0, 2 * Math.PI);
+                        ctx11.fill();
+                        
+                        ctx11.fillStyle = '#fff';
+                        ctx11.font = node.isRoot ? '12px Arial' : '10px Arial';
+                        ctx11.textAlign = 'center';
+                        
+                        const lines = node.text.split('\n');
+                        lines.forEach((line, i) => {
+                            const offsetY = (i - (lines.length - 1) / 2) * 12;
+                            ctx11.fillText(line, node.x, node.y + offsetY + 4);
+                        });
+                    });
+                </script>
+
+                <div class="weapon-recommendations">
+                    <h4>Class-Based Weapon Recommendations</h4>
+                    
+                    <div class="class-recommendation">
+                        <h5>Soldier - The Weapon Master</h5>
+                        <p><strong>Primary Focus:</strong> Maximize damage output and tactical flexibility</p>
+                        <ul>
+                            <li><strong>Early Game:</strong> Choose weapons that match your fighting style specialization</li>
+                            <li><strong>Mid Game:</strong> Invest in high-quality versions of your preferred weapon type</li>
+                            <li><strong>Late Game:</strong> Collect multiple specialized weapons for different situations</li>
+                            <li><strong>Recommended Types:</strong> Any weapon type, but focus on what your fighting style enhances</li>
+                        </ul>
+                    </div>
+
+                    <div class="class-recommendation">
+                        <h5>Operative - The Precision Striker</h5>
+                        <p><strong>Primary Focus:</strong> Weapons that work well with trick attack and stealth</p>
+                        <ul>
+                            <li><strong>Preferred Weapons:</strong> Small arms, sniper weapons, melee weapons with finesse</li>
+                            <li><strong>Key Features:</strong> High accuracy, good critical hit potential, concealable</li>
+                            <li><strong>Avoid:</strong> Heavy weapons, area effect weapons, obvious military hardware</li>
+                            <li><strong>Special Consideration:</strong> Silencers and stealth-compatible equipment</li>
+                        </ul>
+                    </div>
+
+                    <div class="class-recommendation">
+                        <h5>Technomancer - The Magical Marksman</h5>
+                        <p><strong>Primary Focus:</strong> Simple, reliable weapons that don't interfere with spellcasting</p>
+                        <ul>
+                            <li><strong>Preferred Weapons:</strong> Light weapons, energy weapons, technological items</li>
+                            <li><strong>Key Features:</strong> Low maintenance, spell compatibility, technological enhancement potential</li>
+                            <li><strong>Synergy Options:</strong> Weapons that can be enhanced with technomancer spells</li>
+                            <li><strong>Backup Plan:</strong> Always have a reliable ranged weapon for when spells run out</li>
+                        </ul>
+                    </div>
+
+                    <div class="class-recommendation">
+                        <h5>Solarian - The Stellar Warrior</h5>
+                        <p><strong>Primary Focus:</strong> Weapons that complement solar manifestations without redundancy</p>
+                        <ul>
+                            <li><strong>Solar Weapon Users:</strong> Backup ranged weapons for when melee isn't viable</li>
+                            <li><strong>Solar Armor Users:</strong> Balanced weapon selection for versatile combat roles</li>
+                            <li><strong>Key Features:</strong> Compatibility with stellar modes, enhancement potential</li>
+                            <li><strong>Philosophy:</strong> Weapons should harmonize with cosmic powers rather than replace them</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weapon-properties">
+                <h3>Understanding Weapon Properties</h3>
+                <p>Beyond basic damage, weapons have special properties that dramatically affect their utility:</p>
+
+                <div class="property-category">
+                    <h4>Damage Properties</h4>
+                    <ul>
+                        <li><strong>Automatic:</strong> Can spray bullets for area suppression</li>
+                        <li><strong>Blast:</strong> Affects multiple targets in an area</li>
+                        <li><strong>Explode:</strong> Creates damaging explosions on impact</li>
+                        <li><strong>Penetrating:</strong> Ignores some armor protection</li>
+                    </ul>
+                </div>
+
+                <div class="property-category">
+                    <h4>Utility Properties</h4>
+                    <ul>
+                        <li><strong>Bright:</strong> Illuminates areas and can blind enemies</li>
+                        <li><strong>Stun:</strong> Can render targets unconscious without killing</li>
+                        <li><strong>Trip:</strong> Can knock enemies prone</li>
+                        <li><strong>Disarm:</strong> Can remove weapons from enemy hands</li>
+                    </ul>
+                </div>
+
+                <div class="property-category">
+                    <h4>Enhancement Properties</h4>
+                    <ul>
+                        <li><strong>Boost:</strong> Can be overcharged for increased damage</li>
+                        <li><strong>Quick Reload:</strong> Faster ammunition changes</li>
+                        <li><strong>Unwieldy:</strong> Requires two hands but offers increased power</li>
+                        <li><strong>Operative:</strong> Works especially well with operative abilities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="armor-systems">
+            <h2>Armor - Your Second Skin</h2>
+            
+            <div class="armor-philosophy">
+                <h3>The Armor Equation</h3>
+                <p>Starfinder armor isn't just about stopping damage – it's a complex system that balances protection, mobility, and functionality. Think of armor like a car: you want safety features, but you also need performance, comfort, and the right features for your driving style.</p>
+
+                <div class="armor-balance">
+                    <canvas id="armorBalance" width="500" height="300"></canvas>
+                    <script>
+                        const canvas12 = document.getElementById('armorBalance');
+                        const ctx12 = canvas12.getContext('2d');
+                        
+                        // Clear canvas
+                        ctx12.fillStyle = '#f8f9fa';
+                        ctx12.fillRect(0, 0, canvas12.width, canvas12.height);
+                        
+                        // Draw armor balance triangle
+                        const centerX = 250;
+                        const centerY = 200;
+                        const radius = 120;
+                        
+                        // Triangle points
+                        const points = [
+                            {name: 'Protection', x: centerX, y: centerY - radius, color: '#e74c3c'},
+                            {name: 'Mobility', x: centerX - radius * Math.cos(Math.PI/6), y: centerY + radius * Math.sin(Math.PI/6), color: '#3498db'},
+                            {name: 'Features', x: centerX + radius * Math.cos(Math.PI/6), y: centerY + radius * Math.sin(Math.PI/6), color: '#27ae60'}
+                        ];
+                        
+                        // Draw triangle
+                        ctx12.strokeStyle = '#2c3e50';
+                        ctx12.lineWidth = 3;
+                        ctx12.beginPath();
+                        points.forEach((point, i) => {
+                            if (i === 0) {
+                                ctx12.moveTo(point.x, point.y);
+                            } else {
+                                ctx12.lineTo(point.x, point.y);
+                            }
+                        });
+                        ctx12.closePath();
+                        ctx12.stroke();
+                        
+                        // Draw and label points
+                        points.forEach(point => {
+                            ctx12.fillStyle = point.color;
+                            ctx12.beginPath();
+                            ctx12.arc(point.x, point.y, 15, 0, 2 * Math.PI);
+                            ctx12.fill();
+                            
+                            ctx12.fillStyle = '#2c3e50';
+                            ctx12.font = '14px Arial';
+                            ctx12.textAlign = 'center';
+                            
+                            let offsetY = 0;
+                            if (point.name === 'Protection') offsetY = -25;
+                            else if (point.name === 'Mobility') offsetY = 20;
+                            else offsetY = 20;
+                            
+                            ctx12.fillText(point.name, point.x, point.y + offsetY);
+                        });
+                        
+                        // Center label
+                        ctx12.fillStyle = '#7f8c8d';
+                        ctx12.font = '12px Arial';
+                        ctx12.textAlign = 'center';
+                        ctx12.fillText('Perfect', centerX, centerY - 5);
+                        ctx12.fillText('Balance', centerX, centerY + 8);
+                        
+                        // Armor type examples
+                        const examples = [
+                            {name: 'Heavy Armor', x: centerX - 30, y: centerY - 60, desc: 'Max Protection'},
+                            {name: 'Light Armor', x: centerX - 60, y: centerY + 30, desc: 'Max Mobility'},
+                            {name: 'Power Armor', x: centerX + 60, y: centerY + 30, desc: 'Max Features'}
+                        ];
+                        
+                        examples.forEach(example => {
+                            ctx12.fillStyle = '#95a5a6';
+                            ctx12.beginPath();
+                            ctx12.arc(example.x, example.y, 8, 0, 2 * Math.PI);
+                            ctx12.fill();
+                            
+                            ctx12.fillStyle = '#2c3e50';
+                            ctx12.font = '10px Arial';
+                            ctx12.textAlign = 'center';
+                            ctx12.fillText(example.name, example.x, example.y - 15);
+                            ctx12.fillText(example.desc, example.x, example.y + 25);
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="armor-categories">
+                <h3>Light Armor - The Agile Option</h3>
+                <div class="armor-type">
+                    <h4>Philosophy: "Don't Get Hit"</h4>
+                    <p>Light armor focuses on mobility and stealth over raw protection. It's designed for characters who avoid damage through speed, stealth, and positioning rather than absorbing hits.</p>
+                    
+                    <div class="armor-stats">
+                        <h5>Characteristics</h5>
+                        <ul>
+                            <li><strong>AC Bonus:</strong> Low to moderate (typically +1 to +8)</li>
+                            <li><strong>Max Dex Bonus:</strong> High (usually +4 to +8)</li>
+                            <li><strong>Armor Check Penalty:</strong> Minimal (0 to -2)</li>
+                            <li><strong>Speed Adjustment:</strong> Usually no penalty</li>
+                            <li><strong>Upgrade Slots:</strong> Moderate number</li>
+                        </ul>
+                    </div>
+
+                    <div class="armor-examples">
+                        <h5>Light Armor Examples</h5>
+                        <ul>
+                            <li><strong>Second Skin:</strong> Ultra-thin protection for stealth operations</li>
+                            <li><strong>Stationwear:</strong> Fashionable armor for urban environments</li>
+                            <li><strong>D-Suit:</strong> Exploration gear for dangerous environments</li>
+                            <li><strong>Carbon Skin:</strong> High-tech synthetic protection</li>
+                            <li><strong>Kasatha Microcord:</strong> Traditional armor with modern materials</li>
+                        </ul>
+                    </div>
+
+                    <div class="armor-ideal-for">
+                        <h5>Ideal For</h5>
+                        <ul>
+                            <li><strong>Operatives:</strong> Who need stealth and mobility</li>
+                            <li><strong>Technomancers:</strong> Who want spell compatibility</li>
+                            <li><strong>Envoys:</strong> Who balance combat with social roles</li>
+                            <li><strong>High-Dex characters:</strong> Who want to maximize their agility bonus</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Heavy Armor - The Tank Option</h3>
+                <div class="armor-type">
+                    <h4>Philosophy: "Absorb Everything"</h4>
+                    <p>Heavy armor maximizes protection at the cost of mobility. It's for characters who plan to stand in the line of fire and absorb punishment while dealing damage or protecting allies.</p>
+                    
+                    <div class="armor-stats">
+                        <h5>Characteristics</h5>
+                        <ul>
+                            <li><strong>AC Bonus:</strong> High (typically +6 to +20)</li>
+                            <li><strong>Max Dex Bonus:</strong> Low (usually +1 to +4)</li>
+                            <li><strong>Armor Check Penalty:</strong> Significant (-1 to -6)</li>
+                            <li><strong>Speed Adjustment:</strong> Often reduces movement</li>
+                            <li><strong>Upgrade Slots:</strong> Many slots for customization</li>
+                        </ul>
+                    </div>
+
+                    <div class="armor-examples">
+                        <h5>Heavy Armor Examples</h5>
+                        <ul>
+                            <li><strong>Golem Hide:</strong> Massive protection for front-line fighters</li>
+                            <li><strong>Jarlslayer:</strong> Military-grade assault armor</li>
+                            <li><strong>X-Series:</strong> Corporate security armor</li>
+                            <li><strong>Vesk Overplate:</strong> Traditional heavy protection</li>
+                            <li><strong>Shobhad Longcoat:</strong> Multi-armed armor design</li>
+                        </ul>
+                    </div>
+
+                    <div class="armor-ideal-for">
+                        <h5>Ideal For</h5>
+                        <ul>
+                            <li><strong>Soldiers:</strong> Who specialize in front-line combat</li>
+                            <li><strong>Solarians:</strong> Who need protection for melee combat</li>
+                            <li><strong>Tank-focused characters:</strong> Who draw enemy fire</li>
+                            <li><strong>Low-Dex characters:</strong> Who can't benefit from agility anyway</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Powered Armor - The Best of Both Worlds</h3>
+                <div class="armor-type">
+                    <h4>Philosophy: "Technology Solves Everything"</h4>
+                    <p>Powered armor uses technology to provide heavy protection without sacrificing mobility. It's expensive and complex, but offers capabilities that regular armor can't match.</p>
+                    
+                    <div class="armor-stats">
+                        <h5>Characteristics</h5>
+                        <ul>
+                            <li><strong>AC Bonus:</strong> Very high (typically +10 to +25)</li>
+                            <li><strong>Max Dex Bonus:</strong> Moderate (usually +2 to +6)</li>
+                            <li><strong>Armor Check Penalty:</strong> Variable but often compensated</li>
+                            <li><strong>Speed Adjustment:</strong> Often increases movement</li>
+                            <li><strong>Special Features:</strong> Built-in systems and enhancements</li>
+                        </ul>
+                    </div>
+
+                    <div class="powered-features">
+                        <h5>Special Powered Armor Features</h5>
+                        <ul>
+                            <li><strong>Strength Enhancement:</strong> Boosts physical power for heavy lifting</li>
+                            <li><strong>Environmental Sealing:</strong> Complete protection from hazardous environments</li>
+                            <li><strong>Integrated Systems:</strong> Built-in computers, communications, and sensors</li>
+                            <li><strong>Flight Capability:</strong> Some suits provide aerial mobility</li>
+                            <li><strong>Weapon Mounts:</strong> Integrated weapon systems for hands-free combat</li>
+                        </ul>
+                    </div>
+
+                    <div class="powered-examples">
+                        <h5>Powered Armor Examples</h5>
+                        <ul>
+                            <li><strong>Flight Suit:</strong> Aerial mobility and environmental protection</li>
+                            <li><strong>Battle Harness:</strong> Combat-focused enhancement suit</li>
+                            <li><strong>Mechanized Plate:</strong> Heavy assault configuration</li>
+                            <li><strong>Aegis Series:</strong> Corporate executive protection</li>
+                            <li><strong>Deep Walker:</strong> Extreme environment exploration</li>
+                        </ul>
+                    </div>
+
+                    <div class="powered-considerations">
+                        <h5>Powered Armor Considerations</h5>
+                        <ul>
+                            <li><strong>Cost:</strong> Extremely expensive to purchase and maintain</li>
+                            <li><strong>Power Source:</strong> Requires regular battery charging or replacement</li>
+                            <li><strong>Complexity:</strong> Can malfunction or be disabled by EMP effects</li>
+                            <li><strong>Proficiency:</strong> Requires specific training to operate effectively</li>
+                            <li><strong>Social Impact:</strong> May be restricted or cause alarm in civilian areas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="armor-upgrades">
+                <h3>Armor Upgrades - Customization Options</h3>
+                <p>Armor upgrade slots let you customize your protection with specialized systems:</p>
+
+                <div class="upgrade-category">
+                    <h4>Defensive Upgrades</h4>
+                    <ul>
+                        <li><strong>Force Field:</strong> Energy shield that regenerates over time</li>
+                        <li><strong>Radiation Buffer:</strong> Protection against radioactive environments</li>
+                        <li><strong>Thermal Capacitor:</strong> Resistance to extreme temperatures</li>
+                        <li><strong>Jump Jets:</strong> Short-range flight capability</li>
+                    </ul>
+                </div>
+
+                <div class="upgrade-category">
+                    <h4>Utility Upgrades</h4>
+                    <ul>
+                        <li><strong>Comm Unit:</strong> Integrated communication system</li>
+                        <li><strong>Computer:</strong> Built-in data processing and storage</li>
+                        <li><strong>Environmental Protections:</strong> Life support for hostile environments</li>
+                        <li><strong>Spotlight:</strong> Powerful illumination system</li>
+                    </ul>
+                </div>
+
+                <div class="upgrade-category">
+                    <h4>Combat Upgrades</h4>
+                    <ul>
+                        <li><strong>Weapon Mount:</strong> Integrated weapon system</li>
+                        <li><strong>Targeting Computer:</strong> Enhanced accuracy systems</li>
+                        <li><strong>Reactive Camouflage:</strong> Adaptive stealth technology</li>
+                        <li><strong>Smuggler's Compartment:</strong> Hidden storage space</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="equipment-economics">
+            <h2>Equipment Economics and Progression</h2>
+            
+            <div class="wealth-progression">
+                <h3>Understanding Wealth by Level</h3>
+                <p>Starfinder uses a wealth-by-level system to ensure characters have appropriate equipment for their level. Think of it like a video game where you unlock better gear as you progress.</p>
+
+                <canvas id="wealthProgression" width="600" height="300"></canvas>
+                <script>
+                    const canvas14 = document.getElementById('wealthProgression');
+                    const ctx14 = canvas14.getContext('2d');
+                    
+                    // Clear canvas
+                    ctx14.fillStyle = '#f8f9fa';
+                    ctx14.fillRect(0, 0, canvas14.width, canvas14.height);
+                    
+                    // Draw wealth progression chart
+                    const levels = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+                    const wealth = [1000, 4000, 10500, 25000, 45000, 100000, 200000, 400000, 750000, 1300000];
+                    
+                    // Draw axes
+                    ctx14.strokeStyle = '#2c3e50';
+                    ctx14.lineWidth = 2;
+                    ctx14.beginPath();
+                    ctx14.moveTo(50, 250);
+                    ctx14.lineTo(550, 250);
+                    ctx14.moveTo(50, 250);
+                    ctx14.lineTo(50, 50);
+                    ctx14.stroke();
+                    
+                    // Draw wealth progression line
+                    ctx14.strokeStyle = '#3498db';
+                    ctx14.lineWidth = 3;
+                    ctx14.beginPath();
+                    
+                    levels.forEach((level, index) => {
+                        const x = 50 + ((level - 1) / 18) * 500;
+                        const y = 250 - (Math.log10(wealth[index]) / Math.log10(1300000)) * 200;
+                        
+                        if (index === 0) {
+                            ctx14.moveTo(x, y);
+                        } else {
+                            ctx14.lineTo(x, y);
+                        }
+                        
+                        // Draw points
+                        ctx14.fillStyle = '#e74c3c';
+                        ctx14.beginPath();
+                        ctx14.arc(x, y, 4, 0, 2 * Math.PI);
+                        ctx14.fill();
+                        
+                        // Label points
+                        ctx14.fillStyle = '#2c3e50';
+                        ctx14.font = '10px Arial';
+                        ctx14.textAlign = 'center';
+                        ctx14.fillText(`L${level}`, x, y - 10);
+                        ctx14.fillText(`${(wealth[index] / 1000).toFixed(0)}k`, x, 270);
+                    });
+                    
+                    ctx14.stroke();
+                    
+                    // Labels
+                    ctx14.fillStyle = '#2c3e50';
+                    ctx14.font = '12px Arial';
+                    ctx14.textAlign = 'center';
+                    ctx14.fillText('Character Level', 300, 290);
+                    
+                    ctx14.save();
+                    ctx14.translate(20, 150);
+                    ctx14.rotate(-Math.PI/2);
+                    ctx14.fillText('Wealth (Credits)', 0, 0);
+                    ctx14.restore();
+                </script>
+
+                <div class="wealth-explanation">
+                    <h4>Understanding the Progression</h4>
+                    <p>Notice how wealth increases exponentially rather than linearly. This reflects the reality that higher-level characters face exponentially more dangerous challenges and need correspondingly powerful equipment to survive.</p>
+                </div>
+            </div>
+
+            <div class="spending-priorities">
+                <h3>Equipment Spending Priorities</h3>
+                <p>Not all equipment is created equal. Smart spending means prioritizing items that have the biggest impact on your character's effectiveness.</p>
+
+                <div class="priority-tier">
+                    <h4>Tier 1: Survival Essentials (40% of budget)</h4>
+                    <p>Equipment that keeps you alive and functional in basic situations.</p>
+                    <ul>
+                        <li><strong>Primary Weapon:</strong> Your main damage-dealing tool</li>
+                        <li><strong>Armor:</strong> Protection appropriate for your role</li>
+                        <li><strong>Basic Medical Supplies:</strong> Healing items for emergency recovery</li>
+                        <li><strong>Environmental Protection:</strong> Basic life support for hostile environments</li>
+                    </ul>
+                </div>
+
+                <div class="priority-tier">
+                    <h4>Tier 2: Professional Tools (30% of budget)</h4>
+                    <p>Equipment that makes you effective at your chosen role and class abilities.</p>
+                    <ul>
+                        <li><strong>Professional Kits:</strong> Tools that give bonuses to your key skills</li>
+                        <li><strong>Secondary Weapons:</strong> Backup options for different situations</li>
+                        <li><strong>Technology:</strong> Computers, vehicles, and utility devices</li>
+                        <li><strong>Armor Upgrades:</strong> Customizations that enhance your protection</li>
+                    </ul>
+                </div>
+
+                <div class="priority-tier">
+                    <h4>Tier 3: Force Multipliers (20% of budget)</h4>
+                    <p>Equipment that amplifies your existing capabilities beyond baseline effectiveness.</p>
+                    <ul>
+                        <li><strong>Weapon Accessories:</strong> Scopes, fusion seals, and enhancement items</li>
+                        <li><strong>Augmentations:</strong> Permanent improvements to your body</li>
+                        <li><strong>Magic Items:</strong> Technological or mystical enhancement devices</li>
+                        <li><strong>Advanced Consumables:</strong> High-quality ammunition, medical supplies, and specialty items</li>
+                    </ul>
+                </div>
+
+                <div class="priority-tier">
+                    <h4>Tier 4: Specialty Gear (10% of budget)</h4>
+                    <p>Situational equipment for specific challenges or character concepts.</p>
+                    <ul>
+                        <li><strong>Niche Tools:</strong> Specialized equipment for unusual situations</li>
+                        <li><strong>Luxury Items:</strong> Status symbols and comfort improvements</li>
+                        <li><strong>Experimental Gear:</strong> Cutting-edge technology with unknown reliability</li>
+                        <li><strong>Collection Items:</strong> Equipment that supports character themes and interests</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="upgrade-timing">
+                <h3>When to Upgrade Equipment</h3>
+                
+                <div class="upgrade-trigger">
+                    <h4>Level-Based Upgrades</h4>
+                    <p>Certain levels represent major equipment upgrade opportunities:</p>
+                    <ul>
+                        <li><strong>Levels 3, 6, 9, 12, 15, 18:</strong> Major wealth increases allow significant upgrades</li>
+                        <li><strong>Odd Levels:</strong> Smaller improvements and accessory upgrades</li>
+                        <li><strong>Major Story Beats:</strong> Successful missions often provide equipment rewards</li>
+                        <li><strong>New Environments:</strong> Entering different campaign phases may require different gear</li>
+                    </ul>
+                </div>
+
+                <div class="upgrade-trigger">
+                    <h4>Performance-Based Upgrades</h4>
+                    <p>Replace equipment when it's no longer meeting your needs:</p>
+                    <ul>
+                        <li><strong>Missing Too Often:</strong> When your attack bonuses fall behind enemy defenses</li>
+                        <li><strong>Insufficient Damage:</strong> When your weapons aren't threatening to enemies</li>
+                        <li><strong>Getting Hit Too Much:</strong> When your AC can't keep up with enemy accuracy</li>
+                        <li><strong>Failing Skill Checks:</strong> When your tools aren't providing adequate bonuses</li>
+                    </ul>
+                </div>
+
+                <div class="upgrade-trigger">
+                    <h4>Opportunity-Based Upgrades</h4>
+                    <p>Sometimes upgrade opportunities present themselves:</p>
+                    <ul>
+                        <li><strong>Found Equipment:</strong> Loot from defeated enemies or discovered caches</li>
+                        <li><strong>Mission Rewards:</strong> Equipment given as payment for successful missions</li>
+                        <li><strong>Crafting Opportunities:</strong> When you have time and resources to build custom gear</li>
+                        <li><strong>Shopping Expeditions:</strong> When visiting major trade centers with good selection</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="practice-activities">
+            <h2>Equipment Mastery Workshop</h2>
+            
+            <div class="activity">
+                <h3>Activity 1: Character Equipment Audit</h3>
+                <p>Take an existing character (or create a new one) and plan their complete equipment loadout:</p>
+                <pre><code>&lt;strong&gt;Character Level:&lt;/strong&gt; [1-20]
+&lt;strong&gt;Available Credits:&lt;/strong&gt; [Based on wealth by level]
+&lt;strong&gt;Primary Role:&lt;/strong&gt; [Combat, support, utility, etc.]
+&lt;strong&gt;Mission Type:&lt;/strong&gt; [Urban, wilderness, space, etc.]
+
+&lt;strong&gt;Essential Equipment (40% budget):&lt;/strong&gt;
+- Primary Weapon: [Name, cost, justification]
+- Armor: [Name, cost, justification]
+- Medical Supplies: [Items, total cost]
+- Environmental Gear: [Items, total cost]
+
+&lt;strong&gt;Professional Tools (30% budget):&lt;/strong&gt;
+- Skill Kits: [Which tools for which skills]
+- Secondary Weapons: [Backup and situational options]
+- Technology: [Computers, vehicles, gadgets]
+
+&lt;strong&gt;Force Multipliers (20% budget):&lt;/strong&gt;
+- Weapon Enhancements: [Accessories, fusions, modifications]
+- Augmentations: [If any at this level]
+- Magic Items: [Enhancement devices]
+
+&lt;strong&gt;Specialty Gear (10% budget):&lt;/strong&gt;
+- Situational Items: [Mission-specific gear]
+- Character Flavor: [Thematic equipment]</code></pre>
+            </div>
+
+            <div class="activity">
+                <h3>Activity 2: Weapon Selection Matrix</h3>
+                <p>Create a decision matrix for choosing between different weapon options:</p>
+                <ol>
+                    <li>Choose a character class and level</li>
+                    <li>Identify 3-4 weapon options within budget</li>
+                    <li>Rate each weapon (1-5) on these criteria:
+                        <ul>
+                            <li>Damage output potential</li>
+                            <li>Accuracy and reliability</li>
+                            <li>Versatility (multiple situations)</li>
+                            <li>Ammunition/maintenance cost</li>
+                            <li>Character concept fit</li>
+                        </ul>
+                    </li>
+                    <li>Calculate total scores and justify your final choice</li>
+                </ol>
+            </div>
+
+            <div class="activity">
+                <h3>Activity 3: Armor Optimization Challenge</h3>
+                <p>Given these constraints, optimize an armor loadout:</p>
+                <ul>
+                    <li><strong>Character:</strong> 5th level Operative (Dex 18)</li>
+                    <li><strong>Budget:</strong> 8,000 credits for armor and upgrades</li>
+                    <li><strong>Mission:</strong> Corporate infiltration with potential combat</li>
+                    <li><strong>Requirements:</strong> Stealth capability, social acceptability, emergency protection</li>
+                </ul>
+                <p>Choose armor type, upgrades, and justify how the combination meets all requirements.</p>
+            </div>
+
+            <div class="activity">
+                <h3>Activity 4: Technology Integration Exercise</h3>
+                <p>Design a technology suite for a specific character role:</p>
+                <ol>
+                    <li>Choose a character concept (corporate executive, ship engineer, combat medic, etc.)</li>
+                    <li>Select appropriate computers, tools, and devices</li>
+                    <li>Plan how the technologies work together</li>
+                    <li>Identify potential failure points and backup systems</li>
+                    <li>Calculate total cost and maintenance requirements</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="equipment-troubleshooting">
+            <h2>Common Equipment Problems and Solutions</h2>
+            
+            <div class="problem-solution">
+                <h3>Problem: "I can't afford the gear I want"</h3>
+                <h4>Solutions:</h4>
+                <ul>
+                    <li><strong>Prioritize ruthlessly:</strong> Buy essentials first, luxuries later</li>
+                    <li><strong>Consider used gear:</strong> Lower-level equipment at reduced prices</li>
+                    <li><strong>Team coordination:</strong> Share expensive equipment between party members</li>
+                    <li><strong>Crafting discounts:</strong> Make your own gear for cost savings</li>
+                    <li><strong>Mission rewards:</strong> Choose missions that provide needed equipment</li>
+                </ul>
+            </div>
+
+            <div class="problem-solution">
+                <h3>Problem: "My equipment is becoming obsolete"</h3>
+                <h4>Solutions:</h4>
+                <ul>
+                    <li><strong>Regular upgrade schedule:</strong> Budget for equipment replacement</li>
+                    <li><strong>Modification over replacement:</strong> Upgrade existing gear when possible</li>
+                    <li><strong>Sell old gear:</strong> Recoup costs by selling obsolete equipment</li>
+                    <li><strong>Repurpose equipment:</strong> Find new uses for old gear</li>
+                    <li><strong>Emergency backup:</strong> Keep older gear as backup systems</li>
+                </ul>
+            </div>
+
+            <div class="problem-solution">
+                <h3>Problem: "I have too much gear to carry"</h3>
+                <h4>Solutions:</h4>
+                <ul>
+                    <li><strong>Weight optimization:</strong> Choose lighter alternatives where possible</li>
+                    <li><strong>Storage solutions:</strong> Bags of holding, vehicles, and base storage</li>
+                    <li><strong>Team distribution:</strong> Spread equipment across party members</li>
+                    <li><strong>Mission-specific loadouts:</strong> Carry only what you need for each mission</li>
+                    <li><strong>Equipment caches:</strong> Pre-position gear at common destinations</li>
+                </ul>
+            </div>
+
+            <div class="problem-solution">
+                <h3>Problem: "My equipment keeps breaking"</h3>
+                <h4>Solutions:</h4>
+                <ul>
+                    <li><strong>Quality investment:</strong> Buy higher-grade equipment that lasts longer</li>
+                    <li><strong>Redundant systems:</strong> Always have backups for critical equipment</li>
+                    <li><strong>Proper maintenance:</strong> Regular care extends equipment life</li>
+                    <li><strong>Environmental protection:</strong> Shield gear from harsh conditions</li>
+                    <li><strong>Repair skills:</strong> Learn to fix your own equipment</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="next-steps">
+            <h2>Your Equipment Mastery Journey</h2>
+            
+            <div class="mastery-checklist">
+                <h3>Equipment Expertise Checklist</h3>
+                <ul>
+                    <li>✓ I understand the different categories of equipment and their purposes</li>
+                    <li>✓ I can choose appropriate weapons for different character builds</li>
+                    <li>✓ I understand armor types and when to use each kind</li>
+                    <li>✓ I know how to plan technology integration for character roles</li>
+                    <li>✓ I can budget equipment purchases across character levels</li>
+                    <li>✓ I understand equipment economics and upgrade timing</li>
+                    <li>✓ I can troubleshoot common equipment problems</li>
+                    <li>✓ I know how to adapt equipment choices to campaign styles</li>
+                </ul>
+            </div>
+
+            <div class="equipment-philosophy">
+                <h3>The Equipment Mindset</h3>
+                <p>Master equipment users understand that gear is a tool in service of character concept and story. The best equipment isn't necessarily the most expensive or most powerful – it's the gear that helps you tell the story you want to tell and solve the problems you're likely to face.</p>
+
+                <div class="equipment-wisdom">
+                    <h4>Equipment Wisdom for Starfinder Heroes</h4>
+                    <ul>
+                        <li><strong>"Failure to prepare is preparing to fail"</strong> – Always consider what could go wrong</li>
+                        <li><strong>"The right tool for the job"</strong> – Match equipment to expected challenges</li>
+                        <li><strong>"Backup systems save lives"</strong> – Redundancy prevents single points of failure</li>
+                        <li><strong>"Function over form"</strong> – Effectiveness matters more than appearance</li>
+                        <li><strong>"Adapt and overcome"</strong> – Creative use of equipment solves unexpected problems</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="final-equipment-advice">
+                <h3>The Most Important Equipment Rule</h3>
+                <p>Remember that equipment serves the story, not the other way around. The most elaborate gear list in the galaxy won't save a character who doesn't fit the campaign or whose player isn't engaged with the story. Choose equipment that enhances your character's capabilities and supports their role in the party, but never forget that creativity, teamwork, and good roleplay are the most powerful tools in any adventurer's kit.</p>
+
+                <p>Your equipment will change as your character grows and faces new challenges. Stay flexible, keep learning, and always be ready to adapt when the universe throws something unexpected at you. After all, the best equipment is the gear you have with you when you need it most!</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>You now have the knowledge to outfit any Starfinder character for adventure across the galaxy! In our next tutorial, we'll explore the dangerous cosmos itself – <a href="/starfinder_planets.html">planets, space travel, and the environments</a> where your well-equipped heroes will test their skills.</p>
+            <p><em>Adventure is out there – make sure you're properly equipped to find it!</em></p>
+        </footer>
+    </main>
+</body>
+</html>

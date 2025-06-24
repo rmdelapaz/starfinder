@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Starfinder RPG - Tutorial 1</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Starfinder Universe</h1>
+        <p>Your Gateway to Science Fantasy Adventure</p>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>What is Starfinder?</h2>
+            <p>Imagine if Star Wars had a baby with Dungeons & Dragons, and that baby grew up reading science fiction novels while practicing magic tricks. That's Starfinder! It's a tabletop role-playing game that blends the wonder of space exploration with the mystical power of magic, creating what we call "science fantasy."</p>
+            
+            <div class="analogy-box">
+                <h3>The Pizza Analogy</h3>
+                <p>Think of Starfinder like ordering a pizza with both pepperoni AND pineapple. Some people say these don't belong together, but when done right, the combination creates something uniquely delicious. Starfinder takes the "pepperoni" of science fiction (spaceships, lasers, aliens) and adds the "pineapple" of fantasy (magic, gods, mystical powers) to create a flavor that's entirely its own.</p>
+            </div>
+        </section>
+
+        <section class="game-overview">
+            <h2>The Core Game Loop</h2>
+            <p>Every Starfinder session follows a pattern as reliable as a starship's navigation computer:</p>
+            
+            <div class="mermaid">
+                graph TD
+                    A[Game Master Sets Scene] --> B[Players Describe Actions]
+                    B --> C[GM Determines Outcome]
+                    C --> D{Roll Dice?}
+                    D -->|Yes| E[Roll d20 + Modifiers]
+                    D -->|No| F[Automatic Success/Failure]
+                    E --> G[Compare to Difficulty]
+                    F --> G
+                    G --> H[Describe Results]
+                    H --> I[Consequences & Rewards]
+                    I --> A
+            </div>
+        </section>
+
+        <section class="setting-overview">
+            <h2>The Pact Worlds Setting</h2>
+            <p>The default Starfinder setting is like our solar system's cooler, more magical cousin. Thousands of years in the future, our sun system has been transformed:</p>
+
+            <canvas id="solarSystemCanvas" width="800" height="400"></canvas>
+            <script>
+                const canvas = document.getElementById('solarSystemCanvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Background
+                ctx.fillStyle = '#000011';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Stars
+                for(let i = 0; i < 100; i++) {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
+                }
+                
+                // Sun (Pact Worlds system)
+                ctx.fillStyle = '#ffff00';
+                ctx.beginPath();
+                ctx.arc(400, 200, 20, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Planets with labels
+                const planets = [
+                    {name: 'Aballon', distance: 60, color: '#8B4513'},
+                    {name: 'Castrovel', distance: 80, color: '#228B22'},
+                    {name: 'Absalom Station', distance: 100, color: '#4169E1'},
+                    {name: 'Akiton', distance: 120, color: '#CD853F'},
+                    {name: 'Verces', distance: 140, color: '#800080'},
+                    {name: 'Eox', distance: 160, color: '#696969'}
+                ];
+                
+                planets.forEach(planet => {
+                    // Orbit line
+                    ctx.strokeStyle = '#333';
+                    ctx.beginPath();
+                    ctx.arc(400, 200, planet.distance, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    
+                    // Planet
+                    ctx.fillStyle = planet.color;
+                    ctx.beginPath();
+                    ctx.arc(400 + planet.distance, 200, 5, 0, 2 * Math.PI);
+                    ctx.fill();
+                    
+                    // Label
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = '12px Arial';
+                    ctx.fillText(planet.name, 400 + planet.distance - 20, 200 - 15);
+                });
+            </script>
+
+            <ul>
+                <li><strong>Absalom Station:</strong> Think of it as the United Nations headquarters, but in space, with more aliens and better food courts</li>
+                <li><strong>Castrovel:</strong> A jungle planet where elves ride dinosaurs (yes, really!)</li>
+                <li><strong>Akiton:</strong> Mars, but with more deserts and corporate warfare</li>
+                <li><strong>Eox:</strong> A planet ruled by undead who are surprisingly good at bureaucracy</li>
+            </ul>
+        </section>
+
+        <section class="character-creation-overview">
+            <h2>Creating Your Space Hero</h2>
+            <p>Building a Starfinder character is like assembling a smartphone – you need the right components working together:</p>
+
+            <div class="character-components">
+                <div class="component">
+                    <h3>Ancestry (Your Phone's Brand)</h3>
+                    <p>This is your character's species. Like choosing between iPhone or Android, each ancestry has its strengths:</p>
+                    <ul>
+                        <li><strong>Human:</strong> The reliable Samsung – versatile and adaptable</li>
+                        <li><strong>Android:</strong> The Google Pixel – technically advanced but sometimes struggles with emotions</li>
+                        <li><strong>Kasatha:</strong> The specialty gaming phone – four arms means multitasking mastery</li>
+                        <li><strong>Lashunta:</strong> The premium model – telepathic and beautiful</li>
+                    </ul>
+                </div>
+
+                <div class="component">
+                    <h3>Class (Your Phone's Operating System)</h3>
+                    <p>This determines how your character approaches problems:</p>
+                    <ul>
+                        <li><strong>Soldier:</strong> The action movie hero – solves problems with bigger guns</li>
+                        <li><strong>Technomancer:</strong> The sci-fi wizard – hacks reality with magic</li>
+                        <li><strong>Operative:</strong> The spy thriller protagonist – sneaks, shoots, and sweet-talks</li>
+                        <li><strong>Mystic:</strong> The spiritual advisor – channels cosmic forces</li>
+                    </ul>
+                </div>
+
+                <div class="component">
+                    <h3>Theme (Your Phone's Personality)</h3>
+                    <p>This is your character's background and motivation:</p>
+                    <ul>
+                        <li><strong>Ace Pilot:</strong> You live for the thrill of the cockpit</li>
+                        <li><strong>Bounty Hunter:</strong> You track down those who don't want to be found</li>
+                        <li><strong>Scholar:</strong> Knowledge is your greatest weapon</li>
+                        <li><strong>Spacefarer:</strong> The void between stars is your home</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="dice-mechanics">
+            <h2>The Magic of the d20</h2>
+            <p>Starfinder uses a 20-sided die (d20) as its primary randomizer. Think of it as the universe's way of adding uncertainty to your space opera:</p>
+
+            <div class="dice-example">
+                <h3>Basic Roll Formula</h3>
+                <pre><code>d20 + Ability Modifier + Skill Ranks + Miscellaneous Modifiers</code></pre>
+                
+                <h4>Real Example: Hacking a Door</h4>
+                <p>Sarah wants her technomancer to hack a security door. The GM sets the difficulty at 15 (moderate challenge).</p>
+                <pre><code>Sarah's Roll: 
+d20 (rolled 12) + Intelligence modifier (+3) + Computers skill (+4) + Spell bonus (+2) = 21
+
+Since 21 ≥ 15, she succeeds!</code></pre>
+            </div>
+
+            <div class="success-levels">
+                <h3>Understanding Success and Failure</h3>
+                <p>Rolling isn't just pass/fail – it's like a movie review system:</p>
+                <ul>
+                    <li><strong>Natural 20:</strong> Five stars! Critical success with extra benefits</li>
+                    <li><strong>Beat DC by 10+:</strong> Four stars! Exceptional success</li>
+                    <li><strong>Beat DC by 1-9:</strong> Three stars! Regular success</li>
+                    <li><strong>Miss DC by 1-9:</strong> Two stars! Failure, but not catastrophic</li>
+                    <li><strong>Miss DC by 10+:</strong> One star! Significant failure</li>
+                    <li><strong>Natural 1:</strong> Zero stars! Critical failure with complications</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="equipment-basics">
+            <h2>Gear That Matters</h2>
+            <p>In Starfinder, your equipment is like your smartphone's apps – each piece serves a specific purpose:</p>
+
+            <div class="equipment-categories">
+                <h3>Weapons: Your Problem Solvers</h3>
+                <ul>
+                    <li><strong>Kinetic Weapons:</strong> Good old-fashioned bullets and blades</li>
+                    <li><strong>Energy Weapons:</strong> Lasers, plasma, and other sci-fi classics</li>
+                    <li><strong>Magical Weapons:</strong> Swords that catch fire, guns that shoot lightning</li>
+                </ul>
+
+                <h3>Armor: Your Life Insurance</h3>
+                <ul>
+                    <li><strong>Light Armor:</strong> Like wearing a leather jacket – stylish but minimal protection</li>
+                    <li><strong>Heavy Armor:</strong> Like wearing a tank – maximum protection, minimum speed</li>
+                    <li><strong>Powered Armor:</strong> Like wearing a small mech suit – the best of both worlds</li>
+                </ul>
+
+                <h3>Tech Items: Your Swiss Army Knife</h3>
+                <ul>
+                    <li><strong>Comm Units:</strong> Space-age smartphones</li>
+                    <li><strong>Computers:</strong> From simple tablets to AI companions</li>
+                    <li><strong>Medical Gear:</strong> Healing potions, but with more blinking lights</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="gameplay-flow">
+            <h2>How Adventures Unfold</h2>
+            <p>A typical Starfinder session flows like a good science fiction movie:</p>
+
+            <div class="mermaid">
+                graph LR
+                    A[Opening Scene] --> B[Investigation/Exploration]
+                    B --> C[Challenge/Obstacle]
+                    C --> D[Action/Combat]
+                    D --> E[Resolution/Reward]
+                    E --> F[Downtime/Preparation]
+                    F --> B
+                    E --> G[Story Conclusion]
+            </div>
+
+            <div class="session-example">
+                <h3>Example Session: "The Stolen Data Core"</h3>
+                <ol>
+                    <li><strong>Opening:</strong> The party receives a mission to retrieve stolen corporate data</li>
+                    <li><strong>Investigation:</strong> They track the thieves to an asteroid mining station</li>
+                    <li><strong>Challenge:</strong> The station's security systems are still active</li>
+                    <li><strong>Action:</strong> Combat with security drones and the remaining thieves</li>
+                    <li><strong>Resolution:</strong> They recover the data and discover a larger conspiracy</li>
+                    <li><strong>Downtime:</strong> Upgrading equipment and planning their next move</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="why-starfinder">
+            <h2>Why Choose Starfinder?</h2>
+            <p>Starfinder occupies a unique space in the RPG galaxy. Here's why it might be perfect for your group:</p>
+
+            <div class="benefits">
+                <h3>The Best of Both Worlds</h3>
+                <ul>
+                    <li><strong>Familiar Foundation:</strong> Built on Pathfinder's proven mechanics</li>
+                    <li><strong>Fresh Setting:</strong> Space opera with magical elements</li>
+                    <li><strong>Flexible Tone:</strong> Can be serious hard sci-fi or pulp space adventure</li>
+                    <li><strong>Character Variety:</strong> Play anything from a telepathic space wizard to a robot gunslinger</li>
+                </ul>
+
+                <h3>Modern Game Design</h3>
+                <ul>
+                    <li><strong>Streamlined Combat:</strong> Faster than traditional fantasy RPGs</li>
+                    <li><strong>Skill Consolidation:</strong> Fewer, more useful skills</li>
+                    <li><strong>Weapon Scaling:</strong> Your favorite gun stays relevant</li>
+                    <li><strong>Starship Combat:</strong> Everyone has a role in space battles</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="getting-started">
+            <h2>Your Journey Begins</h2>
+            <p>Starting your Starfinder adventure is like learning to drive a starship – it seems complicated at first, but soon becomes second nature:</p>
+
+            <div class="starter-checklist">
+                <h3>What You Need to Start</h3>
+                <ul>
+                    <li>✓ 3-6 players (including one Game Master)</li>
+                    <li>✓ Starfinder Core Rulebook (physical or PDF)</li>
+                    <li>✓ A set of polyhedral dice (d4, d6, d8, d10, d12, d20)</li>
+                    <li>✓ Character sheets (downloadable from Paizo)</li>
+                    <li>✓ 3-4 hours for your first session</li>
+                    <li>✓ Snacks (space food optional)</li>
+                </ul>
+
+                <h3>Your First Session Goals</h3>
+                <ul>
+                    <li>Create characters together (collaborative and fun!)</li>
+                    <li>Run a simple scenario (like the Starfinder Beginner Box)</li>
+                    <li>Learn the basic mechanics through play</li>
+                    <li>Establish your group's tone and expectations</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="practice-activities">
+            <h2>Practice Activities</h2>
+            
+            <div class="activity">
+                <h3>Activity 1: Character Concept Creation</h3>
+                <p>Create three different character concepts using this template:</p>
+                <strong>Name:</strong> [Character Name]
+<strong>Ancestry:</strong> [Species]
+<strong>Class:</strong> [Character Class]
+<strong>Theme:</strong> [Background Theme]
+<strong>One-Line Description:</strong> [What makes them unique?]
+<strong>Motivation:</strong> [What drives them to adventure?]
+                
+                <p><strong>Example:</strong></p>
+               <strong>Name:</strong> Zara Quickbolt
+<strong>Ancestry:</strong> Android
+<strong>Class:</strong> Technomancer
+<strong>Theme:</strong> Hacker
+<strong>One-Line Description:</strong> A rebellious android who uses magic to fight corporate oppression
+<strong>Motivation:</strong> Seeking to free other androids from servitude
+            </div>
+
+            <div class="activity">
+                <h3>Activity 2: Dice Rolling Practice</h3>
+                <p>Practice the basic resolution mechanic with these scenarios:</p>
+                <ol>
+                    <li>A moderate task (DC 15) with a +5 bonus</li>
+                    <li>A hard task (DC 20) with a +8 bonus</li>
+                    <li>An easy task (DC 10) with a +2 bonus</li>
+                </ol>
+                <p>Roll a d20 for each and determine success/failure. Notice how bonuses affect your chances!</p>
+            </div>
+
+            <div class="activity">
+                <h3>Activity 3: Setting Exploration</h3>
+                <p>Choose one Pact World and create:</p>
+                <ul>
+                    <li>A local news headline</li>
+                    <li>A street food vendor's specialty</li>
+                    <li>A common saying or phrase</li>
+                    <li>An interesting location to visit</li>
+                </ul>
+                <p>This helps you understand how the setting feels beyond just the facts.</p>
+            </div>
+        </section>
+
+        <section class="next-steps">
+            <h2>Exploring Further</h2>
+            <p>Ready to dive deeper into the Starfinder universe? Here are some excellent resources:</p>
+            
+            <div class="resources">
+                <h3>Official Resources</h3>
+                <ul>
+                    <li><strong>Starfinder Beginner Box:</strong> Perfect for new players and GMs</li>
+                    <li><strong>Starfinder Society:</strong> Organized play with consistent characters</li>
+                    <li><strong>Paizo Blog:</strong> Regular updates and insights from the creators</li>
+                    <li><strong>Starfinder Actual Play Podcasts:</strong> Learn by watching others play</li>
+                </ul>
+
+                <h3>Community Resources</h3>
+                <ul>
+                    <li><strong>r/starfinder_rpg:</strong> Active Reddit community</li>
+                    <li><strong>Starfinder Discord Servers:</strong> Real-time discussion and game finding</li>
+                    <li><strong>YouTube Tutorials:</strong> Visual learning for complex concepts</li>
+                    <li><strong>Local Game Stores:</strong> Find players and organized events</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Welcome to the Starfinder universe! Your adventure among the stars begins now. In our next tutorial, we'll dive deep into <a href="/starfinder_char.html"> character creation</a>, exploring each ancestry, class, and theme in detail.</p>
+            <p><em>Remember: The best character is one you're excited to play!</em></p>
+        </footer>
+    </main>
+</body>
+</html>

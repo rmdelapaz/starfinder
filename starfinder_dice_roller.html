@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfinder RPG Dice Roller</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1e0a3e 25%, #0a1e3e 50%, #3e0a1e 75%, #0a0a0a 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                        radial-gradient(circle at 80% 40%, rgba(0,255,255,0.1) 1px, transparent 1px),
+                        radial-gradient(circle at 40% 70%, rgba(255,0,255,0.1) 1px, transparent 1px),
+                        radial-gradient(circle at 70% 10%, rgba(255,255,0,0.1) 1px, transparent 1px);
+            z-index: -1;
+            animation: stars 20s linear infinite;
+        }
+        
+        @keyframes stars {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-100px); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+            color: #00ffff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #ff6b35;
+            margin-bottom: 30px;
+            font-style: italic;
+            text-shadow: 0 0 10px #ff6b35;
+        }
+        
+        .dice-section {
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .quick-btn {
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            border: 2px solid #00ffff;
+            border-radius: 12px;
+            color: #00ffff;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .quick-btn:hover::before {
+            left: 100%;
+        }
+        
+        .quick-btn:hover {
+            background: linear-gradient(45deg, #16213e, #0f3460);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        .dice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .die-type {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .die-type::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, transparent, currentColor, transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .die-type:hover::before {
+            opacity: 0.3;
+        }
+        
+        .die-type:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .d4 { border-color: #ff6b35; color: #ff6b35; }
+        .d6 { border-color: #f7931e; color: #f7931e; }
+        .d8 { border-color: #ffd23f; color: #ffd23f; }
+        .d10 { border-color: #06ffa5; color: #06ffa5; }
+        .d12 { border-color: #4dabf7; color: #4dabf7; }
+        .d20 { border-color: #00ffff; color: #00ffff; }
+        .d100 { border-color: #da77f2; color: #da77f2; }
+        
+        .die-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .die-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .die-count {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 6px 10px;
+            color: white;
+            text-align: center;
+            width: 50px;
+            font-size: 1em;
+            backdrop-filter: blur(5px);
+        }
+        
+        .die-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+        
+        .die-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .modifier-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .modifier-label {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .modifier-input {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            padding: 10px 15px;
+            color: #00ffff;
+            text-align: center;
+            width: 80px;
+            font-size: 1.1em;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modifier-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .resolve-section {
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(255, 107, 53, 0.3);
+        }
+        
+        .resolve-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .resolve-btn {
+            background: rgba(255, 107, 53, 0.2);
+            border: 2px solid #ff6b35;
+            border-radius: 10px;
+            color: #ff6b35;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .resolve-btn.active {
+            background: rgba(255, 107, 53, 0.4);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+        }
+        
+        .roll-btn {
+            background: linear-gradient(45deg, #00ffff, #0088cc);
+            border: none;
+            border-radius: 25px;
+            color: #001122;
+            padding: 20px 50px;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roll-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .roll-btn:hover::before {
+            left: 100%;
+        }
+        
+        .roll-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.5);
+        }
+        
+        .clear-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #666;
+            border-radius: 15px;
+            color: white;
+            padding: 12px 25px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .clear-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #999;
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 3px solid #00ffff;
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .result-total {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 25px;
+            background: rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+        
+        .result-breakdown {
+            font-size: 1.2em;
+            margin: 15px 0;
+            opacity: 0.9;
+            color: #cccccc;
+        }
+        
+        .dice-results {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .result-die {
+            width: 55px;
+            height: 55px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-die.critical {
+            animation: critical-glow 1s infinite alternate;
+        }
+        
+        .result-die.fumble {
+            animation: fumble-shake 0.5s infinite alternate;
+        }
+        
+        @keyframes critical-glow {
+            from { 
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                transform: scale(1);
+            }
+            to { 
+                box-shadow: 0 4px 25px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.5);
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes fumble-shake {
+            from { transform: translateX(-3px) rotate(-1deg); }
+            to { transform: translateX(3px) rotate(1deg); }
+        }
+        
+        .critical-text {
+            color: #00ffff;
+            font-size: 1.6em;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 0 0 15px #00ffff;
+            animation: pulse 1s infinite alternate;
+        }
+        
+        .fumble-text {
+            color: #ff4444;
+            font-size: 1.6em;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 0 0 15px #ff4444;
+            animation: pulse 1s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { opacity: 0.7; }
+            to { opacity: 1; }
+        }
+        
+        .resolve-result {
+            background: rgba(255, 107, 53, 0.2);
+            border: 2px solid #ff6b35;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Starfinder</h1>
+        <div class="subtitle">RPG Dice Roller</div>
+        
+        <div class="dice-section">
+            <h2>🚀 Quick Actions</h2>
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="quickRoll('1d20', 'attack')">⚔️ Attack Roll</button>
+                <button class="quick-btn" onclick="quickRoll('1d20', 'save')">🛡️ Saving Throw</button>
+                <button class="quick-btn" onclick="quickRoll('1d20', 'skill')">🔧 Skill Check</button>
+                <button class="quick-btn" onclick="quickRoll('1d20', 'init')">⚡ Initiative</button>
+                <button class="quick-btn" onclick="quickRoll('4d6', 'stats')">📊 Ability Scores</button>
+                <button class="quick-btn" onclick="quickRoll('1d100')">🎲 Percentile</button>
+                <button class="quick-btn" onclick="quickRoll('2d6+6', 'stamina')">❤️ Stamina Recovery</button>
+                <button class="quick-btn" onclick="quickRoll('1d8', 'tech')">💻 Tech Check</button>
+            </div>
+        </div>
+        
+        <div class="dice-section">
+            <h2>🎯 Custom Roll</h2>
+            <div class="dice-grid">
+                <div class="die-type d4">
+                    <div class="die-name">d4</div>
+                    <div class="die-controls">
+                        <button class="die-btn" onclick="changeDieCount('d4', -1)">-</button>
+                        <input type="number" class="die-count" id="d4-count" value="0" min="0" max="99" />
+                        <button class="die-btn" onclick="changeDieCount('d4', 1)">+</button>
+                    </div>
+                </div>
+                
+                <div class="die-type d6">
+                    <div class="die-name">d6</div>
+                    <div class="die-controls">
+                        <button class="die-btn" onclick="changeDieCount('d6', -1)">-</button>
+                        <input type="number" class="die-count" id="d6-count" value="0" min="0" max="99" />
+                        <button class="die-btn" onclick="changeDieCount('d6', 1)">+</button>
+                    </div>
+                </div>
+                
+                <div class="die-type d8">
+                    <div class="die-name">d8</div>
+                    <div class="die-controls">
+                        <button class="die-btn" onclick="changeDieCount('d8', -1)">-</button>
+                        <input type="number" class="die-count" id="d8-count" value="0" min="0" max="99" />
+                        <button class="die-btn" onclick="changeDieCount('d8', 1)">+</button>
+                    </div>
+                </div>
+                
+                <div class="die-type d10">
+                    <div class="die-name">d10</div>
+                    <div class="die-controls">
+                        <button class="die-btn" onclick="changeDieCount('d10', -1)">-</button>
+                        <input type="number" class="die-count" id="d10-count" value="0" min="0" max="99" />
+                        <button class="die-btn" onclick="changeDieCount('d10', 1)">+</button>
+                    </div>
+                </div>
+                
+                <div class="die-type d12">
+                    <div class="die-name">d12</div>
+                    <div class="die-controls">
+                        <button class="die-btn" onclick="changeDieCount('d12', -1)">-</button>
+                        <input type="number" class="die-count" id="d12-count" value="0" min="0" max="99" />
+                        <button class="die-btn" onclick="changeDieCount('d12', 1)">+</button>
+                    </div>
+                </div>
+                
+                <div class="die-type d20">
+                    <div class="die-name">d20</div>
+                    <div class="die-controls">
+                        <button class="die-btn" onclick="changeDieCount('d20', -1)">-</button>
+                        <input type="number" class="die-count" id="d20-count" value="1" min="0" max="99" />
+                        <button class="die-btn" onclick="changeDieCount('d20', 1)">+</button>
+                    </div>
+                </div>
+                
+                <div class="die-type d100">
+                    <div class="die-name">d100</div>
+                    <div class="die-controls">
+                        <button class="die-btn" onclick="changeDieCount('d100', -1)">-</button>
+                        <input type="number" class="die-count" id="d100-count" value="0" min="0" max="99" />
+                        <button class="die-btn" onclick="changeDieCount('d100', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modifier-section">
+                <span class="modifier-label">Modifier:</span>
+                <input type="number" class="modifier-input" id="modifier" value="0" placeholder="0" />
+            </div>
+            
+            <div class="resolve-section">
+                <h3>🔥 Resolve Points</h3>
+                <div class="resolve-controls">
+                    <button class="resolve-btn active" id="no-resolve" onclick="setResolve('none')">No Resolve</button>
+                    <button class="resolve-btn" id="spend-resolve" onclick="setResolve('spend')">Spend Resolve (+4)</button>
+                </div>
+            </div>
+            
+            <button class="roll-btn" onclick="rollDice()">🚀 Launch</button>
+            <button class="clear-btn" onclick="clearAll()">Clear All</button>
+        </div>
+        
+        <div id="results" class="results" style="display: none;">
+            <div class="result-total" id="total-result">0</div>
+            <div class="result-breakdown" id="breakdown"></div>
+            <div class="dice-results" id="dice-display"></div>
+            <div id="special-text"></div>
+            <div id="resolve-text" class="resolve-result" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script>
+        let currentResolve = 'none';
+        
+        const dieColors = {
+            'd4': '#ff6b35',
+            'd6': '#f7931e',
+            'd8': '#ffd23f',
+            'd10': '#06ffa5',
+            'd12': '#4dabf7',
+            'd20': '#00ffff',
+            'd100': '#da77f2'
+        };
+        
+        function changeDieCount(dieType, change) {
+            const input = document.getElementById(dieType + '-count');
+            const newValue = Math.max(0, Math.min(99, parseInt(input.value) + change));
+            input.value = newValue;
+        }
+        
+        function setResolve(type) {
+            currentResolve = type;
+            document.querySelectorAll('.resolve-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(type === 'none' ? 'no-resolve' : 'spend-resolve').classList.add('active');
+        }
+        
+        function quickRoll(diceString, type = '') {
+            clearAll();
+            
+            // Parse dice string (e.g., "1d20", "4d6", "2d6+6")
+            const parts = diceString.split('+');
+            const dicepart = parts[0];
+            const bonus = parts[1] ? parseInt(parts[1]) : 0;
+            
+            const match = dicepart.match(/(\d+)d(\d+)/);
+            if (match) {
+                const count = parseInt(match[1]);
+                const sides = match[2];
+                document.getElementById('d' + sides + '-count').value = count;
+            }
+            
+            if (bonus) {
+                document.getElementById('modifier').value = bonus;
+            }
+            
+            // Set resolve spending for certain rolls
+            if (type === 'attack' || type === 'save' || type === 'skill') {
+                setResolve('none'); // Changed to default to no resolve
+            } else {
+                setResolve('none');
+            }
+            
+            rollDice();
+        }
+        
+        function rollDice() {
+            const diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
+            const modifier = parseInt(document.getElementById('modifier').value) || 0;
+            const resolveBonus = currentResolve === 'spend' ? 4 : 0;
+            
+            let allRolls = [];
+            let total = modifier + resolveBonus;
+            let hasD20 = false;
+            
+            // Roll each type of die
+            diceTypes.forEach(dieType => {
+                const count = parseInt(document.getElementById(dieType + '-count').value);
+                if (count > 0) {
+                    const sides = parseInt(dieType.substring(1));
+                    if (sides === 20) hasD20 = true;
+                    
+                    for (let i = 0; i < count; i++) {
+                        const roll = Math.floor(Math.random() * sides) + 1;
+                        allRolls.push({ value: roll, type: dieType, sides: sides });
+                        total += roll;
+                    }
+                }
+            });
+            
+            displayResults(allRolls, total, modifier, resolveBonus, hasD20);
+        }
+        
+        function displayResults(rolls, total, modifier, resolveBonus, hasD20) {
+            const resultsDiv = document.getElementById('results');
+            const totalDiv = document.getElementById('total-result');
+            const breakdownDiv = document.getElementById('breakdown');
+            const diceDisplay = document.getElementById('dice-display');
+            const specialText = document.getElementById('special-text');
+            const resolveText = document.getElementById('resolve-text');
+            
+            // Display total
+            totalDiv.textContent = total;
+            
+            // Create breakdown text
+            const groupedRolls = {};
+            rolls.forEach(roll => {
+                if (!groupedRolls[roll.type]) {
+                    groupedRolls[roll.type] = [];
+                }
+                groupedRolls[roll.type].push(roll.value);
+            });
+            
+            const parts = [];
+            Object.keys(groupedRolls).forEach(dieType => {
+                const values = groupedRolls[dieType];
+                parts.push(`${values.length}${dieType}: ${values.join(', ')}`);
+            });
+            
+            if (modifier !== 0) {
+                parts.push(`Modifier: ${modifier >= 0 ? '+' : ''}${modifier}`);
+            }
+            
+            if (resolveBonus > 0) {
+                parts.push(`Resolve: +${resolveBonus}`);
+            }
+            
+            breakdownDiv.textContent = parts.join(' | ');
+            
+            // Display individual dice
+            diceDisplay.innerHTML = '';
+            rolls.forEach(roll => {
+                const die = document.createElement('div');
+                die.className = 'result-die';
+                die.style.backgroundColor = dieColors[roll.type];
+                die.style.borderColor = dieColors[roll.type];
+                die.textContent = roll.value;
+                
+                // Check for critical hit/miss on d20
+                if (roll.sides === 20) {
+                    if (roll.value === 20) {
+                        die.classList.add('critical');
+                    } else if (roll.value === 1) {
+                        die.classList.add('fumble');
+                    }
+                }
+                
+                diceDisplay.appendChild(die);
+            });
+            
+            // Special text for criticals
+            specialText.innerHTML = '';
+            const d20Rolls = rolls.filter(r => r.sides === 20);
+            if (d20Rolls.length > 0) {
+                const hasNat20 = d20Rolls.some(r => r.value === 20);
+                const hasNat1 = d20Rolls.some(r => r.value === 1);
+                
+                if (hasNat20) {
+                    specialText.innerHTML += '<div class="critical-text">🌟 NATURAL 20! CRITICAL SUCCESS! 🌟</div>';
+                }
+                if (hasNat1) {
+                    specialText.innerHTML += '<div class="fumble-text">💥 NATURAL 1! CRITICAL FAILURE! 💥</div>';
+                }
+            }
+            
+            // Resolve point usage
+            if (resolveBonus > 0) {
+                resolveText.style.display = 'block';
+                resolveText.innerHTML = '🔥 Resolve Point Spent: +4 bonus applied!<br><small>Remember to mark off 1 Resolve Point from your character sheet.</small>';
+            } else {
+                resolveText.style.display = 'none';
+            }
+            
+            resultsDiv.style.display = 'block';
+        }
+        
+        function clearAll() {
+            const diceTypes = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
+            diceTypes.forEach(dieType => {
+                document.getElementById(dieType + '-count').value = 0;
+            });
+            document.getElementById('modifier').value = 0;
+            setResolve('none');
+            document.getElementById('results').style.display = 'none';
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                rollDice();
+            } else if (e.key === 'Escape') {
+                clearAll();
+            } else if (e.key === 'r' || e.key === 'R') {
+                setResolve(currentResolve === 'spend' ? 'none' : 'spend');
+            }
+        });
+        
+        // Add some interactive particle effects
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('roll-btn')) {
+                createParticles(e.target);
+            }
+        });
+        
+        function createParticles(element) {
+            for (let i = 0; i < 6; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = '#00ffff';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1000';
+                
+                const rect = element.getBoundingClientRect();
+                particle.style.left = rect.left + rect.width / 2 + 'px';
+                particle.style.top = rect.top + rect.height / 2 + 'px';
+                
+                document.body.appendChild(particle);
+                
+                const angle = (Math.PI * 2 * i) / 6;
+                const velocity = 100;
+                let x = 0;
+                let y = 0;
+                
+                const animate = () => {
+                    x += Math.cos(angle) * velocity * 0.016;
+                    y += Math.sin(angle) * velocity * 0.016;
+                    
+                    particle.style.transform = `translate(${x}px, ${y}px)`;
+                    particle.style.opacity = Math.max(0, 1 - Math.sqrt(x*x + y*y) / 200);
+                    
+                    if (particle.style.opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        document.body.removeChild(particle);
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+    </script>
+</body>
+</html>
