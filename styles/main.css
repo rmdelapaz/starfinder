@@ -1,3 +1,108 @@
+/* === THEME VARIABLES === */
+:root {
+  --bg: rgb(248, 250, 252);
+  --text: rgb(51, 65, 85);
+  --heading-bg: rgb(59, 130, 246);
+  --heading-text: white;
+  --code-bg: rgb(248, 250, 252);
+  --code-text: rgb(34, 139, 34);
+  --link: rgb(59, 130, 246);
+  --strong: rgb(17, 24, 39);
+  --blockquote-bg: rgb(226, 232, 240);
+  --table-border: #333333;
+  --mermaid-bg: rgb(255, 255, 255);
+  --mermaid-border: rgb(226, 232, 240);
+  --mermaid-node: rgb(248, 250, 252);
+  --mermaid-stroke: rgb(148, 163, 184);
+  --mermaid-edge: rgb(71, 85, 105);
+  --mermaid-label: rgb(51, 65, 85);
+  --mermaid-cluster: rgb(241, 245, 249);
+  --nav-bg: rgb(30, 41, 59);
+  --nav-text: #e2e8f0;
+  --nav-hover: rgb(59, 130, 246);
+  --prevnext-bg: rgb(241, 245, 249);
+  --prevnext-border: rgb(203, 213, 225);
+}
+
+[data-theme="dark"] {
+  --bg: rgb(15, 23, 42);
+  --text: rgb(203, 213, 225);
+  --heading-bg: rgb(30, 58, 138);
+  --heading-text: rgb(224, 231, 255);
+  --code-bg: rgb(30, 41, 59);
+  --code-text: rgb(74, 222, 128);
+  --link: rgb(96, 165, 250);
+  --strong: rgb(248, 250, 252);
+  --blockquote-bg: rgb(30, 41, 59);
+  --table-border: rgb(71, 85, 105);
+  --mermaid-bg: rgb(30, 41, 59);
+  --mermaid-border: rgb(71, 85, 105);
+  --mermaid-node: rgb(51, 65, 85);
+  --mermaid-stroke: rgb(100, 116, 139);
+  --mermaid-edge: rgb(148, 163, 184);
+  --mermaid-label: rgb(226, 232, 240);
+  --mermaid-cluster: rgb(51, 65, 85);
+  --nav-bg: rgb(15, 23, 42);
+  --nav-text: #e2e8f0;
+  --nav-hover: rgb(96, 165, 250);
+  --prevnext-bg: rgb(30, 41, 59);
+  --prevnext-border: rgb(71, 85, 105);
+}
+
+/* === SITE NAV === */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--nav-bg);
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: -30px -40px 0 -30px;
+  padding-left: 30px;
+  padding-right: 40px;
+}
+.site-nav a {
+  color: var(--nav-text);
+  text-decoration: none;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+  margin: 0;
+}
+.site-nav a:hover { background: rgba(255,255,255,0.1); color: var(--nav-hover); }
+.site-nav .nav-links { display: flex; gap: 0.25rem; align-items: center; list-style: none; margin: 0; padding: 0; }
+.site-nav .nav-links li { margin: 0; padding: 0; }
+.theme-toggle {
+  background: none; border: 1px solid rgba(255,255,255,0.2); color: var(--nav-text);
+  padding: 0.35rem 0.7rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.1); }
+
+/* === PREV / NEXT NAV === */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 1rem 1rem;
+  padding: 1rem;
+  background: var(--prevnext-bg);
+  border: 1px solid var(--prevnext-border);
+  border-radius: 8px;
+}
+.page-nav a {
+  color: var(--link);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.page-nav a:hover { text-decoration: underline; }
+.page-nav .spacer { flex: 1; }
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -124,7 +229,7 @@ q:after {
   content: none;
 }
 table, td, tr,th {
- border: 1px solid #333333;
+ border: 1px solid var(--table-border);
   border-spacing: 0;
  padding: 5px;
  text-align: center;
@@ -138,23 +243,24 @@ body {
     "Lucida Sans", Arial, sans-serif;
   font-size: medium;
   line-height: 110%;
-  background-color: rgb(248, 250, 252);
+  background-color: var(--bg);
   margin-left: 30px;
   margin-right: 40px;
   margin-bottom: 30px;
-  color: rgb(51, 65, 85);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
 }
 h1,
 h2,
 h3, h4 {
   font-weight: bolder;
-  background-color: rgb(59, 130, 246);
-  color: white;
+  background-color: var(--heading-bg);
+  color: var(--heading-text);
   margin: 1rem;
   padding: 1rem;
   line-height: 120%;
 }
-strong {font-weight: bold;color: rgb(17, 24, 39);}
+strong {font-weight: bold;color: var(--strong);}
 h1 {
   font-size: 2rem;
   text-align: center;
@@ -213,8 +319,8 @@ code, pre {
   margin-left: 40px;
   margin-right: 40px;
   font-family: "Courier New", Courier, monospace;
-  background-color: rgb(248, 250, 252);
-  color: rgb(34, 139, 34);
+  background-color: var(--code-bg);
+  color: var(--code-text);
 
   padding-top: 5px;
   padding-left: 2px;
@@ -234,7 +340,7 @@ ol li {
   list-style-type:decimal ;
 }
 
-a {color: rgb(59, 130, 246);}
+a {color: var(--link);}
 ul li {
   list-style-type: disc;
 }
@@ -263,8 +369,8 @@ text-align: center;}
 
 blockquote {margin-left: 150px;
 margin-right: 140px;
-background-color: rgb(226, 232, 240);
-color: rgb(51, 65, 85);
+background-color: var(--blockquote-bg);
+color: var(--text);
 padding: 12px;}
 
 footer {padding-bottom: 20px;}
@@ -279,7 +385,10 @@ pre {
   overflow-x: auto;
 }
 
-h3 a { color: white;}
+h3 a { color: var(--heading-text);}
+img {filter: none;}
+[data-theme="dark"] img {filter: brightness(0.85);}
+[data-theme="dark"] canvas {filter: brightness(0.85);}
 
 
         .code-comment {
@@ -298,9 +407,9 @@ h3 a { color: white;}
         .mermaid_container, .mermaid-diagram, .mermaid {
             margin: 25px auto;
             padding: 20px;
-            background-color: rgb(255, 255, 255);
-            color: rgb(51, 65, 85);
-            border: 1px solid rgb(226, 232, 240);
+            background-color: var(--mermaid-bg);
+            color: var(--text);
+            border: 1px solid var(--mermaid-border);
             border-radius: 8px;
             max-width: 90%;
             text-align: center;
@@ -319,37 +428,35 @@ h3 a { color: white;}
         .mermaid .node ellipse, 
         .mermaid .node polygon, 
         .mermaid .node path {
-            fill: rgb(248, 250, 252);
-            stroke: rgb(148, 163, 184);
+            fill: var(--mermaid-node);
+            stroke: var(--mermaid-stroke);
         }
 
         .mermaid .edgePath .path {
-            stroke: rgb(71, 85, 105);
+            stroke: var(--mermaid-edge);
         }
 
         .mermaid .label {
-            color: rgb(51, 65, 85);
-            fill: rgb(51, 65, 85);
+            color: var(--mermaid-label);
+            fill: var(--mermaid-label);
         }
 
         .mermaid .cluster rect {
-            fill: rgb(241, 245, 249);
-            stroke: rgb(148, 163, 184);
+            fill: var(--mermaid-cluster);
+            stroke: var(--mermaid-stroke);
         }
         
-        /* Ensure text labels are visible in light mode */
         .mermaid .label text, 
         .mermaid text {
-            fill: #1f2937 !important;
+            fill: var(--mermaid-label) !important;
         }
 
-        /* Specific styling for mindmap and flowchart text */
         .mermaid .flowchart-label text,
         .mermaid .mindmap-node text,
         .mermaid .mindmap-node .nodeText,
         .mermaid .nodeLabel {
-            fill: #1f2937 !important;
-            color: #1f2937 !important;
+            fill: var(--mermaid-label) !important;
+            color: var(--mermaid-label) !important;
         }
 
 svg {

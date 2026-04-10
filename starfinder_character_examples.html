@@ -12,6 +12,14 @@
     </script>
 </head>
 <body>
+    <nav class="site-nav">
+        <ul class="nav-links">
+            <li><a href="/">Starfinder</a></li>
+            <li><a href="https://rays-home.netlify.app/">Ray's House of Fun</a></li>
+            <li><a href="https://rays-home.netlify.app/contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#x1F319; Dark</button>
+    </nav>
     <div class="container">
         <header>
             <h1>Starfinder RPG Character Examples and Crew Groups</h1>
@@ -531,5 +539,13 @@
             progressCtx.fillText(progression.name, 370, y + 8);
         });
     </script>
+    <nav class="page-nav">
+        <a href="/starfinder_char.html">&larr; Character Creation</a>
+        <a href="/starfinder_100.html">100 Characters &rarr;</a>
+    </nav>
+<script>
+function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-toggle');if(h.getAttribute('data-theme')==='dark'){h.removeAttribute('data-theme');b.textContent='\u{1F319} Dark';localStorage.setItem('theme','light');}else{h.setAttribute('data-theme','dark');b.textContent='\u{2600}\u{FE0F} Light';localStorage.setItem('theme','dark');}}
+(function(){if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(b)b.textContent='\u{2600}\u{FE0F} Light';});}})();
+</script>
 </body>
 </html>
