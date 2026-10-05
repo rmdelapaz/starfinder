@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starfinder RPG Character Examples and Crew Groups</title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>Character Examples &amp; Crews - The Starfinder Guide</title>
+    <meta name="description" content="Six worked Starfinder characters with 1st-level numbers, balanced crews, and how each role fits starship combat.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <script type="module" src="/js/diagrams.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
     <link rel="icon" href="/favicon.png" type="image/png">
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
 </head>
 <body>
-    <nav class="site-nav">
-        <ul class="nav-links">
-            <li><a href="/">Starfinder</a></li>
-            <li><a href="https://rays-home.netlify.app/">Ray's House of Fun</a></li>
-            <li><a href="https://rays-home.netlify.app/contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#x1F319; Dark</button>
-    </nav>
-    <div class="container">
-        <header>
-            <h1>Starfinder RPG Character Examples and Crew Groups</h1>
-            <p>A comprehensive guide to creating stellar characters and balanced starship crews for the Pact Worlds and beyond</p>
-        </header>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
+    <header>
+        <h1>Character Examples &amp; Crews</h1>
+        <p>Six ready-to-play 1st-level heroes with their numbers worked out, plus five sample crews for the Pact Worlds and beyond.</p>
+    </header>
 
-        <main>
+    <main id="main">
+
             <section class="character-creation-basics">
                 <h2>Understanding Starfinder Character Creation</h2>
                 <p>Creating a Starfinder character is like designing a spacecraft engineer for an interstellar mission—each component must work in harmony while serving a unique function. Your character exists in a universe where magic and technology dance together like binary stars in eternal orbit.</p>
@@ -48,6 +49,8 @@
                         style I fill:#7ed321
                 </div>
 
+                <p>Every example below uses the Core Rulebook's point buy: all scores start at 10, add the race's adjustments, add the theme's +1, then spend 10 points (nothing above 18). Hit Points = race HP + class HP; Stamina Points = class SP + CON modifier; Resolve Points = 1 at 1st level (half your level, minimum 1) + your key ability modifier. Each hero wears a second skin (light armor, +1 EAC and +2 KAC), so EAC = 10 + 1 + DEX modifier and KAC = 10 + 2 + DEX modifier.</p>
+
                 <p>The character creation process flows like a stellar formation—gravity pulls together elements that will eventually ignite into something bright and unique, ready to explore the vast darkness between worlds.</p>
             </section>
 
@@ -60,10 +63,11 @@
                         <p><strong>Theme:</strong> Mercenary</p>
                         <p><strong>Personality:</strong> Battle-hardened veteran with unshakeable loyalty to her crew</p>
                         <p><strong>Backstory:</strong> Former Stewards officer dishonorably discharged for refusing an immoral order, now leads independent operations</p>
-                        <p><strong>Gear Focus:</strong> Heavy armor, assault rifles, tactical equipment</p>
+                        <p><strong>Gear Focus:</strong> Longarms, tactical equipment, heavier armor once she can afford it</p>
+                        <p><strong>1st-level scores (point buy):</strong> STR 12, DEX 18, CON 12, INT 10, WIS 11, CHA 10 (human +2 DEX, mercenary +1 STR, then +6 DEX, +2 CON, +1 STR, +1 WIS)</p>
+                        <p><strong>1st-level numbers:</strong> DEX-based soldier (key ability DEX +4). HP 4 + 7 = 11; SP 7 + 1 = 8; RP 1 + 4 = 5; EAC 15, KAC 16; 4 skill ranks per level (4 + INT 0), plus 1 more for being human</p>
                     </div>
                     <p><strong>Role in Crew:</strong> The unbreakable shield—like the hull of a dreadnought, she absorbs punishment while coordinating tactical strikes. Her military experience makes her a natural leader when plasma starts flying.</p>
-                    <img src="/images/comet.png" alt="Commander Zara Vex" class="character-image">
                     <svg width="350" height="180" viewBox="0 0 350 180">
                         <rect x="50" y="40" width="70" height="90" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
                         <circle cx="85" cy="65" r="18" fill="#f39c12"/>
@@ -71,10 +75,13 @@
                         <rect x="35" y="90" width="25" height="45" fill="#95a5a6"/>
                         <rect x="110" y="90" width="25" height="45" fill="#95a5a6"/>
                         <rect x="75" y="50" width="20" height="8" fill="#3498db"/>
-                        <text x="160" y="70" font-family="Arial" font-size="16" fill="#2c3e50">Commander Zara "Comet" Vex</text>
-                        <text x="160" y="90" font-family="Arial" font-size="14" fill="#7f8c8d">Human Soldier</text>
-                        <text x="160" y="110" font-family="Arial" font-size="14" fill="#7f8c8d">Combat Specialist & Tactician</text>
-                        <text x="160" y="130" font-family="Arial" font-size="12" fill="#7f8c8d">Theme: Mercenary</text>
+                        <text x="150" y="48" font-family="Arial" font-size="16" fill="#2c3e50">Commander Zara</text>
+                        <text x="150" y="68" font-family="Arial" font-size="16" fill="#2c3e50">"Comet" Vex</text>
+                        <text x="150" y="90" font-family="Arial" font-size="14" fill="#1f1d1a">Human Soldier</text>
+                        <text x="150" y="110" font-family="Arial" font-size="13" fill="#1f1d1a">Sharpshooter &amp; Tactician</text>
+                        <text x="150" y="130" font-family="Arial" font-size="12" fill="#1f1d1a">Theme: Mercenary</text>
+                        <text x="150" y="150" font-family="Arial" font-size="12" fill="#1f1d1a">HP 11 · SP 8 · RP 5</text>
+                        <text x="150" y="168" font-family="Arial" font-size="12" fill="#1f1d1a">EAC 15 · KAC 16</text>
                     </svg>
                 </div>
 
@@ -84,7 +91,9 @@
                         <p><strong>Theme:</strong> Outlaw</p>
                         <p><strong>Personality:</strong> Developing emotions and curiosity about organic life</p>
                         <p><strong>Backstory:</strong> Corporate security android who gained sentience and escaped, now uses infiltration skills for freedom</p>
-                        <p><strong>Gear Focus:</strong> Stealth field, hacking tools, precision weapons</p>
+                        <p><strong>Gear Focus:</strong> Stealth gear, hacking tools, precision weapons</p>
+                        <p><strong>1st-level scores (point buy):</strong> STR 11, DEX 18, CON 12, INT 12, WIS 12, CHA 8 (android +2 DEX, +2 INT, −2 CHA; outlaw +1 DEX; then +5 DEX, +2 CON, +2 WIS, +1 STR)</p>
+                        <p><strong>1st-level numbers:</strong> key ability DEX +4. HP 4 + 6 = 10; SP 6 + 1 = 7; RP 1 + 4 = 5; EAC 15, KAC 16; 9 skill ranks per level (8 + INT 1)</p>
                     </div>
                     <p><strong>Role in Crew:</strong> The phantom in the machine—slipping through security systems like data through fiber optic cables. Their synthetic nature allows access to restricted networks while their growing humanity provides unexpected insights.</p>
                 </div>
@@ -95,7 +104,9 @@
                         <p><strong>Theme:</strong> Scholar</p>
                         <p><strong>Personality:</strong> Brilliant researcher fascinated by the intersection of technology and magic</p>
                         <p><strong>Backstory:</strong> Xenobiologist studying the mystical properties of alien life forms across the galaxy</p>
-                        <p><strong>Gear Focus:</strong> Biotech augmentations, research equipment, healing serums</p>
+                        <p><strong>Gear Focus:</strong> Research equipment, healing serums, biotech augmentations later on</p>
+                        <p><strong>1st-level scores (point buy):</strong> STR 10, DEX 10, CON 10, INT 13, WIS 18, CHA 12 (damaya lashunta +2 CHA, +2 INT, −2 CON; scholar +1 INT; then +8 WIS, +2 CON)</p>
+                        <p><strong>1st-level numbers:</strong> key ability WIS +4. HP 4 + 6 = 10; SP 6 + 0 = 6; RP 1 + 4 = 5; EAC 11, KAC 12; 7 skill ranks per level (6 + INT 1)</p>
                     </div>
                     <p><strong>Role in Crew:</strong> The cosmic conduit—channeling the universe's fundamental forces like a living antenna tuned to frequencies beyond normal perception. Her telepathic abilities make her the crew's emotional compass and mystical navigator.</p>
                 </div>
@@ -107,6 +118,8 @@
                         <p><strong>Personality:</strong> Hyperactive tinkerer who talks to machines like old friends</p>
                         <p><strong>Backstory:</strong> Drift engine specialist who survived a catastrophic ship explosion, now obsessed with perfect engineering</p>
                         <p><strong>Gear Focus:</strong> Custom tools, repair drones, experimental gadgets</p>
+                        <p><strong>1st-level scores (point buy):</strong> STR 8, DEX 14, CON 12, INT 18, WIS 11, CHA 10 (ysoki +2 DEX, +2 INT, −2 STR; spacefarer +1 CON; then +6 INT, +2 DEX, +1 CON, +1 WIS)</p>
+                        <p><strong>1st-level numbers:</strong> key ability INT +4. HP 2 + 6 = 8; SP 6 + 1 = 7; RP 1 + 4 = 5; EAC 13, KAC 14; 8 skill ranks per level (4 + INT 4)</p>
                     </div>
                     <p><strong>Role in Crew:</strong> The miracle worker—transforming scrap metal into functioning miracles like an alchemist of the stars. When systems fail in the black of space, she's the difference between life and cold vacuum.</p>
                 </div>
@@ -118,6 +131,8 @@
                         <p><strong>Personality:</strong> Charismatic diplomat with a silver tongue and iron will</p>
                         <p><strong>Backstory:</strong> Former ambassador turned freelance mediator, specializing in first contact protocols</p>
                         <p><strong>Gear Focus:</strong> Diplomatic credentials, translation software, defensive equipment</p>
+                        <p><strong>1st-level scores (point buy):</strong> STR 12, DEX 12, CON 11, INT 8, WIS 12, CHA 18 (kasatha +2 STR, +2 WIS, −2 INT; spacefarer +1 CON; then +8 CHA, +2 DEX)</p>
+                        <p><strong>1st-level numbers:</strong> key ability CHA +4. HP 4 + 6 = 10; SP 6 + 0 = 6; RP 1 + 4 = 5; EAC 12, KAC 13; 7 skill ranks per level (8 + INT −1)</p>
                     </div>
                     <p><strong>Role in Crew:</strong> The bridge between worlds—turning potential conflicts into opportunities like a master navigator charting safe passage through political asteroid fields. His four arms gesture as eloquently as his words flow.</p>
                 </div>
@@ -126,9 +141,11 @@
                     <h3>Nyx Voidcaller - Shirren Technomancer</h3>
                     <div class="character-stats">
                         <p><strong>Theme:</strong> Ace Pilot</p>
-                        <p><strong>Personality:</strong> Former Swarm individual learning independence while mastering technological magic</p>
+                        <p><strong>Personality:</strong> Former Swarm individual learning independence while studying technological magic</p>
                         <p><strong>Backstory:</strong> Escaped drone who discovered personal identity through communion with starship AI systems</p>
                         <p><strong>Gear Focus:</strong> Spell chips, datajacks, piloting interfaces</p>
+                        <p><strong>1st-level scores (point buy):</strong> STR 11, DEX 12, CON 12, INT 18, WIS 12, CHA 8 (shirren +2 CON, +2 WIS, −2 CHA; ace pilot +1 DEX; then +8 INT, +1 DEX, +1 STR)</p>
+                        <p><strong>1st-level numbers:</strong> key ability INT +4. HP 6 + 5 = 11; SP 5 + 1 = 6; RP 1 + 4 = 5; EAC 12, KAC 13; 8 skill ranks per level (4 + INT 4)</p>
                     </div>
                     <p><strong>Role in Crew:</strong> The digital sorcerer—weaving code and cosmic energy into reality-bending programs like a wizard casting spells through circuit boards. Their hive-mind background makes them exceptional at multitasking complex ship operations.</p>
                 </div>
@@ -157,6 +174,7 @@
                 <div class="crew-group">
                     <h3>The Stellar Scholars</h3>
                     <p><em>Scientific expedition team pushing the boundaries of known space</em></p>
+                    <p>This crew and the next two mix in races from the Alien Archive books (ikeshti, barathu, contemplative, dragonkin, SRO, pahtra). They aren't Core Rulebook races, so check with your GM before playing one.</p>
                     <ul>
                         <li><strong>Dr. Elena Quantumdrive</strong> - Human Technomancer (Research/Magic-Tech)</li>
                         <li><strong>Field Agent X-42</strong> - Android Operative (Infiltration/Data Recovery)</li>
@@ -197,8 +215,9 @@
                 <div class="crew-group">
                     <h3>The Drift Pirates</h3>
                     <p><em>Charismatic outlaws with their own code of honor</em></p>
+                    <p>This crew uses the Core Rulebook's legacy races (dwarf, elf, gnome, half-orc, halfling) alongside a human.</p>
                     <ul>
-                        <li><strong>Captain Voidheart</strong> - Tiefling Envoy (Leadership/Intimidation)</li>
+                        <li><strong>Captain Voidheart</strong> - Half-Orc Envoy (Leadership/Intimidation)</li>
                         <li><strong>First Mate Ironwill</strong> - Dwarf Soldier (Combat/Tactics)</li>
                         <li><strong>Navigator Starwhisper</strong> - Elf Mystic (Piloting/Cosmic Awareness)</li>
                         <li><strong>Chief Engineer Boombox</strong> - Halfling Mechanic (Weapons/Explosives)</li>
@@ -226,31 +245,25 @@
                         D ---|repairs| C
                         E ---|scans for| B
                         E ---|targets for| C
-                        
-                        F[Ship AI] ---|assists| A
-                        F ---|integrates| B
-                        F ---|calculates for| C
-                        F ---|monitors| D
-                        F ---|processes for| E
+
                         
                         style A fill:#e74c3c
                         style B fill:#3498db
                         style C fill:#e67e22
                         style D fill:#27ae60
                         style E fill:#9b59b6
-                        style F fill:#f39c12
                 </div>
 
                 <h3>Starship Role Specializations</h3>
                 <div class="role-descriptions">
                     <div class="role">
                         <h4>Captain - The Mind of the Ship</h4>
-                        <p>Like a conductor directing a symphony, the captain coordinates all actions and makes split-second tactical decisions that mean life or death in the cold void.</p>
+                        <p>Like a conductor directing a symphony, the captain (there is only one, and the captain can act in any phase) coordinates all actions and makes split-second tactical decisions that mean life or death in the cold void.</p>
                     </div>
                     
                     <div class="role">
                         <h4>Pilot - The Ship's Reflexes</h4>
-                        <p>Merging consciousness with the vessel's movement systems, becoming one with thrust and momentum to dance between enemy fire and stellar hazards.</p>
+                        <p>Moving in the helm phase (lowest Piloting result moves first), merging with the vessel's movement systems, becoming one with thrust and momentum to dance between enemy fire and stellar hazards.</p>
                     </div>
                     
                     <div class="role">
@@ -260,7 +273,12 @@
                     
                     <div class="role">
                         <h4>Engineer - The Ship's Heart</h4>
-                        <p>Keeping the mechanical pulse beating, rerouting power like blood through arteries, and healing damage in real-time during combat.</p>
+                        <p>Keeping the mechanical pulse beating, rerouting power like blood through arteries, and patching damaged systems mid-fight. Engineers act first, in the engineering phase.</p>
+                    </div>
+
+                    <div class="role">
+                        <h4>Science Officer - The Ship's Eyes</h4>
+                        <p>Scanning enemy ships for weaknesses and locking on targets for the gunners. Science officers act in the helm phase, after the engineering phase and before gunnery.</p>
                     </div>
                 </div>
             </section>
@@ -354,7 +372,7 @@
                 
                 <div class="tip">
                     <h3>Think Beyond Human Experience</h3>
-                    <p>Alien minds process reality differently. A kasatha experiences time through four perspectives simultaneously; a contemplative thinks in pure concepts rather than words.</p>
+                    <p>Alien minds process reality differently. A shirren treasures every individual choice after life in the hive; an android may wonder whether its soul is the same one its body held before.</p>
                 </div>
                 
                 <div class="tip">
@@ -377,6 +395,7 @@
                 <p>Remember: In the vast expanse of space, your character is simultaneously insignificant and infinitely important—a single consciousness capable of changing the fate of entire star systems through courage, wisdom, and the bonds forged with fellow travelers among the stars.</p>
             </footer>
         </main>
+
     </div>
 
     <script>
@@ -497,7 +516,7 @@
         // Draw progression lines
         const progressionData = [
             { name: 'Combat Effectiveness', data: combat, color: '#e74c3c' },
-            { name: 'Tech Mastery', data: technology, color: '#3498db' },
+            { name: 'Tech Expertise', data: technology, color: '#3498db' },
             { name: 'Social Influence', data: social, color: '#f39c12' },
             { name: 'Exploration Skills', data: exploration, color: '#27ae60' }
         ];
@@ -530,22 +549,33 @@
         });
         
         // Add legend
+        progressCtx.font = '12px Arial';
         progressionData.forEach((progression, index) => {
-            const y = 70 + (index * 20);
+            const y = 45 + (index * 18);
             progressCtx.fillStyle = progression.color;
-            progressCtx.fillRect(350, y, 15, 10);
+            progressCtx.fillRect(65, y, 15, 10);
             progressCtx.fillStyle = '#2c3e50';
             progressCtx.textAlign = 'left';
-            progressCtx.fillText(progression.name, 370, y + 8);
+            progressCtx.fillText(progression.name, 85, y + 9);
         });
+
+        // Y-axis label (illustrative, not game data)
+        progressCtx.fillStyle = '#2c3e50';
+        progressCtx.font = '12px Arial';
+        progressCtx.textAlign = 'center';
+        progressCtx.save();
+        progressCtx.translate(20, 150);
+        progressCtx.rotate(-Math.PI / 2);
+        progressCtx.fillText('Relative growth (illustrative)', 0, 0);
+        progressCtx.restore();
     </script>
-    <nav class="page-nav">
-        <a href="/starfinder_char.html">&larr; Character Creation</a>
-        <a href="/starfinder_100.html">100 Characters &rarr;</a>
-    </nav>
-<script>
-function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-toggle');if(h.getAttribute('data-theme')==='dark'){h.removeAttribute('data-theme');b.textContent='\u{1F319} Dark';localStorage.setItem('theme','light');}else{h.setAttribute('data-theme','dark');b.textContent='\u{2600}\u{FE0F} Light';localStorage.setItem('theme','dark');}}
-(function(){if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(b)b.textContent='\u{2600}\u{FE0F} Light';});}})();
-</script>
+
+    <footer>
+<div class="page-nav">
+    <a class="prev" href="/starfinder_equipment.html">Equipment</a>
+    <a class="next" href="/starfinder_100.html">315 Sample Characters</a>
+</div>
+    </footer>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
 </body>
 </html>

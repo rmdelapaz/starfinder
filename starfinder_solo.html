@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing Starfinder Solo - The Starfinder Guide</title>
+    <meta name="description" content="Play Starfinder with no GM: a d20 oracle read by margin with exact odds, scene checks, NPC attitudes, sparks, a threat clock, an in-page tool with a session log and a worked example.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <style>
+        main .solo-tool { border-left: 5px solid var(--gold); }
+        .tool-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 10px; }
+        main .tool-row button { width: auto; margin: 0; }
+        main .tool-row input[type="text"] { flex: 1 1 260px; width: auto; }
+        main .tool-row select { width: auto; }
+        .verdict { font-size: 1.2rem; font-weight: 700; color: var(--heading); margin: 6px 0 2px; min-height: 1.5em; }
+        .verdict-note { color: var(--muted); margin: 0 0 8px; min-height: 1.3em; }
+        .doom-line { font-weight: 700; color: var(--heading); }
+        .log { list-style: none; padding: 0; margin: 8px 0 10px; max-height: 320px; overflow-y: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); }
+        .log li { margin: 0; padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        .log li:last-child { border-bottom: 0; }
+        .log:empty::before { content: "Nothing logged yet."; display: block; padding: 8px 12px; color: var(--muted); }
+        .odds td:not(:first-child), .odds th:not(:first-child) { text-align: right; white-space: nowrap; }
+        .roll-line { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: 0.92em; }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
+    <header>
+        <h1>Playing Starfinder Solo</h1>
+        <p>No GM and no crew: one character, a d20 and a log, with the dice deciding what waits on the next station or world.</p>
+    </header>
+
+    <main id="main">
+        <section>
+            <h2>Why Starfinder Works Alone</h2>
+            <p>Starfinder is built for exploration: new worlds, derelict ships, stations full of people with agendas. That suits solo play, where you discover the story as you go. What's missing is someone to answer your questions, and that's the job of an <strong>oracle</strong>. You ask the yes-or-no questions a GM would answer ("Is the airlock sealed?"), and the dice decide.</p>
+            <p>Nothing on this page is from the rulebooks. The oracle, the scene check and the tables are tools for playing alone; anything that changes a rule is labelled <strong>house rule</strong>.</p>
+            <h3>What you need</h3>
+            <ul>
+                <li>A character built with the normal rules (see <a href="/starfinder_char.html">Character Creation &amp; Races</a>), or one of the <a href="/starfinder_100.html">315 Sample Characters</a>.</li>
+                <li>A d20 and a d10, or the <a href="#solo-tool">tool on this page</a> and the <a href="/starfinder_dice_roller.html">Dice Roller</a>.</li>
+                <li>A starting point: a job offer on Absalom Station, a distress call, a debt.</li>
+                <li>A log, or the session log below.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>The Oracle</h2>
+            <p>Ask a question that can be answered yes or no, decide how likely a "yes" is, and roll a d20 plus the likelihood modifier against DC 11, like any check:</p>
+            <div class="info-box">
+                <ul>
+                    <li><strong>Very likely</strong>: +6</li>
+                    <li><strong>Likely</strong>: +3</li>
+                    <li><strong>Toss-up</strong>: +0</li>
+                    <li><strong>Unlikely</strong>: −3</li>
+                    <li><strong>Very unlikely</strong>: −6</li>
+                </ul>
+                <p>Then read the answer by how far the total lands from 11.</p>
+            </div>
+            <table>
+                <thead><tr><th>Total</th><th>Answer</th></tr></thead>
+                <tbody>
+                    <tr><td>19 or more (beat it by 8+)</td><td><strong>Yes, and…</strong> You get it, plus something more.</td></tr>
+                    <tr><td>14–18</td><td><strong>Yes.</strong></td></tr>
+                    <tr><td>11–13 (made it by 0–2)</td><td><strong>Yes, but…</strong> It's true, with a cost or a complication.</td></tr>
+                    <tr><td>8–10 (missed by 1–3)</td><td><strong>No, but…</strong> Not that, but something useful.</td></tr>
+                    <tr><td>3–7</td><td><strong>No.</strong></td></tr>
+                    <tr><td>2 or less (missed by 9+)</td><td><strong>No, and…</strong> Not that, and things get worse.</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Twist:</strong> a natural 20 on the die adds something unexpected in your favour; a natural 1 adds something unexpected against you. Roll a <a href="#sparks">spark</a> if you need an idea.</p>
+
+            <h3>Exact odds</h3>
+            <p>A d20 has 20 equally likely faces, so every chance is a multiple of 5%. The tool on this page uses the same calculation.</p>
+            <table class="odds">
+                <thead><tr><th>Likelihood</th><th>Yes, and</th><th>Yes</th><th>Yes, but</th><th>No, but</th><th>No</th><th>No, and</th><th>Any yes</th><th>Twist</th></tr></thead>
+                <tbody id="oddsBody">
+                    <tr><td>Very likely (+6)</td><td>40%</td><td>25%</td><td>15%</td><td>15%</td><td>5%</td><td>0%</td><td>80%</td><td>10%</td></tr>
+                    <tr><td>Likely (+3)</td><td>25%</td><td>25%</td><td>15%</td><td>15%</td><td>20%</td><td>0%</td><td>65%</td><td>10%</td></tr>
+                    <tr><td>Toss-up (+0)</td><td>10%</td><td>25%</td><td>15%</td><td>15%</td><td>25%</td><td>10%</td><td>50%</td><td>10%</td></tr>
+                    <tr><td>Unlikely (−3)</td><td>0%</td><td>20%</td><td>15%</td><td>15%</td><td>25%</td><td>25%</td><td>35%</td><td>10%</td></tr>
+                    <tr><td>Very unlikely (−6)</td><td>0%</td><td>5%</td><td>15%</td><td>15%</td><td>25%</td><td>40%</td><td>20%</td><td>10%</td></tr>
+                </tbody>
+            </table>
+            <p>Each step of likelihood moves the chance of a yes by 15%, and the table mirrors itself: "unlikely" is "likely" upside down. The twist column is the natural 20 and the natural 1 together, 5% each, whatever the likelihood.</p>
+            <p>Ask only questions where both answers would be interesting. If you already know the answer, or a "no" would stop the story dead, just decide.</p>
+        </section>
+
+        <section>
+            <h2>Scenes, People and Sparks</h2>
+            <h3>Scene check</h3>
+            <p>When you start a new scene, decide what you expect to happen, then roll a d20:</p>
+            <table>
+                <thead><tr><th>d20</th><th>The scene is…</th><th>Chance</th></tr></thead>
+                <tbody>
+                    <tr><td>1–2</td><td><strong>Interrupted</strong>: something else happens instead. Roll a spark.</td><td>10%</td></tr>
+                    <tr><td>3–5</td><td><strong>Altered</strong>: as expected, but one important detail is different. Ask the oracle what.</td><td>15%</td></tr>
+                    <tr><td>6–20</td><td><strong>As expected.</strong></td><td>75%</td></tr>
+                </tbody>
+            </table>
+
+            <h3>NPC attitude</h3>
+            <p>When you meet someone whose attitude isn't obvious, roll a d20. The attitudes are the ones Diplomacy and Intimidate work with:</p>
+            <table>
+                <thead><tr><th>d20</th><th>Attitude</th></tr></thead>
+                <tbody>
+                    <tr><td>1–2</td><td><strong>Hostile</strong>: wants you gone, robbed, or worse.</td></tr>
+                    <tr><td>3–6</td><td><strong>Unfriendly</strong>: unhelpful and suspicious.</td></tr>
+                    <tr><td>7–14</td><td><strong>Indifferent</strong>: busy with their own life; will deal if it's worth their time.</td></tr>
+                    <tr><td>15–18</td><td><strong>Friendly</strong>: helps if it doesn't cost much.</td></tr>
+                    <tr><td>19–20</td><td><strong>Helpful</strong>: on your side, maybe for reasons of their own.</td></tr>
+                </tbody>
+            </table>
+
+            <h3 id="sparks">Sparks</h3>
+            <p>Roll two d10s, one for an action and one for a subject. Interpret freely; the first idea that fits is usually right.</p>
+            <table>
+                <thead><tr><th>d10</th><th>Action</th><th>Subject</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Smuggle</td><td>a starship</td></tr>
+                    <tr><td>2</td><td>Hack</td><td>a corporation</td></tr>
+                    <tr><td>3</td><td>Protect</td><td>an ancient relic from before the Gap</td></tr>
+                    <tr><td>4</td><td>Hunt</td><td>a bounty</td></tr>
+                    <tr><td>5</td><td>Bargain for</td><td>a Drift beacon</td></tr>
+                    <tr><td>6</td><td>Sabotage</td><td>a station</td></tr>
+                    <tr><td>7</td><td>Rescue</td><td>a missing crew</td></tr>
+                    <tr><td>8</td><td>Betray</td><td>a faction</td></tr>
+                    <tr><td>9</td><td>Uncover</td><td>a cult</td></tr>
+                    <tr><td>10</td><td>Escape</td><td>a derelict</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Playing the GM's Part</h2>
+            <h3>Checks and fights</h3>
+            <p>Your character's actions use the normal rules: checks against a DC, attacks against EAC or KAC. Set the DC before you roll. For opponents, decide their action by asking the oracle "Does it do the obvious thing?" at <em>Likely</em>; on a "no", roll a spark for what it does instead. Keep fights small: one character can't trade blows with a whole squad.</p>
+            <h3>The threat clock</h3>
+            <div class="scene-box">
+                <p><strong>House rule: the threat clock.</strong> A GM keeps the opposition moving while you are busy; alone, a clock does it. Mark one step each time the oracle answers <strong>No, and…</strong> or rolls a natural 1, and each time you drop to 0 Stamina Points. When the clock reaches 4, clear it: the next scene is <strong>interrupted</strong> by whoever you've crossed, without a scene check.</p>
+            </div>
+            <h3>A crew of one</h3>
+            <ul>
+                <li><strong>A companion</strong> (house rule): one NPC, such as a drone, a pilot or a hired gun, run with a handful of numbers. They can make one check per scene you're not trained for.</li>
+                <li><strong>Starships</strong>: a lone character can't fill every crew role. Treat starship fights as chases you escape with Piloting, or give the ship a crew of NPCs who act on the oracle's answers.</li>
+                <li><strong>Resolve</strong>: use Resolve Points exactly as written. They are what keeps a solo character alive; spend them early rather than die holding them.</li>
+            </ul>
+        </section>
+
+        <section id="solo-tool">
+            <h2>Solo Tool</h2>
+            <div class="solo-tool">
+                <div class="tool-row">
+                    <label for="question" style="flex-basis:100%">Your question</label>
+                    <input type="text" id="question" placeholder="Is the airlock sealed?">
+                    <select id="likely" aria-label="Likelihood">
+                        <option value="6">Very likely (+6)</option>
+                        <option value="3">Likely (+3)</option>
+                        <option value="0" selected>Toss-up (+0)</option>
+                        <option value="-3">Unlikely (−3)</option>
+                        <option value="-6">Very unlikely (−6)</option>
+                    </select>
+                    <button type="button" id="ask">Ask the oracle</button>
+                </div>
+                <p class="verdict" id="verdict" aria-live="polite"></p>
+                <p class="verdict-note" id="verdictNote"></p>
+
+                <div class="tool-row">
+                    <button type="button" id="sceneBtn">Scene check</button>
+                    <button type="button" id="attBtn">NPC attitude</button>
+                    <button type="button" id="sparkBtn">Spark</button>
+                </div>
+
+                <p class="doom-line" id="doomLine">Threat clock: 0 of 4</p>
+                <div class="tool-row">
+                    <button type="button" id="doomAdd">Mark a step</button>
+                    <button type="button" id="doomClear">Clear the clock</button>
+                </div>
+
+                <h3>Session log</h3>
+                <ol class="log" id="log" aria-live="polite"></ol>
+                <div class="tool-row">
+                    <label for="note" style="flex-basis:100%">Add a note</label>
+                    <input type="text" id="note" placeholder="Ilex slips into the cargo bay…">
+                    <button type="button" id="addNote">Add note</button>
+                </div>
+                <div class="tool-row">
+                    <button type="button" id="copyLog">Copy log</button>
+                    <button type="button" id="clearLog">Clear log</button>
+                </div>
+                <p class="verdict-note">The log is kept in this browser only.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your First Solo Session</h2>
+            <ol>
+                <li><strong>Make a character and a hook.</strong> One character and one reason to be somewhere risky: a contract, a debt, a signal from a world no one visits.</li>
+                <li><strong>Frame the first scene.</strong> One line: where you are and what you expect. Make a scene check.</li>
+                <li><strong>Play it.</strong> Ask the oracle what a GM would tell you. Make normal checks for anything your character does that could fail, and set the DC first.</li>
+                <li><strong>Track your resources.</strong> Stamina, Hit Points and Resolve matter more alone. Rest when the story allows it.</li>
+                <li><strong>Watch the threat clock.</strong> When it fills, whoever you've crossed comes looking for you.</li>
+                <li><strong>Stop after three or four scenes.</strong> Write one line about what's unresolved. That's next session's hook.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>An Example of Play</h2>
+            <div class="info-box">
+                <p><strong>Ilex Varo</strong> is a ysoki operative with a debt to a dockside fixer on Absalom Station. The fixer wants a data chip recovered from a cargo hauler that docked last night.</p>
+                <p><strong>Scene 1: the cargo bay.</strong> I expect a quiet bay and a single guard. Scene check: d20 shows <span class="roll-line">12</span>, so it's as expected.</p>
+                <p><strong>Oracle: "Is the chip still aboard?"</strong> Likely, so +3. The d20 shows <span class="roll-line">14</span>: a total of 17, beating 11 by 6, so <strong>Yes.</strong> Not a natural 20 or 1, so no twist.</p>
+                <p><strong>A real check.</strong> Ilex sneaks past the guard: Stealth +9 against a DC I set at 20. The d20 shows <span class="roll-line">13</span>, for 22: she's past him and into the hold.</p>
+                <p><strong>Oracle: "Is the chip where the fixer said it would be?"</strong> Toss-up, +0. The d20 shows <span class="roll-line">1</span>: a total of 1, missed by 10, so <strong>No, and…</strong>, plus a natural 1, a twist against her. The chip's case is there and empty, and the cargo manifest has been wiped from the hauler's computers. Someone else got here first and covered their tracks. The threat clock moves to 1 for the "No, and…" (a natural 1 on the same roll doesn't count twice).</p>
+                <p><strong>A fight.</strong> The guard heard something. Ilex fires her tactical semi-auto pistol: attack +6 against his KAC of 14. The d20 shows <span class="roll-line">9</span>, for 15: a hit. The pistol's 1d6 piercing damage rolls <span class="roll-line">4</span>, and the guard's 10 Stamina Points drop to 6.</p>
+                <p>That's the loop: ask, roll, interpret, write a line, move on. Whether Ilex tells the fixer the truth is a question only you can answer.</p>
+            </div>
+        </section>
+
+        <section class="further-exploration">
+            <h2>Where to Go Next</h2>
+            <ul>
+                <li><strong><a href="/starfinder_dice_roller.html">Dice Roller</a>:</strong> Checks and attacks with exact odds, damage and a Stamina, Hit Point and Resolve tracker.</li>
+                <li><strong><a href="/starfinder_planets.html">Planets &amp; Space Travel</a>:</strong> Places to send a solo character, and the dangers between them.</li>
+                <li><strong><a href="/starfinder_adv.html">Game Master Guide</a>:</strong> Encounter and NPC advice that helps you ask the oracle better questions.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+<div class="page-nav">
+    <a class="prev" href="/starfinder_adv.html">Game Master Guide</a>
+    <a class="next" href="/starfinder_dice_roller.html">Dice Roller</a>
+</div>
+    </footer>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
+
+<script>
+(function () {
+    var LEVELS = [['Very likely (+6)', 6], ['Likely (+3)', 3], ['Toss-up (+0)', 0], ['Unlikely (−3)', -3], ['Very unlikely (−6)', -6]];
+    var DC = 11, KEYS = ['yesAnd', 'yes', 'yesBut', 'noBut', 'no', 'noAnd'];
+    var LABEL = { yesAnd: 'Yes, and…', yes: 'Yes.', yesBut: 'Yes, but…', noBut: 'No, but…', no: 'No.', noAnd: 'No, and…' };
+    // Answer by margin: total − 11
+    function answer(total) {
+        var m = total - DC;
+        return m >= 8 ? 'yesAnd' : m >= 3 ? 'yes' : m >= 0 ? 'yesBut' : m >= -3 ? 'noBut' : m >= -8 ? 'no' : 'noAnd';
+    }
+    // Exact outcome table over the 20 faces
+    function table(mod) {
+        var r = { yesAnd: 0, yes: 0, yesBut: 0, noBut: 0, no: 0, noAnd: 0, anyYes: 0, twist: 0 };
+        for (var d = 1; d <= 20; d++) {
+            var k = answer(d + mod); r[k] += 1 / 20;
+            if (k.indexOf('yes') === 0) r.anyYes += 1 / 20;
+            if (d === 20 || d === 1) r.twist += 1 / 20;
+        }
+        return r;
+    }
+    function pct(x) { return Math.round(x * 100) + '%'; }
+    document.getElementById('oddsBody').innerHTML = LEVELS.map(function (L) {
+        var t = table(L[1]);
+        return '<tr><td>' + L[0] + '</td>' + KEYS.map(function (k) { return '<td>' + pct(t[k]) + '</td>'; }).join('') + '<td>' + pct(t.anyYes) + '</td><td>' + pct(t.twist) + '</td></tr>';
+    }).join('');
+
+    function die(n) { return Math.floor(Math.random() * n) + 1; }
+    var ACTIONS = ['Smuggle', 'Hack', 'Protect', 'Hunt', 'Bargain for', 'Sabotage', 'Rescue', 'Betray', 'Uncover', 'Escape'];
+    var SUBJECTS = ['a starship', 'a corporation', 'an ancient relic from before the Gap', 'a bounty', 'a Drift beacon', 'a station', 'a missing crew', 'a faction', 'a cult', 'a derelict'];
+    function spark() { var a = die(10), b = die(10); return a + ' and ' + b + ': ' + ACTIONS[a - 1] + ' ' + SUBJECTS[b - 1]; }
+
+    // ---------- session log (this browser only) ----------
+    var LOGKEY = 'starfinder-solo-log', entries = [];
+    try { entries = JSON.parse(localStorage.getItem(LOGKEY) || '[]') || []; } catch (e) { entries = []; }
+    var logEl = document.getElementById('log');
+    function drawLog() {
+        logEl.innerHTML = '';
+        entries.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; logEl.appendChild(li); });
+        logEl.scrollTop = logEl.scrollHeight;
+    }
+    function log(t) {
+        entries.push(t); if (entries.length > 300) entries.shift();
+        try { localStorage.setItem(LOGKEY, JSON.stringify(entries)); } catch (e) { /* storage blocked: the log still works this visit */ }
+        drawLog();
+    }
+    drawLog();
+    function show(v, n) { document.getElementById('verdict').textContent = v; document.getElementById('verdictNote').textContent = n; }
+
+    var clock = 0;
+    function drawClock() { document.getElementById('doomLine').textContent = 'Threat clock: ' + clock + ' of 4'; }
+    function addStep(why) {
+        clock++;
+        if (clock >= 4) { clock = 0; log('Threat clock reaches 4 (' + why + '): the next scene is interrupted by whoever you have crossed. Clock cleared.'); }
+        else log('Threat clock +1 (' + why + '): ' + clock + ' of 4');
+        drawClock();
+    }
+
+    document.getElementById('ask').addEventListener('click', function () {
+        var mod = Number(document.getElementById('likely').value), d = die(20), total = d + mod, a = answer(total), m = total - DC;
+        var q = document.getElementById('question').value.trim(), lvl = LEVELS.filter(function (L) { return L[1] === mod; })[0][0];
+        var tw = d === 20 ? ' Natural 20: something unexpected, in your favour.' : d === 1 ? ' Natural 1: something unexpected, against you.' : '';
+        show(LABEL[a] + (d === 20 || d === 1 ? ' + a twist' : ''), 'd20 ' + d + (mod ? (mod > 0 ? ' + ' : ' − ') + Math.abs(mod) : '') + ' = ' + total + ' against 11: ' + (m >= 0 ? 'beat it by ' + m : 'missed by ' + (-m)) + '.' + tw);
+        log((q ? 'Q: ' + q + ' ' : 'Oracle ') + '(' + lvl + ') ' + total + ' → ' + LABEL[a] + (d === 20 ? ' + good twist' : d === 1 ? ' + bad twist' : ''));
+        if (a === 'noAnd') addStep('No, and');
+        else if (d === 1) addStep('natural 1');
+    });
+    document.getElementById('sceneBtn').addEventListener('click', function () {
+        var d = die(20), t = d <= 2 ? 'Interrupted: something else happens. Spark: ' + spark() : d <= 5 ? 'Altered: one important detail is different.' : 'As expected.';
+        show('Scene check', 'd20 ' + d + ': ' + t); log('Scene check (d20 ' + d + '): ' + t);
+    });
+    document.getElementById('attBtn').addEventListener('click', function () {
+        var d = die(20), t = d <= 2 ? 'Hostile' : d <= 6 ? 'Unfriendly' : d <= 14 ? 'Indifferent' : d <= 18 ? 'Friendly' : 'Helpful';
+        show('NPC attitude: ' + t, 'd20 rolled ' + d + '.'); log('NPC attitude (d20 ' + d + '): ' + t);
+    });
+    document.getElementById('sparkBtn').addEventListener('click', function () { var s = spark(); show('Spark', s); log('Spark ' + s); });
+    document.getElementById('doomAdd').addEventListener('click', function () { addStep('marked by hand'); });
+    document.getElementById('doomClear').addEventListener('click', function () { clock = 0; drawClock(); log('Threat clock cleared'); });
+    document.getElementById('addNote').addEventListener('click', function () {
+        var n = document.getElementById('note'); if (!n.value.trim()) return; log('Note: ' + n.value.trim()); n.value = '';
+    });
+    document.getElementById('copyLog').addEventListener('click', function () {
+        var btn = this;
+        if (navigator.clipboard) navigator.clipboard.writeText(entries.join('\n')).then(function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy log'; }, 1500); }, function () {});
+    });
+    document.getElementById('clearLog').addEventListener('click', function () {
+        entries = []; try { localStorage.removeItem(LOGKEY); } catch (e) { /* ignore */ } drawLog();
+    });
+    drawClock();
+    window.sfOracle = { table: table, answer: answer, LEVELS: LEVELS };
+})();
+</script>
+</body>
+</html>

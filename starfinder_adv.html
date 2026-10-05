@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starfinder Game Master Mastery - Tutorial 7</title>
-       <link rel="stylesheet" href="/styles/main.css">
+    <title>Game Master Guide - The Starfinder Guide</title>
+    <meta name="description" content="Game master advice for Starfinder: campaign structure, encounters, NPCs, resources and session pacing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <script type="module" src="/js/diagrams.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
     <link rel="icon" href="/favicon.png" type="image/png">
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
-   
-  
 </head>
 <body>
-    <nav class="site-nav">
-        <ul class="nav-links">
-            <li><a href="/">Starfinder</a></li>
-            <li><a href="https://rays-home.netlify.app/">Ray's House of Fun</a></li>
-            <li><a href="https://rays-home.netlify.app/contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#x1F319; Dark</button>
-    </nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
     <header>
-        <h1>Masters of the Cosmic Stage</h1>
-        <p>Advanced Game Master Techniques for Starfinder Campaigns</p>
+        <h1>Game Master Guide</h1>
+        <p>Practical advice for running Starfinder games, from campaign planning and encounters to NPCs and session pacing.</p>
     </header>
 
-    <main>
+    <main id="main">
+
         <section class="intro">
             <h2>The Director's Chair</h2>
             <p>Being a Game Master for Starfinder is like directing a science fiction movie where the actors improvise all their lines, the budget is unlimited, and the audience participates in creating the story. You're simultaneously the director, screenwriter, supporting cast, special effects team, and executive producer of an ongoing space opera that unfolds in real-time at your gaming table. The role requires creativity, adaptability, and the ability to manage complex systems while keeping everyone engaged and entertained.</p>
@@ -147,7 +147,7 @@
                         <h5>Phase 1: Hook & Setup (Levels 1-3)</h5>
                         <p><strong>Goals:</strong> Establish party dynamics, introduce the setting, create investment</p>
                         <p><strong>Scope:</strong> Local problems affecting a single location or small community</p>
-                        <p><strong>Focus:</strong> Character introduction, world establishment, basic mechanics mastery</p>
+                        <p><strong>Focus:</strong> Character introduction, world establishment, learning the basic rules</p>
                         <ul>
                             <li>Simple, clear objectives that bring the party together</li>
                             <li>Introduce key NPCs and locations that will matter later</li>
@@ -161,7 +161,7 @@
                         <h5>Phase 2: First Arc (Levels 4-6)</h5>
                         <p><strong>Goals:</strong> Develop the central conflict, explore character backgrounds</p>
                         <p><strong>Scope:</strong> Regional or planetary issues with broader implications</p>
-                        <p><strong>Focus:</strong> Character development, relationship building, system mastery</p>
+                        <p><strong>Focus:</strong> Character development, relationship building, growing confidence with the rules</p>
                         <ul>
                             <li>Introduce the campaign's main antagonist or conflict</li>
                             <li>Explore individual character backstories and motivations</li>
@@ -334,7 +334,7 @@
                             <li><strong>Escort Missions:</strong> Protecting someone or something while fighting</li>
                             <li><strong>Racing the Clock:</strong> Combat with time pressure or escalating threats</li>
                             <li><strong>Asymmetric Warfare:</strong> Fights where stealth, positioning, or objectives matter more than damage</li>
-                            <li><strong>Starship Combat:</strong> Space battles requiring crew coordination</li>
+                            <li><strong>Starship Combat:</strong> Space battles where every player takes a crew role (captain, engineer, gunner, pilot or science officer) and the round runs in engineering, helm and gunnery phases</li>
                         </ul>
                     </div>
 
@@ -395,13 +395,13 @@
                     <h4>Challenge Balancing Guidelines</h4>
                     
                     <div class="balance-principle">
-                        <h5>The 70% Success Rate Rule</h5>
-                        <p>Design encounters so that a competent party using good tactics should succeed about 70% of the time. This creates tension without constant frustration.</p>
+                        <h5>Vary the Difficulty</h5>
+                        <p>Most encounters should be winnable by a competent party using sensible tactics, with enough danger that the outcome feels uncertain. The Core Rulebook's encounter-building guidelines are the place to start when you size a fight to your party's level; use the tiers below as a feel, not a formula.</p>
                         <ul>
-                            <li><strong>Easy Encounters:</strong> 90% success rate - good for momentum and confidence</li>
-                            <li><strong>Moderate Encounters:</strong> 70% success rate - the standard difficulty</li>
-                            <li><strong>Hard Encounters:</strong> 50% success rate - for climactic moments</li>
-                            <li><strong>Extreme Encounters:</strong> 30% success rate - only for special occasions</li>
+                            <li><strong>Easy Encounters:</strong> good for momentum and confidence, and for showing how far the party has come</li>
+                            <li><strong>Standard Encounters:</strong> the everyday challenge that costs some Stamina and a few resources</li>
+                            <li><strong>Hard Encounters:</strong> for climactic moments, when the party may need to spend Resolve Points</li>
+                            <li><strong>Deadly Encounters:</strong> only for special occasions, and best with a way to retreat, negotiate or change the odds</li>
                         </ul>
                     </div>
 
@@ -409,10 +409,10 @@
                         <h5>Resource Management</h5>
                         <p>Consider not just individual encounter difficulty, but how encounters drain party resources over time.</p>
                         <ul>
-                            <li><strong>Health and Healing:</strong> How much damage can the party absorb?</li>
-                            <li><strong>Spell Points and Spells:</strong> How many magical resources are available?</li>
-                            <li><strong>Equipment Durability:</strong> Are weapons and armor holding up?</li>
-                            <li><strong>Ammunition and Consumables:</strong> What supplies are running low?</li>
+                            <li><strong>Stamina and Hit Points:</strong> Damage comes off Stamina Points first, then Hit Points. Spending 1 Resolve Point after a 10-minute rest restores all Stamina; Hit Points need healing.</li>
+                            <li><strong>Resolve Points:</strong> The party spends Resolve to regain Stamina, to stabilize when dying and to power some class abilities. It only comes back with a full 8-hour rest, so it is the real measure of how much fight is left in them.</li>
+                            <li><strong>Spells per Day:</strong> How many spells do the mystic and technomancer have left?</li>
+                            <li><strong>Ammunition and Consumables:</strong> Which batteries, rounds, grenades and serums are running low?</li>
                             <li><strong>Time Pressure:</strong> How long can the party spend on each challenge?</li>
                         </ul>
                     </div>
@@ -629,7 +629,7 @@
             <h2>Advanced GM Techniques</h2>
             
             <div class="narrative-techniques">
-                <h3>Mastering Narrative Flow</h3>
+                <h3>Shaping Narrative Flow</h3>
                 <p>Advanced GMs understand that great stories emerge from the intersection of player choice, character development, and narrative structure. These techniques help you craft memorable campaigns that feel both planned and organic.</p>
 
                 <div class="narrative-tools">
@@ -709,8 +709,8 @@
         </section>
 
         <section class="conclusion">
-            <h2>The Endless Journey of Mastery</h2>
-            <p>Game mastering is a craft that continues to evolve with every session you run. Each group of players brings new challenges and opportunities, and each campaign teaches you something new about storytelling, game management, and human nature. The techniques in this guide provide a foundation, but your personal style and expertise will develop through practice, experimentation, and reflection.</p>
+            <h2>The Journey Continues</h2>
+            <p>Game mastering is a craft that continues to evolve with every session you run. Each group of players brings new challenges and opportunities, and each campaign shows you something new about storytelling, game management, and human nature. The techniques on this page provide a foundation, but your personal style will grow through play, experimentation, and reflection.</p>
 
             <p>Remember that the goal is not perfection, but rather creating memorable experiences that bring people together around a table to share in the joy of collaborative storytelling. Every mistake is a learning opportunity, every successful session builds your confidence, and every campaign adds to your repertoire of techniques and experiences.</p>
 
@@ -722,247 +722,245 @@
 
     <script>
         // Campaign Structure Canvas
-        const canvas = document.getElementById('campaignStructure');
-        if (canvas) {
+        (function () {
+            const canvas = document.getElementById('campaignStructure');
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            
-            // Clear canvas
+            const ink = '#1f2d3a', soft = '#3d4b59';
+
             ctx.fillStyle = '#f8f9fa';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw campaign timeline
-            const timelineY = 250;
+
+            ctx.fillStyle = ink;
+            ctx.textAlign = 'center';
+            ctx.font = 'bold 17px Arial';
+            ctx.fillText('Campaign Timeline and Scope Progression', 400, 34);
+
+            const timelineY = 200;
             ctx.strokeStyle = '#2c3e50';
             ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.moveTo(50, timelineY);
-            ctx.lineTo(750, timelineY);
+            ctx.moveTo(40, timelineY);
+            ctx.lineTo(760, timelineY);
             ctx.stroke();
-            
-            // Campaign phases
+
             const phases = [
-                {name: 'Hook & Setup', x: 100, levels: '1-3', color: '#e74c3c', description: 'Introduction'},
-                {name: 'First Arc', x: 200, levels: '4-6', color: '#f39c12', description: 'Local Stakes'},
-                {name: 'Expansion', x: 300, levels: '7-9', color: '#f1c40f', description: 'Broader Scope'},
-                {name: 'Major Crisis', x: 400, levels: '10-12', color: '#27ae60', description: 'High Stakes'},
-                {name: 'Resolution Prep', x: 500, levels: '13-15', color: '#3498db', description: 'Building to Climax'},
-                {name: 'Climax & End', x: 600, levels: '16-20', color: '#9b59b6', description: 'Grand Finale'}
+                {name: 'Hook & Setup', levels: '1-3', color: '#e74c3c', description: 'Introduction', scope: 'Local'},
+                {name: 'First Arc', levels: '4-6', color: '#f39c12', description: 'Regional Stakes', scope: 'Planetary'},
+                {name: 'Expansion', levels: '7-9', color: '#f1c40f', description: 'Broader Scope', scope: 'Multi-system'},
+                {name: 'Major Crisis', levels: '10-12', color: '#27ae60', description: 'High Stakes', scope: 'Sector'},
+                {name: 'Resolution Prep', levels: '13-15', color: '#3498db', description: 'Building to Climax', scope: 'Galactic'},
+                {name: 'Climax & End', levels: '16-20', color: '#9b59b6', description: 'Grand Finale', scope: 'Cosmic'}
             ];
-            
-            phases.forEach(phase => {
-                // Phase marker
+
+            ctx.fillStyle = soft;
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Scope of conflict (ring size grows with each phase)', 400, 292);
+
+            phases.forEach((phase, i) => {
+                const x = 100 + i * 120;
                 ctx.fillStyle = phase.color;
                 ctx.beginPath();
-                ctx.arc(phase.x, timelineY, 20, 0, 2 * Math.PI);
+                ctx.arc(x, timelineY, 18, 0, 2 * Math.PI);
                 ctx.fill();
-                
-                // Phase details
-                ctx.fillStyle = '#2c3e50';
-                ctx.font = '12px Arial';
+
+                ctx.fillStyle = ink;
                 ctx.textAlign = 'center';
-                ctx.fillText(phase.name, phase.x, timelineY - 40);
-                ctx.font = '10px Arial';
-                ctx.fillText(`Levels ${phase.levels}`, phase.x, timelineY - 25);
-                ctx.fillText(phase.description, phase.x, timelineY + 40);
-                
-                // Scope indicator (growing circles)
-                const scopeRadius = 10 + (phases.indexOf(phase) * 8);
+                ctx.font = 'bold 13px Arial';
+                ctx.fillText(phase.name, x, timelineY - 52);
+                ctx.font = '12px Arial';
+                ctx.fillText('Levels ' + phase.levels, x, timelineY - 32);
+                ctx.fillStyle = soft;
+                ctx.fillText(phase.description, x, timelineY + 42);
+
+                const r = 12 + i * 7;
                 ctx.strokeStyle = phase.color;
-                ctx.lineWidth = 2;
-                ctx.setLineDash([3, 3]);
+                ctx.lineWidth = 2.5;
+                ctx.setLineDash([4, 3]);
                 ctx.beginPath();
-                ctx.arc(phase.x, timelineY + 80, scopeRadius, 0, 2 * Math.PI);
+                ctx.arc(x, 370, r, 0, 2 * Math.PI);
                 ctx.stroke();
                 ctx.setLineDash([]);
+
+                ctx.fillStyle = ink;
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(phase.scope, x, 448);
             });
-            
-            // Labels
-            ctx.fillStyle = '#2c3e50';
-            ctx.font = '16px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('Campaign Timeline and Scope Progression', 400, 30);
-            ctx.font = '10px Arial';
-            ctx.fillText('Scope of Conflict', 400, 180);
-            
-            // Scope legend
-            ctx.textAlign = 'left';
-            ctx.fillText('Local → System → Sector → Galactic', 250, 200);
-        }
+        })();
 
         // Challenge Curve Canvas
-        const canvas2 = document.getElementById('challengeCurve');
-        if (canvas2) {
-            const ctx2 = canvas2.getContext('2d');
-            
-            // Clear canvas
-            ctx2.fillStyle = '#f8f9fa';
-            ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
-            
-            // Draw axes
-            ctx2.strokeStyle = '#2c3e50';
-            ctx2.lineWidth = 2;
-            ctx2.beginPath();
-            ctx2.moveTo(50, 350);
-            ctx2.lineTo(550, 350);
-            ctx2.moveTo(50, 350);
-            ctx2.lineTo(50, 50);
-            ctx2.stroke();
-            
-            // Challenge zones
-            const zones = [
-                {name: 'Too Easy', x: 50, width: 100, color: '#e74c3c', alpha: 0.3},
-                {name: 'Optimal Zone', x: 150, width: 300, color: '#27ae60', alpha: 0.3},
-                {name: 'Too Hard', x: 450, width: 100, color: '#e74c3c', alpha: 0.3}
+        (function () {
+            const canvas = document.getElementById('challengeCurve');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const ink = '#1f2d3a';
+            const L = 70, R = 570, T = 55, B = 335;
+
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Difficulty bands (horizontal: higher = harder)
+            const bands = [
+                {name: 'Too hard', top: T, bottom: 115, color: '#f6d0d0'},
+                {name: 'Engaging zone', top: 115, bottom: 265, color: '#d3eedb'},
+                {name: 'Too easy', top: 265, bottom: B, color: '#f6d0d0'}
             ];
-            
-            zones.forEach(zone => {
-                ctx2.fillStyle = zone.color.replace(')', `, ${zone.alpha})`).replace('rgb', 'rgba');
-                ctx2.fillRect(zone.x, 50, zone.width, 300);
-                
-                ctx2.fillStyle = zone.color;
-                ctx2.font = '12px Arial';
-                ctx2.textAlign = 'center';
-                ctx2.fillText(zone.name, zone.x + zone.width/2, 40);
+            bands.forEach(band => {
+                ctx.fillStyle = band.color;
+                ctx.fillRect(L, band.top, R - L, band.bottom - band.top);
+                ctx.fillStyle = ink;
+                ctx.font = 'bold 12px Arial';
+                ctx.textAlign = 'left';
+                ctx.fillText(band.name, L + 8, band.top + 18);
             });
-            
-            // Ideal difficulty curve
-            ctx2.strokeStyle = '#3498db';
-            ctx2.lineWidth = 3;
-            ctx2.beginPath();
-            
-            // Draw a curve that represents ideal challenge progression
-            for(let x = 50; x <= 550; x += 5) {
-                const progress = (x - 50) / 500;
-                const baseHeight = 200; // Middle of optimal zone
-                const variation = Math.sin(progress * Math.PI * 4) * 30; // Some variation
-                const trend = progress * 50; // Slight upward trend
-                const y = 350 - (baseHeight + variation + trend);
-                
-                if(x === 50) {
-                    ctx2.moveTo(x, y);
-                } else {
-                    ctx2.lineTo(x, y);
-                }
+
+            // Ideal curve: rises slowly, with peaks (climaxes) and dips (breathers)
+            ctx.strokeStyle = '#1f6fb2';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            for (let x = L; x <= R; x += 4) {
+                const t = (x - L) / (R - L);
+                const y = 235 - t * 70 - Math.sin(t * Math.PI * 5) * 32;
+                if (x === L) ctx.moveTo(x, y); else ctx.lineTo(x, y);
             }
-            ctx2.stroke();
-            
-            // Labels
-            ctx2.fillStyle = '#2c3e50';
-            ctx2.font = '14px Arial';
-            ctx2.textAlign = 'center';
-            ctx2.fillText('Challenge Difficulty Over Campaign', 300, 30);
-            
-            ctx2.font = '12px Arial';
-            ctx2.textAlign = 'center';
-            ctx2.fillText('Campaign Progress', 300, 390);
-            
-            ctx2.save();
-            ctx2.translate(20, 200);
-            ctx2.rotate(-Math.PI/2);
-            ctx2.fillText('Difficulty Level', 0, 0);
-            ctx2.restore();
-            
+            ctx.stroke();
+
+            // Axes
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(L, T);
+            ctx.lineTo(L, B);
+            ctx.lineTo(R, B);
+            ctx.stroke();
+
+            ctx.fillStyle = ink;
+            ctx.textAlign = 'center';
+            ctx.font = 'bold 15px Arial';
+            ctx.fillText('Challenge Difficulty Over a Campaign', 300, 32);
+            ctx.font = '12px Arial';
+            ctx.fillText('Campaign progress →', (L + R) / 2, 357);
+
+            ctx.save();
+            ctx.translate(30, (T + B) / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = ink;
+            ctx.fillText('Difficulty →', 0, 0);
+            ctx.restore();
+
             // Legend
-            ctx2.fillStyle = '#3498db';
-            ctx2.fillRect(450, 15, 15, 3);
-            ctx2.fillStyle = '#2c3e50';
-            ctx2.font = '10px Arial';
-            ctx2.textAlign = 'left';
-            ctx2.fillText('Ideal Challenge Curve', 470, 20);
-        }
+            ctx.strokeStyle = '#1f6fb2';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(170, 384);
+            ctx.lineTo(200, 384);
+            ctx.stroke();
+            ctx.fillStyle = ink;
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText('Ideal challenge: peaks for climaxes, dips for breathers', 208, 388);
+        })();
 
         // Session Flow Canvas
-        const canvas3 = document.getElementById('sessionFlow');
-        if (canvas3) {
-            const ctx3 = canvas3.getContext('2d');
-            
-            // Clear canvas
-            ctx3.fillStyle = '#f8f9fa';
-            ctx3.fillRect(0, 0, canvas3.width, canvas3.height);
-            
-            // Session phases with energy levels
+        (function () {
+            const canvas = document.getElementById('sessionFlow');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const ink = '#1f2d3a', soft = '#3d4b59';
+            const L = 70, R = 760, B = 320;
+            const xAt = m => L + (m / 120) * (R - L);
+            const yAt = e => B - e * 2.4;
+
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             const phases = [
-                {name: 'Opening', time: 0, energy: 60, duration: 15},
-                {name: 'Rising Action', time: 15, energy: 80, duration: 45},
-                {name: 'Climax', time: 60, energy: 95, duration: 30},
-                {name: 'Resolution', time: 90, energy: 70, duration: 20},
-                {name: 'Setup/Closing', time: 110, energy: 50, duration: 10}
+                {name: 'Opening', start: 0, end: 15, energy: 55},
+                {name: 'Rising Action', start: 15, end: 60, energy: 75},
+                {name: 'Climax', start: 60, end: 90, energy: 95},
+                {name: 'Resolution', start: 90, end: 110, energy: 65},
+                {name: 'Setup/Closing', start: 110, end: 120, energy: 45}
             ];
-            
-            // Draw energy curve
-            ctx3.strokeStyle = '#3498db';
-            ctx3.lineWidth = 3;
-            ctx3.beginPath();
-            
-            let currentTime = 0;
-            phases.forEach((phase, index) => {
-                const startX = 50 + (currentTime / 120) * 700;
-                const endX = 50 + ((currentTime + phase.duration) / 120) * 700;
-                const startY = 350 - (phases[index - 1]?.energy || phase.energy) * 2.5;
-                const endY = 350 - phase.energy * 2.5;
-                
-                if(index === 0) {
-                    ctx3.moveTo(startX, startY);
-                }
-                ctx3.lineTo(endX, endY);
-                
-                currentTime += phase.duration;
+
+            // Phase boundaries
+            ctx.strokeStyle = '#b8c2cc';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 4]);
+            phases.slice(1).forEach(p => {
+                ctx.beginPath();
+                ctx.moveTo(xAt(p.start), 60);
+                ctx.lineTo(xAt(p.start), B);
+                ctx.stroke();
             });
-            ctx3.stroke();
-            
-            // Draw phase markers and labels
-            currentTime = 0;
-            phases.forEach(phase => {
-                const x = 50 + (currentTime / 120) * 700;
-                const y = 350 - phase.energy * 2.5;
-                
-                // Phase marker
-                ctx3.fillStyle = '#e74c3c';
-                ctx3.beginPath();
-                ctx3.arc(x, y, 5, 0, 2 * Math.PI);
-                ctx3.fill();
-                
-                // Phase label
-                ctx3.fillStyle = '#2c3e50';
-                ctx3.font = '12px Arial';
-                ctx3.textAlign = 'center';
-                ctx3.fillText(phase.name, x, y - 20);
-                ctx3.font = '10px Arial';
-                ctx3.fillText(`${phase.duration}min`, x, y + 35);
-                
-                currentTime += phase.duration;
+            ctx.setLineDash([]);
+
+            // Energy curve through each phase's midpoint
+            const pts = [[xAt(0), yAt(45)]].concat(
+                phases.map(p => [xAt((p.start + p.end) / 2), yAt(p.energy)]),
+                [[xAt(120), yAt(40)]]);
+            ctx.strokeStyle = '#1f6fb2';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            pts.forEach((pt, i) => { if (i === 0) ctx.moveTo(pt[0], pt[1]); else ctx.lineTo(pt[0], pt[1]); });
+            ctx.stroke();
+
+            phases.forEach(p => {
+                const x = xAt((p.start + p.end) / 2), y = yAt(p.energy);
+                ctx.fillStyle = '#c0392b';
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                const label = (text, font, color, ty) => {
+                    ctx.font = font;
+                    const w = ctx.measureText(text).width;
+                    ctx.fillStyle = 'rgba(248, 249, 250, 0.92)';
+                    ctx.fillRect(x - w / 2 - 3, ty - 12, w + 6, 16);
+                    ctx.fillStyle = color;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(text, x, ty);
+                };
+                label(p.name, 'bold 12px Arial', ink, y - 14);
+                label((p.end - p.start) + ' min', '11px Arial', soft, y + 24);
             });
-            
-            // Axes and labels
-            ctx3.strokeStyle = '#2c3e50';
-            ctx3.lineWidth = 2;
-            ctx3.beginPath();
-            ctx3.moveTo(50, 350);
-            ctx3.lineTo(750, 350);
-            ctx3.moveTo(50, 350);
-            ctx3.lineTo(50, 50);
-            ctx3.stroke();
-            
-            ctx3.fillStyle = '#2c3e50';
-            ctx3.font = '14px Arial';
-            ctx3.textAlign = 'center';
-            ctx3.fillText('Session Energy Flow (Typical 2-Hour Session)', 400, 30);
-            ctx3.fillText('Time', 400, 390);
-            
-            ctx3.save();
-            ctx3.translate(20, 200);
-            ctx3.rotate(-Math.PI/2);
-            ctx3.fillText('Energy Level', 0, 0);
-            ctx3.restore();
-        }
+
+            // Axes
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(L, 60);
+            ctx.lineTo(L, B);
+            ctx.lineTo(R, B);
+            ctx.stroke();
+
+            ctx.fillStyle = ink;
+            ctx.font = '11px Arial';
+            ctx.textAlign = 'center';
+            [0, 15, 60, 90, 110, 120].forEach(m => ctx.fillText(String(m), xAt(m), B + 18));
+
+            ctx.font = 'bold 15px Arial';
+            ctx.fillText('Session Energy Flow (Typical 2-Hour Session)', 400, 32);
+            ctx.font = '12px Arial';
+            ctx.fillText('Minutes into the session', (L + R) / 2, 372);
+
+            ctx.save();
+            ctx.translate(30, (60 + B) / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = ink;
+            ctx.fillText('Table energy →', 0, 0);
+            ctx.restore();
+        })();
     </script>
-    <nav class="page-nav">
-        <a href="/starfinder_groups.html">&larr; Group Dynamics</a>
-        <a href="/starfinder_dice_roller.html">Dice Roller &rarr;</a>
-    </nav>
-<script>
-function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-toggle');if(h.getAttribute('data-theme')==='dark'){h.removeAttribute('data-theme');b.textContent='\u{1F319} Dark';localStorage.setItem('theme','light');}else{h.setAttribute('data-theme','dark');b.textContent='\u{2600}\u{FE0F} Light';localStorage.setItem('theme','dark');}}
-(function(){if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(b)b.textContent='\u{2600}\u{FE0F} Light';});}})();
-</script>
+
+    <footer>
+<div class="page-nav">
+    <a class="prev" href="/starfinder_planets.html">Planets &amp; Space Travel</a>
+    <a class="next" href="/starfinder_solo.html">Playing Starfinder Solo</a>
+</div>
+    </footer>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
 </body>
 </html>

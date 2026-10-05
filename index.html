@@ -3,175 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starfinder RPG Beginner's Guide</title>
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>The Starfinder Guide</title>
+    <meta name="description" content="An unofficial guide to the Starfinder Roleplaying Game (first edition): races, classes, themes, equipment, sample characters, the Pact Worlds and starships, GM advice, solo play and a dice roller.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
+    <link rel="icon" href="/favicon.png" type="image/png">
     <style>
-        /* === INDEX-ONLY STYLES === */
-        .hero { text-align: center; padding: 2.5rem 1rem 1.5rem; }
-        .hero h1 { display: inline-block; background: var(--heading-bg); color: var(--heading-text); padding: 0.8rem 1.6rem; margin: 0 auto 0.75rem; font-size: clamp(1.4rem, 4vw, 2.2rem); border-radius: 8px; }
-        .hero .tagline { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text); opacity: 0.85; margin: 0; }
+        .home { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding-bottom: 24px; }
+        .hero {
+            margin-top: 28px;
+            padding: clamp(36px, 7vw, 72px) clamp(20px, 5vw, 56px);
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(124, 196, 255, 0.20), transparent 45%),
+                linear-gradient(135deg, var(--hero-1), var(--hero-2));
+            color: #fff;
+            box-shadow: var(--shadow);
+        }
+        .hero h1 { color: #fff; font-size: clamp(2.1rem, 6vw, 3.4rem); margin: 0 0 14px; }
+        .hero p { color: rgba(255, 255, 255, 0.93); font-size: clamp(1.05rem, 2.2vw, 1.22rem); max-width: 64ch; margin: 0 0 24px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+        .btn-hero { display: inline-block; padding: 12px 22px; border-radius: 999px; font-weight: 700; text-decoration: none; background: #fff; color: #121411; border: 2px solid #fff; }
+        .btn-hero:hover { background: #e7ebf2; color: #121411; }
+        .btn-hero.ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.7); }
+        .btn-hero.ghost:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+        .turn-card {
+            display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px; padding: 10px 16px; font-weight: 700; color: #fff;
+        }
+        .turn-card .pips { font-size: 1.3rem; letter-spacing: 2px; color: #a9d8ff; }
+        .turn-card .lbl { font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 255, 255, 0.9); }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1rem;
-            padding: 0 0.5rem 2rem;
-            list-style: none;
-            margin: 1.5rem 0 0;
+        .section-head { margin: 52px 0 16px; }
+        .section-head h2 { margin: 0 0 8px; }
+        .section-head p { color: var(--muted); max-width: 70ch; margin: 0; }
+        .group-label { font-family: "Orbitron", "Segoe UI", sans-serif; font-weight: 700; color: var(--gold); letter-spacing: 0.04em; text-transform: uppercase; margin: 26px 0 10px; font-size: 0.95rem; }
+        .part-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 14px; }
+        .part-card {
+            display: flex; flex-direction: column; gap: 6px;
+            background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+            padding: 18px 20px; box-shadow: var(--shadow); text-decoration: none; color: var(--text);
+            border-left: 4px solid var(--accent); transition: transform 0.15s, border-color 0.15s;
         }
-        .card-grid li { margin: 0; padding: 0; }
-        .card {
-            display: flex; align-items: flex-start; gap: 0.85rem;
-            padding: 1rem 1.15rem;
-            background: var(--prevnext-bg);
-            border: 1px solid var(--prevnext-border);
-            border-radius: 10px;
-            text-decoration: none; color: var(--text);
-            transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
-            height: 100%;
-        }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.1); border-color: var(--link); }
-        [data-theme="dark"] .card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
-        .card-icon { font-size: 1.7rem; flex-shrink: 0; line-height: 1; padding-top: 0.1rem; }
-        .card-body { min-width: 0; }
-        .card-title { font-weight: 700; font-size: 1.05rem; color: var(--link); margin: 0 0 0.25rem; }
-        .card-desc { font-size: 0.88rem; line-height: 1.45; margin: 0; opacity: 0.8; }
-
-        .section-label {
-            font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-            color: var(--link); opacity: 0.7; margin: 2rem 0.5rem 0.5rem; padding: 0;
-            background: none;
-        }
-
-        @media (max-width: 600px) {
-            .card-grid { grid-template-columns: 1fr; }
-            .hero { padding: 1.5rem 0.5rem 1rem; }
-        }
+        .part-card:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); }
+        .part-card .num { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+        .part-card h3 { margin: 0; font-size: 1.12rem; color: var(--heading); }
+        .part-card h3 .icon { margin-right: 6px; }
+        .part-card p { margin: 0; color: var(--muted); font-size: 0.97rem; line-height: 1.55; }
+        .part-card.tool { border-left-color: var(--gold); }
+        .quick { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 12px; }
+        .quick div { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+        .quick h3 { margin: 0 0 4px; font-size: 1.02rem; color: var(--heading); }
+        .quick p { margin: 0; color: var(--text); font-size: 0.95rem; line-height: 1.55; }
+        .home-footer { text-align: center; color: var(--muted); margin-top: 36px; }
     </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <ul class="nav-links">
-            <li><a href="/">Starfinder</a></li>
-            <li><a href="https://rays-home.netlify.app/">Ray's House of Fun</a></li>
-            <li><a href="https://rays-home.netlify.app/contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#x1F319; Dark</button>
-    </nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
 
+<div class="home">
     <header class="hero">
-        <h1>Welcome to the Starfinder Universe</h1>
-        <p class="tagline">Your gateway to science-fantasy adventure &mdash; Pathfinder in space!</p>
+        <h1>The Starfinder Guide</h1>
+        <p>Starfinder, from Paizo, is science-fantasy roleplaying: starships and laser rifles alongside magic and gods, in a galaxy that lost its own history and is busy finding it again. This guide covers the first edition of the Starfinder Roleplaying Game, from building a character through classes, themes and gear to running a campaign among the Pact Worlds, or playing alone.</p>
+        <div class="hero-actions">
+            <a class="btn-hero" href="/starfinder_intro.html">Start Reading →</a>
+            <a class="btn-hero ghost" href="/starfinder_dice_roller.html">Roll the Dice</a>
+        </div>
+        <div class="turn-card" aria-label="The core roll: a d20 plus modifiers, meet or beat the DC">
+            <span class="lbl">The core roll</span><span class="pips" aria-hidden="true">d20 + modifiers</span><span class="lbl">meet or beat the DC</span>
+        </div>
     </header>
 
-    <main>
-        <p class="section-label">Getting Started</p>
-        <ul class="card-grid">
-            <li><a class="card" href="/starfinder_intro.html">
-                <span class="card-icon">&#x1F680;</span>
-                <div class="card-body">
-                    <p class="card-title">Introduction</p>
-                    <p class="card-desc">What is Starfinder? Core concepts, dice mechanics, and the Pact Worlds setting.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_char.html">
-                <span class="card-icon">&#x1F9EC;</span>
-                <div class="card-body">
-                    <p class="card-title">Character Creation</p>
-                    <p class="card-desc">Ancestries deep-dive &mdash; choose your cosmic heritage and species traits.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_classes.html">
-                <span class="card-icon">&#x2694;&#xFE0F;</span>
-                <div class="card-body">
-                    <p class="card-title">Classes</p>
-                    <p class="card-desc">Soldier, Mystic, Operative, Technomancer &mdash; find your galactic profession.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_themes.html">
-                <span class="card-icon">&#x1F3AD;</span>
-                <div class="card-body">
-                    <p class="card-title">Themes</p>
-                    <p class="card-desc">Backgrounds that shape your origin story, from Ace Pilot to Scholar.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_equipment.html">
-                <span class="card-icon">&#x1F52B;</span>
-                <div class="card-body">
-                    <p class="card-title">Equipment</p>
-                    <p class="card-desc">Weapons, armor, and tech &mdash; outfit your hero for galactic adventure.</p>
-                </div>
-            </a></li>
-        </ul>
+    <main id="main">
+        <section>
+            <div class="section-head">
+                <h2>Starfinder at a Glance</h2>
+                <p>Four ideas carry most of the game. Each part of the guide builds on them.</p>
+            </div>
+            <div class="quick">
+                <div><h3>The d20 Roll</h3><p>Roll a d20, add your bonuses and meet or beat the Difficulty Class. Attacks roll against a target's Energy or Kinetic Armor Class.</p></div>
+                <div><h3>Stamina, Hit Points, Resolve</h3><p>Stamina absorbs damage first and comes back with rest; Hit Points are real injury; Resolve Points let you push on when it matters.</p></div>
+                <div><h3>Race, Class, Theme</h3><p>Your race says where you come from, your class what you do, and your theme the life you led before the adventure began.</p></div>
+                <div><h3>Starships</h3><p>The whole crew takes part in a starship fight: pilot, engineer, gunners, science officer and captain each have a job.</p></div>
+            </div>
+        </section>
 
-        <p class="section-label">Characters &amp; Groups</p>
-        <ul class="card-grid">
-            <li><a class="card" href="/starfinder_character_examples.html">
-                <span class="card-icon">&#x1F465;</span>
-                <div class="card-body">
-                    <p class="card-title">Character Examples</p>
-                    <p class="card-desc">Sample characters and balanced crew compositions for every play style.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_100.html">
-                <span class="card-icon">&#x1F4CB;</span>
-                <div class="card-body">
-                    <p class="card-title">100 Characters</p>
-                    <p class="card-desc">A massive gallery of ready-made characters across all levels and group sizes.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_names.html">
-                <span class="card-icon">&#x1F4DB;</span>
-                <div class="card-body">
-                    <p class="card-title">Character Names</p>
-                    <p class="card-desc">150 names with origins, species suggestions, and tech-culture tags.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_groups.html">
-                <span class="card-icon">&#x1F91D;</span>
-                <div class="card-body">
-                    <p class="card-title">Group Dynamics</p>
-                    <p class="card-desc">Build effective crews &mdash; roles, synergies, and team composition strategy.</p>
-                </div>
-            </a></li>
-        </ul>
+        <section>
+            <div class="section-head">
+                <h2>The Guide</h2>
+                <p>Players first, then the GM pages, then playing solo. Read in order or jump to what you need.</p>
+            </div>
 
-        <p class="section-label">World &amp; GM Tools</p>
-        <ul class="card-grid">
-            <li><a class="card" href="/starfinder_planets.html">
-                <span class="card-icon">&#x1F30D;</span>
-                <div class="card-body">
-                    <p class="card-title">Planets &amp; Space Travel</p>
-                    <p class="card-desc">The Pact Worlds, the Drift, starships, crew roles, and cosmic hazards.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_adv.html">
-                <span class="card-icon">&#x1F3AC;</span>
-                <div class="card-body">
-                    <p class="card-title">Game Master Guide</p>
-                    <p class="card-desc">Campaign planning, encounter design, NPCs, and advanced GM techniques.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_dice_roller.html">
-                <span class="card-icon">&#x1F3B2;</span>
-                <div class="card-body">
-                    <p class="card-title">Dice Roller</p>
-                    <p class="card-desc">Interactive roller with quick-action buttons, modifiers, and Resolve tracking.</p>
-                </div>
-            </a></li>
-            <li><a class="card" href="/starfinder_mythos.html">
-                <span class="card-icon">&#x1F52E;</span>
-                <div class="card-body">
-                    <p class="card-title">Mythos</p>
-                    <p class="card-desc">Gods, religions, and the cosmic mysteries of the Starfinder universe.</p>
-                </div>
-            </a></li>
-        </ul>
+            <p class="group-label">Getting Started</p>
+            <div class="part-grid">
+                <a class="part-card" href="/starfinder_intro.html"><h3><span class="icon" aria-hidden="true">🚀</span>Welcome to Starfinder</h3><p>What Starfinder is, the d20 roll, Stamina and Hit Points, the Pact Worlds and how an adventure unfolds.</p></a>
+            </div>
+
+            <p class="group-label">Building a Character</p>
+            <div class="part-grid">
+                <a class="part-card" href="/starfinder_char.html"><h3><span class="icon" aria-hidden="true">🧬</span>Character Creation &amp; Races</h3><p>The steps of building a character and the core races, from androids and kasathas to vesk and ysoki.</p></a>
+                <a class="part-card" href="/starfinder_classes.html"><h3><span class="icon" aria-hidden="true">🛡️</span>Classes</h3><p>The seven core classes and the ones that came later: what each does and how to build one.</p></a>
+                <a class="part-card" href="/starfinder_themes.html"><h3><span class="icon" aria-hidden="true">🎭</span>Themes</h3><p>Ace pilot, bounty hunter, icon, scholar and the rest: the background that shapes your skills and story.</p></a>
+                <a class="part-card" href="/starfinder_equipment.html"><h3><span class="icon" aria-hidden="true">🔫</span>Equipment</h3><p>Weapons, armor, upgrades and fusions, item levels and credits, and Bulk.</p></a>
+            </div>
+
+            <p class="group-label">Characters &amp; Crews</p>
+            <div class="part-grid">
+                <a class="part-card" href="/starfinder_character_examples.html"><h3><span class="icon" aria-hidden="true">📋</span>Character Examples &amp; Crews</h3><p>Worked characters and balanced crews, with a job for everyone aboard the starship.</p></a>
+                <a class="part-card" href="/starfinder_100.html"><h3><span class="icon" aria-hidden="true">👥</span>315 Sample Characters</h3><p>Ready-made characters at every level band, alone or in crews of two to six.</p></a>
+                <a class="part-card" href="/starfinder_names.html"><h3><span class="icon" aria-hidden="true">🏷️</span>150 Character Names</h3><p>Fifty masculine, fifty feminine and fifty gender-neutral names, plus how names work across the Pact Worlds.</p></a>
+                <a class="part-card" href="/starfinder_groups.html"><h3><span class="icon" aria-hidden="true">🤝</span>Crews &amp; Group Dynamics</h3><p>Why the crew flies together, shared goals and ships, and keeping a mixed crew pulling the same way.</p></a>
+            </div>
+
+            <p class="group-label">For the GM</p>
+            <div class="part-grid">
+                <a class="part-card" href="/starfinder_planets.html"><h3><span class="icon" aria-hidden="true">🪐</span>Planets &amp; Space Travel</h3><p>The Pact Worlds, the Drift, starships and starship combat, and the hazards of space.</p></a>
+                <a class="part-card" href="/starfinder_adv.html"><h3><span class="icon" aria-hidden="true">🎬</span>Game Master Guide</h3><p>Running Starfinder: campaign structure, encounters, NPCs and session flow.</p></a>
+            </div>
+
+            <p class="group-label">Playing Solo</p>
+            <div class="part-grid">
+                <a class="part-card" href="/starfinder_solo.html"><h3><span class="icon" aria-hidden="true">📓</span>Playing Starfinder Solo</h3><p>No GM needed: a d20 oracle with exact odds, scene checks, sparks and an in-page tool with a session log.</p></a>
+            </div>
+
+        </section>
+
+        <section>
+            <div class="section-head">
+                <h2>Tools</h2>
+                <p>Use this at the table.</p>
+            </div>
+            <div class="part-grid">
+                <a class="part-card tool" href="/starfinder_dice_roller.html"><h3><span class="icon" aria-hidden="true">🎲</span>Dice Roller</h3><p>d20 checks and attacks against a DC or Armor Class with exact odds, damage dice, and a Stamina, Hit Point and Resolve tracker.</p></a>
+            </div>
+        </section>
     </main>
-<script>
-function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-toggle');if(h.getAttribute('data-theme')==='dark'){h.removeAttribute('data-theme');b.textContent='\u{1F319} Dark';localStorage.setItem('theme','light');}else{h.setAttribute('data-theme','dark');b.textContent='\u{2600}\u{FE0F} Light';localStorage.setItem('theme','dark');}}
-(function(){if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(b)b.textContent='\u{2600}\u{FE0F} Light';});}})();
-</script>
+
+    <footer class="home-footer">
+        <p>The Starfinder Roleplaying Game is published by Paizo Inc.</p>
+    </footer>
+</div>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
 </body>
 </html>

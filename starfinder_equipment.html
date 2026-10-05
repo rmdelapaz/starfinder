@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starfinder Equipment and Gear - Tutorial 5</title>
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
+    <title>Equipment - The Starfinder Guide</title>
+    <meta name="description" content="Starfinder equipment: item levels, credits and Bulk, weapons and damage types, EAC and KAC armor, upgrades, critical effects and wealth by level.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <script type="module" src="/js/diagrams.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
+    <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 <body>
-    <nav class="site-nav">
-        <ul class="nav-links">
-            <li><a href="/">Starfinder</a></li>
-            <li><a href="https://rays-home.netlify.app/">Ray's House of Fun</a></li>
-            <li><a href="https://rays-home.netlify.app/contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#x1F319; Dark</button>
-    </nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
     <header>
-        <h1>Tools of the Trade</h1>
-        <p>Mastering Starfinder Equipment, Weapons, and Technology</p>
+        <h1>Equipment</h1>
+        <p>How weapons, armor, upgrades and everyday gear work in Starfinder First Edition, and how to choose them.</p>
     </header>
 
-    <main>
+    <main id="main">
+
         <section class="intro">
             <h2>Your Galactic Arsenal</h2>
             <p>In the dangerous universe of Starfinder, the right equipment can mean the difference between heroic victory and tragic defeat. Your gear isn't just statistics on a character sheet – it's your lifeline in hostile environments, your edge in combat, and your solution to countless problems. Think of equipment selection like choosing the perfect toolkit for a job, except your "job" involves exploring alien worlds, fighting cosmic horrors, and surviving in the vacuum of space.</p>
@@ -34,6 +36,14 @@
                 <h3>The Professional Athlete Analogy</h3>
                 <p>Selecting equipment in Starfinder is like outfitting a professional athlete for competition. A tennis player needs the right racquet, shoes, and strings for their playing style and the court conditions. Similarly, your character needs weapons suited to their combat style, armor appropriate for their role, and technology that complements their abilities. Just as an athlete's performance improves with better equipment, your character becomes more effective with appropriate gear. And just like sports equipment, Starfinder gear comes in different quality levels – from amateur starter gear to professional-grade equipment to legendary custom items that make champions.</p>
             </div>
+
+            <h3>How Gear Works: Item Level, Credits and Bulk</h3>
+            <ul>
+                <li><strong>Item level:</strong> Every item has a level from 1 to 20. It tells you roughly when the item suits a character (compare it to your character level), and it also feeds into rules: a weapon's critical-effect or explosion save DC is 10 + ½ the item level + an ability modifier.</li>
+                <li><strong>Credits:</strong> The galaxy's currency, held in digital accounts or on credsticks. A new 1st-level character has 1,000 credits to spend. Universal polymer base (UPB) is the raw material used to craft gear.</li>
+                <li><strong>Bulk:</strong> Items have a Bulk number, "L" (light) or "—" (negligible). Ten L items count as 1 Bulk (drop fractions). Carrying more than half your Strength score in Bulk makes you encumbered, and you can't voluntarily carry more than your Strength score.</li>
+                <li><strong>Selling:</strong> Loot you sell usually fetches only 10% of its price, so most of your wealth comes from mission pay and story rewards rather than from hauling gear to market.</li>
+            </ul>
         </section>
 
         <section class="equipment-overview">
@@ -60,8 +70,8 @@
                     D --> N[Consumables]
                     
                     E --> O[Augmentations]
-                    E --> P[Magic Items]
-                    E --> Q[Weapon Accessories]
+                    E --> P[Weapon Fusions]
+                    E --> Q[Armor Upgrades]
             </div>
 
             <div class="equipment-philosophy">
@@ -72,7 +82,7 @@
                     <h4>Problem Solvers</h4>
                     <p>Equipment that helps you overcome specific challenges or obstacles. Tools, computers, and specialized devices that expand what your character can accomplish.</p>
                     <ul>
-                        <li><strong>Example:</strong> A hacking kit for bypassing security systems</li>
+                        <li><strong>Example:</strong> A hacking kit for getting past computer security</li>
                         <li><strong>Selection Tip:</strong> Choose based on problems you expect to encounter</li>
                     </ul>
                 </div>
@@ -81,7 +91,7 @@
                     <h4>Force Multipliers</h4>
                     <p>Equipment that makes your existing abilities more effective. Enhancement items, quality weapons, and augmentations that amplify your character's natural capabilities.</p>
                     <ul>
-                        <li><strong>Example:</strong> A weapon fusion that adds fire damage to attacks</li>
+                        <li><strong>Example:</strong> A <em>flaming</em> weapon fusion that wreathes your weapon in starfire</li>
                         <li><strong>Selection Tip:</strong> Enhance your strengths rather than covering weaknesses</li>
                     </ul>
                 </div>
@@ -90,7 +100,7 @@
                     <h4>Safety Nets</h4>
                     <p>Equipment that protects you from failure or provides backup options. Armor, medical supplies, and emergency gear that keep you alive when things go wrong.</p>
                     <ul>
-                        <li><strong>Example:</strong> Environmental armor for hostile planets</li>
+                        <li><strong>Example:</strong> Armor, because every suit has built-in environmental protections against vacuum and hostile atmospheres</li>
                         <li><strong>Selection Tip:</strong> Prepare for the most dangerous scenarios first</li>
                     </ul>
                 </div>
@@ -111,71 +121,77 @@
             
             <div class="weapon-categories">
                 <h3>Understanding Weapon Types</h3>
-                <p>Starfinder weapons are categorized by their underlying technology and damage delivery method:</p>
+                <p>The Core Rulebook sorts weapons into proficiency categories: <strong>basic melee</strong>, <strong>advanced melee</strong>, <strong>small arms</strong> (one-handed guns), <strong>longarms</strong> and <strong>heavy weapons</strong> (two-handed), <strong>sniper weapons</strong>, <strong>grenades</strong> and special weapons, plus ammunition and solarian crystals. Your class decides which categories you're proficient with. Within those categories, the damage a weapon deals is either kinetic or energy, and that decides which of the target's two Armor Classes you attack:</p>
+                <ul>
+                    <li><strong>Kinetic damage</strong> — bludgeoning (B), piercing (P), slashing (S) — targets <strong>KAC</strong> (Kinetic Armor Class).</li>
+                    <li><strong>Energy damage</strong> — acid (A), cold (C), electricity (E), fire (F), sonic (So) — targets <strong>EAC</strong> (Energy Armor Class) when the weapon deals only energy damage.</li>
+                    <li>A weapon that mixes the two (such as a pulse gauntlet, B &amp; So) targets KAC.</li>
+                </ul>
 
                 <div class="weapon-type">
                     <h4>Kinetic Weapons - Classical Projectiles</h4>
-                    <p>These weapons use physical projectiles accelerated by chemical explosives, magnetic fields, or mechanical force. They're the "traditional" weapons that deal physical damage through impact and penetration.</p>
+                    <p>These weapons use physical projectiles or blades and deal physical damage through impact and penetration. They attack the target's KAC.</p>
                     
                     <div class="weapon-subtype">
                         <h5>Projectile Weapons</h5>
-                        <p>Traditional firearms that use ammunition cartridges.</p>
+                        <p>Firearms that use cartridges or other physical ammunition.</p>
                         <ul>
-                            <li><strong>Advantages:</strong> Reliable, inexpensive ammunition, familiar operation</li>
-                            <li><strong>Disadvantages:</strong> Finite ammunition, affected by environmental conditions</li>
-                            <li><strong>Examples:</strong> Pistols, rifles, machine guns</li>
+                            <li><strong>Advantages:</strong> Cheap, simple, available everywhere</li>
+                            <li><strong>Disadvantages:</strong> You track ammunition and reload; heavily armored foes often have high KAC</li>
+                            <li><strong>Examples:</strong> Tactical semi-auto pistol (item level 1, 1d6 P), rifles, machine guns</li>
                             <li><strong>Best For:</strong> Characters who want proven, dependable weapons</li>
                         </ul>
                     </div>
 
                     <div class="weapon-subtype">
-                        <h5>Powered Weapons</h5>
-                        <p>Melee weapons enhanced with technology for increased effectiveness.</p>
+                        <h5>Melee Weapons</h5>
+                        <p>Blades, batons and gauntlets in the basic and advanced melee categories. Some have the <em>powered</em> property: an internal battery that drains per minute of use rather than per attack.</p>
                         <ul>
-                            <li><strong>Advantages:</strong> No ammunition needed, enhanced damage, special effects</li>
-                            <li><strong>Disadvantages:</strong> Battery dependence, close range only</li>
-                            <li><strong>Examples:</strong> Vibroswords, shock truncheons, powered hammers</li>
-                            <li><strong>Best For:</strong> Melee combatants who want technological edge</li>
+                            <li><strong>Advantages:</strong> No ammunition for most, Strength adds to damage, simple to use</li>
+                            <li><strong>Disadvantages:</strong> You have to get close, and moving away can provoke attacks of opportunity</li>
+                            <li><strong>Examples:</strong> Tactical baton (1d4 B), tactical dueling sword (1d6 S), pulse gauntlets</li>
+                            <li><strong>Best For:</strong> Melee combatants such as soldiers, solarians and vesk</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="weapon-type">
                     <h4>Energy Weapons - Pure Force</h4>
-                    <p>These weapons project energy as lasers, plasma, or other exotic forms. They represent advanced technology that converts stored energy directly into destructive force.</p>
+                    <p>These weapons project lasers, plasma, electricity, sound or cold. Most draw on rechargeable batteries measured in charges, and if they deal only energy damage they attack the target's EAC.</p>
                     
                     <div class="weapon-subtype">
                         <h5>Laser Weapons</h5>
-                        <p>Focused light beams that burn through targets with concentrated energy.</p>
+                        <p>Focused light beams that deal fire damage.</p>
                         <ul>
-                            <li><strong>Advantages:</strong> Precise, no projectile drop, unlimited "ammunition"</li>
-                            <li><strong>Disadvantages:</strong> Battery consumption, environmental interference</li>
-                            <li><strong>Examples:</strong> Laser pistols, laser rifles, laser cannons</li>
-                            <li><strong>Best For:</strong> Precision shooters and energy weapon specialists</li>
+                            <li><strong>Advantages:</strong> Long range increments, cheap at low levels</li>
+                            <li><strong>Disadvantages:</strong> Battery charges run out; some creatures resist fire</li>
+                            <li><strong>Examples:</strong> Azimuth laser pistol (item level 1, 1d4 F, 80-foot range increment), azimuth laser rifle (1d8 F)</li>
+                            <li><strong>Best For:</strong> Precision shooters who want reach</li>
                         </ul>
                     </div>
 
                     <div class="weapon-subtype">
                         <h5>Plasma Weapons</h5>
-                        <p>Superheated matter that deals massive thermal damage to targets.</p>
+                        <p>Superheated matter that deals electricity and fire damage together (E &amp; F).</p>
                         <ul>
-                            <li><strong>Advantages:</strong> High damage, burning effects, intimidation factor</li>
-                            <li><strong>Disadvantages:</strong> High battery consumption, overheating risks</li>
-                            <li><strong>Examples:</strong> Plasma pistols, plasma cannons, plasma swords</li>
+                            <li><strong>Advantages:</strong> High damage dice, and many plasma weapons have strong critical effects (burn, severe wound)</li>
+                            <li><strong>Disadvantages:</strong> Higher item levels and prices; plasma pistols have short range increments</li>
+                            <li><strong>Examples:</strong> Red star plasma pistol (item level 7, 1d8 E &amp; F), plasma swords</li>
                             <li><strong>Best For:</strong> Heavy damage dealers who want maximum firepower</li>
                         </ul>
                     </div>
 
                     <div class="weapon-subtype">
                         <h5>Shock Weapons</h5>
-                        <p>Electrical discharge weapons that stun and damage through bio-electrical disruption.</p>
+                        <p>Electrical discharges that deal electricity (E) damage.</p>
                         <ul>
-                            <li><strong>Advantages:</strong> Nonlethal options, effective against electronics, stunning effects</li>
-                            <li><strong>Disadvantages:</strong> Environmental conductivity issues, limited lethality</li>
-                            <li><strong>Examples:</strong> Shock rifles, arc pistols, static weapons</li>
-                            <li><strong>Best For:</strong> Law enforcement types and non-lethal specialists</li>
+                            <li><strong>Advantages:</strong> Many have the <em>arc</em> critical effect, so a critical hit also zaps a second creature nearby</li>
+                            <li><strong>Disadvantages:</strong> Some creatures and robots resist electricity</li>
+                            <li><strong>Examples:</strong> Static arc pistol (item level 2, 1d6 E), arc rifles, shock truncheons</li>
+                            <li><strong>Best For:</strong> Characters who like chaining damage through tight groups</li>
                         </ul>
                     </div>
+                    <p>Sonic (So) and cryo (C) weapons round out the energy options. Some weapons also have the <em>stun</em> property, which you can switch on as a move action to make all their attacks nonlethal.</p>
                 </div>
             </div>
 
@@ -191,72 +207,67 @@
                     ctx11.fillStyle = '#f8f9fa';
                     ctx11.fillRect(0, 0, canvas11.width, canvas11.height);
                     
-                    // Decision tree for weapon selection
+                    // Decision tree for weapon selection (rounded boxes so every label fits)
                     const nodes = [
-                        {text: 'Weapon Selection', x: 400, y: 50, color: '#2c3e50', isRoot: true},
-                        {text: 'Combat Range?', x: 400, y: 120, color: '#34495e'},
-                        {text: 'Melee', x: 200, y: 200, color: '#e74c3c'},
-                        {text: 'Ranged', x: 600, y: 200, color: '#3498db'},
-                        {text: 'Damage Type?', x: 200, y: 280, color: '#c0392b'},
-                        {text: 'Combat Style?', x: 600, y: 280, color: '#2980b9'},
-                        {text: 'Kinetic', x: 100, y: 360, color: '#8e44ad'},
-                        {text: 'Energy', x: 300, y: 360, color: '#9b59b6'},
-                        {text: 'Precision', x: 500, y: 360, color: '#27ae60'},
-                        {text: 'Volume', x: 700, y: 360, color: '#16a085'},
-                        {text: 'Swords &\nBludgeons', x: 100, y: 440, color: '#d35400'},
-                        {text: 'Plasma &\nShock', x: 300, y: 440, color: '#e67e22'},
-                        {text: 'Laser &\nSniper', x: 500, y: 440, color: '#f39c12'},
-                        {text: 'Auto &\nHeavy', x: 700, y: 440, color: '#f1c40f'}
+                        {text: ['Choosing a Weapon'], x: 400, y: 40, w: 180, color: '#2c3e50'},
+                        {text: ['Where do you fight?'], x: 400, y: 110, w: 180, color: '#34495e'},
+                        {text: ['Melee'], x: 200, y: 185, w: 120, color: '#a93226'},
+                        {text: ['Ranged'], x: 600, y: 185, w: 120, color: '#1f5f8b'},
+                        {text: ['Damage type?'], x: 200, y: 260, w: 150, color: '#922b21'},
+                        {text: ['Fighting style?'], x: 600, y: 260, w: 150, color: '#1a5276'},
+                        {text: ['Kinetic', '(hits KAC)'], x: 105, y: 340, w: 150, color: '#6c3483'},
+                        {text: ['Energy', '(hits EAC)'], x: 295, y: 340, w: 150, color: '#5b2c6f'},
+                        {text: ['Precision'], x: 505, y: 340, w: 150, color: '#1e7d4f'},
+                        {text: ['Volume'], x: 695, y: 340, w: 150, color: '#196f3d'},
+                        {text: ['Blades, batons,', 'pulse gauntlets'], x: 105, y: 430, w: 170, color: '#8a4b08'},
+                        {text: ['Plasma, shock,', 'cryo melee'], x: 295, y: 430, w: 170, color: '#784212'},
+                        {text: ['Small arms,', 'sniper weapons'], x: 505, y: 430, w: 170, color: '#7d6608'},
+                        {text: ['Longarms, heavy', '(automatic, blast)'], x: 695, y: 430, w: 170, color: '#6e2c00'}
                     ];
-                    
-                    // Draw connections
+                    nodes.forEach(n => { n.h = n.text.length > 1 ? 50 : 36; });
+
                     const connections = [
-                        {from: 0, to: 1},
-                        {from: 1, to: 2},
-                        {from: 1, to: 3},
-                        {from: 2, to: 4},
-                        {from: 3, to: 5},
-                        {from: 4, to: 6},
-                        {from: 4, to: 7},
-                        {from: 5, to: 8},
-                        {from: 5, to: 9},
-                        {from: 6, to: 10},
-                        {from: 7, to: 11},
-                        {from: 8, to: 12},
-                        {from: 9, to: 13}
+                        [0, 1], [1, 2], [1, 3], [2, 4], [3, 5],
+                        [4, 6], [4, 7], [5, 8], [5, 9],
+                        [6, 10], [7, 11], [8, 12], [9, 13]
                     ];
-                    
-                    connections.forEach(conn => {
-                        const from = nodes[conn.from];
-                        const to = nodes[conn.to];
-                        
-                        ctx11.strokeStyle = '#bdc3c7';
-                        ctx11.lineWidth = 2;
+
+                    ctx11.strokeStyle = '#7f8c8d';
+                    ctx11.lineWidth = 2;
+                    connections.forEach(([f, t]) => {
+                        const from = nodes[f];
+                        const to = nodes[t];
                         ctx11.beginPath();
-                        ctx11.moveTo(from.x, from.y + 20);
-                        ctx11.lineTo(to.x, to.y - 20);
+                        ctx11.moveTo(from.x, from.y + from.h / 2);
+                        ctx11.lineTo(to.x, to.y - to.h / 2);
                         ctx11.stroke();
                     });
-                    
-                    // Draw nodes
-                    nodes.forEach(node => {
-                        const radius = node.isRoot ? 30 : 25;
-                        
-                        ctx11.fillStyle = node.color;
+
+                    function roundRect11(x, y, w, h, rad) {
                         ctx11.beginPath();
-                        ctx11.arc(node.x, node.y, radius, 0, 2 * Math.PI);
+                        ctx11.moveTo(x + rad, y);
+                        ctx11.arcTo(x + w, y, x + w, y + h, rad);
+                        ctx11.arcTo(x + w, y + h, x, y + h, rad);
+                        ctx11.arcTo(x, y + h, x, y, rad);
+                        ctx11.arcTo(x, y, x + w, y, rad);
+                        ctx11.closePath();
+                    }
+
+                    nodes.forEach((node, idx) => {
+                        ctx11.fillStyle = node.color;
+                        roundRect11(node.x - node.w / 2, node.y - node.h / 2, node.w, node.h, 8);
                         ctx11.fill();
-                        
-                        ctx11.fillStyle = '#fff';
-                        ctx11.font = node.isRoot ? '12px Arial' : '10px Arial';
+
+                        ctx11.fillStyle = '#ffffff';
                         ctx11.textAlign = 'center';
-                        
-                        const lines = node.text.split('\n');
-                        lines.forEach((line, i) => {
-                            const offsetY = (i - (lines.length - 1) / 2) * 12;
-                            ctx11.fillText(line, node.x, node.y + offsetY + 4);
+                        ctx11.textBaseline = 'middle';
+                        ctx11.font = idx < 2 ? 'bold 14px Arial' : '13px Arial';
+                        node.text.forEach((line, i) => {
+                            const offsetY = (i - (node.text.length - 1) / 2) * 16;
+                            ctx11.fillText(line, node.x, node.y + offsetY);
                         });
                     });
+                    ctx11.textBaseline = 'alphabetic';
                 </script>
 
                 <div class="weapon-recommendations">
@@ -269,7 +280,7 @@
                             <li><strong>Early Game:</strong> Choose weapons that match your fighting style specialization</li>
                             <li><strong>Mid Game:</strong> Invest in high-quality versions of your preferred weapon type</li>
                             <li><strong>Late Game:</strong> Collect multiple specialized weapons for different situations</li>
-                            <li><strong>Recommended Types:</strong> Any weapon type, but focus on what your fighting style enhances</li>
+                            <li><strong>Recommended Types:</strong> Soldiers are proficient with every weapon category (basic and advanced melee, small arms, longarms, heavy weapons, sniper weapons, grenades) and with light and heavy armor, so let your fighting style decide</li>
                         </ul>
                     </div>
 
@@ -277,10 +288,11 @@
                         <h5>Operative - The Precision Striker</h5>
                         <p><strong>Primary Focus:</strong> Weapons that work well with trick attack and stealth</p>
                         <ul>
-                            <li><strong>Preferred Weapons:</strong> Small arms, sniper weapons, melee weapons with finesse</li>
+                            <li><strong>Proficiencies (Core Rulebook):</strong> Basic melee weapons, small arms and sniper weapons; light armor</li>
+                            <li><strong>Preferred Weapons:</strong> Weapons with the <em>operative</em> property, which work with trick attack</li>
                             <li><strong>Key Features:</strong> High accuracy, good critical hit potential, concealable</li>
                             <li><strong>Avoid:</strong> Heavy weapons, area effect weapons, obvious military hardware</li>
-                            <li><strong>Special Consideration:</strong> Silencers and stealth-compatible equipment</li>
+                            <li><strong>Special Consideration:</strong> Quiet, concealable gear that suits stealth</li>
                         </ul>
                     </div>
 
@@ -288,8 +300,8 @@
                         <h5>Technomancer - The Magical Marksman</h5>
                         <p><strong>Primary Focus:</strong> Simple, reliable weapons that don't interfere with spellcasting</p>
                         <ul>
-                            <li><strong>Preferred Weapons:</strong> Light weapons, energy weapons, technological items</li>
-                            <li><strong>Key Features:</strong> Low maintenance, spell compatibility, technological enhancement potential</li>
+                            <li><strong>Proficiencies (Core Rulebook):</strong> Basic melee weapons and small arms; light armor</li>
+                            <li><strong>Key Features:</strong> A reliable small arm; armor never interferes with Starfinder spellcasting, so pick light armor for its defenses</li>
                             <li><strong>Synergy Options:</strong> Weapons that can be enhanced with technomancer spells</li>
                             <li><strong>Backup Plan:</strong> Always have a reliable ranged weapon for when spells run out</li>
                         </ul>
@@ -301,7 +313,7 @@
                         <ul>
                             <li><strong>Solar Weapon Users:</strong> Backup ranged weapons for when melee isn't viable</li>
                             <li><strong>Solar Armor Users:</strong> Balanced weapon selection for versatile combat roles</li>
-                            <li><strong>Key Features:</strong> Compatibility with stellar modes, enhancement potential</li>
+                            <li><strong>Proficiencies (Core Rulebook):</strong> Basic and advanced melee weapons and small arms; light armor</li>
                             <li><strong>Philosophy:</strong> Weapons should harmonize with cosmic powers rather than replace them</li>
                         </ul>
                     </div>
@@ -315,32 +327,42 @@
                 <div class="property-category">
                     <h4>Damage Properties</h4>
                     <ul>
-                        <li><strong>Automatic:</strong> Can spray bullets for area suppression</li>
-                        <li><strong>Blast:</strong> Affects multiple targets in an area</li>
-                        <li><strong>Explode:</strong> Creates damaging explosions on impact</li>
-                        <li><strong>Penetrating:</strong> Ignores some armor protection</li>
+                        <li><strong>Automatic:</strong> When you full attack, you can spray a cone instead, rolling an attack against each creature in it; it burns ammunition fast</li>
+                        <li><strong>Blast:</strong> Fires a cone out to the first range increment; roll an attack against each target in the cone</li>
+                        <li><strong>Explode:</strong> Aim at a grid intersection; everything in the radius takes the listed damage (Reflex save for half)</li>
+                        <li><strong>Penetrating:</strong> Ignores hardness equal to the weapon's item level, for breaking through doors, walls and objects</li>
                     </ul>
                 </div>
 
                 <div class="property-category">
                     <h4>Utility Properties</h4>
                     <ul>
-                        <li><strong>Bright:</strong> Illuminates areas and can blind enemies</li>
-                        <li><strong>Stun:</strong> Can render targets unconscious without killing</li>
-                        <li><strong>Trip:</strong> Can knock enemies prone</li>
-                        <li><strong>Disarm:</strong> Can remove weapons from enemy hands</li>
+                        <li><strong>Bright:</strong> Raises the light level within 20 feet of your target by one step for 1 round</li>
+                        <li><strong>Stun:</strong> Switch to stun mode as a move action, and all attacks deal nonlethal damage</li>
+                        <li><strong>Trip:</strong> +2 to your attack roll when you attempt a trip combat maneuver</li>
+                        <li><strong>Disarm:</strong> +2 to your attack roll when you attempt a disarm combat maneuver</li>
                     </ul>
                 </div>
 
                 <div class="property-category">
                     <h4>Enhancement Properties</h4>
                     <ul>
-                        <li><strong>Boost:</strong> Can be overcharged for increased damage</li>
-                        <li><strong>Quick Reload:</strong> Faster ammunition changes</li>
-                        <li><strong>Unwieldy:</strong> Requires two hands but offers increased power</li>
-                        <li><strong>Operative:</strong> Works especially well with operative abilities</li>
+                        <li><strong>Boost:</strong> Charge the weapon as a move action to add the listed damage to your next attack (costs extra charges)</li>
+                        <li><strong>Quick Reload:</strong> Reload as part of the same action as firing instead of spending a move action</li>
+                        <li><strong>Unwieldy:</strong> Can't be used in a full attack or any other action that makes multiple attacks</li>
+                        <li><strong>Operative:</strong> Works with an operative's trick attack, and anyone can add Dexterity instead of Strength to melee attack rolls with it</li>
                     </ul>
                 </div>
+
+                <h4>Critical Hits and Critical Effects</h4>
+                <p>A natural 20 on an attack roll always hits. If the total also meets or beats the target's EAC or KAC, it's a <strong>critical hit</strong>: roll damage twice (with all your bonuses each time) and add the rolls together. There is no separate confirmation roll. Many weapons also list a <strong>critical effect</strong> that triggers on a critical hit; any save it allows uses DC 10 + ½ item level + your ability modifier.</p>
+                <ul>
+                    <li><strong>Arc:</strong> The energy leaps to the nearest other creature within 10 feet for the listed damage</li>
+                    <li><strong>Bleed / Burn / Corrode:</strong> The target gains the bleeding or burning condition (corrode works like burning but deals acid damage)</li>
+                    <li><strong>Knockdown:</strong> The target is knocked prone</li>
+                    <li><strong>Staggered / Deafen:</strong> The target must make a Fortitude save or be staggered for 1 round, or deafened for 1d4 minutes</li>
+                    <li><strong>Wound / Severe Wound:</strong> Roll on the wounding table (twice and choose, for severe wound)</li>
+                </ul>
             </div>
         </section>
 
@@ -361,19 +383,18 @@
                         ctx12.fillStyle = '#f8f9fa';
                         ctx12.fillRect(0, 0, canvas12.width, canvas12.height);
                         
-                        // Draw armor balance triangle
-                        const centerX = 250;
-                        const centerY = 200;
-                        const radius = 120;
+                        // Draw armor trade-off triangle (left) with a key (right)
+                        const centerX = 150;
+                        const centerY = 165;
+                        const radius = 100;
                         
-                        // Triangle points
+                        // Triangle points: each corner is the type that leans hardest that way
                         const points = [
-                            {name: 'Protection', x: centerX, y: centerY - radius, color: '#e74c3c'},
-                            {name: 'Mobility', x: centerX - radius * Math.cos(Math.PI/6), y: centerY + radius * Math.sin(Math.PI/6), color: '#3498db'},
-                            {name: 'Features', x: centerX + radius * Math.cos(Math.PI/6), y: centerY + radius * Math.sin(Math.PI/6), color: '#27ae60'}
+                            {name: 'Protection', type: 'Heavy', x: centerX, y: centerY - radius, color: '#c0392b', labelY: -30},
+                            {name: 'Mobility', type: 'Light', x: centerX - radius * Math.cos(Math.PI/6), y: centerY + radius * Math.sin(Math.PI/6), color: '#1f5f8b', labelY: 38},
+                            {name: 'Features', type: 'Powered', x: centerX + radius * Math.cos(Math.PI/6), y: centerY + radius * Math.sin(Math.PI/6), color: '#1e7d4f', labelY: 38}
                         ];
                         
-                        // Draw triangle
                         ctx12.strokeStyle = '#2c3e50';
                         ctx12.lineWidth = 3;
                         ctx12.beginPath();
@@ -387,50 +408,57 @@
                         ctx12.closePath();
                         ctx12.stroke();
                         
-                        // Draw and label points
                         points.forEach(point => {
                             ctx12.fillStyle = point.color;
                             ctx12.beginPath();
-                            ctx12.arc(point.x, point.y, 15, 0, 2 * Math.PI);
+                            ctx12.arc(point.x, point.y, 17, 0, 2 * Math.PI);
                             ctx12.fill();
-                            
-                            ctx12.fillStyle = '#2c3e50';
-                            ctx12.font = '14px Arial';
+
+                            ctx12.fillStyle = '#ffffff';
+                            ctx12.font = 'bold 11px Arial';
                             ctx12.textAlign = 'center';
-                            
-                            let offsetY = 0;
-                            if (point.name === 'Protection') offsetY = -25;
-                            else if (point.name === 'Mobility') offsetY = 20;
-                            else offsetY = 20;
-                            
-                            ctx12.fillText(point.name, point.x, point.y + offsetY);
+                            ctx12.textBaseline = 'middle';
+                            ctx12.fillText(point.type.charAt(0), point.x, point.y);
+
+                            ctx12.fillStyle = '#1f2d3a';
+                            ctx12.font = 'bold 14px Arial';
+                            ctx12.textAlign = 'center';
+                            ctx12.textBaseline = 'alphabetic';
+                            ctx12.fillText(point.name, point.x, point.y + point.labelY);
                         });
                         
-                        // Center label
-                        ctx12.fillStyle = '#7f8c8d';
+                        ctx12.fillStyle = '#1f1d1a';
                         ctx12.font = '12px Arial';
                         ctx12.textAlign = 'center';
-                        ctx12.fillText('Perfect', centerX, centerY - 5);
-                        ctx12.fillText('Balance', centerX, centerY + 8);
+                        ctx12.fillText('Pick the', centerX, centerY + 8);
+                        ctx12.fillText('trade-off', centerX, centerY + 22);
                         
-                        // Armor type examples
-                        const examples = [
-                            {name: 'Heavy Armor', x: centerX - 30, y: centerY - 60, desc: 'Max Protection'},
-                            {name: 'Light Armor', x: centerX - 60, y: centerY + 30, desc: 'Max Mobility'},
-                            {name: 'Power Armor', x: centerX + 60, y: centerY + 30, desc: 'Max Features'}
+                        // Key
+                        const key = [
+                            {mark: 'H', color: '#c0392b', name: 'Heavy armor', lines: ['Bigger EAC/KAC bonuses,', 'low Max Dex, armor check', 'penalty, often slower']},
+                            {mark: 'L', color: '#1f5f8b', name: 'Light armor', lines: ['High Max Dex, little or', 'no penalty, full speed']},
+                            {mark: 'P', color: '#1e7d4f', name: 'Powered armor', lines: ['Own Strength and battery,', 'weapon slots, needs its', 'own proficiency']}
                         ];
-                        
-                        examples.forEach(example => {
-                            ctx12.fillStyle = '#95a5a6';
+                        let keyY = 45;
+                        key.forEach(k => {
+                            ctx12.fillStyle = k.color;
                             ctx12.beginPath();
-                            ctx12.arc(example.x, example.y, 8, 0, 2 * Math.PI);
+                            ctx12.arc(312, keyY - 4, 10, 0, 2 * Math.PI);
                             ctx12.fill();
-                            
-                            ctx12.fillStyle = '#2c3e50';
-                            ctx12.font = '10px Arial';
+                            ctx12.fillStyle = '#ffffff';
+                            ctx12.font = 'bold 11px Arial';
                             ctx12.textAlign = 'center';
-                            ctx12.fillText(example.name, example.x, example.y - 15);
-                            ctx12.fillText(example.desc, example.x, example.y + 25);
+                            ctx12.textBaseline = 'middle';
+                            ctx12.fillText(k.mark, 312, keyY - 4);
+                            ctx12.textBaseline = 'alphabetic';
+
+                            ctx12.fillStyle = '#1f2d3a';
+                            ctx12.font = 'bold 13px Arial';
+                            ctx12.textAlign = 'left';
+                            ctx12.fillText(k.name, 330, keyY);
+                            ctx12.font = '11px Arial';
+                            k.lines.forEach((line, i) => ctx12.fillText(line, 330, keyY + 16 + i * 14));
+                            keyY += 34 + k.lines.length * 14;
                         });
                     </script>
                 </div>
@@ -445,11 +473,12 @@
                     <div class="armor-stats">
                         <h5>Characteristics</h5>
                         <ul>
-                            <li><strong>AC Bonus:</strong> Low to moderate (typically +1 to +8)</li>
-                            <li><strong>Max Dex Bonus:</strong> High (usually +4 to +8)</li>
-                            <li><strong>Armor Check Penalty:</strong> Minimal (0 to -2)</li>
-                            <li><strong>Speed Adjustment:</strong> Usually no penalty</li>
-                            <li><strong>Upgrade Slots:</strong> Moderate number</li>
+                            <li><strong>EAC and KAC Bonuses:</strong> Separate bonuses that rise with item level, from +1 EAC/+2 KAC for a level-1 second skin to around +20 at the top levels</li>
+                            <li><strong>Max Dex Bonus:</strong> High (roughly +3 to +8)</li>
+                            <li><strong>Armor Check Penalty:</strong> None or −1</li>
+                            <li><strong>Speed Adjustment:</strong> None</li>
+                            <li><strong>Upgrade Slots:</strong> 0 at low levels, more as item level rises</li>
+                            <li><strong>Donning:</strong> 4 rounds to put on or take off</li>
                         </ul>
                     </div>
 
@@ -459,8 +488,8 @@
                             <li><strong>Second Skin:</strong> Ultra-thin protection for stealth operations</li>
                             <li><strong>Stationwear:</strong> Fashionable armor for urban environments</li>
                             <li><strong>D-Suit:</strong> Exploration gear for dangerous environments</li>
-                            <li><strong>Carbon Skin:</strong> High-tech synthetic protection</li>
-                            <li><strong>Kasatha Microcord:</strong> Traditional armor with modern materials</li>
+                            <li><strong>Carbon Skin:</strong> Graphite to nanotube grades of synthetic protection</li>
+                            <li><strong>Kasatha Microcord:</strong> Woven armor from kasathan tradition, made in several grades</li>
                         </ul>
                     </div>
 
@@ -468,7 +497,7 @@
                         <h5>Ideal For</h5>
                         <ul>
                             <li><strong>Operatives:</strong> Who need stealth and mobility</li>
-                            <li><strong>Technomancers:</strong> Who want spell compatibility</li>
+                            <li><strong>Technomancers and mystics:</strong> Light armor is all their class grants, and it never hinders spellcasting</li>
                             <li><strong>Envoys:</strong> Who balance combat with social roles</li>
                             <li><strong>High-Dex characters:</strong> Who want to maximize their agility bonus</li>
                         </ul>
@@ -483,22 +512,21 @@
                     <div class="armor-stats">
                         <h5>Characteristics</h5>
                         <ul>
-                            <li><strong>AC Bonus:</strong> High (typically +6 to +20)</li>
-                            <li><strong>Max Dex Bonus:</strong> Low (usually +1 to +4)</li>
-                            <li><strong>Armor Check Penalty:</strong> Significant (-1 to -6)</li>
-                            <li><strong>Speed Adjustment:</strong> Often reduces movement</li>
-                            <li><strong>Upgrade Slots:</strong> Many slots for customization</li>
+                            <li><strong>EAC and KAC Bonuses:</strong> Higher than light armor of the same level; a level-1 golemforged plating gives +2 EAC/+5 KAC</li>
+                            <li><strong>Max Dex Bonus:</strong> Low (roughly +0 to +4)</li>
+                            <li><strong>Armor Check Penalty:</strong> Significant (about −2 to −5)</li>
+                            <li><strong>Speed Adjustment:</strong> −5 or −10 feet</li>
+                            <li><strong>Upgrade Slots:</strong> More than light armor of the same level</li>
+                            <li><strong>Donning:</strong> 16 rounds to put on or take off; you need light armor proficiency plus heavy armor proficiency (soldiers have it; others take the Heavy Armor Proficiency feat)</li>
                         </ul>
                     </div>
 
                     <div class="armor-examples">
                         <h5>Heavy Armor Examples</h5>
                         <ul>
-                            <li><strong>Golem Hide:</strong> Massive protection for front-line fighters</li>
-                            <li><strong>Jarlslayer:</strong> Military-grade assault armor</li>
-                            <li><strong>X-Series:</strong> Corporate security armor</li>
-                            <li><strong>Vesk Overplate:</strong> Traditional heavy protection</li>
-                            <li><strong>Shobhad Longcoat:</strong> Multi-armed armor design</li>
+                            <li><strong>Golemforged Plating:</strong> Massive protection for front-line fighters, available from 1st level</li>
+                            <li><strong>Vesk Overplate:</strong> Heavy plate in the vesk military tradition</li>
+                            <li><strong>Aegis Series:</strong> High-level heavy armor for elite troops</li>
                         </ul>
                     </div>
 
@@ -506,9 +534,9 @@
                         <h5>Ideal For</h5>
                         <ul>
                             <li><strong>Soldiers:</strong> Who specialize in front-line combat</li>
-                            <li><strong>Solarians:</strong> Who need protection for melee combat</li>
+                            <li><strong>Solarians:</strong> Only with the Heavy Armor Proficiency feat, since the class grants light armor</li>
                             <li><strong>Tank-focused characters:</strong> Who draw enemy fire</li>
-                            <li><strong>Low-Dex characters:</strong> Who can't benefit from agility anyway</li>
+                            <li><strong>Low-Dex characters:</strong> Whose low Dexterity modifier already fits under a heavy armor's Max Dex</li>
                         </ul>
                     </div>
                 </div>
@@ -516,38 +544,36 @@
                 <h3>Powered Armor - The Best of Both Worlds</h3>
                 <div class="armor-type">
                     <h4>Philosophy: "Technology Solves Everything"</h4>
-                    <p>Powered armor uses technology to provide heavy protection without sacrificing mobility. It's expensive and complex, but offers capabilities that regular armor can't match.</p>
+                    <p>Powered armor is a battery-driven frame with its own Strength score, speed and weapon slots. It's expensive and complex, but offers capabilities that regular armor can't match. The Core Rulebook's battle harness, for example, is item level 5: +9 EAC, +12 KAC, Strength 18, speed 30 feet, a battery that lasts 20 hours.</p>
                     
                     <div class="armor-stats">
                         <h5>Characteristics</h5>
                         <ul>
-                            <li><strong>AC Bonus:</strong> Very high (typically +10 to +25)</li>
-                            <li><strong>Max Dex Bonus:</strong> Moderate (usually +2 to +6)</li>
-                            <li><strong>Armor Check Penalty:</strong> Variable but often compensated</li>
-                            <li><strong>Speed Adjustment:</strong> Often increases movement</li>
-                            <li><strong>Special Features:</strong> Built-in systems and enhancements</li>
+                            <li><strong>EAC and KAC Bonuses:</strong> High, from +9/+12 (battle harness, level 5) to +18/+24 (jarlslayer, level 15)</li>
+                            <li><strong>Max Dex Bonus:</strong> Low (the battle harness allows +2)</li>
+                            <li><strong>Armor Check Penalty:</strong> Significant (−4 on the battle harness)</li>
+                            <li><strong>Speed:</strong> The suit has its own speed instead of an adjustment</li>
+                            <li><strong>Special Features:</strong> Its own Strength (which also sets your carrying capacity), weapon slots and upgrade slots</li>
                         </ul>
                     </div>
 
                     <div class="powered-features">
                         <h5>Special Powered Armor Features</h5>
                         <ul>
-                            <li><strong>Strength Enhancement:</strong> Boosts physical power for heavy lifting</li>
-                            <li><strong>Environmental Sealing:</strong> Complete protection from hazardous environments</li>
-                            <li><strong>Integrated Systems:</strong> Built-in computers, communications, and sensors</li>
-                            <li><strong>Flight Capability:</strong> Some suits provide aerial mobility</li>
-                            <li><strong>Weapon Mounts:</strong> Integrated weapon systems for hands-free combat</li>
+                            <li><strong>Strength Score:</strong> The suit's Strength replaces yours, for melee and carrying</li>
+                            <li><strong>Environmental Protection:</strong> Like all armor, it shields you from vacuum and hostile atmospheres</li>
+                            <li><strong>Built-in Attack:</strong> Each suit lists its own unarmed damage (1d10 B for the battle harness)</li>
+                            <li><strong>Weapon Slots:</strong> Mount weapons on the frame</li>
+                            <li><strong>Upgrade Slots:</strong> Take armor upgrades like any other armor</li>
                         </ul>
                     </div>
 
                     <div class="powered-examples">
                         <h5>Powered Armor Examples</h5>
                         <ul>
-                            <li><strong>Flight Suit:</strong> Aerial mobility and environmental protection</li>
-                            <li><strong>Battle Harness:</strong> Combat-focused enhancement suit</li>
-                            <li><strong>Mechanized Plate:</strong> Heavy assault configuration</li>
-                            <li><strong>Aegis Series:</strong> Corporate executive protection</li>
-                            <li><strong>Deep Walker:</strong> Extreme environment exploration</li>
+                            <li><strong>Battle Harness:</strong> The basic infantry frame used by professional militaries</li>
+                            <li><strong>Jarlslayer:</strong> High-level assault armor</li>
+                            <li><em>Later books add many more frames, from cargo lifters to flight frames.</em></li>
                         </ul>
                     </div>
 
@@ -555,9 +581,9 @@
                         <h5>Powered Armor Considerations</h5>
                         <ul>
                             <li><strong>Cost:</strong> Extremely expensive to purchase and maintain</li>
-                            <li><strong>Power Source:</strong> Requires regular battery charging or replacement</li>
+                            <li><strong>Power Source:</strong> Uses standard batteries; recharge it at a generator or recharging station, or swap in a new battery</li>
                             <li><strong>Complexity:</strong> Can malfunction or be disabled by EMP effects</li>
-                            <li><strong>Proficiency:</strong> Requires specific training to operate effectively</li>
+                            <li><strong>Proficiency:</strong> Requires powered armor proficiency, which most characters gain through a feat</li>
                             <li><strong>Social Impact:</strong> May be restricted or cause alarm in civilian areas</li>
                         </ul>
                     </div>
@@ -566,35 +592,32 @@
 
             <div class="armor-upgrades">
                 <h3>Armor Upgrades - Customization Options</h3>
-                <p>Armor upgrade slots let you customize your protection with specialized systems:</p>
+                <p>Each suit of armor has a number of upgrade slots; each upgrade has its own item level and fills one or more slots. Some examples:</p>
 
                 <div class="upgrade-category">
                     <h4>Defensive Upgrades</h4>
                     <ul>
-                        <li><strong>Force Field:</strong> Energy shield that regenerates over time</li>
-                        <li><strong>Radiation Buffer:</strong> Protection against radioactive environments</li>
-                        <li><strong>Thermal Capacitor:</strong> Resistance to extreme temperatures</li>
-                        <li><strong>Jump Jets:</strong> Short-range flight capability</li>
+                        <li><strong>Force Field:</strong> An energy shield in several colour grades (brown at level 3 up to prismatic at 20)</li>
+                        <li><strong>Radiation Buffer:</strong> Extra protection against radiation</li>
+                        <li><strong>Thermal Capacitor:</strong> Extra protection against extreme temperatures</li>
+                        <li><strong>Jump Jets:</strong> Short bursts of flight (light or heavy armor)</li>
                     </ul>
                 </div>
 
                 <div class="upgrade-category">
                     <h4>Utility Upgrades</h4>
                     <ul>
-                        <li><strong>Comm Unit:</strong> Integrated communication system</li>
-                        <li><strong>Computer:</strong> Built-in data processing and storage</li>
-                        <li><strong>Environmental Protections:</strong> Life support for hostile environments</li>
-                        <li><strong>Spotlight:</strong> Powerful illumination system</li>
+                        <li><strong>Infrared Sensors:</strong> Sensors that pick up heat signatures in the dark</li>
+                        <li><strong>Filtered Rebreather:</strong> Extra help against airborne hazards</li>
+                        <li><em>No upgrade is needed for basic life support: every suit of armor already has environmental protections.</em></li>
                     </ul>
                 </div>
 
                 <div class="upgrade-category">
                     <h4>Combat Upgrades</h4>
                     <ul>
-                        <li><strong>Weapon Mount:</strong> Integrated weapon system</li>
-                        <li><strong>Targeting Computer:</strong> Enhanced accuracy systems</li>
-                        <li><strong>Reactive Camouflage:</strong> Adaptive stealth technology</li>
-                        <li><strong>Smuggler's Compartment:</strong> Hidden storage space</li>
+                        <li><strong>Targeting Computer:</strong> Computer-assisted aim</li>
+                        <li><strong>Weapon Slots:</strong> On powered armor, mount weapons directly on the frame</li>
                     </ul>
                 </div>
             </div>
@@ -605,7 +628,7 @@
             
             <div class="wealth-progression">
                 <h3>Understanding Wealth by Level</h3>
-                <p>Starfinder uses a wealth-by-level system to ensure characters have appropriate equipment for their level. Think of it like a video game where you unlock better gear as you progress.</p>
+                <p>The Core Rulebook gives GMs a table of how much total wealth (gear plus credits) a character is expected to have at each level, from 1,000 credits at 1st level to 3,775,000 at 20th. GMs use it to pace rewards and to equip characters who start above 1st level. Think of it like a video game where you unlock better gear as you progress.</p>
 
                 <canvas id="wealthProgression" width="600" height="300"></canvas>
                 <script>
@@ -616,87 +639,109 @@
                     ctx14.fillStyle = '#f8f9fa';
                     ctx14.fillRect(0, 0, canvas14.width, canvas14.height);
                     
-                    // Draw wealth progression chart
+                    // Core Rulebook Table 11-5: Character Wealth per Level (odd levels shown)
                     const levels = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
-                    const wealth = [1000, 4000, 10500, 25000, 45000, 100000, 200000, 400000, 750000, 1300000];
-                    
-                    // Draw axes
+                    const wealth = [1000, 4000, 9000, 23000, 45000, 100000, 225000, 500000, 1125000, 2550000];
+                    const wealthLabels = ['1k', '4k', '9k', '23k', '45k', '100k', '225k', '500k', '1.125M', '2.55M'];
+                    const wLeft = 70, wRight = 570, wTop = 40, wBottom = 240;
+                    const logMin = Math.log10(1000), logMax = Math.log10(3000000);
+                    const yOf = v => wBottom - ((Math.log10(v) - logMin) / (logMax - logMin)) * (wBottom - wTop);
+                    const xOf = lvl => wLeft + ((lvl - 1) / 18) * (wRight - wLeft - 20) + 10;
+
+                    // Grid lines at 1k, 10k, 100k, 1M
+                    ctx14.font = '11px Arial';
+                    [1000, 10000, 100000, 1000000].forEach(v => {
+                        const y = yOf(v);
+                        ctx14.strokeStyle = '#d5d8dc';
+                        ctx14.lineWidth = 1;
+                        ctx14.beginPath();
+                        ctx14.moveTo(wLeft, y);
+                        ctx14.lineTo(wRight, y);
+                        ctx14.stroke();
+                        ctx14.fillStyle = '#2c3e50';
+                        ctx14.textAlign = 'right';
+                        ctx14.fillText(v >= 1000000 ? '1M' : (v / 1000) + 'k', wLeft - 6, y + 4);
+                    });
+
+                    // Axes
                     ctx14.strokeStyle = '#2c3e50';
                     ctx14.lineWidth = 2;
                     ctx14.beginPath();
-                    ctx14.moveTo(50, 250);
-                    ctx14.lineTo(550, 250);
-                    ctx14.moveTo(50, 250);
-                    ctx14.lineTo(50, 50);
+                    ctx14.moveTo(wLeft, wBottom);
+                    ctx14.lineTo(wRight, wBottom);
+                    ctx14.moveTo(wLeft, wBottom);
+                    ctx14.lineTo(wLeft, wTop - 10);
                     ctx14.stroke();
-                    
-                    // Draw wealth progression line
-                    ctx14.strokeStyle = '#3498db';
+
+                    // Line
+                    ctx14.strokeStyle = '#1f5f8b';
                     ctx14.lineWidth = 3;
                     ctx14.beginPath();
-                    
                     levels.forEach((level, index) => {
-                        const x = 50 + ((level - 1) / 18) * 500;
-                        const y = 250 - (Math.log10(wealth[index]) / Math.log10(1300000)) * 200;
-                        
-                        if (index === 0) {
-                            ctx14.moveTo(x, y);
-                        } else {
-                            ctx14.lineTo(x, y);
-                        }
-                        
-                        // Draw points
-                        ctx14.fillStyle = '#e74c3c';
+                        const x = xOf(level), y = yOf(wealth[index]);
+                        if (index === 0) ctx14.moveTo(x, y); else ctx14.lineTo(x, y);
+                    });
+                    ctx14.stroke();
+
+                    // Points and labels
+                    levels.forEach((level, index) => {
+                        const x = xOf(level), y = yOf(wealth[index]);
+                        ctx14.fillStyle = '#c0392b';
                         ctx14.beginPath();
                         ctx14.arc(x, y, 4, 0, 2 * Math.PI);
                         ctx14.fill();
-                        
-                        // Label points
+
+                        const label = wealthLabels[index];
                         ctx14.fillStyle = '#2c3e50';
                         ctx14.font = '10px Arial';
+                        // Level 1 sits on the 1k gridline, which already labels it
+                        if (index > 0) {
+                            ctx14.textAlign = 'right';
+                            ctx14.fillText(label, x - 6, y - 6);
+                        }
                         ctx14.textAlign = 'center';
-                        ctx14.fillText(`L${level}`, x, y - 10);
-                        ctx14.fillText(`${(wealth[index] / 1000).toFixed(0)}k`, x, 270);
+                        ctx14.font = '11px Arial';
+                        ctx14.fillText(`${level}`, x, wBottom + 16);
                     });
-                    
-                    ctx14.stroke();
-                    
-                    // Labels
+
                     ctx14.fillStyle = '#2c3e50';
                     ctx14.font = '12px Arial';
                     ctx14.textAlign = 'center';
-                    ctx14.fillText('Character Level', 300, 290);
-                    
+                    ctx14.fillText('Character Level', (wLeft + wRight) / 2, 285);
+                    ctx14.fillText('Expected wealth in credits (log scale)', (wLeft + wRight) / 2, 20);
+
                     ctx14.save();
-                    ctx14.translate(20, 150);
+                    ctx14.translate(18, (wTop + wBottom) / 2);
                     ctx14.rotate(-Math.PI/2);
-                    ctx14.fillText('Wealth (Credits)', 0, 0);
+                    ctx14.textAlign = 'center';
+                    ctx14.fillText('Credits', 0, 0);
                     ctx14.restore();
                 </script>
 
                 <div class="wealth-explanation">
                     <h4>Understanding the Progression</h4>
-                    <p>Notice how wealth increases exponentially rather than linearly. This reflects the reality that higher-level characters face exponentially more dangerous challenges and need correspondingly powerful equipment to survive.</p>
+                    <p>Notice how wealth grows roughly geometrically: about 50% more each level from the middle levels on (100,000 at 11th, 150,000 at 12th, 225,000 at 13th). Item prices climb the same way, so a weapon a few levels behind you quickly stops pulling its weight.</p>
+                    <p>For a character built above 1st level, the Core Rulebook suggests spending no more than half your wealth on any single item; for a balanced build, no more than 35% on any one weapon and 35% on armor and any one protective device.</p>
                 </div>
             </div>
 
             <div class="spending-priorities">
                 <h3>Equipment Spending Priorities</h3>
-                <p>Not all equipment is created equal. Smart spending means prioritizing items that have the biggest impact on your character's effectiveness.</p>
+                <p>Not all equipment is created equal. Smart spending means prioritizing items that have the biggest impact on your character's effectiveness. The order below is this guide's advice, not a rule.</p>
 
                 <div class="priority-tier">
-                    <h4>Tier 1: Survival Essentials (40% of budget)</h4>
+                    <h4>Priority 1: Survival Essentials</h4>
                     <p>Equipment that keeps you alive and functional in basic situations.</p>
                     <ul>
                         <li><strong>Primary Weapon:</strong> Your main damage-dealing tool</li>
                         <li><strong>Armor:</strong> Protection appropriate for your role</li>
                         <li><strong>Basic Medical Supplies:</strong> Healing items for emergency recovery</li>
-                        <li><strong>Environmental Protection:</strong> Basic life support for hostile environments</li>
+                        <li><strong>Environmental Gear:</strong> Supplies for places where your armor's built-in protections aren't enough</li>
                     </ul>
                 </div>
 
                 <div class="priority-tier">
-                    <h4>Tier 2: Professional Tools (30% of budget)</h4>
+                    <h4>Priority 2: Professional Tools</h4>
                     <p>Equipment that makes you effective at your chosen role and class abilities.</p>
                     <ul>
                         <li><strong>Professional Kits:</strong> Tools that give bonuses to your key skills</li>
@@ -707,10 +752,10 @@
                 </div>
 
                 <div class="priority-tier">
-                    <h4>Tier 3: Force Multipliers (20% of budget)</h4>
+                    <h4>Priority 3: Force Multipliers</h4>
                     <p>Equipment that amplifies your existing capabilities beyond baseline effectiveness.</p>
                     <ul>
-                        <li><strong>Weapon Accessories:</strong> Scopes, fusion seals, and enhancement items</li>
+                        <li><strong>Weapon Fusions:</strong> Magical add-ons such as <em>flaming</em>; the total level of a weapon's fusions can't exceed the weapon's item level, and a fusion seal lets you move a fusion to a new weapon</li>
                         <li><strong>Augmentations:</strong> Permanent improvements to your body</li>
                         <li><strong>Magic Items:</strong> Technological or mystical enhancement devices</li>
                         <li><strong>Advanced Consumables:</strong> High-quality ammunition, medical supplies, and specialty items</li>
@@ -718,7 +763,7 @@
                 </div>
 
                 <div class="priority-tier">
-                    <h4>Tier 4: Specialty Gear (10% of budget)</h4>
+                    <h4>Priority 4: Specialty Gear</h4>
                     <p>Situational equipment for specific challenges or character concepts.</p>
                     <ul>
                         <li><strong>Niche Tools:</strong> Specialized equipment for unusual situations</li>
@@ -736,8 +781,8 @@
                     <h4>Level-Based Upgrades</h4>
                     <p>Certain levels represent major equipment upgrade opportunities:</p>
                     <ul>
-                        <li><strong>Levels 3, 6, 9, 12, 15, 18:</strong> Major wealth increases allow significant upgrades</li>
-                        <li><strong>Odd Levels:</strong> Smaller improvements and accessory upgrades</li>
+                        <li><strong>Every level:</strong> Expected wealth rises each level (for example, 9,000 credits at 5th and 15,000 at 6th), so check what new item levels you can now afford</li>
+                        <li><strong>When a weapon falls behind:</strong> Compare its item level to your character level; one several levels lower is usually due for replacement</li>
                         <li><strong>Major Story Beats:</strong> Successful missions often provide equipment rewards</li>
                         <li><strong>New Environments:</strong> Entering different campaign phases may require different gear</li>
                     </ul>
@@ -768,7 +813,7 @@
         </section>
 
         <section class="practice-activities">
-            <h2>Equipment Mastery Workshop</h2>
+            <h2>Try It at the Table</h2>
             
             <div class="activity">
                 <h3>Activity 1: Character Equipment Audit</h3>
@@ -778,23 +823,24 @@
 &lt;strong&gt;Primary Role:&lt;/strong&gt; [Combat, support, utility, etc.]
 &lt;strong&gt;Mission Type:&lt;/strong&gt; [Urban, wilderness, space, etc.]
 
-&lt;strong&gt;Essential Equipment (40% budget):&lt;/strong&gt;
+&lt;strong&gt;Essential Equipment:&lt;/strong&gt;
 - Primary Weapon: [Name, cost, justification]
 - Armor: [Name, cost, justification]
 - Medical Supplies: [Items, total cost]
 - Environmental Gear: [Items, total cost]
 
-&lt;strong&gt;Professional Tools (30% budget):&lt;/strong&gt;
+&lt;strong&gt;Professional Tools:&lt;/strong&gt;
 - Skill Kits: [Which tools for which skills]
 - Secondary Weapons: [Backup and situational options]
 - Technology: [Computers, vehicles, gadgets]
 
-&lt;strong&gt;Force Multipliers (20% budget):&lt;/strong&gt;
-- Weapon Enhancements: [Accessories, fusions, modifications]
+&lt;strong&gt;Force Multipliers:&lt;/strong&gt;
+- Weapon Enhancements: [Fusions, accessories]
 - Augmentations: [If any at this level]
 - Magic Items: [Enhancement devices]
+(Check: no single weapon over 35% of your wealth, armor under 35%)
 
-&lt;strong&gt;Specialty Gear (10% budget):&lt;/strong&gt;
+&lt;strong&gt;Specialty Gear:&lt;/strong&gt;
 - Situational Items: [Mission-specific gear]
 - Character Flavor: [Thematic equipment]</code></pre>
             </div>
@@ -823,11 +869,11 @@
                 <p>Given these constraints, optimize an armor loadout:</p>
                 <ul>
                     <li><strong>Character:</strong> 5th level Operative (Dex 18)</li>
-                    <li><strong>Budget:</strong> 8,000 credits for armor and upgrades</li>
+                    <li><strong>Budget:</strong> 3,150 credits for armor and upgrades (35% of the 9,000 credits a 5th-level character is expected to have)</li>
                     <li><strong>Mission:</strong> Corporate infiltration with potential combat</li>
                     <li><strong>Requirements:</strong> Stealth capability, social acceptability, emergency protection</li>
                 </ul>
-                <p>Choose armor type, upgrades, and justify how the combination meets all requirements.</p>
+                <p>Choose armor type, upgrades, and justify how the combination meets all requirements. Hint: with Dexterity 18 (+4), look for light armor whose Max Dex Bonus is at least +4, and remember that operatives are proficient only with light armor.</p>
             </div>
 
             <div class="activity">
@@ -851,9 +897,9 @@
                 <h4>Solutions:</h4>
                 <ul>
                     <li><strong>Prioritize ruthlessly:</strong> Buy essentials first, luxuries later</li>
-                    <li><strong>Consider used gear:</strong> Lower-level equipment at reduced prices</li>
+                    <li><strong>Consider lower-level gear:</strong> A cheaper, lower-item-level version of the same weapon or armor line</li>
                     <li><strong>Team coordination:</strong> Share expensive equipment between party members</li>
-                    <li><strong>Crafting discounts:</strong> Make your own gear for cost savings</li>
+                    <li><strong>Crafting:</strong> Building gear from UPBs doesn't save credits in Starfinder, but it lets you make exactly what you need when no shop has it</li>
                     <li><strong>Mission rewards:</strong> Choose missions that provide needed equipment</li>
                 </ul>
             </div>
@@ -864,7 +910,7 @@
                 <ul>
                     <li><strong>Regular upgrade schedule:</strong> Budget for equipment replacement</li>
                     <li><strong>Modification over replacement:</strong> Upgrade existing gear when possible</li>
-                    <li><strong>Sell old gear:</strong> Recoup costs by selling obsolete equipment</li>
+                    <li><strong>Sell old gear:</strong> Expect only about 10% of its price, so selling is a top-up, not a plan</li>
                     <li><strong>Repurpose equipment:</strong> Find new uses for old gear</li>
                     <li><strong>Emergency backup:</strong> Keep older gear as backup systems</li>
                 </ul>
@@ -874,8 +920,8 @@
                 <h3>Problem: "I have too much gear to carry"</h3>
                 <h4>Solutions:</h4>
                 <ul>
-                    <li><strong>Weight optimization:</strong> Choose lighter alternatives where possible</li>
-                    <li><strong>Storage solutions:</strong> Bags of holding, vehicles, and base storage</li>
+                    <li><strong>Bulk optimization:</strong> Choose items with L or negligible Bulk where possible</li>
+                    <li><strong>Storage solutions:</strong> Your starship's hold, vehicles, and base storage</li>
                     <li><strong>Team distribution:</strong> Spread equipment across party members</li>
                     <li><strong>Mission-specific loadouts:</strong> Carry only what you need for each mission</li>
                     <li><strong>Equipment caches:</strong> Pre-position gear at common destinations</li>
@@ -896,7 +942,7 @@
         </section>
 
         <section class="next-steps">
-            <h2>Your Equipment Mastery Journey</h2>
+            <h2>Where to Go From Here</h2>
             
             <div class="mastery-checklist">
                 <h3>Equipment Expertise Checklist</h3>
@@ -914,7 +960,7 @@
 
             <div class="equipment-philosophy">
                 <h3>The Equipment Mindset</h3>
-                <p>Master equipment users understand that gear is a tool in service of character concept and story. The best equipment isn't necessarily the most expensive or most powerful – it's the gear that helps you tell the story you want to tell and solve the problems you're likely to face.</p>
+                <p>Experienced players understand that gear is a tool in service of character concept and story. The best equipment isn't necessarily the most expensive or most powerful – it's the gear that helps you tell the story you want to tell and solve the problems you're likely to face.</p>
 
                 <div class="equipment-wisdom">
                     <h4>Equipment Wisdom for Starfinder Heroes</h4>
@@ -937,17 +983,17 @@
         </section>
 
         <footer>
-            <p>You now have the knowledge to outfit any Starfinder character for adventure across the galaxy! In our next tutorial, we'll explore the dangerous cosmos itself – <a href="/starfinder_planets.html">planets, space travel, and the environments</a> where your well-equipped heroes will test their skills.</p>
+            <p>You now have the knowledge to outfit any Starfinder character for adventure across the galaxy! Next in this guide, <a href="/starfinder_character_examples.html">Character Examples &amp; Crews</a> puts races, classes, themes and gear together into complete characters.</p>
             <p><em>Adventure is out there – make sure you're properly equipped to find it!</em></p>
         </footer>
     </main>
-    <nav class="page-nav">
-        <a href="/starfinder_dice_roller.html">&larr; Dice Roller</a>
-        <a href="/starfinder_classes.html">Classes &rarr;</a>
-    </nav>
-<script>
-function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-toggle');if(h.getAttribute('data-theme')==='dark'){h.removeAttribute('data-theme');b.textContent='\u{1F319} Dark';localStorage.setItem('theme','light');}else{h.setAttribute('data-theme','dark');b.textContent='\u{2600}\u{FE0F} Light';localStorage.setItem('theme','dark');}}
-(function(){if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(b)b.textContent='\u{2600}\u{FE0F} Light';});}})();
-</script>
+
+    <footer>
+<div class="page-nav">
+    <a class="prev" href="/starfinder_themes.html">Themes</a>
+    <a class="next" href="/starfinder_character_examples.html">Character Examples &amp; Crews</a>
+</div>
+    </footer>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
 </body>
 </html>

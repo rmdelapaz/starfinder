@@ -3,55 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starfinder Ancestries and Character Creation - Tutorial 2</title>
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
+    <title>Character Creation &amp; Races - The Starfinder Guide</title>
+    <meta name="description" content="Starfinder character creation: the seven core races and the legacy races, point buy, ability scores, Hit Points, Stamina and Resolve, with a worked example.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <script type="module" src="/js/diagrams.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
+    <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 <body>
-    <nav class="site-nav">
-        <ul class="nav-links">
-            <li><a href="/">Starfinder</a></li>
-            <li><a href="https://rays-home.netlify.app/">Ray's House of Fun</a></li>
-            <li><a href="https://rays-home.netlify.app/contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#x1F319; Dark</button>
-    </nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
     <header>
-        <h1>The People of the Pact Worlds</h1>
-        <p>Creating Your Starfinder Character - Ancestries Deep Dive</p>
+        <h1>Character Creation &amp; Races</h1>
+        <p>How to build a Starfinder character, from the seven core races to point-buy ability scores, Stamina, Hit Points and Resolve.</p>
     </header>
 
-    <main>
+    <main id="main">
+
         <section class="intro">
             <h2>Choosing Your Cosmic Heritage</h2>
-            <p>Selecting your character's ancestry in Starfinder is like choosing your starting point on a vast galactic map. Each ancestry isn't just a collection of stats – it's a window into entire cultures, histories, and ways of thinking about the universe. Think of it like choosing which country you're from in our world, except some of these "countries" are entire planets, and some of your neighbors might have four arms or be made of living metal.</p>
+            <p>Selecting your character's race in Starfinder is like choosing your starting point on a vast galactic map. Each race isn't just a collection of stats – it's a window into entire cultures, histories, and ways of thinking about the universe. Think of it like choosing which country you're from in our world, except some of these "countries" are entire planets, and some of your neighbors might have four arms or be made of living metal.</p>
             
             <div class="analogy-box">
                 <h3>The University Dormitory Analogy</h3>
-                <p>Imagine the Pact Worlds as a massive interstellar university, and each ancestry represents students from different backgrounds living in the same cosmic dormitory. The humans are like the local students – adaptable and everywhere. The androids are the engineering majors who sometimes forget to eat. The kasathas are the art students with incredible multitasking skills. The lashuntas are the psychology majors who always seem to know what you're thinking. Each brings their own perspective to the shared experience of galactic civilization.</p>
+                <p>Imagine the Pact Worlds as a massive interstellar university, and each race represents residents from different backgrounds living in the same cosmic dormitory. The humans are like the locals – adaptable and everywhere. The androids are the engineering majors who sometimes forget to eat. The kasathas are the art majors with incredible multitasking skills. The lashuntas are the psychology majors who always seem to know what you're thinking. Each brings their own perspective to the shared experience of galactic civilization.</p>
             </div>
         </section>
 
         <section class="ancestry-overview">
-            <h2>Understanding Ancestry Mechanics</h2>
-            <p>Every ancestry provides your character with a foundation of abilities, much like how your genetics influence your natural talents:</p>
+            <h2>Understanding Race Mechanics</h2>
+            <p>The Core Rulebook calls these choices <em>races</em> (later 1e books such as Interstellar Species say "species"). Every race provides your character with a foundation of abilities, much like how your genetics influence your natural talents:</p>
 
             <div class="mermaid">
                 graph TD
-                    A[Choose Ancestry] --> B[Ability Score Adjustments]
+                    A[Choose Race] --> B[Ability Score Adjustments]
                     A --> C[Size Category]
                     A --> D[Base Speed]
                     A --> E[Special Abilities]
                     A --> F[Languages]
+                    A --> HP[Race Hit Points]
                     B --> G[Character Sheet]
                     C --> G
                     D --> G
                     E --> G
                     F --> G
+                    HP --> G
                     G --> H[Apply Class Features]
             </div>
 
@@ -61,19 +65,22 @@
                     <li><strong>Ability Score Adjustments:</strong> Like natural aptitudes – some species are naturally stronger, smarter, or more charismatic</li>
                     <li><strong>Size Category:</strong> Affects combat, stealth, and how much gear you can carry</li>
                     <li><strong>Base Speed:</strong> How fast you move – important for positioning and chases</li>
-                    <li><strong>Special Abilities:</strong> Unique traits that set your ancestry apart</li>
+                    <li><strong>Hit Points:</strong> Your race's HP (2, 4 or 6) is added to your class's HP at 1st level</li>
+                    <li><strong>Special Abilities:</strong> Unique traits that set your race apart</li>
                     <li><strong>Languages:</strong> What you can speak, read, and understand</li>
                 </ul>
             </div>
         </section>
 
         <section class="core-ancestries">
-            <h2>The Core Ancestries</h2>
+            <h2>The Seven Core Races</h2>
+            <p>The Core Rulebook (2017) presents seven races: androids, humans, kasathas, lashuntas, shirrens, vesk and ysoki. The old Pathfinder races (dwarf, elf, gnome, half-elf, half-orc and halfling) appear as "legacy races" in the back of the same book.</p>
             
             <div class="ancestry-card">
                 <h3>Humans - The Cosmic Adapters</h3>
                 <div class="stats-block">
                     <p><strong>Ability Adjustments:</strong> +2 to any one ability score</p>
+                    <p><strong>Hit Points:</strong> 4</p>
                     <p><strong>Size:</strong> Medium</p>
                     <p><strong>Speed:</strong> 30 feet</p>
                     <p><strong>Special:</strong> Bonus skill rank per level, bonus feat at 1st level</p>
@@ -87,14 +94,14 @@
                     <p>Human society in the Pact Worlds resembles a massive melting pot. From the corporate boardrooms of Verces to the agricultural communes of Castrovel, humans have integrated themselves into every aspect of galactic civilization. They're often the bridge between other species, serving as diplomats, traders, and cultural interpreters.</p>
 
                     <h4>Real-World Parallel</h4>
-                    <p>Think of humans as the "study abroad students" of the galaxy. Just as exchange students often become more adaptable and culturally aware, Starfinder humans have developed an incredible ability to learn new skills quickly and fit into any social situation.</p>
+                    <p>Think of humans as the "exchange visitors" of the galaxy. Just as people who live abroad often become more adaptable and culturally aware, Starfinder humans have developed an incredible ability to learn new skills quickly and fit into any social situation.</p>
                 </div>
 
                 <div class="gameplay-impact">
                     <h4>Mechanical Benefits</h4>
                     <ul>
                         <li><strong>Flexibility:</strong> The +2 to any ability score means humans work well with any class</li>
-                        <li><strong>Skill Mastery:</strong> Extra skill ranks make them competent at everything</li>
+                        <li><strong>Skilled:</strong> An extra skill rank every level makes them competent at many things</li>
                         <li><strong>Feat Access:</strong> Bonus feat opens up unique character builds early</li>
                     </ul>
 
@@ -120,10 +127,11 @@
             <div class="ancestry-card">
                 <h3>Androids - The Artificial Souls</h3>
                 <div class="stats-block">
-                    <p><strong>Ability Adjustments:</strong> +2 Dexterity, +2 Intelligence, -2 Charisma</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Dexterity, +2 Intelligence, −2 Charisma</p>
+                    <p><strong>Hit Points:</strong> 4</p>
                     <p><strong>Size:</strong> Medium</p>
                     <p><strong>Speed:</strong> 30 feet</p>
-                    <p><strong>Special:</strong> Constructed, flat affect, upgrade slot</p>
+                    <p><strong>Special:</strong> Constructed, darkvision and low-light vision, flat affect, upgrade slot</p>
                 </div>
 
                 <div class="cultural-overview">
@@ -139,21 +147,21 @@
 
                 <div class="special-abilities">
                     <h4>Constructed Trait</h4>
-                    <p>Androids don't need to breathe, eat, or sleep, making them perfect for space exploration and hostile environments. They're like having a team member who never gets tired, hungry, or needs bathroom breaks during long missions.</p>
+                    <p>Androids count as both humanoids and constructs. They don't need to breathe, they ignore the normal effects of vacuum, and they get a +2 bonus to saving throws against disease, mind-affecting effects, poison and sleep. That makes them natural choices for space exploration and hostile environments.</p>
 
                     <h4>Flat Affect</h4>
-                    <p>Androids struggle with emotional expression, giving them a -2 penalty to Sense Motive checks but a +2 bonus to saves against emotion effects. They're like people who are naturally poker-faced but also have difficulty reading others' emotions.</p>
+                    <p>Androids struggle with emotional expression: they take a −2 penalty to Sense Motive checks, and the DC of Sense Motive checks to read an android's intentions is 2 higher. They're like people who are naturally poker-faced but also have difficulty reading others' emotions.</p>
 
                     <h4>Upgrade Slot</h4>
-                    <p>Androids can install technological augmentations more easily, representing their modular construction. Think of it as having a built-in USB port for installing new hardware.</p>
+                    <p>An android's body has one armor upgrade slot, which can hold an armor upgrade usable in light armor, even when the android isn't wearing armor. Think of it as a built-in port for installing new hardware.</p>
                 </div>
 
                 <div class="gameplay-impact">
                     <h4>Perfect For Players Who Want</h4>
                     <ul>
                         <li>A logical, analytical character</li>
-                        <li>Immunity to biological hazards</li>
-                        <li>Easy access to cybernetic upgrades</li>
+                        <li>Resistance to disease, poison and mind-affecting effects</li>
+                        <li>A built-in armor upgrade slot</li>
                         <li>Interesting roleplay around artificial consciousness</li>
                         <li>A naturally gifted technomancer or mechanic</li>
                     </ul>
@@ -172,10 +180,11 @@
             <div class="ancestry-card">
                 <h3>Kasathas - The Four-Armed Philosophers</h3>
                 <div class="stats-block">
-                    <p><strong>Ability Adjustments:</strong> +2 Strength, +2 Wisdom, -2 Intelligence</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Strength, +2 Wisdom, −2 Intelligence</p>
+                    <p><strong>Hit Points:</strong> 4</p>
                     <p><strong>Size:</strong> Medium</p>
                     <p><strong>Speed:</strong> 30 feet</p>
-                    <p><strong>Special:</strong> Four-armed, desert stride, natural grace</p>
+                    <p><strong>Special:</strong> Four-armed, desert stride, historian, natural grace</p>
                 </div>
 
                 <div class="cultural-overview">
@@ -191,7 +200,7 @@
 
                 <div class="special-abilities">
                     <h4>Four-Armed</h4>
-                    <p>Kasathas can hold and use four items simultaneously, but they can't make more attacks than normal. Think of it as having incredible multitasking ability – they can reload while shooting, cast spells while holding weapons, or operate complex machinery with enhanced dexterity.</p>
+                    <p>Kasathas can hold and use four items at once, but the extra hands don't give them extra attacks. Think of it as incredible multitasking: they can keep a weapon ready while holding a datapad, a grenade and a tool.</p>
 
                     <canvas id="kasathaArms" width="300" height="300"></canvas>
                     <script>
@@ -235,20 +244,34 @@
                             ctx2.fillRect(pos.x - 5, pos.y - 15, 10, 20);
                             
                             // Label
-                            ctx2.fillStyle = '#000';
-                            ctx2.font = '12px Arial';
-                            const items = ['Sword', 'Shield', 'Gun', 'Tool'];
-                            ctx2.fillText(items[index], pos.x - 15, pos.y + 35);
+                            ctx2.fillStyle = '#1a1a1a';
+                            ctx2.font = '13px Arial';
+                            const items = ['Sword', 'Datapad', 'Pistol', 'Tool'];
+                            const leftSide = pos.x < 150;
+                            ctx2.textAlign = leftSide ? 'right' : 'left';
+                            ctx2.textBaseline = 'middle';
+                            ctx2.fillText(items[index], leftSide ? pos.x - 10 : pos.x + 10, pos.y - 5);
                         });
                         
                         // Legs
                         ctx2.fillStyle = '#d4af94';
                         ctx2.fillRect(135, 190, 12, 40);
                         ctx2.fillRect(153, 190, 12, 40);
+
+                        // Caption
+                        ctx2.fillStyle = '#1a1a1a';
+                        ctx2.font = '13px Arial';
+                        ctx2.textAlign = 'center';
+                        ctx2.textBaseline = 'alphabetic';
+                        ctx2.fillText('Four hands, four items,', 150, 262);
+                        ctx2.fillText('but no extra attacks', 150, 280);
                     </script>
 
                     <h4>Desert Stride</h4>
-                    <p>Kasathas never suffer penalties for difficult terrain in deserts and similar environments. Their large feet act like natural snowshoes, but for sand and rocky terrain.</p>
+                    <p>Kasathas move at normal speed through nonmagical difficult terrain in deserts, hills and mountains, a legacy of their hot, arid homeworld.</p>
+
+                    <h4>Historian</h4>
+                    <p>+2 bonus to Culture checks, and kasathas can use Culture to recall knowledge about history.</p>
 
                     <h4>Natural Grace</h4>
                     <p>+2 bonus to Acrobatics and Athletics checks, representing their natural physical coordination and four-armed balance.</p>
@@ -269,7 +292,8 @@
             <div class="ancestry-card">
                 <h3>Lashuntas - The Telepathic Scholars</h3>
                 <div class="stats-block">
-                    <p><strong>Ability Adjustments:</strong> +2 Charisma; +2 Strength OR +2 Intelligence (chosen at character creation)</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Charisma, plus your form: korasha +2 Strength and −2 Wisdom, or damaya +2 Intelligence and −2 Constitution</p>
+                    <p><strong>Hit Points:</strong> 4</p>
                     <p><strong>Size:</strong> Medium</p>
                     <p><strong>Speed:</strong> 30 feet</p>
                     <p><strong>Special:</strong> Dimorphic, limited telepathy, lashunta magic</p>
@@ -285,11 +309,11 @@
 
                 <div class="dimorphic-forms">
                     <h4>Korasha (Warrior-Scholar)</h4>
-                    <p><strong>Ability Bonus:</strong> +2 Strength</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Strength, −2 Wisdom (plus the +2 Charisma all lashuntas get)</p>
                     <p>Korasha lashuntas are the "warrior-poets" of their society. Think of them as scholar-athletes who are equally comfortable in a library or a battlefield. They're typically larger, more muscular, and often pursue careers that require both physical and mental prowess.</p>
 
                     <h4>Damaya (Intellectual)</h4>
-                    <p><strong>Ability Bonus:</strong> +2 Intelligence</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Intelligence, −2 Constitution (plus the +2 Charisma all lashuntas get)</p>
                     <p>Damaya lashuntas are the "pure scholars" – smaller in stature but with enhanced mental capabilities. They're the researchers, scientists, and deep thinkers of lashunta society, often pursuing careers in academia, magic, or technology.</p>
 
                     <div class="comparison-chart">
@@ -304,11 +328,11 @@
                     <p>Lashuntas can communicate telepathically with any creature within 30 feet that shares a language with them. It's like having a built-in instant messaging system, but for minds. This makes them incredible at coordinating team tactics and conducting silent conversations.</p>
 
                     <h4>Lashunta Magic</h4>
-                    <p>All lashuntas can cast certain spells as spell-like abilities. Think of it as having natural WiFi for accessing magical energies. They typically gain:</p>
+                    <p>All lashuntas can cast certain spells as spell-like abilities. Think of it as having natural WiFi for accessing magical energies. They gain:</p>
                     <ul>
-                        <li><strong>Daze:</strong> Mentally overwhelm a target</li>
-                        <li><strong>Psychokinetic Hand:</strong> Move small objects with thought</li>
-                        <li><strong>Detect Thoughts:</strong> Read surface thoughts (at higher levels)</li>
+                        <li><strong>Daze</strong> (at will): Mentally overwhelm a target</li>
+                        <li><strong>Psychokinetic Hand</strong> (at will): Move small objects with thought</li>
+                        <li><strong>Detect Thoughts</strong> (once per day): Read surface thoughts</li>
                     </ul>
                 </div>
 
@@ -327,10 +351,11 @@
             <div class="ancestry-card">
                 <h3>Shirren - The Hive Mind Refugees</h3>
                 <div class="stats-block">
-                    <p><strong>Ability Adjustments:</strong> +2 Constitution, +2 Wisdom, -2 Charisma</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Constitution, +2 Wisdom, −2 Charisma</p>
+                    <p><strong>Hit Points:</strong> 6</p>
                     <p><strong>Size:</strong> Medium</p>
                     <p><strong>Speed:</strong> 30 feet</p>
-                    <p><strong>Special:</strong> Blindsense, communalism, cultural fascination</p>
+                    <p><strong>Special:</strong> Blindsense (vibration) 30 ft., communalism, cultural fascination, limited telepathy</p>
                 </div>
 
                 <div class="cultural-overview">
@@ -342,14 +367,14 @@
                 </div>
 
                 <div class="special-abilities">
-                    <h4>Blindsense (Sound)</h4>
-                    <p>Shirren can "see" using sound and vibration, like natural sonar. This gives them the ability to detect invisible creatures and navigate in complete darkness within 30 feet.</p>
+                    <h4>Blindsense (Vibration)</h4>
+                    <p>Shirren sense vibrations through their antennae, a bit like natural sonar. Within 30 feet they can notice creatures they can't see, even in complete darkness.</p>
 
                     <h4>Communalism</h4>
-                    <p>Shirren work better in groups, gaining bonuses when using the aid another action. They're like the ultimate team players, naturally inclined to help others succeed rather than seeking individual glory.</p>
+                    <p>Shirren work better in groups. Once per day, while an ally is within 10 feet, a shirren can roll a single attack roll or skill check twice and take the better result. They're the ultimate team players.</p>
 
                     <h4>Cultural Fascination</h4>
-                    <p>Having broken free from a hive mind, shirren are endlessly fascinated by individual expression and cultural diversity. They gain bonuses to Culture and Diplomacy checks when interacting with different species and cultures.</p>
+                    <p>Having broken free from a hive mind, shirren are endlessly fascinated by individual expression and cultural diversity. They gain a +2 bonus to Culture and Diplomacy checks.</p>
                 </div>
 
                 <div class="gameplay-impact">
@@ -367,15 +392,16 @@
             <div class="ancestry-card">
                 <h3>Vesk - The Honorable Warriors</h3>
                 <div class="stats-block">
-                    <p><strong>Ability Adjustments:</strong> +2 Strength, +2 Constitution, -2 Intelligence</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Strength, +2 Constitution, −2 Intelligence</p>
+                    <p><strong>Hit Points:</strong> 6</p>
                     <p><strong>Size:</strong> Medium</p>
                     <p><strong>Speed:</strong> 30 feet</p>
-                    <p><strong>Special:</strong> Armor savant, fearless, natural weapons</p>
+                    <p><strong>Special:</strong> Armor savant, fearless, low-light vision, natural weapons</p>
                 </div>
 
                 <div class="cultural-overview">
                     <h4>The Honorable Conquerors</h4>
-                    <p>Vesk are like a combination of Klingons and Roman legionaries – a militaristic reptilian species that values honor, strength, and tactical brilliance. They recently ended a centuries-long war with the Pact Worlds and are now awkwardly trying to transition from conquerors to allies.</p>
+                    <p>Vesk are like a combination of Klingons and Roman legionaries – a militaristic reptilian species that values honor, strength, and tactical brilliance. After a long war with the Pact Worlds, the Veskarium signed a peace when the Swarm threatened both, and the vesk are now awkwardly trying to transition from conquerors to allies.</p>
 
                     <h4>Warriors Learning Peace</h4>
                     <p>Imagine a culture of professional soldiers suddenly being told "the war is over, now let's be friends." Many vesk struggle with peacetime, seeking new ways to prove their worth and honor without conquest. This creates fascinating characters torn between their warrior instincts and the need to adapt to galactic civilization.</p>
@@ -383,13 +409,13 @@
 
                 <div class="special-abilities">
                     <h4>Armor Savant</h4>
-                    <p>Vesk have an instinctive understanding of armor, reducing the armor check penalty by 1 for any armor they wear. They're like natural-born tank crews who understand protection systems intuitively.</p>
+                    <p>Vesk use their natural scales together with worn armor, gaining a +1 racial bonus to AC, and their armor check penalty is 1 lower when they wear heavy armor. They're like natural-born tank crews who understand protection systems intuitively.</p>
 
                     <h4>Fearless</h4>
                     <p>+2 bonus to saving throws against fear effects. Vesk warriors are trained from childhood to face death without flinching.</p>
 
                     <h4>Natural Weapons</h4>
-                    <p>Vesk have sharp claws and teeth, giving them natural weapons that deal lethal damage. Even unarmed, they're dangerous opponents.</p>
+                    <p>Vesk have sharp claws and teeth, so their unarmed strikes deal lethal damage and don't count as archaic. Even unarmed, they're dangerous opponents.</p>
                 </div>
 
                 <div class="gameplay-impact">
@@ -407,10 +433,11 @@
             <div class="ancestry-card">
                 <h3>Ysoki - The Scrappy Survivors</h3>
                 <div class="stats-block">
-                    <p><strong>Ability Adjustments:</strong> +2 Dexterity, +2 Intelligence, -2 Strength</p>
+                    <p><strong>Ability Adjustments:</strong> +2 Dexterity, +2 Intelligence, −2 Strength</p>
+                    <p><strong>Hit Points:</strong> 2 (the lowest of the core races)</p>
                     <p><strong>Size:</strong> Small</p>
                     <p><strong>Speed:</strong> 30 feet</p>
-                    <p><strong>Special:</strong> Cheek pouches, moxie, scrounger</p>
+                    <p><strong>Special:</strong> Cheek pouches, darkvision 60 ft., moxie, scrounger</p>
                 </div>
 
                 <div class="cultural-overview">
@@ -426,7 +453,7 @@
                     <p>Ysoki can store up to 1 cubic foot of items in their cheek pouches, retrieving them as a swift action. It's like having a natural fanny pack that's always accessible – perfect for storing tools, ammunition, or emergency supplies.</p>
 
                     <h4>Moxie</h4>
-                    <p>Once per day, ysoki can roll twice on a d20 roll and take the better result. This represents their incredible luck and determination to succeed against the odds.</p>
+                    <p>Ysoki are scrappy and nimble when the odds turn against them: they can stand up from prone as a swift action and shrug off much of the trouble that comes with being off-kilter.</p>
 
                     <h4>Scrounger</h4>
                     <p>+2 bonus to Engineering, Stealth, and Survival checks. Ysoki are natural tinkerers and survivors who can find solutions in the most unlikely places.</p>
@@ -438,7 +465,7 @@
                         <li>A small, agile character with high utility</li>
                         <li>Natural mechanic or engineer abilities</li>
                         <li>Built-in storage and organization</li>
-                        <li>A "lucky" character with moxie rerolls</li>
+                        <li>A nimble character who is hard to keep down</li>
                         <li>Scrappy underdog roleplay opportunities</li>
                     </ul>
                 </div>
@@ -446,11 +473,11 @@
         </section>
 
         <section class="choosing-guide">
-            <h2>Choosing the Right Ancestry for Your Character</h2>
+            <h2>Choosing the Right Race for Your Character</h2>
             
             <div class="decision-flowchart">
                 <h3>The Character Concept Method</h3>
-                <p>Start with what kind of story you want to tell, then choose the ancestry that best supports it:</p>
+                <p>Start with what kind of story you want to tell, then choose the race that best supports it:</p>
 
                 <div class="mermaid">
                     graph TD
@@ -459,21 +486,21 @@
                         A --> D{Tech/Magic focused?}
                         A --> E{Utility/Support focused?}
                         
-                        B -->|Yes| F[Vesk - Natural warriors<br/>Kasatha - Four-armed fighters<br/>Human - Flexible soldiers]
-                        C -->|Yes| G[Lashunta - Telepathic diplomats<br/>Human - Adaptable face<br/>Shirren - Community builders]
-                        D -->|Yes| H[Android - Tech specialists<br/>Lashunta - Magic scholars<br/>Ysoki - Engineering experts]
-                        E -->|Yes| I[Shirren - Team supporters<br/>Ysoki - Problem solvers<br/>Human - Skill masters]
+                        B -->|Yes| F[Vesk - Natural warriors&lt;br/&gt;Kasatha - Four-armed fighters&lt;br/&gt;Human - Flexible soldiers]
+                        C -->|Yes| G[Lashunta - Telepathic diplomats&lt;br/&gt;Human - Adaptable face&lt;br/&gt;Shirren - Community builders]
+                        D -->|Yes| H[Android - Tech specialists&lt;br/&gt;Lashunta - Magic scholars&lt;br/&gt;Ysoki - Engineering experts]
+                        E -->|Yes| I[Shirren - Team supporters&lt;br/&gt;Ysoki - Problem solvers&lt;br/&gt;Human - Skill masters]
                 </div>
             </div>
 
             <div class="compatibility-matrix">
-                <h3>Ancestry-Class Synergy</h3>
-                <p>While any ancestry can play any class, some combinations work particularly well together:</p>
+                <h3>Race-Class Synergy</h3>
+                <p>While any race can play any class, some combinations work particularly well together:</p>
 
                 <table class="synergy-table">
                     <thead>
                         <tr>
-                            <th>Ancestry</th>
+                            <th>Race</th>
                             <th>Best Classes</th>
                             <th>Why They Work</th>
                         </tr>
@@ -487,7 +514,7 @@
                         <tr>
                             <td>Android</td>
                             <td>Technomancer, Mechanic</td>
-                            <td>High Intelligence and construct traits</td>
+                            <td>Intelligence bonus and constructed traits</td>
                         </tr>
                         <tr>
                             <td>Kasatha</td>
@@ -497,7 +524,7 @@
                         <tr>
                             <td>Lashunta</td>
                             <td>Mystic, Envoy, Technomancer</td>
-                            <td>High mental stats and telepathy</td>
+                            <td>Charisma bonus, damaya Intelligence, and telepathy</td>
                         </tr>
                         <tr>
                             <td>Shirren</td>
@@ -506,13 +533,13 @@
                         </tr>
                         <tr>
                             <td>Vesk</td>
-                            <td>Soldier, Vanguard</td>
+                            <td>Soldier, Vanguard (Character Operations Manual)</td>
                             <td>Physical stats and armor expertise</td>
                         </tr>
                         <tr>
                             <td>Ysoki</td>
                             <td>Mechanic, Operative</td>
-                            <td>Technical skills and small size</td>
+                            <td>Dexterity and Intelligence bonuses, Engineering and Stealth bonuses</td>
                         </tr>
                     </tbody>
                 </table>
@@ -524,7 +551,7 @@
             
             <div class="multiclass-considerations">
                 <h3>Planning for Growth</h3>
-                <p>When choosing your ancestry, consider how your character might evolve:</p>
+                <p>When choosing your race, consider how your character might evolve:</p>
 
                 <h4>Early Game Priorities (Levels 1-5)</h4>
                 <ul>
@@ -540,17 +567,17 @@
                     <li><strong>Leadership:</strong> Take on more complex party roles</li>
                 </ul>
 
-                <h4>Late Game Mastery (Levels 13-20)</h4>
+                <h4>Late Game (Levels 13-20)</h4>
                 <ul>
                     <li><strong>Dominance:</strong> Excel at multiple aspects of the game</li>
-                    <li><strong>Innovation:</strong> Use ancestry abilities in creative ways</li>
+                    <li><strong>Innovation:</strong> Use racial abilities in creative ways</li>
                     <li><strong>Legacy:</strong> Become a memorable part of campaign history</li>
                 </ul>
             </div>
 
             <div class="roleplay-integration">
-                <h3>Bringing Your Ancestry to Life</h3>
-                <p>Mechanical benefits are just the beginning. Here's how to make your ancestry feel real:</p>
+                <h3>Bringing Your Race to Life</h3>
+                <p>Mechanical benefits are just the beginning. Here's how to make your race feel real:</p>
 
                 <h4>Physical Mannerisms</h4>
                 <ul>
@@ -575,18 +602,18 @@
         </section>
 
         <section class="practice-activities">
-            <h2>Character Creation Workshop</h2>
+            <h2>Try It at the Table</h2>
             
             <div class="activity">
-                <h3>Activity 1: Ancestry Speed Dating</h3>
-                <p>Create a basic character concept for each ancestry using this template:</p>
-      <p>          <strong>Ancestry:</strong> [Species Name]<br>
+                <h3>Activity 1: Race Speed Dating</h3>
+                <p>Create a basic character concept for each race using this template:</p>
+      <p>          <strong>Race:</strong> [Race Name]<br>
 <strong>Quick Concept:</strong> [One sentence description]<br>
 <strong>Key Ability:</strong> [Which special ability excites you most?]<br>
 <strong>Story Hook:</strong> [What brings them to adventure?]</p>
                 
                 <p>Example:</p>
-               <p> <strong>Ancestry:</strong> Ysoki<br>
+               <p> <strong>Race:</strong> Ysoki<br>
 <strong>Quick Concept:</strong> A scrappy mechanic who builds impossible gadgets<br>
 <strong>Key Ability:</strong> Cheek pouches for storing essential tools<br>
 <strong>Story Hook:</strong> Searching for rare tech to build the ultimate starship</p>
@@ -594,11 +621,20 @@
 
             <div class="activity">
                 <h3>Activity 2: Ability Score Planning</h3>
-                <p>Choose three ancestries and plan their ability scores for a specific class:</p>
+                <p>Starfinder's standard method is point buy, done in this order:</p>
+                <ol>
+                    <li>Every ability score starts at 10.</li>
+                    <li>Apply your race's ability adjustments.</li>
+                    <li>Apply your theme's +1.</li>
+                    <li>Spend 10 points, raising scores 1 for 1. No score can go above 18 at 1st level.</li>
+                </ol>
+                <p><strong>Worked example: a vesk soldier with the mercenary theme.</strong> Start at 10 across the board. Vesk adjustments give STR 12, CON 12, INT 8. Mercenary adds +1 STR, so STR 13. Spend the 10 points: +5 STR (18), +2 DEX (12), +2 CON (14), +1 WIS (11). Final scores: STR 18 (+4), DEX 12 (+1), CON 14 (+2), INT 8 (−1), WIS 11 (+0), CHA 10 (+0).</p>
+                <p>From those scores: <strong>Hit Points</strong> = 6 (vesk) + 7 (soldier) = 13. <strong>Stamina Points</strong> = 7 (soldier) + 2 (CON) = 9. <strong>Resolve Points</strong> = 1 (half of 1st level, minimum 1) + 4 (STR, the key ability she chose) = 5. <strong>Skill ranks</strong> = 4 + (−1) = 3 per level. Damage comes off Stamina first, then Hit Points.</p>
+                <p>Now choose three races and plan their ability scores for a specific class:</p>
                 <ol>
                     <li>Start with a class in mind (like Soldier or Technomancer)</li>
-                    <li>Apply each ancestry's ability score adjustments</li>
-                    <li>Note which ancestry gives the best mechanical synergy</li>
+                    <li>Apply each race's ability score adjustments, then the theme's +1, then the 10 points</li>
+                    <li>Note which race gives the best mechanical synergy</li>
                     <li>Consider which gives the most interesting roleplay opportunities</li>
                 </ol>
                 <p>Remember: optimal isn't always most fun!</p>
@@ -606,19 +642,19 @@
 
             <div class="activity">
                 <h3>Activity 3: Cultural Integration</h3>
-                <p>Pick an ancestry and answer these questions:</p>
+                <p>Pick a race and answer these questions:</p>
                 <ul>
-                    <li>How does your character feel about their species' reputation?</li>
+                    <li>How does your character feel about their people's reputation?</li>
                     <li>What aspect of their culture do they embrace or reject?</li>
-                    <li>How do they interact with members of other ancestries?</li>
-                    <li>What's one misconception people have about their species?</li>
+                    <li>How do they interact with members of other races?</li>
+                    <li>What's one misconception people have about their people?</li>
                     <li>How does their background influence their goals?</li>
                 </ul>
             </div>
 
             <div class="activity">
-                <h3>Activity 4: Special Ability Workshop</h3>
-                <p>For each ancestry, brainstorm three creative uses for their special abilities beyond combat:</p>
+                <h3>Activity 4: Special Ability Brainstorm</h3>
+                <p>For each race, brainstorm three creative uses for their special abilities beyond combat:</p>
                 <ul>
                     <li><strong>Example - Kasatha Four Arms:</strong>
                         <ul>
@@ -632,13 +668,13 @@
         </section>
 
         <section class="common-mistakes">
-            <h2>Common Ancestry Selection Mistakes</h2>
+            <h2>Common Race Selection Mistakes</h2>
             
             <div class="mistake-card">
                 <h3>The "Optimal Only" Trap</h3>
-                <p><strong>Mistake:</strong> Choosing ancestry purely for mechanical benefits</p>
+                <p><strong>Mistake:</strong> Choosing a race purely for mechanical benefits</p>
                 <p><strong>Why it backfires:</strong> You'll be stuck playing a character you don't connect with</p>
-                <p><strong>Better approach:</strong> Choose an ancestry that excites you, then optimize within that choice</p>
+                <p><strong>Better approach:</strong> Choose a race that excites you, then optimize within that choice</p>
             </div>
 
             <div class="mistake-card">
@@ -650,14 +686,14 @@
 
             <div class="mistake-card">
                 <h3>The "One-Note" Character</h3>
-                <p><strong>Mistake:</strong> Defining your character only by their ancestry stereotypes</p>
+                <p><strong>Mistake:</strong> Defining your character only by their race's stereotypes</p>
                 <p><strong>Why it backfires:</strong> Your character becomes predictable and boring</p>
-                <p><strong>Better approach:</strong> Use ancestry as a starting point, not a limitation</p>
+                <p><strong>Better approach:</strong> Use race as a starting point, not a limitation</p>
             </div>
 
             <div class="mistake-card">
                 <h3>The "Mechanics Ignorance" Issue</h3>
-                <p><strong>Mistake:</strong> Not understanding how your ancestry's abilities actually work</p>
+                <p><strong>Mistake:</strong> Not understanding how your race's abilities actually work</p>
                 <p><strong>Why it backfires:</strong> You can't use your character effectively</p>
                 <p><strong>Better approach:</strong> Read and understand every ability before play begins</p>
             </div>
@@ -665,12 +701,12 @@
 
         <section class="next-steps">
             <h2>Building Your Galactic Identity</h2>
-            <p>Choosing your ancestry is just the first step in creating a memorable Starfinder character. Your species provides the foundation, but your personality, goals, and relationships will make them truly unique.</p>
+            <p>Choosing your race is just the first step in creating a memorable Starfinder character. Your race provides the foundation, but your personality, goals, and relationships will make them truly unique.</p>
 
             <div class="checklist">
-                <h3>Ancestry Selection Checklist</h3>
+                <h3>Race Selection Checklist</h3>
                 <ul>
-                    <li>✓ I understand this ancestry's mechanical benefits</li>
+                    <li>✓ I understand this race's mechanical benefits, including its Hit Points</li>
                     <li>✓ I'm excited about their cultural background</li>
                     <li>✓ I can see how they'll work with my chosen class</li>
                     <li>✓ I have ideas for interesting roleplay opportunities</li>
@@ -682,22 +718,22 @@
 
             <div class="final-thoughts">
                 <h3>Remember the Golden Rule</h3>
-                <p>The best ancestry for your character is the one that makes you excited to play. Mechanical optimization matters, but it should never override your enthusiasm for the character you're creating. A suboptimal character played with passion will always be more memorable than a perfectly optimized character you don't care about.</p>
+                <p>The best race for your character is the one that makes you excited to play. Mechanical optimization matters, but it should never override your enthusiasm for the character you're creating. A suboptimal character played with passion will always be more memorable than a perfectly optimized character you don't care about.</p>
             </div>
         </section>
 
         <footer>
-            <p>Your ancestry is your character's starting point, not their destination. In our next tutorial, we'll explore <a href="/starfinder_classes.html">Classes</a> and how they define what your character can do in the vast cosmos of Starfinder!</p>
+            <p>Your race is your character's starting point, not their destination. The next part of this guide explores <a href="/starfinder_classes.html">Classes</a> and how they define what your character can do in the vast cosmos of Starfinder!</p>
             <p><em>The galaxy is vast enough for every kind of hero – find yours!</em></p>
         </footer>
     </main>
-    <nav class="page-nav">
-        <a href="/starfinder_intro.html">&larr; Introduction</a>
-        <a href="/starfinder_character_examples.html">Character Examples &rarr;</a>
-    </nav>
-<script>
-function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-toggle');if(h.getAttribute('data-theme')==='dark'){h.removeAttribute('data-theme');b.textContent='\u{1F319} Dark';localStorage.setItem('theme','light');}else{h.setAttribute('data-theme','dark');b.textContent='\u{2600}\u{FE0F} Light';localStorage.setItem('theme','dark');}}
-(function(){if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(b)b.textContent='\u{2600}\u{FE0F} Light';});}})();
-</script>
+
+    <footer>
+<div class="page-nav">
+    <a class="prev" href="/starfinder_intro.html">Welcome to Starfinder</a>
+    <a class="next" href="/starfinder_classes.html">Classes</a>
+</div>
+    </footer>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
 </body>
 </html>

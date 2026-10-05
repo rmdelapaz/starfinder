@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starfinder Themes and Backgrounds - Tutorial 4</title>
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
+    <title>Themes - The Starfinder Guide</title>
+    <meta name="description" content="Starfinder themes: ace pilot, bounty hunter, icon, mercenary, outlaw, priest, scholar, spacefarer, xenoseeker and themeless, with their real benefits.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <script type="module" src="/js/diagrams.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
+    <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 <body>
-    <nav class="site-nav">
-        <ul class="nav-links">
-            <li><a href="/">Starfinder</a></li>
-            <li><a href="https://rays-home.netlify.app/">Ray's House of Fun</a></li>
-            <li><a href="https://rays-home.netlify.app/contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#x1F319; Dark</button>
-    </nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
     <header>
-        <h1>Stories of the Stars</h1>
-        <p>Mastering Starfinder Themes and Character Backgrounds</p>
+        <h1>Themes</h1>
+        <p>How the nine core themes (and themeless) give your character a background, a +1 ability boost and benefits at 1st, 6th, 12th and 18th level.</p>
     </header>
 
-    <main>
+    <main id="main">
+
         <section class="intro">
             <h2>Your Character's Origin Story</h2>
-            <p>If ancestry determines your species and class defines your profession, then theme reveals your character's history – the experiences that shaped them before they became an adventurer. Think of themes as your character's "origin story" in superhero terms, or their college major combined with their first job in real-world terms. Themes explain why your character has certain skills, connections, and motivations, while providing tangible mechanical benefits that reflect their background.</p>
+            <p>If race determines your species and class defines your profession, then theme reveals your character's history – the experiences that shaped them before they became an adventurer. Think of themes as your character's "origin story" in superhero terms, or their college major combined with their first job in real-world terms. Themes explain why your character has certain skills, connections, and motivations, while providing tangible mechanical benefits that reflect their background.</p>
             
             <div class="analogy-box">
                 <h3>The Professional LinkedIn Profile Analogy</h3>
-                <p>Imagine you're creating the perfect LinkedIn profile for your character. Your ancestry is like your ethnicity and family background – it influences who you are fundamentally. Your class is like your current job title – it defines what you do professionally. But your theme? That's your entire career history, education, and personal interests section. It's what makes you unique among all the other "Senior Software Engineers" or "Marketing Directors" in the galaxy. Two soldiers might both be expert fighters, but one's theme as a Bounty Hunter means they have underworld connections and tracking skills, while another's Pilot theme gives them superior vehicle handling and navigation abilities.</p>
+                <p>Imagine you're creating the perfect LinkedIn profile for your character. Your race is like your ethnicity and family background – it influences who you are fundamentally. Your class is like your current job title – it defines what you do professionally. But your theme? That's your entire career history, education, and personal interests section. It's what makes you unique among all the other "Senior Software Engineers" or "Marketing Directors" in the galaxy. Two soldiers might both be expert fighters, but one's theme as a Bounty Hunter means they have underworld connections and tracking skills, while another's Ace Pilot theme gives them superior vehicle handling and navigation abilities.</p>
             </div>
         </section>
 
@@ -41,27 +43,10 @@
             <p>Themes work like a character's personal specialty package, providing both mechanical benefits and roleplay guidance:</p>
 
             <div class="mermaid">
-                graph TD
-                    A[Choose Theme] --> B[+1 Ability Score]
-                    A --> C[Theme Knowledge]
-                    A --> D[1st Level Benefit]
-                    A --> E[6th Level Benefit]
-                    A --> F[12th Level Benefit]
-                    A --> G[18th Level Benefit]
-                    
-                    B --> H[Character Stats]
-                    C --> I[Background Knowledge]
-                    D --> J[Early Career Skills]
-                    E --> K[Professional Growth]
-                    F --> L[Expert Abilities]
-                    G --> M[Master-Level Powers]
-                    
-                    H --> N[Complete Character]
-                    I --> N
-                    J --> N
-                    K --> N
-                    L --> N
-                    M --> N
+                graph LR
+                    A[1st level&lt;br/&gt;+1 to one ability score&lt;br/&gt;theme knowledge] --> B[6th level&lt;br/&gt;second benefit]
+                    B --> C[12th level&lt;br/&gt;third benefit]
+                    C --> D[18th level&lt;br/&gt;usually a way to&lt;br/&gt;regain Resolve Points]
             </div>
 
             <div class="theme-components">
@@ -69,17 +54,17 @@
                 
                 <div class="component">
                     <h4>Ability Score Increase</h4>
-                    <p>Every theme provides a +1 bonus to a specific ability score, representing the natural development from that background. It's like how a professional athlete develops physical prowess, or how a scholar develops intellectual capacity.</p>
+                    <p>Every theme gives +1 to a specific ability score (themeless lets you pick any score). With point buy you apply it after your race adjustments and before you spend your 10 points. It's like how a professional athlete develops physical prowess, or how a scholar develops intellectual capacity.</p>
                 </div>
 
                 <div class="component">
                     <h4>Theme Knowledge</h4>
-                    <p>This special knowledge skill represents your character's expertise in their background area. You add 1/2 your character level to these checks, making you increasingly expert in your field over time.</p>
+                    <p>Your 1st-level benefit. Theme knowledge is not a separate skill: it makes one related skill a class skill for you (or gives you +1 to that skill if your class already has it), and it reduces by 5 the DC of checks to recall knowledge about your theme's subject, such as starships for an ace pilot or religious traditions for a priest.</p>
                 </div>
 
                 <div class="component">
                     <h4>Leveled Benefits</h4>
-                    <p>At 6th, 12th, and 18th levels, your theme grants additional abilities that represent your growing mastery and reputation in your field. These often provide unique capabilities no class can replicate.</p>
+                    <p>At 6th, 12th, and 18th level your theme grants further benefits that reflect your growing reputation in your field. They are modest, flavorful perks rather than combat powers; the 18th-level benefit of each of the nine core themes lets you regain Resolve Points by doing something that fits the theme.</p>
                 </div>
             </div>
         </section>
@@ -91,8 +76,8 @@
                 <h3>Ace Pilot - Master of the Void</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 Dexterity</p>
-                    <p><strong>Theme Knowledge:</strong> Piloting</p>
-                    <p><strong>Class Skill:</strong> Piloting becomes a class skill</p>
+                    <p><strong>Theme Knowledge:</strong> Starships, vehicles and famous pilots (DC −5 on Culture checks to recall knowledge about them)</p>
+                    <p><strong>Class Skill:</strong> Piloting (or +1 to Piloting if your class already has it)</p>
                 </div>
 
                 <div class="theme-overview">
@@ -105,24 +90,25 @@
 
                 <div class="level-progression">
                     <h4>Ace Pilot Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Lone Wolf</h5>
-                        <p>You can perform all crew actions on a starship by yourself, though not as effectively as a full crew. It's like being able to single-handedly operate a naval destroyer – impressive, but challenging.</p>
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>You have memorized nearly every scrap of starship and vehicle lore you have come across. Recalling facts about ship and vehicle models, parts and famous hotshot pilots is easier, and Piloting becomes a class skill.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Need for Speed</h5>
-                        <p>When piloting a vehicle, you can push it beyond normal performance limits. Once per day, you can double your vehicle's speed for one round without damaging it.</p>
+                        <h5>6th Level - Lone Wolf</h5>
+                        <p>You know a little about every role on a starship. For skill checks during starship combat, or to repair and maintain your ship, you can use half your Piloting ranks in place of your ranks in the needed skill if that is better.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Master Pilot</h5>
-                        <p>Your piloting expertise becomes legendary. You can attempt to pilot vehicles you've never seen before without penalty, and you can perform impossible maneuvers.</p>
+                        <h5>12th Level - Need for Speed</h5>
+                        <p>Penalties to your Piloting checks while you are on a vehicle are reduced by 1.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Legendary Ace</h5>
-                        <p>You can ignore difficult piloting conditions and automatically succeed at many piloting tasks. Other pilots speak of your skills in hushed tones.</p>
+                        <h5>18th Level - Master Pilot</h5>
+                        <p>Winning against the odds at the controls refreshes you: up to twice per day, you regain 1 Resolve Point when you pilot your side to victory in starship combat or a vehicle chase.</p>
                     </div>
                 </div>
 
@@ -135,7 +121,7 @@
 
                     <h4>Perfect Character Combinations</h4>
                     <ul>
-                        <li><strong>Soldier + Ace Pilot:</strong> Military fighter pilot turned mercenary</li>
+                        <li><strong>Soldier + Ace Pilot:</strong> Military fighter pilot turned soldier of fortune</li>
                         <li><strong>Operative + Ace Pilot:</strong> Smuggler or getaway driver specialist</li>
                         <li><strong>Technomancer + Ace Pilot:</strong> Mystical navigator who pilots by instinct and magic</li>
                         <li><strong>Envoy + Ace Pilot:</strong> Charismatic ship captain who leads from the cockpit</li>
@@ -157,8 +143,8 @@
                 <h3>Bounty Hunter - Tracker of the Guilty</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 Constitution</p>
-                    <p><strong>Theme Knowledge:</strong> Bounty Hunting</p>
-                    <p><strong>Class Skill:</strong> Survival becomes a class skill</p>
+                    <p><strong>Theme Knowledge:</strong> Your current mark (DC −5 on Culture or Profession (bounty hunter) checks to recall knowledge about that target)</p>
+                    <p><strong>Class Skill:</strong> Survival (or +1 to Survival if your class already has it)</p>
                 </div>
 
                 <div class="theme-overview">
@@ -171,24 +157,25 @@
 
                 <div class="level-progression">
                     <h4>Bounty Hunter Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Surveillance</h5>
-                        <p>You excel at gathering information about targets. You can research a specific individual, learning their habits, associates, and likely hideouts. It's like having a natural talent for social media stalking, but professionally useful.</p>
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>You choose a specific creature as your mark, and facts about that target come easily to you. When the mark is caught or defeated, you can study up and choose a new one. Survival becomes a class skill.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Relentless Tracker</h5>
-                        <p>Once you have a trail, you're incredibly difficult to shake. You can track targets across difficult terrain and even through urban environments where normal tracking would be impossible.</p>
+                        <h5>6th Level - Swift Hunter</h5>
+                        <p>You gather information about your marks with Diplomacy in half the usual time, and you take no penalty for following tracks while moving at full speed.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Master Tracker</h5>
-                        <p>Your tracking abilities become almost supernatural. You can follow cold trails, track through magical concealment, and even pursue quarry across different planets.</p>
+                        <h5>12th Level - Relentless</h5>
+                        <p>You can keep up a forced march for 12 hours and hustle for 2 hours a day during overland travel, so your quarry struggles to outpace you.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Legendary Hunter</h5>
-                        <p>You can track anyone, anywhere, given enough time and resources. Your reputation precedes you – many criminals surrender rather than face your inevitable pursuit.</p>
+                        <h5>18th Level - Master Hunter</h5>
+                        <p>Once per day, while pursuing your mark, you can spend 10 minutes reviewing what you know about it to regain 1 Resolve Point, and you regain another when you defeat the mark.</p>
                     </div>
                 </div>
 
@@ -196,68 +183,63 @@
                     <h4>The Bounty Hunter Network</h4>
                     <canvas id="bountyNetwork" width="600" height="400"></canvas>
                     <script>
+                        (function () {
                         const canvas6 = document.getElementById('bountyNetwork');
                         const ctx6 = canvas6.getContext('2d');
-                        
-                        // Clear canvas
                         ctx6.fillStyle = '#f8f9fa';
                         ctx6.fillRect(0, 0, canvas6.width, canvas6.height);
-                        
-                        // Draw network connections
+
+                        const R = 40;
                         const nodes = [
-                            {name: 'Bounty Hunter', x: 300, y: 200, color: '#dc3545', connections: [1,2,3,4,5]},
-                            {name: 'Law Enforcement', x: 150, y: 100, color: '#007bff', connections: [0]},
-                            {name: 'Informants', x: 450, y: 100, color: '#28a745', connections: [0]},
-                            {name: 'Criminal Contacts', x: 150, y: 300, color: '#6c757d', connections: [0]},
-                            {name: 'Equipment Dealers', x: 450, y: 300, color: '#fd7e14', connections: [0]},
-                            {name: 'Fellow Hunters', x: 300, y: 50, color: '#e83e8c', connections: [0]}
+                            {name: 'Bounty Hunter', x: 300, y: 200, color: '#b02a37', desc: ''},
+                            {name: 'Law Enforcement', x: 140, y: 90, color: '#0a58ca', desc: 'Official contracts & backup'},
+                            {name: 'Informants', x: 460, y: 90, color: '#146c43', desc: 'Street-level intelligence'},
+                            {name: 'Criminal Contacts', x: 140, y: 290, color: '#5c636a', desc: 'Underworld information'},
+                            {name: 'Equipment Dealers', x: 460, y: 290, color: '#9a4a00', desc: 'Specialized gear'},
+                            {name: 'Fellow Hunters', x: 300, y: 50, color: '#a61e5c', desc: 'Professional cooperation'}
                         ];
-                        
-                        // Draw connections
-                        nodes.forEach((node, index) => {
-                            node.connections.forEach(connIndex => {
-                                if (connIndex !== index) {
-                                    const target = nodes[connIndex];
-                                    ctx6.strokeStyle = '#ddd';
-                                    ctx6.lineWidth = 2;
-                                    ctx6.beginPath();
-                                    ctx6.moveTo(node.x, node.y);
-                                    ctx6.lineTo(target.x, target.y);
-                                    ctx6.stroke();
-                                }
-                            });
+
+                        ctx6.strokeStyle = '#adb5bd';
+                        ctx6.lineWidth = 2;
+                        nodes.slice(1).forEach(node => {
+                            ctx6.beginPath();
+                            ctx6.moveTo(nodes[0].x, nodes[0].y);
+                            ctx6.lineTo(node.x, node.y);
+                            ctx6.stroke();
                         });
-                        
-                        // Draw nodes
+
                         nodes.forEach(node => {
                             ctx6.fillStyle = node.color;
                             ctx6.beginPath();
-                            ctx6.arc(node.x, node.y, 20, 0, 2 * Math.PI);
+                            ctx6.arc(node.x, node.y, R, 0, 2 * Math.PI);
                             ctx6.fill();
-                            
-                            ctx6.fillStyle = '#fff';
-                            ctx6.font = '10px Arial';
+
+                            ctx6.fillStyle = '#ffffff';
+                            ctx6.font = 'bold 10px Arial';
                             ctx6.textAlign = 'center';
+                            ctx6.textBaseline = 'middle';
                             const words = node.name.split(' ');
                             words.forEach((word, i) => {
-                                ctx6.fillText(word, node.x, node.y + (i - words.length/2 + 0.5) * 12);
+                                ctx6.fillText(word, node.x, node.y + (i - (words.length - 1) / 2) * 12);
                             });
-                            
-                            // Add descriptions
-                            ctx6.fillStyle = '#000';
-                            ctx6.font = '10px Arial';
-                            let description = '';
-                            switch(node.name) {
-                                case 'Law Enforcement': description = 'Official contracts & backup'; break;
-                                case 'Informants': description = 'Street-level intelligence'; break;
-                                case 'Criminal Contacts': description = 'Underworld information'; break;
-                                case 'Equipment Dealers': description = 'Specialized gear'; break;
-                                case 'Fellow Hunters': description = 'Professional cooperation'; break;
-                            }
-                            if (description) {
-                                ctx6.fillText(description, node.x, node.y + 40);
-                            }
                         });
+
+                        // Descriptions on a white tab so lines never run through the text
+                        ctx6.font = '12px Arial';
+                        ctx6.textAlign = 'center';
+                        ctx6.textBaseline = 'middle';
+                        nodes.forEach(node => {
+                            if (!node.desc) return;
+                            const dy = node.y === 50 ? 0 : R + 14;
+                            const dx = node.y === 50 ? R + 92 : 0;
+                            const tx = node.x + dx, ty = node.y + dy;
+                            const w = ctx6.measureText(node.desc).width + 10;
+                            ctx6.fillStyle = '#ffffff';
+                            ctx6.fillRect(tx - w / 2, ty - 9, w, 18);
+                            ctx6.fillStyle = '#1f1d1a';
+                            ctx6.fillText(node.desc, tx, ty);
+                        });
+                        })();
                     </script>
                 </div>
 
@@ -279,116 +261,11 @@
             </div>
 
             <div class="theme-card">
-                <h3>Corporate Agent - Executive of the Stars</h3>
-                <div class="theme-stats">
-                    <p><strong>Ability Score:</strong> +1 Charisma</p>
-                    <p><strong>Theme Knowledge:</strong> Business</p>
-                    <p><strong>Class Skill:</strong> Diplomacy becomes a class skill</p>
-                </div>
-
-                <div class="theme-overview">
-                    <h4>The Galaxy's Business Elite</h4>
-                    <p>Corporate Agents represent the business side of galactic civilization – executives, negotiators, corporate spies, and business development specialists who understand that information, relationships, and market position can be more powerful than any weapon. They're the characters who navigate boardrooms as skillfully as others navigate asteroid fields.</p>
-
-                    <h4>The Corporate Ladder</h4>
-                    <p>Your character has spent years climbing the corporate hierarchy, learning to read market trends, negotiate complex deals, and manage both resources and people. This background provides extensive knowledge of business practices, legal systems, and the interconnected web of galactic commerce.</p>
-                </div>
-
-                <div class="level-progression">
-                    <h4>Corporate Agent Progression</h4>
-                    <div class="level-benefit">
-                        <h5>1st Level - Company Training</h5>
-                        <p>Your corporate education gives you professional versatility. You can add your Charisma modifier to Intelligence-based skill checks, representing your ability to leverage connections and resources to access information.</p>
-                    </div>
-
-                    <div class="level-benefit">
-                        <h5>6th Level - Network of Contacts</h5>
-                        <p>Your business relationships span multiple worlds. Once per adventure, you can call in a favor from a corporate contact to gain assistance, information, or resources.</p>
-                    </div>
-
-                    <div class="level-benefit">
-                        <h5>12th Level - Executive Authority</h5>
-                        <p>Your corporate position grants significant influence. You can access restricted areas, commandeer company resources, and call upon corporate security forces.</p>
-                    </div>
-
-                    <div class="level-benefit">
-                        <h5>18th Level - Corporate Empire</h5>
-                        <p>You wield enormous corporate power. You can mobilize significant resources, influence political decisions, and access nearly any information within the corporate sphere.</p>
-                    </div>
-                </div>
-
-                <div class="corporate-types">
-                    <h4>Corporate Specializations</h4>
-                    
-                    <div class="mermaid">
-                        graph LR
-                            A[Corporate Agent Types] --> B[Executive]
-                            A --> C[Negotiator]
-                            A --> D[Analyst]
-                            A --> E[Security]
-                            A --> F[Legal]
-                            
-                            B --> G[Leadership and strategy]
-                            C --> H[Deal-making and diplomacy]
-                            D --> I[Data analysis and forecasting]
-                            E --> J[Corporate espionage and protection]
-                            F --> K[Contracts and compliance]
-                    </div>
-
-                    <div class="specialization">
-                        <h5>Corporate Executive</h5>
-                        <p>You're a high-level manager or director with authority over significant resources and personnel. Your decisions affect entire departments or divisions.</p>
-                        <ul>
-                            <li><strong>Skills:</strong> Leadership, strategic planning, resource management</li>
-                            <li><strong>Networks:</strong> Other executives, board members, major shareholders</li>
-                            <li><strong>Adventure Role:</strong> Mission planner and resource coordinator</li>
-                        </ul>
-                    </div>
-
-                    <div class="specialization">
-                        <h5>Corporate Negotiator</h5>
-                        <p>You specialize in high-stakes deal-making, from simple contracts to complex multi-party agreements that shape entire markets.</p>
-                        <ul>
-                            <li><strong>Skills:</strong> Diplomacy, psychology, contract law</li>
-                            <li><strong>Networks:</strong> Clients, competitors, legal experts</li>
-                            <li><strong>Adventure Role:</strong> Party face and conflict resolver</li>
-                        </ul>
-                    </div>
-
-                    <div class="specialization">
-                        <h5>Market Analyst</h5>
-                        <p>You're an expert in data analysis, market trends, and economic forecasting who can predict where opportunities and threats will emerge.</p>
-                        <ul>
-                            <li><strong>Skills:</strong> Data analysis, pattern recognition, economic theory</li>
-                            <li><strong>Networks:</strong> Information brokers, research institutions, trading floors</li>
-                            <li><strong>Adventure Role:</strong> Intelligence gatherer and strategic advisor</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="roleplay-guidance">
-                    <h4>Playing a Corporate Agent</h4>
-                    <p><strong>Personality Traits:</strong> Professional, ambitious, well-connected, politically savvy</p>
-                    <p><strong>Motivations:</strong> Profit, advancement, corporate loyalty, market domination, networking</p>
-                    <p><strong>Dress Code:</strong> Always professionally dressed, even in adventure gear</p>
-                    <p><strong>Communication Style:</strong> Formal, diplomatic, tends to frame everything in business terms</p>
-
-                    <h4>Corporate Culture Integration</h4>
-                    <ul>
-                        <li><strong>Company Loyalty:</strong> How much does your character's corporate identity define them?</li>
-                        <li><strong>Ethical Boundaries:</strong> What won't you do for profit or advancement?</li>
-                        <li><strong>Work-Life Balance:</strong> Do you ever stop being "on the clock"?</li>
-                        <li><strong>Corporate Rivals:</strong> Who's competing for your position or opposing your deals?</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="theme-card">
                 <h3>Icon - Celebrity of the Cosmos</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 Charisma</p>
-                    <p><strong>Theme Knowledge:</strong> Popular Culture</p>
-                    <p><strong>Class Skill:</strong> Profession becomes a class skill</p>
+                    <p><strong>Theme Knowledge:</strong> Your chosen profession and its famous names (you pick a Profession skill when you take the theme)</p>
+                    <p><strong>Class Skill:</strong> Culture (or +1 to Culture if your class already has it)</p>
                 </div>
 
                 <div class="theme-overview">
@@ -401,24 +278,25 @@
 
                 <div class="level-progression">
                     <h4>Icon Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Fan Following</h5>
-                        <p>Your fame provides social advantages. You can gather information through your fan network and gain access to exclusive events and locations where your celebrity opens doors.</p>
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>You pick a Profession skill for your iconic career (musician, athlete, actor and so on) and are hooked deeply into its culture, so recalling knowledge about it and its notable people is easier. Culture becomes a class skill.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Mega-Celebrity</h5>
-                        <p>Your fame has reached galactic proportions. You can call upon significant fan support, media attention, or celebrity favors to assist with your adventures.</p>
+                        <h5>6th Level - Celebrity</h5>
+                        <p>Most people have at least heard of you. In a settlement you can usually find a fan within a few hours who will give you a discount or a minor free service.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Trendsetter</h5>
-                        <p>Your influence shapes popular culture. You can start social movements, influence public opinion, or create market demand for products and ideas.</p>
+                        <h5>12th Level - Megacelebrity</h5>
+                        <p>Your fame becomes nearly universal: people recognize you more easily, fans turn up faster, and they will often give you a discount on goods.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Legendary Icon</h5>
-                        <p>Your name is known throughout civilized space. You can mobilize massive public support, influence political decisions through public pressure, and command enormous resources through your celebrity status.</p>
+                        <h5>18th Level - Master Icon</h5>
+                        <p>Up to twice per day, spending at least 10 minutes engaging with the public about your profession restores 1 Resolve Point.</p>
                     </div>
                 </div>
 
@@ -470,62 +348,62 @@
                     <h4>Managing Your Public Image</h4>
                     <canvas id="fameWheel" width="400" height="400"></canvas>
                     <script>
+                        (function () {
                         const canvas7 = document.getElementById('fameWheel');
                         const ctx7 = canvas7.getContext('2d');
-                        
-                        // Clear canvas
                         ctx7.fillStyle = '#f8f9fa';
                         ctx7.fillRect(0, 0, canvas7.width, canvas7.height);
-                        
+
                         const centerX = 200;
                         const centerY = 200;
-                        const radius = 150;
-                        
-                        // Fame aspects
+                        const radius = 170;
+
                         const aspects = [
-                            {name: 'Public Persona', angle: 0, color: '#ff6b6b'},
-                            {name: 'Media Relations', angle: Math.PI/3, color: '#4ecdc4'},
-                            {name: 'Fan Engagement', angle: 2*Math.PI/3, color: '#45b7d1'},
-                            {name: 'Professional Network', angle: Math.PI, color: '#96ceb4'},
-                            {name: 'Brand Management', angle: 4*Math.PI/3, color: '#ffeaa7'},
-                            {name: 'Privacy Protection', angle: 5*Math.PI/3, color: '#dda0dd'}
+                            {name: ['Public', 'Persona'], angle: 0, color: '#ff6b6b'},
+                            {name: ['Media', 'Relations'], angle: Math.PI/3, color: '#4ecdc4'},
+                            {name: ['Fan', 'Engagement'], angle: 2*Math.PI/3, color: '#45b7d1'},
+                            {name: ['Professional', 'Network'], angle: Math.PI, color: '#96ceb4'},
+                            {name: ['Brand', 'Management'], angle: 4*Math.PI/3, color: '#ffeaa7'},
+                            {name: ['Privacy', 'Protection'], angle: 5*Math.PI/3, color: '#dda0dd'}
                         ];
-                        
-                        // Draw wheel segments
-                        aspects.forEach((aspect, index) => {
-                            const startAngle = aspect.angle - Math.PI/6;
-                            const endAngle = aspect.angle + Math.PI/6;
-                            
+
+                        aspects.forEach(aspect => {
                             ctx7.fillStyle = aspect.color;
                             ctx7.beginPath();
                             ctx7.moveTo(centerX, centerY);
-                            ctx7.arc(centerX, centerY, radius, startAngle, endAngle);
+                            ctx7.arc(centerX, centerY, radius, aspect.angle - Math.PI/6, aspect.angle + Math.PI/6);
                             ctx7.closePath();
                             ctx7.fill();
-                            
-                            // Add labels
-                            const labelX = centerX + Math.cos(aspect.angle) * (radius * 0.7);
-                            const labelY = centerY + Math.sin(aspect.angle) * (radius * 0.7);
-                            
-                            ctx7.fillStyle = '#000';
-                            ctx7.font = '12px Arial';
-                            ctx7.textAlign = 'center';
-                            ctx7.fillText(aspect.name, labelX, labelY);
+                            ctx7.strokeStyle = '#ffffff';
+                            ctx7.lineWidth = 2;
+                            ctx7.stroke();
                         });
-                        
-                        // Center circle
-                        ctx7.fillStyle = '#fff';
+
+                        ctx7.fillStyle = '#111111';
+                        ctx7.font = '13px Arial';
+                        ctx7.textAlign = 'center';
+                        ctx7.textBaseline = 'middle';
+                        aspects.forEach(aspect => {
+                            const labelX = centerX + Math.cos(aspect.angle) * (radius * 0.62);
+                            const labelY = centerY + Math.sin(aspect.angle) * (radius * 0.62);
+                            ctx7.fillText(aspect.name[0], labelX, labelY - 8);
+                            ctx7.fillText(aspect.name[1], labelX, labelY + 8);
+                        });
+
+                        ctx7.fillStyle = '#ffffff';
                         ctx7.beginPath();
                         ctx7.arc(centerX, centerY, 30, 0, 2 * Math.PI);
                         ctx7.fill();
-                        ctx7.strokeStyle = '#000';
+                        ctx7.strokeStyle = '#111111';
                         ctx7.lineWidth = 2;
                         ctx7.stroke();
-                        
-                        ctx7.fillStyle = '#000';
-                        ctx7.font = '14px Arial';
+
+                        ctx7.fillStyle = '#111111';
+                        ctx7.font = 'bold 14px Arial';
                         ctx7.textAlign = 'center';
+                        ctx7.textBaseline = 'middle';
                         ctx7.fillText('ICON', centerX, centerY);
+                        })();
                     </script>
 
                     <div class="image-considerations">
@@ -561,8 +439,8 @@
                 <h3>Mercenary - Soldier of Fortune</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 Strength</p>
-                    <p><strong>Theme Knowledge:</strong> Mercenary</p>
-                    <p><strong>Class Skill:</strong> Athletics becomes a class skill</p>
+                    <p><strong>Theme Knowledge:</strong> Military hierarchies, practices and personnel (DC −5 on Culture and Profession (mercenary) checks to recall knowledge about them)</p>
+                    <p><strong>Class Skill:</strong> Athletics (or +1 to Athletics if your class already has it)</p>
                 </div>
 
                 <div class="theme-overview">
@@ -575,24 +453,25 @@
 
                 <div class="level-progression">
                     <h4>Mercenary Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Grunt</h5>
-                        <p>Your military experience makes you efficient with gear. You can reduce the armor check penalty of any armor by 1 and can quickly don or remove armor in half the normal time.</p>
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>You know how armies and mercenary companies work, from chains of command to standard practices, and Athletics becomes a class skill.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Squad Leader</h5>
-                        <p>Your leadership experience allows you to coordinate tactical operations. You can direct allies' movements and actions more effectively during combat.</p>
+                        <h5>6th Level - Grunt</h5>
+                        <p>Years of hauling gear pay off: you treat your Strength as 1 higher when working out how much bulk you can carry.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Veteran</h5>
-                        <p>Your extensive combat experience makes you incredibly resilient. You gain additional benefits when recovering from damage and can push through injuries that would stop others.</p>
+                        <h5>12th Level - Squad Leader</h5>
+                        <p>You automatically succeed at skill checks to aid squad members or longtime allies on certain tasks.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Elite Mercenary</h5>
-                        <p>Your reputation precedes you throughout military circles. You can access high-level military contracts, command significant mercenary forces, and requisition military-grade equipment.</p>
+                        <h5>18th Level - Commander</h5>
+                        <p>Taking part in several significant fights in one day lets you recover Resolve Points.</p>
                     </div>
                 </div>
 
@@ -662,8 +541,8 @@
                 <h3>Outlaw - Rebel with a Cause</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 Dexterity</p>
-                    <p><strong>Theme Knowledge:</strong> Criminal Underworld</p>
-                    <p><strong>Class Skill:</strong> Sleight of Hand becomes a class skill</p>
+                    <p><strong>Theme Knowledge:</strong> The criminal underworld (DC −5 on Culture checks to recall knowledge about it)</p>
+                    <p><strong>Class Skill:</strong> Sleight of Hand (or +1 to Sleight of Hand if your class already has it)</p>
                 </div>
 
                 <div class="theme-overview">
@@ -676,24 +555,25 @@
 
                 <div class="level-progression">
                     <h4>Outlaw Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Black Market Connections</h5>
-                        <p>You know how to find illegal goods and services. You can locate black market dealers, fence stolen goods, and acquire items that aren't legally available.</p>
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>You know the underworld: its organizations, its customs and who matters in it. Sleight of Hand becomes a class skill.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Reputation</h5>
-                        <p>Your name is known in criminal circles. You can call upon criminal contacts for information, safe houses, or assistance with illegal activities.</p>
+                        <h5>6th Level - Legal Corruption</h5>
+                        <p>Your underworld contacts can make legal trouble go away, for a price in credits that rises with your level and the seriousness of the charge.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Criminal Network</h5>
-                        <p>You have significant influence in the underworld. You can broker deals between criminal organizations, organize heists, or mobilize criminal resources.</p>
+                        <h5>12th Level - Black Market Connections</h5>
+                        <p>You can sell illegal or luxury goods at their normal price, and arrange to buy goods for delivery elsewhere in the same solar system for a small markup.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Crime Boss</h5>
-                        <p>You command substantial criminal enterprises. You can control territory, influence corrupt officials, and direct organized criminal activities across multiple systems.</p>
+                        <h5>18th Level - Master Outlaw</h5>
+                        <p>Up to twice per day, planning and carrying out part of a significant crime or heist restores 1 Resolve Point.</p>
                     </div>
                 </div>
 
@@ -745,7 +625,7 @@
                     </div>
                 </div>
 
-                <div name="roleplay-guidance">
+                <div class="roleplay-guidance">
                     <h4>Playing an Outlaw</h4>
                     <p><strong>Personality Traits:</strong> Independent, resourceful, distrustful of authority, loyal to chosen family</p>
                     <p><strong>Daily Challenges:</strong> Avoiding law enforcement, maintaining criminal contacts, managing illegal activities</p>
@@ -764,11 +644,66 @@
             </div>
 
             <div class="theme-card">
+                <h3>Priest - Voice of the Faith</h3>
+                <div class="theme-stats">
+                    <p><strong>Ability Score:</strong> +1 Wisdom</p>
+                    <p><strong>Theme Knowledge:</strong> Religious traditions, symbols and famous religious leaders (DC −5 on Culture and Mysticism checks to recall knowledge about them)</p>
+                    <p><strong>Class Skill:</strong> Mysticism (or +1 to Mysticism if your class already has it)</p>
+                </div>
+
+                <div class="theme-overview">
+                    <h4>Servant of a Deity</h4>
+                    <p>Priests are the clergy, missionaries and devout followers of the Pact Worlds' many faiths, from Abadar's bankers and Iomedae's crusaders to Triune's Drift-beacon technicians and Pharasma's keepers of the dead. You do not have to be a mystic to take this theme: a soldier can be a temple guard and a mechanic can maintain a shrine-ship.</p>
+
+                    <h4>A Life of Service</h4>
+                    <p>Your character trained in a church, monastery or mission and knows its rites and its politics. Your faith gives you a community to call on, and expectations to live up to.</p>
+                </div>
+
+                <div class="level-progression">
+                    <h4>Priest Progression</h4>
+                    <div class="level-benefit">
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>You know religious traditions, holy symbols and famous religious leaders well, and Mysticism becomes a class skill.</p>
+                    </div>
+
+                    <div class="level-benefit">
+                        <h5>6th Level - Mantle of the Clergy</h5>
+                        <p>You gain +2 to Diplomacy and Intimidate checks against lay followers of your faith and clergy who rank below you.</p>
+                    </div>
+
+                    <div class="level-benefit">
+                        <h5>12th Level - Divine Boon</h5>
+                        <p>Your deity grants you a 1st-level mystic spell tied to its portfolio. A mystic gains an extra spell slot for it; anyone else can cast it once per day.</p>
+                    </div>
+
+                    <div class="level-benefit">
+                        <h5>18th Level - True Communion</h5>
+                        <p>Up to twice per day, after acting in a way that serves your faith, you can spend 10 minutes in prayer or meditation to regain 1 Resolve Point (this does not count as resting to regain Stamina Points).</p>
+                    </div>
+                </div>
+
+                <div class="roleplay-guidance">
+                    <h4>Playing a Priest</h4>
+                    <p><strong>Personality Traits:</strong> Devout, principled, compassionate or zealous, depending on the faith</p>
+                    <p><strong>Motivations:</strong> Spreading the faith, protecting the faithful, carrying out a deity's will, finding lost relics</p>
+                    <p><strong>Connections:</strong> Fellow clergy, temples across the Pact Worlds, pilgrims, rival faiths</p>
+
+                    <h4>Perfect Character Combinations</h4>
+                    <ul>
+                        <li><strong>Mystic + Priest:</strong> The classic cleric, healing in the god's name</li>
+                        <li><strong>Soldier + Priest:</strong> A holy warrior of Iomedae or Damoritosh</li>
+                        <li><strong>Mechanic + Priest:</strong> A follower of Triune who keeps the Drift beacons running</li>
+                        <li><strong>Envoy + Priest:</strong> A missionary or a church diplomat</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="theme-card">
                 <h3>Scholar - Seeker of Knowledge</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 Intelligence</p>
-                    <p><strong>Theme Knowledge:</strong> Academic specialty of your choice</p>
-                    <p><strong>Class Skill:</strong> One Intelligence- or Wisdom-based skill becomes a class skill</p>
+                    <p><strong>Theme Knowledge:</strong> A field of specialization you choose within Life Science or Physical Science (DC −5 on checks to recall knowledge about it)</p>
+                    <p><strong>Class Skill:</strong> The science skill you chose (or +1 to it if your class already has it)</p>
                 </div>
 
                 <div class="theme-overview">
@@ -781,24 +716,25 @@
 
                 <div class="level-progression">
                     <h4>Scholar Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Tip of the Tongue</h5>
-                        <p>Your extensive education gives you broad knowledge. Once per day, you can make a knowledge check in a field you're not trained in, representing your ability to recall obscure information from your studies.</p>
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>Choose Life Science or Physical Science, then a specialty within it (xenobiology, astronomy, history and so on). Recalling knowledge about that specialty is easier, and the chosen skill becomes a class skill.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Research Network</h5>
-                        <p>Your academic connections provide access to specialized information. You can contact colleagues, access academic databases, or consult with experts in various fields.</p>
+                        <h5>6th Level - Tip of the Tongue</h5>
+                        <p>Once per day, after you see the result of a check to recall knowledge, you can reroll it.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Master Scholar</h5>
-                        <p>Your expertise becomes widely recognized. You can publish influential research, gain access to restricted academic resources, and command respect in intellectual circles.</p>
+                        <h5>12th Level - Research Maven</h5>
+                        <p>You research four times faster than normal, which usually lets you take 20 on a recall-knowledge check in just a few rounds.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Legendary Academic</h5>
-                        <p>Your name is known throughout academic circles across the galaxy. You can mobilize significant research resources, influence academic policy, and access the most restricted knowledge repositories.</p>
+                        <h5>18th Level - Master Scholar</h5>
+                        <p>Up to twice per day, spending 10 minutes researching your specialty restores 1 Resolve Point.</p>
                     </div>
                 </div>
 
@@ -854,66 +790,59 @@
                     <h4>The Scholar's Approach</h4>
                     <canvas id="researchCycle" width="500" height="300"></canvas>
                     <script>
+                        (function () {
                         const canvas8 = document.getElementById('researchCycle');
                         const ctx8 = canvas8.getContext('2d');
-                        
-                        // Clear canvas
                         ctx8.fillStyle = '#f8f9fa';
                         ctx8.fillRect(0, 0, canvas8.width, canvas8.height);
-                        
-                        // Research cycle steps
+
+                        const R = 40;
                         const steps = [
-                            {name: 'Observe', x: 100, y: 150, color: '#e74c3c'},
-                            {name: 'Question', x: 200, y: 80, color: '#f39c12'},
-                            {name: 'Hypothesize', x: 300, y: 80, color: '#f1c40f'},
-                            {name: 'Test', x: 400, y: 150, color: '#27ae60'},
-                            {name: 'Analyze', x: 300, y: 220, color: '#3498db'},
-                            {name: 'Conclude', x: 200, y: 220, color: '#9b59b6'}
+                            {name: 'Observe', x: 80, y: 160, color: '#e74c3c'},
+                            {name: 'Question', x: 190, y: 90, color: '#f39c12'},
+                            {name: 'Hypothesize', x: 310, y: 90, color: '#f1c40f'},
+                            {name: 'Test', x: 420, y: 160, color: '#27ae60'},
+                            {name: 'Analyze', x: 310, y: 235, color: '#3498db'},
+                            {name: 'Conclude', x: 190, y: 235, color: '#c39bd3'}
                         ];
-                        
-                        // Draw connections
+
                         ctx8.strokeStyle = '#34495e';
                         ctx8.lineWidth = 3;
                         for (let i = 0; i < steps.length; i++) {
                             const current = steps[i];
                             const next = steps[(i + 1) % steps.length];
-                            
-                            ctx8.beginPath();
-                            ctx8.moveTo(current.x, current.y);
-                            ctx8.lineTo(next.x, next.y);
-                            ctx8.stroke();
-                            
-                            // Add arrow
                             const angle = Math.atan2(next.y - current.y, next.x - current.x);
-                            const arrowX = next.x - 15 * Math.cos(angle);
-                            const arrowY = next.y - 15 * Math.sin(angle);
-                            
+                            const sx = current.x + R * Math.cos(angle), sy = current.y + R * Math.sin(angle);
+                            const ex = next.x - (R + 2) * Math.cos(angle), ey = next.y - (R + 2) * Math.sin(angle);
                             ctx8.beginPath();
-                            ctx8.moveTo(arrowX, arrowY);
-                            ctx8.lineTo(arrowX - 10 * Math.cos(angle - 0.5), arrowY - 10 * Math.sin(angle - 0.5));
-                            ctx8.moveTo(arrowX, arrowY);
-                            ctx8.lineTo(arrowX - 10 * Math.cos(angle + 0.5), arrowY - 10 * Math.sin(angle + 0.5));
+                            ctx8.moveTo(sx, sy);
+                            ctx8.lineTo(ex, ey);
+                            ctx8.moveTo(ex, ey);
+                            ctx8.lineTo(ex - 10 * Math.cos(angle - 0.5), ey - 10 * Math.sin(angle - 0.5));
+                            ctx8.moveTo(ex, ey);
+                            ctx8.lineTo(ex - 10 * Math.cos(angle + 0.5), ey - 10 * Math.sin(angle + 0.5));
                             ctx8.stroke();
                         }
-                        
-                        // Draw step circles
+
                         steps.forEach(step => {
                             ctx8.fillStyle = step.color;
                             ctx8.beginPath();
-                            ctx8.arc(step.x, step.y, 25, 0, 2 * Math.PI);
+                            ctx8.arc(step.x, step.y, R, 0, 2 * Math.PI);
                             ctx8.fill();
-                            
-                            ctx8.fillStyle = '#fff';
-                            ctx8.font = '12px Arial';
+
+                            ctx8.fillStyle = '#111111';
+                            ctx8.font = 'bold 10px Arial';
                             ctx8.textAlign = 'center';
-                            ctx8.fillText(step.name, step.x, step.y + 4);
+                            ctx8.textBaseline = 'middle';
+                            ctx8.fillText(step.name, step.x, step.y);
                         });
-                        
-                        // Center label
+
                         ctx8.fillStyle = '#2c3e50';
                         ctx8.font = '16px Arial';
                         ctx8.textAlign = 'center';
-                        ctx8.fillText('Scientific Method', 250, 40);
+                        ctx8.textBaseline = 'alphabetic';
+                        ctx8.fillText('Scientific Method', 250, 30);
+                        })();
                     </script>
 
                     <div class="methodology-description">
@@ -952,8 +881,8 @@
                 <h3>Spacefarer - Child of the Void</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 Constitution</p>
-                    <p><strong>Theme Knowledge:</strong> Spacefarer Culture</p>
-                    <p><strong>Class Skill:</strong> Physical Science becomes a class skill</p>
+                    <p><strong>Theme Knowledge:</strong> Strange new worlds and features of space (DC −5 on Physical Science checks to recall knowledge about them)</p>
+                    <p><strong>Class Skill:</strong> Physical Science (or +1 to Physical Science if your class already has it)</p>
                 </div>
 
                 <div class="theme-overview">
@@ -966,24 +895,25 @@
 
                 <div class="level-progression">
                     <h4>Spacefarer Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Eager Dabbler</h5>
-                        <p>Your life in space has made you adaptable to different ship roles. You can assist with any starship crew position, providing a small bonus to the ship's performance even if you're not the primary operator.</p>
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>You are fascinated by new worlds and the phenomena of space, and recalling knowledge about them is easier. Physical Science becomes a class skill.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Skilled Crew Member</h5>
-                        <p>Your experience makes you valuable on any starship. You can take over essential ship functions in emergencies and know how to jury-rig solutions to common spacecraft problems.</p>
+                        <h5>6th Level - Eager Dabbler</h5>
+                        <p>You have picked up a little of everything: you gain +2 to skill checks for skills in which you have no ranks (skills that require training still require it).</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Seasoned Spacefarer</h5>
-                        <p>Your space expertise becomes widely recognized. You can identify spacecraft by their drive signatures, navigate by stellar phenomena, and survive in space with minimal equipment.</p>
+                        <h5>12th Level - Jack of All Trades</h5>
+                        <p>You can use any skill untrained, even ones that normally require training, and your knack for untrained checks improves further.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Master of the Void</h5>
-                        <p>You've become legendary among spacefaring communities. You can captain any vessel, solve complex navigational problems, and lead expeditions into uncharted space.</p>
+                        <h5>18th Level - Master Explorer</h5>
+                        <p>Up to twice per day, spending 10 minutes documenting new geographical features of an unexplored world restores 1 Resolve Point.</p>
                     </div>
                 </div>
 
@@ -1078,12 +1008,66 @@
             </div>
 
             <div class="theme-card">
+                <h3>Xenoseeker - Explorer of the Unknown</h3>
+                <div class="theme-stats">
+                    <p><strong>Ability Score:</strong> +1 Charisma</p>
+                    <p><strong>Theme Knowledge:</strong> Rare and alien creatures (DC −5 on Life Science checks to identify a rare creature)</p>
+                    <p><strong>Class Skill:</strong> Life Science (or +1 to Life Science if your class already has it)</p>
+                </div>
+
+                <div class="theme-overview">
+                    <h4>First Contact Specialist</h4>
+                    <p>Xenoseekers live to meet new forms of life. They chase rumors of uncharted worlds, catalog strange creatures and hope to be the first to greet a species no one has met before. The Vast beyond the Drift beacons is their natural hunting ground.</p>
+
+                    <h4>Why Charisma?</h4>
+                    <p>Finding new life is only half the job; the other half is making friends with it. That is why this theme boosts Charisma rather than Intelligence, and why its later benefits help you talk to the creatures you find.</p>
+                </div>
+
+                <div class="level-progression">
+                    <h4>Xenoseeker Progression</h4>
+                    <div class="level-benefit">
+                        <h5>1st Level - Theme Knowledge</h5>
+                        <p>Identifying rare creatures with Life Science is easier for you, and Life Science becomes a class skill.</p>
+                    </div>
+
+                    <div class="level-benefit">
+                        <h5>6th Level - Quick Pidgin</h5>
+                        <p>With 10 minutes and a successful Culture check, you can work out a simple pidgin language with willing creatures you share no language with, enough to trade basic ideas.</p>
+                    </div>
+
+                    <div class="level-benefit">
+                        <h5>12th Level - First Contact</h5>
+                        <p>When you meet creatures that have never encountered your race before, those that would normally start out unfriendly toward you start out indifferent instead.</p>
+                    </div>
+
+                    <div class="level-benefit">
+                        <h5>18th Level - Brilliant Discovery</h5>
+                        <p>Up to twice per day, discovering and documenting a new species of plant or animal restores 1 Resolve Point.</p>
+                    </div>
+                </div>
+
+                <div class="roleplay-guidance">
+                    <h4>Playing a Xenoseeker</h4>
+                    <p><strong>Personality Traits:</strong> Curious, open-minded, patient, a little reckless around anything new</p>
+                    <p><strong>Motivations:</strong> Discovery, scientific fame, building bridges between species, the thrill of the unknown</p>
+                    <p><strong>Connections:</strong> Starfinder Society explorers, research institutes, translators, survey crews</p>
+
+                    <h4>Perfect Character Combinations</h4>
+                    <ul>
+                        <li><strong>Envoy + Xenoseeker:</strong> The diplomat sent to say hello first</li>
+                        <li><strong>Mystic + Xenoseeker:</strong> Seeking the divine in every new form of life</li>
+                        <li><strong>Mechanic + Xenoseeker:</strong> Builds the sensors and drones that find new species</li>
+                        <li><strong>Operative + Xenoseeker:</strong> Scout who slips in close to observe without being seen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="theme-card">
                 <h3>Themeless - The Unremarkable Remarkable</h3>
                 <div class="theme-stats">
                     <p><strong>Ability Score:</strong> +1 to any ability score</p>
-                    <p><strong>Theme Knowledge:</strong> None</p>
-                    <p><strong>Class Skill:</strong> None</p>
-                    <p><strong>Special:</strong> Additional general feat at 1st level</p>
+                    <p><strong>Theme Knowledge:</strong> None; instead you choose any one skill as a class skill (General Knowledge)</p>
+                    <p><strong>Note:</strong> The Core Rulebook calls themeless considerably less powerful than a real theme</p>
                 </div>
 
                 <div class="theme-overview">
@@ -1091,29 +1075,30 @@
                     <p>Themeless characters are people without a defining background or specialty – they're the "ordinary" individuals who get caught up in extraordinary circumstances. Think of them as the reluctant heroes, the people who were living normal lives until adventure found them.</p>
 
                     <h4>Strength Through Adaptability</h4>
-                    <p>Instead of specialized knowledge or connections, themeless characters gain mechanical flexibility. They can choose which ability score to enhance and gain an extra feat, representing their adaptable nature and lack of preconceived limitations.</p>
+                    <p>Instead of specialized knowledge or connections, themeless characters gain flexibility: they choose which ability score to raise and which skill to add as a class skill. They do not get a bonus feat, and their later benefits are general-purpose rather than tied to a background.</p>
                 </div>
 
                 <div class="level-progression">
                     <h4>Themeless Progression</h4>
+
                     <div class="level-benefit">
-                        <h5>1st Level - Versatile</h5>
-                        <p>Your lack of specialization is actually a strength. You gain a bonus general feat, representing your adaptable nature and willingness to learn whatever the situation demands.</p>
+                        <h5>1st Level - General Knowledge</h5>
+                        <p>Choose any one skill; it becomes a class skill for you (or you gain +1 to it if your class already has it).</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>6th Level - Jack of All Trades</h5>
-                        <p>Your adaptability grows stronger. You can use any skill untrained and add half your character level to untrained skill checks, representing your ability to pick up new abilities quickly.</p>
+                        <h5>6th Level - Certainty</h5>
+                        <p>Once per day, before you roll a skill check, you can give yourself a +2 bonus to it.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>12th Level - Adaptive Training</h5>
-                        <p>Your life experience has taught you many skills. You can retrain one feat during each level up, representing your continued learning and adaptation to new circumstances.</p>
+                        <h5>12th Level - Extensive Studies</h5>
+                        <p>Once per day, you can reroll a check with one of your class skills and take the second result.</p>
                     </div>
 
                     <div class="level-benefit">
-                        <h5>18th Level - Consummate Professional</h5>
-                        <p>Your adaptability has reached legendary levels. You can attempt any task with confidence and can quickly become competent in new fields when necessary.</p>
+                        <h5>18th Level - Steely Determination</h5>
+                        <p>Your maximum Resolve Points increase by 1.</p>
                     </div>
                 </div>
 
@@ -1298,116 +1283,91 @@
 
                 <canvas id="themeInteractions" width="600" height="400"></canvas>
                 <script>
+                    (function () {
                     const canvas9 = document.getElementById('themeInteractions');
                     const ctx9 = canvas9.getContext('2d');
-                    
-                    // Clear canvas
                     ctx9.fillStyle = '#f8f9fa';
                     ctx9.fillRect(0, 0, canvas9.width, canvas9.height);
-                    
-                    // Theme interaction web
+
+                    const R = 42;
                     const themes = [
-                        {name: 'Corporate Agent', x: 300, y: 100, color: '#3498db'},
-                        {name: 'Outlaw', x: 500, y: 200, color: '#e74c3c'},
-                        {name: 'Bounty Hunter', x: 400, y: 350, color: '#f39c12'},
-                        {name: 'Icon', x: 200, y: 350, color: '#e91e63'},
-                        {name: 'Scholar', x: 100, y: 200, color: '#9b59b6'},
-                        {name: 'Spacefarer', x: 300, y: 200, color: '#27ae60'}
+                        {name: 'Priest', x: 80, y: 80},
+                        {name: 'Outlaw', x: 260, y: 80},
+                        {name: 'Bounty Hunter', x: 400, y: 200},
+                        {name: 'Mercenary', x: 520, y: 330},
+                        {name: 'Icon', x: 310, y: 330},
+                        {name: 'Scholar', x: 160, y: 230},
+                        {name: 'Xenoseeker', x: 70, y: 340}
                     ];
-                    
-                    // Draw interesting connections
+                    const styles = {
+                        conflict: {color: '#b91c1c', dash: [6, 5], text: 'Conflict'},
+                        tension: {color: '#b45309', dash: [12, 5], text: 'Tension'},
+                        business: {color: '#047857', dash: [], text: 'Business'},
+                        sponsorship: {color: '#1d4ed8', dash: [], text: 'Sponsorship'},
+                        research: {color: '#7e22ce', dash: [2, 4], text: 'Research'},
+                        service: {color: '#374151', dash: [], text: 'Service'}
+                    };
                     const connections = [
-                        {from: 0, to: 1, type: 'conflict'}, // Corporate vs Outlaw
-                        {from: 1, to: 2, type: 'tension'}, // Outlaw vs Bounty Hunter
-                        {from: 2, to: 0, type: 'business'}, // Bounty Hunter contracts from Corporate
-                        {from: 3, to: 0, type: 'sponsorship'}, // Icon sponsored by Corporate
-                        {from: 4, to: 5, type: 'research'}, // Scholar studies Spacefarer culture
-                        {from: 5, to: 0, type: 'service'} // Spacefarer transports Corporate goods
+                        {from: 0, to: 1, type: 'conflict'},    // Priest vs Outlaw
+                        {from: 1, to: 2, type: 'tension'},     // Outlaw vs Bounty Hunter
+                        {from: 2, to: 3, type: 'business'},    // Bounty Hunter and Mercenary share contracts
+                        {from: 3, to: 4, type: 'service'},     // Mercenary guards the Icon
+                        {from: 4, to: 5, type: 'sponsorship'}, // Icon sponsors the Scholar
+                        {from: 5, to: 6, type: 'research'}     // Scholar studies the Xenoseeker's finds
                     ];
-                    
-                    // Draw connections with different styles
+
                     connections.forEach(conn => {
-                        const from = themes[conn.from];
-                        const to = themes[conn.to];
-                        
-                        ctx9.beginPath();
-                        ctx9.moveTo(from.x, from.y);
-                        ctx9.lineTo(to.x, to.y);
-                        
-                        switch(conn.type) {
-                            case 'conflict':
-                                ctx9.strokeStyle = '#e74c3c';
-                                ctx9.setLineDash([5, 5]);
-                                break;
-                            case 'tension':
-                                ctx9.strokeStyle = '#f39c12';
-                                ctx9.setLineDash([10, 5]);
-                                break;
-                            case 'business':
-                                ctx9.strokeStyle = '#27ae60';
-                                ctx9.setLineDash([]);
-                                break;
-                            case 'sponsorship':
-                                ctx9.strokeStyle = '#3498db';
-                                ctx9.setLineDash([]);
-                                break;
-                            case 'research':
-                                ctx9.strokeStyle = '#9b59b6';
-                                ctx9.setLineDash([2, 3]);
-                                break;
-                            case 'service':
-                                ctx9.strokeStyle = '#34495e';
-                                ctx9.setLineDash([]);
-                                break;
-                        }
-                        
+                        const a = themes[conn.from], b = themes[conn.to], st = styles[conn.type];
+                        ctx9.strokeStyle = st.color;
+                        ctx9.setLineDash(st.dash);
                         ctx9.lineWidth = 3;
+                        ctx9.beginPath();
+                        ctx9.moveTo(a.x, a.y);
+                        ctx9.lineTo(b.x, b.y);
                         ctx9.stroke();
                         ctx9.setLineDash([]);
                     });
-                    
-                    // Draw theme nodes
+
                     themes.forEach(theme => {
-                        ctx9.fillStyle = theme.color;
+                        ctx9.fillStyle = '#1e3a5f';
                         ctx9.beginPath();
-                        ctx9.arc(theme.x, theme.y, 25, 0, 2 * Math.PI);
+                        ctx9.arc(theme.x, theme.y, R, 0, 2 * Math.PI);
                         ctx9.fill();
-                        
-                        ctx9.fillStyle = '#fff';
-                        ctx9.font = '10px Arial';
+
+                        ctx9.fillStyle = '#ffffff';
+                        ctx9.font = 'bold 10px Arial';
                         ctx9.textAlign = 'center';
+                        ctx9.textBaseline = 'middle';
                         const words = theme.name.split(' ');
                         words.forEach((word, i) => {
-                            ctx9.fillText(word, theme.x, theme.y + (i - words.length/2 + 0.5) * 12);
+                            ctx9.fillText(word, theme.x, theme.y + (i - (words.length - 1) / 2) * 13);
                         });
                     });
-                    
-                    // Legend
-                    const legendItems = [
-                        {color: '#e74c3c', text: 'Conflict', dash: [5, 5]},
-                        {color: '#f39c12', text: 'Tension', dash: [10, 5]},
-                        {color: '#27ae60', text: 'Business', dash: []},
-                        {color: '#3498db', text: 'Sponsorship', dash: []},
-                        {color: '#9b59b6', text: 'Research', dash: [2, 3]},
-                        {color: '#34495e', text: 'Service', dash: []}
-                    ];
-                    
-                    legendItems.forEach((item, index) => {
-                        const y = 50 + (index * 20);
+
+                    // Legend (top right)
+                    ctx9.fillStyle = '#ffffff';
+                    ctx9.fillRect(450, 20, 135, 135);
+                    ctx9.strokeStyle = '#ced4da';
+                    ctx9.lineWidth = 1;
+                    ctx9.strokeRect(450, 20, 135, 135);
+                    Object.values(styles).forEach((item, index) => {
+                        const y = 40 + index * 20;
                         ctx9.strokeStyle = item.color;
                         ctx9.setLineDash(item.dash);
                         ctx9.lineWidth = 3;
                         ctx9.beginPath();
-                        ctx9.moveTo(450, y);
-                        ctx9.lineTo(480, y);
+                        ctx9.moveTo(460, y);
+                        ctx9.lineTo(490, y);
                         ctx9.stroke();
                         ctx9.setLineDash([]);
-                        
-                        ctx9.fillStyle = '#000';
+
+                        ctx9.fillStyle = '#111111';
                         ctx9.font = '12px Arial';
                         ctx9.textAlign = 'left';
-                        ctx9.fillText(item.text, 485, y + 4);
+                        ctx9.textBaseline = 'middle';
+                        ctx9.fillText(item.text, 497, y);
                     });
+                    })();
                 </script>
 
                 <div class="interaction-types">
@@ -1417,9 +1377,10 @@
                         <h5>Synergistic Themes</h5>
                         <p>Themes that naturally support each other:</p>
                         <ul>
-                            <li><strong>Corporate Agent + Spacefarer:</strong> Business relationships across space lanes</li>
-                            <li><strong>Scholar + Icon:</strong> Academic credibility enhancing public platform</li>
-                            <li><strong>Mercenary + Bounty Hunter:</strong> Professional military contractors</li>
+                            <li><strong>Scholar + Xenoseeker:</strong> One studies what the other discovers</li>
+                            <li><strong>Icon + Scholar:</strong> A celebrity sponsor gives research a public platform</li>
+                            <li><strong>Mercenary + Bounty Hunter:</strong> Professional fighters who share contracts</li>
+                            <li><strong>Mercenary + Icon:</strong> The bodyguard and the star</li>
                         </ul>
                     </div>
 
@@ -1427,9 +1388,9 @@
                         <h5>Conflicting Themes</h5>
                         <p>Themes that create natural tension:</p>
                         <ul>
-                            <li><strong>Corporate Agent + Outlaw:</strong> Legitimate business vs. criminal enterprise</li>
+                            <li><strong>Priest + Outlaw:</strong> A life of faith and duty vs. a life outside the law</li>
                             <li><strong>Bounty Hunter + Outlaw:</strong> Hunter and potential prey</li>
-                            <li><strong>Icon + Scholar:</strong> Celebrity culture vs. academic rigor</li>
+                            <li><strong>Icon + Spacefarer:</strong> Life in the spotlight vs. life between the stars</li>
                         </ul>
                     </div>
 
@@ -1447,19 +1408,19 @@
         </section>
 
         <section class="practice-activities">
-            <h2>Theme Mastery Workshop</h2>
+            <h2>Try It at the Table</h2>
             
             <div class="activity">
                 <h3>Activity 1: Theme Character Development</h3>
                 <p>Choose a theme and create a detailed character background using this template:</p>
-                <pre><code>&lt;strong&gt;Theme:&lt;/strong&gt; [Chosen Theme]
-&lt;strong&gt;Origin Story:&lt;/strong&gt; How did you get into this field?
-&lt;strong&gt;Defining Moment:&lt;/strong&gt; What experience shaped your approach?
-&lt;strong&gt;Current Status:&lt;/strong&gt; Where are you in your career?
-&lt;strong&gt;Key Relationships:&lt;/strong&gt; Who are your important contacts?
-&lt;strong&gt;Professional Goals:&lt;/strong&gt; What do you want to achieve?
-&lt;strong&gt;Hidden Secrets:&lt;/strong&gt; What don't people know about your past?
-&lt;strong&gt;Adventure Hook:&lt;/strong&gt; What pulls you into adventure?</code></pre>
+                <pre><code>Theme: [Chosen Theme]
+Origin Story: How did you get into this field?
+Defining Moment: What experience shaped your approach?
+Current Status: Where are you in your career?
+Key Relationships: Who are your important contacts?
+Professional Goals: What do you want to achieve?
+Hidden Secrets: What don't people know about your past?
+Adventure Hook: What pulls you into adventure?</code></pre>
             </div>
 
             <div class="activity">
@@ -1524,10 +1485,11 @@
                     <h4>Spotlight Moments</h4>
                     <p>Create situations where each character's theme knowledge or connections are crucial to success. Every player should have moments where their background makes them the party's MVP.</p>
                     <ul>
-                        <li>Corporate negotiations for the Corporate Agent</li>
+                        <li>Temple politics or a crisis of faith for the Priest</li>
                         <li>Tracking scenes for the Bounty Hunter</li>
                         <li>Public relations crises for the Icon</li>
                         <li>Technical problems for the Scholar</li>
+                        <li>A never-before-seen species for the Xenoseeker</li>
                     </ul>
                 </div>
 
@@ -1561,7 +1523,7 @@
                     <h4>Proactive Application</h4>
                     <p>Don't wait for the GM to ask – suggest how your theme knowledge applies to situations:</p>
                     <ul>
-                        <li>"As a former Corporate Agent, I know about standard security protocols..."</li>
+                        <li>"As a former mercenary, I know how a security team usually sets up a perimeter..."</li>
                         <li>"My Icon status means I probably have fans on this station..."</li>
                         <li>"The Scholar in me wants to research this phenomenon before we act..."</li>
                     </ul>
@@ -1633,7 +1595,7 @@
                     <li><strong>Adapt the theme</strong> to fit the campaign's tone and setting</li>
                     <li><strong>Work with the GM</strong> to integrate theme elements into the story</li>
                     <li><strong>Consider the fish-out-of-water angle</strong> – how does your character adapt?</li>
-                    <li><strong>Retrain if necessary</strong> – some campaigns may allow theme changes</li>
+                    <li><strong>Ask about a change</strong> – if the theme truly doesn't fit, ask your GM whether you can swap it</li>
                 </ul>
             </div>
         </section>
@@ -1643,14 +1605,14 @@
             
             <div class="campaign-style">
                 <h3>Exploration Campaigns</h3>
-                <p><strong>Highlighted Themes:</strong> Spacefarer, Scholar, Ace Pilot</p>
+                <p><strong>Highlighted Themes:</strong> Spacefarer, Xenoseeker, Scholar, Ace Pilot</p>
                 <p><strong>Theme Applications:</strong> Navigation, first contact protocols, survival skills, xenobiology knowledge</p>
                 <p><strong>Story Integration:</strong> Discovery-focused adventures where knowledge and survival skills matter most</p>
             </div>
 
             <div class="campaign-style">
                 <h3>Corporate Intrigue</h3>
-                <p><strong>Highlighted Themes:</strong> Corporate Agent, Icon, Outlaw</p>
+                <p><strong>Highlighted Themes:</strong> Icon, Outlaw, Priest</p>
                 <p><strong>Theme Applications:</strong> Business negotiations, public relations, corporate espionage, market manipulation</p>
                 <p><strong>Story Integration:</strong> Political maneuvering and economic warfare between megacorporations</p>
             </div>
@@ -1671,7 +1633,7 @@
 
             <div class="campaign-style">
                 <h3>Academic Adventures</h3>
-                <p><strong>Highlighted Themes:</strong> Scholar, Icon, Corporate Agent</p>
+                <p><strong>Highlighted Themes:</strong> Scholar, Xenoseeker, Icon</p>
                 <p><strong>Theme Applications:</strong> Research methodology, peer review, academic politics, funding acquisition</p>
                 <p><strong>Story Integration:</strong> Scientific mysteries and academic conspiracies</p>
             </div>
@@ -1681,7 +1643,7 @@
             <h2>Your Character's Complete Foundation</h2>
             
             <div class="integration-checklist">
-                <h3>Theme Mastery Checklist</h3>
+                <h3>Theme Checklist</h3>
                 <ul>
                     <li>✓ I understand how themes provide both mechanical and story benefits</li>
                     <li>✓ I can match appropriate themes to different character concepts</li>
@@ -1696,63 +1658,63 @@
 
             <div class="character-completion">
                 <h3>Bringing It All Together</h3>
-                <p>With ancestry, class, and theme chosen, you now have the complete foundation for your Starfinder character:</p>
+                <p>With race, class, and theme chosen, you now have the complete foundation for your Starfinder character:</p>
 
                 <div class="character-formula">
                     <h4>The Complete Character Formula</h4>
                     <div class="formula-diagram">
                         <canvas id="characterFormula" width="600" height="200"></canvas>
                         <script>
+                            (function () {
                             const canvas10 = document.getElementById('characterFormula');
                             const ctx10 = canvas10.getContext('2d');
-                            
-                            // Clear canvas
                             ctx10.fillStyle = '#f8f9fa';
                             ctx10.fillRect(0, 0, canvas10.width, canvas10.height);
-                            
-                            // Character components
+
                             const components = [
-                                {name: 'Ancestry', subtitle: 'Who you are', x: 100, y: 100, color: '#e74c3c'},
-                                {name: 'Class', subtitle: 'What you do', x: 300, y: 100, color: '#3498db'},
-                                {name: 'Theme', subtitle: 'Your story', x: 500, y: 100, color: '#27ae60'}
+                                {name: 'Race', subtitle: 'Who you are', x: 70, color: '#b91c1c'},
+                                {name: 'Class', subtitle: 'What you do', x: 210, color: '#1d4ed8'},
+                                {name: 'Theme', subtitle: 'Your story', x: 350, color: '#047857'}
                             ];
-                            
-                            // Draw plus signs
+                            const cy = 100;
+
                             ctx10.fillStyle = '#2c3e50';
-                            ctx10.font = '24px Arial';
+                            ctx10.font = '28px Arial';
                             ctx10.textAlign = 'center';
-                            ctx10.fillText('+', 200, 110);
-                            ctx10.fillText('+', 400, 110);
-                            ctx10.fillText('=', 550, 110);
-                            
-                            // Draw components
+                            ctx10.textBaseline = 'middle';
+                            ctx10.fillText('+', 140, cy);
+                            ctx10.fillText('+', 280, cy);
+                            ctx10.fillText('=', 420, cy);
+
                             components.forEach(comp => {
                                 ctx10.fillStyle = comp.color;
                                 ctx10.beginPath();
-                                ctx10.arc(comp.x, comp.y, 40, 0, 2 * Math.PI);
+                                ctx10.arc(comp.x, cy, 48, 0, 2 * Math.PI);
                                 ctx10.fill();
-                                
-                                ctx10.fillStyle = '#fff';
-                                ctx10.font = '12px Arial';
+
+                                ctx10.fillStyle = '#ffffff';
                                 ctx10.textAlign = 'center';
-                                ctx10.fillText(comp.name, comp.x, comp.y - 5);
-                                ctx10.font = '10px Arial';
-                                ctx10.fillText(comp.subtitle, comp.x, comp.y + 8);
+                                ctx10.textBaseline = 'middle';
+                                ctx10.font = 'bold 14px Arial';
+                                ctx10.fillText(comp.name, comp.x, cy - 8);
+                                ctx10.font = '11px Arial';
+                                ctx10.fillText(comp.subtitle, comp.x, cy + 10);
                             });
-                            
-                            // Draw result
-                            ctx10.fillStyle = '#9b59b6';
+
+                            ctx10.fillStyle = '#e9d5ff';
                             ctx10.beginPath();
-                            ctx10.roundRect(480, 60, 120, 80, 10);
+                            if (ctx10.roundRect) { ctx10.roundRect(450, 55, 140, 90, 10); } else { ctx10.rect(450, 55, 140, 90); }
                             ctx10.fill();
-                            
-                            ctx10.fillStyle = '#fff';
-                            ctx10.font = '14px Arial';
+
+                            ctx10.fillStyle = '#1f1d1a';
                             ctx10.textAlign = 'center';
-                            ctx10.fillText('Complete', 540, 90);
-                            ctx10.fillText('Character', 540, 110);
-                            ctx10.font = '10px Arial';
-                            ctx10.fillText('Ready for adventure!', 540, 130);
+                            ctx10.textBaseline = 'middle';
+                            ctx10.font = 'bold 15px Arial';
+                            ctx10.fillText('Complete', 520, 82);
+                            ctx10.fillText('Character', 520, 101);
+                            ctx10.font = '11px Arial';
+                            ctx10.fillText('Ready for adventure!', 520, 124);
+                            })();
                         </script>
                     </div>
                 </div>
@@ -1760,9 +1722,9 @@
                 <div class="synergy-explanation">
                     <h4>How the Pieces Work Together</h4>
                     <ul>
-                        <li><strong>Ancestry + Class:</strong> Your species traits enhance your professional abilities</li>
+                        <li><strong>Race + Class:</strong> Your racial traits enhance your professional abilities</li>
                         <li><strong>Class + Theme:</strong> Your background supports and contextualizes your skills</li>
-                        <li><strong>Theme + Ancestry:</strong> Your cultural background informs your personal history</li>
+                        <li><strong>Theme + Race:</strong> Your cultural background informs your personal history</li>
                         <li><strong>All Three Together:</strong> Create a coherent, capable, and interesting character</li>
                     </ul>
                 </div>
@@ -1770,24 +1732,24 @@
 
             <div class="final-advice">
                 <h3>The Most Important Rule</h3>
-                <p>Remember that these mechanical choices are just the foundation. The most important part of your character is the personality, goals, and relationships you develop through play. Your ancestry, class, and theme should serve your character concept, not constrain it. Be willing to surprise yourself – some of the best character moments come from acting against type or finding unexpected solutions to problems.</p>
+                <p>Remember that these mechanical choices are just the foundation. The most important part of your character is the personality, goals, and relationships you develop through play. Your race, class, and theme should serve your character concept, not constrain it. Be willing to surprise yourself – some of the best character moments come from acting against type or finding unexpected solutions to problems.</p>
 
                 <p>Your character will grow and change through adventure. The shy scholar might become a confident leader. The ruthless mercenary might develop a conscience. The celebrity might discover they prefer anonymity. Let your character evolve naturally through the stories you tell together.</p>
             </div>
         </section>
 
         <footer>
-            <p>With ancestry, class, and theme mastered, you have all the tools needed to create rich, detailed Starfinder characters. In our next tutorial, we'll explore <a href="/starfinder_equipment.html">Equipment and Gear</a> – the tools and toys that help your character interact with the dangerous galaxy!</p>
+            <p>With race, class, and theme chosen, you have the tools to create rich, detailed Starfinder characters. Next, the <a href="/starfinder_equipment.html">Equipment</a> part of this guide covers the tools and toys that help your character survive a dangerous galaxy.</p>
             <p><em>Every hero has an origin story – now you know how to craft yours!</em></p>
         </footer>
     </main>
-    <nav class="page-nav">
-        <a href="/starfinder_planets.html">&larr; Planets</a>
-        <span></span>
-    </nav>
-<script>
-function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-toggle');if(h.getAttribute('data-theme')==='dark'){h.removeAttribute('data-theme');b.textContent='\u{1F319} Dark';localStorage.setItem('theme','light');}else{h.setAttribute('data-theme','dark');b.textContent='\u{2600}\u{FE0F} Light';localStorage.setItem('theme','dark');}}
-(function(){if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme-toggle');if(b)b.textContent='\u{2600}\u{FE0F} Light';});}})();
-</script>
+
+    <footer>
+<div class="page-nav">
+    <a class="prev" href="/starfinder_classes.html">Classes</a>
+    <a class="next" href="/starfinder_equipment.html">Equipment</a>
+</div>
+    </footer>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
 </body>
 </html>
