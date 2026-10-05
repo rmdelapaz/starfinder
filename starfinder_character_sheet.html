@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Sheets - The Starfinder Guide</title>
+    <meta name="description" content="Fillable Starfinder first edition character sheets: ability modifiers, Stamina, Hit Points and Resolve, EAC and KAC, saves, attack bonuses, every skill total, bulk and spells worked out for you, with save, print and file import/export.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="/js/site.js?v=1"></script>
+    <link rel="stylesheet" href="/styles/main.css?v=1">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <style>
+        /* ===== Controls (themed) ===== */
+        main .sheet-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin: 20px auto 6px; max-width: 860px; }
+        main .sheet-controls select {
+            min-height: 40px; padding: 6px 10px; border-radius: 8px; min-width: 200px; width: auto;
+            background: var(--surface); color: var(--text); border: 1px solid var(--border-strong); font: inherit; font-size: 0.95rem;
+        }
+        main .sheet-controls button, main .tabs button {
+            min-height: 40px; padding: 7px 14px; margin: 0; border-radius: 8px; font: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer;
+            background: var(--surface); color: var(--heading); border: 1px solid var(--border-strong); width: auto;
+        }
+        main .sheet-controls button:hover, main .tabs button:hover { border-color: var(--accent); color: var(--accent); background: var(--surface); }
+        main .sheet-controls button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+        main .sheet-controls button.primary:hover { color: var(--accent-ink); background: var(--accent); filter: brightness(1.08); }
+        main .sheet-controls button.armed { background: #a3161a; border-color: #a3161a; color: #fff; }
+        main .tabs { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 12px auto 0; background: none; border: 0; box-shadow: none; padding: 0; }
+        html body > main > div.tabs[role="tablist"][aria-label] { background: none; border: 0; box-shadow: none; padding: 0; border-radius: 0; margin: 12px auto 0; }
+        main .tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+        #importFile { display: none; }
+        .sheet-status { text-align: center; min-height: 1.6em; margin: 4px 0 0; color: var(--muted); font-weight: 600; }
+        .sheet-help { max-width: 860px; margin: 10px auto 0; color: var(--muted); font-size: 0.95rem; }
+
+        /* ===== The sheet: a light page in both themes ===== */
+        .sf-sheet {
+            --ink: #141a24; --soft: #4a5260; --line: #a9b3c2; --blue: #0f4d85; --mag: #8a1a60; --paper: #fafbfd;
+            width: min(8.5in, 100%); margin: 14px auto; padding: 14px 16px;
+            background: var(--paper); color: var(--ink); border: 2px solid #18263a; border-radius: 4px;
+            font-family: "Source Sans 3", "Segoe UI", sans-serif; font-size: 14px; line-height: 1.3; box-shadow: var(--shadow);
+            color-scheme: light;
+        }
+        .sf-sheet b, .sf-sheet strong { color: var(--ink); }
+        .sf-sheet[data-page="skills"] .page, .sf-sheet[data-page="gear"] .page, .sf-sheet[data-page="main"] .page { display: none; }
+        .sf-sheet[data-page="main"] .page.p-main, .sf-sheet[data-page="skills"] .page.p-skills, .sf-sheet[data-page="gear"] .page.p-gear { display: block; }
+        .sf-sheet .lbl { display: block; font: 700 11.5px/1.15 "Orbitron", "Segoe UI", sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin: 0 0 3px; }
+        .sf-sheet .box { border: 1.5px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+        .sf-sheet input[type="text"], .sf-sheet select, .sf-sheet textarea, .sf-sheet .val {
+            width: 100%; max-width: none; min-height: 0; margin: 0; background: transparent; color: var(--ink);
+            border: 0; border-bottom: 1px dotted var(--line); border-radius: 0; padding: 2px; font: inherit; box-shadow: none;
+        }
+        .sf-sheet textarea { border-bottom: 0; resize: vertical; min-height: 54px; line-height: 1.35; }
+        .sf-sheet .val { display: block; min-height: 1.35em; white-space: pre-wrap; }
+        .sf-sheet .tx.val { min-height: 3.4em; border-bottom: 0; }
+        .sf-sheet input::placeholder, .sf-sheet textarea::placeholder { color: #5b6372; opacity: 1; font-style: italic; font-weight: 400; }
+        .sf-sheet input:focus, .sf-sheet select:focus, .sf-sheet textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; background: rgba(15, 77, 133, 0.07); }
+        .sf-sheet select option { background: #fafbfd; color: #141a24; }
+        .sf-sheet .out { display: inline-block; min-width: 1.8em; text-align: center; font-weight: 700; color: var(--ink); }
+        .sf-sheet small.k { display: block; font-size: 10px; color: var(--soft); text-transform: uppercase; letter-spacing: 0.05em; }
+        .sf-sheet .stack > * + * { margin-top: 8px; }
+        .sf-sheet .note { font-size: 11px; color: var(--soft); margin: 3px 0 0; }
+
+        .sf-sheet .head { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 4px 12px; border-bottom: 2px solid var(--blue); padding-bottom: 6px; margin-bottom: 10px; }
+        .sf-sheet .head .name { grid-row: span 3; align-self: end; }
+        .sf-sheet .head .name input, .sf-sheet .head .name .val { font: 700 1.35rem "Orbitron", "Segoe UI", sans-serif; }
+        .sf-sheet .mini { display: grid; grid-template-columns: 1fr 3.2em; gap: 0 6px; }
+        .sf-sheet .top { display: grid; grid-template-columns: 1.15fr 2fr; gap: 10px; }
+        .sf-sheet .abil { display: grid; grid-template-columns: 1fr; gap: 4px; }
+        .sf-sheet .ab { display: grid; grid-template-columns: 3.4em 1fr 2.6em; gap: 6px; align-items: center; border: 1.5px solid var(--ink); border-radius: 6px; padding: 2px 8px; }
+        .sf-sheet .ab .lbl { margin: 0; color: var(--ink); font-size: 12.5px; }
+        .sf-sheet .ab input, .sf-sheet .ab .val { text-align: center; font: 700 1.05rem "Source Sans 3", sans-serif; }
+        .sf-sheet .ab .out { font: 700 1.15rem "Orbitron", sans-serif; color: var(--mag); }
+        .sf-sheet .ab small { font-size: 9.5px; color: var(--soft); text-align: center; display: block; }
+        .sf-sheet .pools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        .sf-sheet .pool { border: 1.5px solid var(--mag); border-radius: 6px; padding: 4px 6px; text-align: center; }
+        .sf-sheet .pool .lbl { color: var(--mag); }
+        .sf-sheet .pool .row { display: flex; align-items: center; justify-content: center; gap: 4px; font-size: 12px; color: var(--soft); }
+        .sf-sheet .pool input, .sf-sheet .pool .val { width: 3em; text-align: center; font: 700 1.1rem "Source Sans 3", sans-serif; }
+        .sf-sheet .pool .out { font: 700 1.1rem "Orbitron", sans-serif; }
+        .sf-sheet .pool .val, .sf-sheet .misc .val { display: inline-block; vertical-align: middle; min-height: 1.2em; }
+        .sf-sheet .pool .note .val { width: 2.6em; font-size: 11px; }
+        .sf-sheet .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+        .sf-sheet .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        .sf-sheet .dv { border: 1.5px solid var(--line); border-radius: 6px; padding: 3px 6px; text-align: center; }
+        .sf-sheet .dv .big { font: 700 1.15rem "Orbitron", sans-serif; display: block; color: var(--ink); }
+        .sf-sheet .dv small.k { margin-bottom: 1px; }
+        .sf-sheet .dv .misc { display: flex; align-items: center; gap: 3px; justify-content: center; font-size: 10px; color: var(--soft); }
+        .sf-sheet .dv .misc input, .sf-sheet .dv .misc .val { width: 2.6em; text-align: center; font-size: 11px; }
+        .sf-sheet .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .sf-sheet table.t { width: 100%; border-collapse: collapse; display: table; margin: 0; font-size: 12.5px; }
+        .sf-sheet table.t th { font: 700 10px "Orbitron", sans-serif; letter-spacing: 0.03em; text-transform: uppercase; color: var(--blue); text-align: left; border: 0; border-bottom: 1.5px solid var(--ink); background: none; padding: 2px 3px; white-space: nowrap; }
+        .sf-sheet table.t td { border: 0; border-bottom: 1px solid #e3e7ee; padding: 1px 3px; background: none; color: var(--ink); vertical-align: middle; }
+        .sf-sheet table.t td.c, .sf-sheet table.t th.c { text-align: center; }
+        .sf-sheet table.t td.c input, .sf-sheet table.t td.c select, .sf-sheet table.t td.c .val { text-align: center; text-align-last: center; padding: 0; }
+        .sf-sheet .scroll { overflow-x: auto; }
+        .sf-sheet .ck { appearance: none; -webkit-appearance: none; width: 16px; height: 16px; margin: 0; border: 2px solid var(--ink); border-radius: 50%; background: #fff; cursor: pointer; vertical-align: middle; }
+        .sf-sheet .ck:checked { background: var(--blue); box-shadow: inset 0 0 0 2px #fff; }
+        .sf-sheet .mark { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--ink); border-radius: 50%; text-align: center; line-height: 12px; font-size: 11px; font-weight: 700; }
+        .sf-sheet .sk td:first-child { white-space: nowrap; }
+        .sf-sheet .sk .flags { color: var(--mag); font-size: 10px; font-weight: 700; }
+        .sf-sheet .sk .tot { font: 700 13px "Source Sans 3", sans-serif; }
+        .sf-sheet .sk td.c .out { min-width: 1.6em; }
+        .sf-sheet .profrow input[type="text"].pn, .sf-sheet .profrow .val.pn { display: inline-block; width: 7.5em; }
+        .sf-sheet .profrow select, .sf-sheet .profrow .val.pa { width: 3.6em; display: inline-block; }
+        .sf-sheet .skillhead { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+        main .sf-sheet button.fillcs { min-height: 0; padding: 2px 8px; font-size: 11px; border-radius: 5px; background: #fff; color: var(--blue); border: 1px solid var(--blue); cursor: pointer; width: auto; margin: 0; }
+        main .sf-sheet button.fillcs:hover { background: var(--blue); color: #fff; }
+
+        @media (max-width: 760px) {
+            .sf-sheet { padding: 12px; }
+            .sf-sheet .head { grid-template-columns: 1fr 1fr; }
+            .sf-sheet .head .name { grid-column: 1 / -1; grid-row: auto; }
+            .sf-sheet .top, .sf-sheet .cols { grid-template-columns: 1fr; }
+            .sf-sheet .grid4 { grid-template-columns: 1fr 1fr; }
+            .sf-sheet table.t.wide { min-width: 620px; }
+        }
+
+        /* ===== Print: three US Letter pages per character ===== */
+        .print-container { display: none; }
+        @media print {
+            @page { size: letter portrait; margin: 0.35in; }
+            .site-nav, .skip-link, body > header, .sheet-controls, .tabs, .sheet-status, .sheet-help, #sheet, footer, .site-footer { display: none !important; }
+            html, body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+            main { margin: 0 !important; padding: 0 !important; width: auto !important; max-width: none !important; }
+            .print-container { display: block !important; border: 0 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; background: none !important; border-radius: 0 !important; }
+            .print-container .sf-sheet { width: 7.8in !important; margin: 0 auto !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; font-size: 10.5px; line-height: 1.15; }
+            .print-container .sf-sheet .page { display: flex !important; flex-direction: column; height: 10.25in; box-sizing: border-box; overflow: hidden;
+                border: 1.5pt solid #18263a; border-radius: 4px; padding: 0.12in 0.14in; page-break-after: always; break-after: page; }
+            .print-container .sf-sheet:last-child .page:last-child { page-break-after: auto; break-after: auto; }
+            .print-container .sf-sheet .page > * + * { margin-top: 6px; }
+            .print-container .sf-sheet .val { min-height: 1.15em; padding: 0 2px; }
+            .print-container .sf-sheet .tx.val { min-height: 2.2em; }
+            .print-container .sf-sheet .box { padding: 3px 6px; }
+            .print-container .sf-sheet .stack > * + * { margin-top: 5px; }
+            .print-container .sf-sheet table.t { font-size: 10px; min-width: 0; }
+            .print-container .sf-sheet table.t td .val { min-height: 1.45em; }
+            .print-container .sf-sheet .grow { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+            .print-container .sf-sheet .grow .tx.val { flex: 1; }
+            .print-container .sf-sheet .cols.grow { display: grid; }
+            .print-container .sf-sheet .cols.grow > .stack { display: flex; flex-direction: column; }
+            .print-container .sf-sheet button.fillcs { display: none; }
+        }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav">
+    <a href="https://rays-home.netlify.app/">Ray's House of Fun</a>
+    <a href="/index.html">Home</a>
+    <a href="https://rays-home.netlify.app/contact">Contact</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+</nav>
+    <header>
+        <h1>Character Sheets</h1>
+        <p>Fill in, save and print Starfinder first edition characters, with Stamina, Hit Points, Resolve, Armor Class, saves and every skill total worked out for you.</p>
+    </header>
+
+    <main id="main">
+        <div class="sheet-controls">
+            <select id="sheetSelect" aria-label="Saved sheets"><option value="">— Select Sheet —</option></select>
+            <button type="button" class="primary" id="newBtn">✨ New</button>
+            <button type="button" id="saveBtn">💾 Save</button>
+            <button type="button" id="copyBtn">📋 Copy</button>
+            <button type="button" id="deleteBtn">🗑️ Delete</button>
+            <button type="button" id="printBtn">🖨️ Print</button>
+            <button type="button" id="printAllBtn">🖨️ Print All</button>
+            <button type="button" id="blankBtn">📄 Print Blank</button>
+            <button type="button" id="exportBtn">📤 Export</button>
+            <button type="button" id="importBtn">📥 Import</button>
+            <input type="file" id="importFile" accept=".json,application/json">
+        </div>
+        <p class="sheet-status" id="status" role="status" aria-live="polite"></p>
+        <div class="tabs" role="tablist" aria-label="Sheet pages">
+            <button type="button" role="tab" id="tab-main" aria-controls="sheet" aria-selected="true" data-page="main">🚀 Character</button>
+            <button type="button" role="tab" id="tab-skills" aria-controls="sheet" aria-selected="false" data-page="skills">🎯 Skills &amp; Feats</button>
+            <button type="button" role="tab" id="tab-gear" aria-controls="sheet" aria-selected="false" data-page="gear">🎒 Gear &amp; Spells</button>
+        </div>
+
+        <form class="sf-sheet" id="sheet" data-page="main" autocomplete="off" onsubmit="return false">
+            <!-- ===================== PAGE 1: CHARACTER ===================== -->
+            <div class="page p-main">
+                <div class="head">
+                    <label class="name"><span class="lbl">Character Name</span><input type="text" name="name" maxlength="60" placeholder="Navasi"></label>
+                    <div class="mini"><label><small class="k">Class</small><input type="text" name="cls1" list="classes" placeholder="Envoy"></label><label><small class="k">Level</small><input type="text" name="lvl1" maxlength="2" inputmode="numeric" placeholder="1"></label></div>
+                    <div class="mini"><label><small class="k">2nd class</small><input type="text" name="cls2" list="classes"></label><label><small class="k">Level</small><input type="text" name="lvl2" maxlength="2" inputmode="numeric"></label></div>
+                    <label><small class="k">Race</small><input type="text" name="race" list="races" placeholder="Human"></label>
+                    <label><small class="k">Race HP</small><input type="text" name="raceHp" maxlength="2" inputmode="numeric" placeholder="4"></label>
+                    <label><small class="k">Theme</small><input type="text" name="theme" placeholder="Ace Pilot"></label>
+                    <label><small class="k">Key ability</small><select name="keyAbil"><option value=""></option><option value="str">STR</option><option value="dex">DEX</option><option value="con">CON</option><option value="int">INT</option><option value="wis">WIS</option><option value="cha">CHA</option></select></label>
+                    <label><small class="k">Size / Speed</small><input type="text" name="size" placeholder="Medium / 30 ft."></label>
+                    <label><small class="k">Homeworld</small><input type="text" name="homeworld"></label>
+                    <label><small class="k">Alignment / Deity</small><input type="text" name="alignment"></label>
+                    <label><small class="k">Experience</small><input type="text" name="xp"></label>
+                    <label><small class="k">Player</small><input type="text" name="player"></label>
+                </div>
+
+                <div class="top">
+                    <div class="box">
+                        <span class="lbl">Ability Scores</span>
+                        <div class="abil" id="abil"></div>
+                    </div>
+                    <div class="stack">
+                        <div class="pools">
+                            <div class="pool"><span class="lbl">Stamina</span><div class="row"><input type="text" name="spCur" maxlength="3" aria-label="Current Stamina Points"> / <span class="out" data-out="spMax">—</span></div><div class="misc note" style="text-align:center">misc <input type="text" name="spMisc" maxlength="3" style="width:2.6em;text-align:center;font-size:11px" aria-label="Stamina misc"></div></div>
+                            <div class="pool"><span class="lbl">Hit Points</span><div class="row"><input type="text" name="hpCur" maxlength="3" aria-label="Current Hit Points"> / <span class="out" data-out="hpMax">—</span></div><div class="misc note" style="text-align:center">misc <input type="text" name="hpMisc" maxlength="3" style="width:2.6em;text-align:center;font-size:11px" aria-label="Hit Points misc"></div></div>
+                            <div class="pool"><span class="lbl">Resolve</span><div class="row"><input type="text" name="rpCur" maxlength="3" aria-label="Current Resolve Points"> / <span class="out" data-out="rpMax">—</span></div><div class="misc note" style="text-align:center">misc <input type="text" name="rpMisc" maxlength="3" style="width:2.6em;text-align:center;font-size:11px" aria-label="Resolve misc"></div></div>
+                        </div>
+                        <div class="box">
+                            <span class="lbl">Defense</span>
+                            <div class="grid4">
+                                <div class="dv"><small class="k">EAC</small><span class="big" data-out="eac">—</span><span class="misc">misc <input type="text" name="eacMisc" maxlength="3" aria-label="EAC misc"></span></div>
+                                <div class="dv"><small class="k">KAC</small><span class="big" data-out="kac">—</span><span class="misc">misc <input type="text" name="kacMisc" maxlength="3" aria-label="KAC misc"></span></div>
+                                <div class="dv"><small class="k">AC vs. maneuvers</small><span class="big" data-out="cmd">—</span><span class="misc">KAC + 8</span></div>
+                                <div class="dv"><small class="k">Initiative</small><span class="big" data-out="init">—</span><span class="misc">misc <input type="text" name="initMisc" maxlength="3" aria-label="Initiative misc"></span></div>
+                                <div class="dv"><small class="k">Fortitude</small><span class="big" data-out="fort">—</span><span class="misc">misc <input type="text" name="fortMisc" maxlength="3" aria-label="Fortitude misc"></span></div>
+                                <div class="dv"><small class="k">Reflex</small><span class="big" data-out="ref">—</span><span class="misc">misc <input type="text" name="refMisc" maxlength="3" aria-label="Reflex misc"></span></div>
+                                <div class="dv"><small class="k">Will</small><span class="big" data-out="will">—</span><span class="misc">misc <input type="text" name="willMisc" maxlength="3" aria-label="Will misc"></span></div>
+                                <div class="dv"><small class="k">Base attack</small><span class="big" data-out="bab">—</span><span class="misc" data-out="lvlNote"></span></div>
+                            </div>
+                            <div class="grid3" style="margin-top:6px">
+                                <div class="dv"><small class="k">Melee attack</small><span class="big" data-out="melee">—</span><span class="misc">BAB + STR</span></div>
+                                <div class="dv"><small class="k">Ranged attack</small><span class="big" data-out="ranged">—</span><span class="misc">BAB + DEX</span></div>
+                                <div class="dv"><small class="k">Thrown attack</small><span class="big" data-out="thrown">—</span><span class="misc">BAB + STR</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box" style="margin-top:8px">
+                    <span class="lbl">Armor</span>
+                    <div class="scroll"><table class="t wide"><thead><tr><th>Armor &amp; upgrades</th><th class="c">Level</th><th class="c">EAC bonus</th><th class="c">KAC bonus</th><th class="c">Max Dex</th><th class="c">Check pen.</th><th class="c">Speed adj.</th></tr></thead>
+                    <tbody><tr><td><input type="text" name="armorName" placeholder="Second skin" aria-label="Armor"></td><td class="c"><input type="text" name="armorLvl" aria-label="Armor level"></td><td class="c"><input type="text" name="armorEac" placeholder="1" aria-label="Armor EAC bonus"></td><td class="c"><input type="text" name="armorKac" placeholder="2" aria-label="Armor KAC bonus"></td><td class="c"><input type="text" name="armorMaxDex" placeholder="5" aria-label="Armor maximum Dex bonus"></td><td class="c"><input type="text" name="armorAcp" placeholder="0" aria-label="Armor check penalty"></td><td class="c"><input type="text" name="armorSpeed" aria-label="Armor speed adjustment"></td></tr></tbody></table></div>
+                    <div class="grid3" style="margin-top:4px">
+                        <label><small class="k">Damage reduction</small><input type="text" name="dr"></label>
+                        <label><small class="k">Energy resistance</small><input type="text" name="resist"></label>
+                        <label><small class="k">Spell resistance / immunities</small><input type="text" name="sr"></label>
+                    </div>
+                </div>
+
+                <div class="box" style="margin-top:8px">
+                    <span class="lbl">Weapons</span>
+                    <div class="scroll"><table class="t wide"><thead><tr><th>Weapon</th><th class="c">Level</th><th class="c">Attack</th><th class="c">Damage</th><th class="c">Range</th><th class="c">Critical</th><th class="c">Ammo / usage</th><th>Special</th></tr></thead><tbody id="weapons"></tbody></table></div>
+                </div>
+
+                <div class="box grow" style="margin-top:8px"><span class="lbl">Conditions &amp; Notes</span><textarea name="notes" rows="3" placeholder="Conditions, afflictions, reminders"></textarea></div>
+            </div>
+
+            <!-- ===================== PAGE 2: SKILLS & FEATS ===================== -->
+            <div class="page p-skills">
+                <div class="head" style="grid-template-columns: 1.6fr repeat(2, 1fr)">
+                    <div class="name" style="grid-row:auto"><span class="lbl">Character Name</span><span class="val" data-mirror="name"></span></div>
+                    <div><small class="k">Skill ranks available</small><span class="out" data-out="ranksAvail" style="text-align:left">—</span></div>
+                    <div><small class="k">Ranks spent</small><span class="out" data-out="ranksSpent" style="text-align:left">0</span></div>
+                </div>
+                <div class="cols grow">
+                    <div class="box">
+                        <div class="skillhead"><span class="lbl">Skills</span><button type="button" class="fillcs" id="fillCs">Mark class skills</button></div>
+                        <table class="t sk"><thead><tr><th>Skill</th><th class="c" title="Class skill">CS</th><th class="c">Abil.</th><th class="c">Ranks</th><th class="c">Misc</th><th class="c">Total</th></tr></thead><tbody id="skills"></tbody></table>
+                        <p class="note">CS = class skill (+3 once it has a rank). <span class="flags">*</span> trained only; <span class="flags">†</span> armor check penalty applies.</p>
+                    </div>
+                    <div class="stack">
+                        <div class="box grow"><span class="lbl">Feats</span><textarea name="feats" rows="5"></textarea></div>
+                        <div class="box grow"><span class="lbl">Class Features</span><textarea name="classFeatures" rows="5"></textarea></div>
+                        <div class="box grow"><span class="lbl">Racial Traits &amp; Theme Benefits</span><textarea name="racialTraits" rows="4"></textarea></div>
+                        <div class="box"><span class="lbl">Languages</span><input type="text" name="languages" placeholder="Common"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== PAGE 3: GEAR & SPELLS ===================== -->
+            <div class="page p-gear">
+                <div class="head" style="grid-template-columns: 1.6fr repeat(3, 1fr)">
+                    <div class="name" style="grid-row:auto"><span class="lbl">Character Name</span><span class="val" data-mirror="name"></span></div>
+                    <label><small class="k">Credits</small><input type="text" name="credits"></label>
+                    <label><small class="k">UPBs</small><input type="text" name="upb"></label>
+                    <div><small class="k">Bulk carried</small><span class="out" data-out="bulk" style="text-align:left">0</span></div>
+                </div>
+                <div class="cols grow">
+                    <div class="stack">
+                        <div class="box">
+                            <span class="lbl">Equipment</span>
+                            <table class="t"><thead><tr><th>Item</th><th class="c">Level</th><th class="c">Bulk</th><th>Notes</th></tr></thead><tbody id="gear"></tbody></table>
+                            <p class="note" data-out="bulkNote"></p>
+                        </div>
+                        <div class="box">
+                            <span class="lbl">Augmentations</span>
+                            <table class="t"><thead><tr><th>Augmentation</th><th class="c">System</th></tr></thead><tbody id="aug"></tbody></table>
+                        </div>
+                        <div class="box grow"><span class="lbl">Starship Role, Drone &amp; Allies</span><textarea name="ship" rows="3"></textarea></div>
+                    </div>
+                    <div class="stack">
+                        <div class="box">
+                            <span class="lbl">Spellcasting</span>
+                            <table class="t"><thead><tr><th class="c">Spell level</th><th class="c">Known</th><th class="c">Per day</th><th class="c">Used</th><th class="c">Save DC</th></tr></thead><tbody id="slots"></tbody></table>
+                            <p class="note">Save DC = 10 + spell level + key ability modifier.</p>
+                        </div>
+                        <div class="box grow"><span class="lbl">Spells Known</span><textarea name="spells" rows="8" placeholder="0: detect magic, telekinetic projectile&#10;1st: mystic cure, magic missile"></textarea></div>
+                        <div class="box grow"><span class="lbl">Notes</span><textarea name="notes2" rows="4"></textarea></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <datalist id="classes"></datalist>
+        <datalist id="races"><option>Android</option><option>Human</option><option>Kasatha</option><option>Lashunta</option><option>Shirren</option><option>Vesk</option><option>Ysoki</option></datalist>
+
+        <div class="sheet-help">
+            <p><strong>How it works.</strong> A sheet auto-saves in this browser once it has a name. Renaming a sheet renames its save. Use the tabs to move between the three pages. <strong>Print</strong> prints all three pages of the current character, one per US Letter sheet, and <strong>Print Blank</strong> prints an empty set. <strong>Export</strong> downloads every sheet as a JSON file and <strong>Import</strong> merges a file like that back in (a sheet with the same name is replaced). Nothing leaves your browser.</p>
+            <p><strong>Worked out for you.</strong> An ability modifier is (score − 10) ÷ 2, rounded down. Enter a class and level (and a second class if you multiclass) to get base attack bonus and base saves; the seven core classes and the six expansion classes are built in. Key ability defaults to the class's; change it for a soldier, biohacker or evolutionist who uses the other option. Hit Points are your race's HP (once) plus the class HP for each level; Stamina is the class SP + CON modifier for each level; Resolve is half your level (minimum 1) + your key ability modifier. EAC and KAC are 10 + your armor's bonus + DEX modifier (capped by the armor's maximum Dex), and your AC against combat maneuvers is KAC + 8. A skill total is ranks + ability modifier, +3 for a class skill with at least one rank, minus the armor check penalty where it applies. Bulk counts 10 light (L) items as 1; you are encumbered above half your STR score and overburdened above your STR score. See <a href="/starfinder_char.html">Character Creation</a>, <a href="/starfinder_classes.html">Classes</a> and the <a href="/starfinder_dice_roller.html">Dice Roller</a>.</p>
+        </div>
+
+        <div class="print-container" id="printContainer"></div>
+    </main>
+
+    <footer>
+<div class="page-nav">
+    <a class="prev" href="/starfinder_dice_roller.html">Dice Roller</a>
+    <a class="next" href="/index.html">Guide Home</a>
+</div>
+    </footer>
+<div class="site-footer">&copy; 2026 Ray de la Paz. The Starfinder Guide. All rights reserved. &middot; <a href="https://rays-home.netlify.app/">Ray's House of Fun</a><br>Starfinder is a registered trademark of Paizo Inc. This guide is an unofficial fan resource.</div>
+
+    <script>
+    (function () {
+        'use strict';
+        var KEY = 'sf1-character-sheets';
+        var sheet = document.getElementById('sheet');
+        var select = document.getElementById('sheetSelect');
+        var $ = function (id) { return document.getElementById(id); };
+
+        var ABIL = [['str', 'STR', 'Strength'], ['dex', 'DEX', 'Dexterity'], ['con', 'CON', 'Constitution'], ['int', 'INT', 'Intelligence'], ['wis', 'WIS', 'Wisdom'], ['cha', 'CHA', 'Charisma']];
+        // [name, ability, trained only, armor check penalty]
+        var SKILLS = [['Acrobatics', 'dex', 0, 1], ['Athletics', 'str', 0, 1], ['Bluff', 'cha'], ['Computers', 'int', 1], ['Culture', 'int', 1], ['Diplomacy', 'cha'],
+            ['Disguise', 'cha'], ['Engineering', 'int', 1], ['Intimidate', 'cha'], ['Life Science', 'int', 1], ['Medicine', 'int', 1], ['Mysticism', 'wis', 1],
+            ['Perception', 'wis'], ['Physical Science', 'int', 1], ['Piloting', 'dex'], ['Sense Motive', 'wis'], ['Sleight of Hand', 'dex', 1, 1], ['Stealth', 'dex', 0, 1],
+            ['Survival', 'wis'], ['Profession', 'pro', 1], ['Profession', 'pro', 1]];
+        // hp = HP and SP per level, ranks = skill ranks per level, bab f(ull)/m(edium), good saves, key ability, class skills
+        var CLASSES = {
+            Envoy: { hp: 6, ranks: 8, bab: 'm', good: ['ref', 'will'], key: 'cha', cs: ['Acrobatics', 'Athletics', 'Bluff', 'Computers', 'Culture', 'Diplomacy', 'Disguise', 'Engineering', 'Intimidate', 'Medicine', 'Perception', 'Piloting', 'Profession', 'Sense Motive', 'Sleight of Hand', 'Stealth'] },
+            Mechanic: { hp: 6, ranks: 4, bab: 'm', good: ['fort', 'ref'], key: 'int', cs: ['Athletics', 'Computers', 'Engineering', 'Medicine', 'Perception', 'Physical Science', 'Piloting', 'Profession'] },
+            Mystic: { hp: 6, ranks: 6, bab: 'm', good: ['will'], key: 'wis', cs: ['Bluff', 'Culture', 'Diplomacy', 'Disguise', 'Intimidate', 'Life Science', 'Medicine', 'Mysticism', 'Perception', 'Profession', 'Sense Motive', 'Survival'] },
+            Operative: { hp: 6, ranks: 8, bab: 'm', good: ['ref', 'will'], key: 'dex', cs: ['Acrobatics', 'Athletics', 'Bluff', 'Computers', 'Culture', 'Disguise', 'Engineering', 'Intimidate', 'Medicine', 'Perception', 'Piloting', 'Profession', 'Sense Motive', 'Sleight of Hand', 'Stealth', 'Survival'] },
+            Solarian: { hp: 7, ranks: 4, bab: 'f', good: ['fort', 'will'], key: 'cha', cs: ['Acrobatics', 'Athletics', 'Diplomacy', 'Intimidate', 'Mysticism', 'Perception', 'Physical Science', 'Profession', 'Sense Motive', 'Stealth'] },
+            Soldier: { hp: 7, ranks: 4, bab: 'f', good: ['fort', 'will'], key: 'str', cs: ['Acrobatics', 'Athletics', 'Engineering', 'Intimidate', 'Medicine', 'Piloting', 'Profession', 'Survival'] },
+            Technomancer: { hp: 5, ranks: 4, bab: 'm', good: ['will'], key: 'int', cs: ['Computers', 'Engineering', 'Life Science', 'Mysticism', 'Physical Science', 'Piloting', 'Profession', 'Sleight of Hand'] },
+            Biohacker: { hp: 6, ranks: 4, bab: 'm', good: ['fort'], key: 'int', cs: ['Bluff', 'Computers', 'Culture', 'Diplomacy', 'Engineering', 'Life Science', 'Medicine', 'Perception', 'Physical Science', 'Profession', 'Sense Motive', 'Sleight of Hand'] },
+            Evolutionist: { hp: 6, ranks: 4, bab: 'f', good: ['fort', 'ref'], key: 'str', cs: ['Acrobatics', 'Athletics', 'Culture', 'Disguise', 'Intimidate', 'Perception', 'Profession', 'Stealth', 'Survival'] },
+            Nanocyte: { hp: 6, ranks: 6, bab: 'f', good: ['fort'], key: 'con', cs: ['Acrobatics', 'Athletics', 'Computers', 'Engineering', 'Life Science', 'Medicine', 'Perception', 'Physical Science', 'Piloting', 'Profession', 'Sleight of Hand', 'Stealth'] },
+            Precog: { hp: 5, ranks: 6, bab: 'm', good: ['ref'], key: 'dex', cs: ['Acrobatics', 'Bluff', 'Culture', 'Diplomacy', 'Mysticism', 'Perception', 'Piloting', 'Profession', 'Sense Motive', 'Stealth'] },
+            Vanguard: { hp: 7, ranks: 6, bab: 'f', good: ['fort', 'ref'], key: 'con', cs: ['Acrobatics', 'Athletics', 'Culture', 'Diplomacy', 'Intimidate', 'Life Science', 'Medicine', 'Mysticism', 'Perception', 'Profession', 'Stealth', 'Survival'] },
+            Witchwarper: { hp: 5, ranks: 4, bab: 'm', good: ['ref'], key: 'cha', cs: ['Acrobatics', 'Bluff', 'Culture', 'Diplomacy', 'Intimidate', 'Mysticism', 'Physical Science', 'Profession'] }
+        };
+        var FIELDS = ['name', 'cls1', 'lvl1', 'cls2', 'lvl2', 'race', 'raceHp', 'theme', 'keyAbil', 'size', 'homeworld', 'alignment', 'xp', 'player',
+            'spCur', 'hpCur', 'rpCur', 'spMisc', 'hpMisc', 'rpMisc', 'eacMisc', 'kacMisc', 'initMisc', 'fortMisc', 'refMisc', 'willMisc',
+            'armorName', 'armorLvl', 'armorEac', 'armorKac', 'armorMaxDex', 'armorAcp', 'armorSpeed', 'dr', 'resist', 'sr', 'notes',
+            'feats', 'classFeatures', 'racialTraits', 'languages', 'credits', 'upb', 'ship', 'spells', 'notes2'];
+        var BOOLS = {};
+
+        ABIL.forEach(function (a) {
+            FIELDS.push(a[0]);
+            $('abil').insertAdjacentHTML('beforeend', '<div class="ab"><span class="lbl">' + a[1] + '</span><label><input type="text" name="' + a[0] + '" maxlength="2" inputmode="numeric" placeholder="10" aria-label="' + a[2] + ' score"><small>score</small></label><span class="out" data-out="m_' + a[0] + '">—</span></div>');
+        });
+        Object.keys(CLASSES).forEach(function (c) { $('classes').insertAdjacentHTML('beforeend', '<option>' + c + '</option>'); });
+        var proOpts = '<option value=""></option><option value="cha">CHA</option><option value="int">INT</option><option value="wis">WIS</option>';
+        SKILLS.forEach(function (s, i) {
+            var id = 'sk' + i; FIELDS.push(id + 'c', id + 'r', id + 'm'); BOOLS[id + 'c'] = 1;
+            var flags = (s[2] ? '*' : '') + (s[3] ? '†' : ''), pro = s[1] === 'pro';
+            if (pro) FIELDS.push(id + 'n', id + 'a');
+            $('skills').insertAdjacentHTML('beforeend', '<tr' + (pro ? ' class="profrow"' : '') + '><td>' + s[0] + (flags ? ' <span class="flags">' + flags + '</span>' : '') +
+                (pro ? ' <input type="text" class="pn" name="' + id + 'n" placeholder="field" aria-label="Profession ' + (i - 18) + ' field">' : '') + '</td>' +
+                '<td class="c"><input type="checkbox" class="ck" name="' + id + 'c" aria-label="' + s[0] + (pro ? ' ' + (i - 18) : '') + ' is a class skill"></td>' +
+                '<td class="c">' + (pro ? '<select name="' + id + 'a" aria-label="Profession ' + (i - 18) + ' ability">' + proOpts + '</select>' : s[1].toUpperCase()) + '</td>' +
+                '<td class="c"><input type="text" name="' + id + 'r" maxlength="2" inputmode="numeric" aria-label="' + s[0] + (pro ? ' ' + (i - 18) : '') + ' ranks"></td>' +
+                '<td class="c"><input type="text" name="' + id + 'm" maxlength="3" aria-label="' + s[0] + (pro ? ' ' + (i - 18) : '') + ' misc bonus"></td>' +
+                '<td class="c"><span class="out tot" data-out="' + id + '"></span></td></tr>');
+        });
+        function rows(tbody, prefix, label, count, cols) {
+            var h = '';
+            for (var i = 1; i <= count; i++) {
+                h += '<tr>';
+                cols.forEach(function (c) { var nm = prefix + i + c[0]; FIELDS.push(nm); h += '<td' + (c[2] ? ' class="c"' : '') + '><input type="text" name="' + nm + '" aria-label="' + label + ' ' + i + ' ' + c[1] + '"></td>'; });
+                h += '</tr>';
+            }
+            $(tbody).innerHTML = h;
+        }
+        rows('weapons', 'w', 'Weapon', 5, [['n', 'name'], ['l', 'level', 1], ['a', 'attack bonus', 1], ['d', 'damage', 1], ['r', 'range', 1], ['c', 'critical', 1], ['u', 'ammo or usage', 1], ['x', 'special']]);
+        rows('gear', 'g', 'Item', 14, [['n', 'name'], ['l', 'level', 1], ['b', 'bulk', 1], ['x', 'notes']]);
+        rows('aug', 'a', 'Augmentation', 4, [['n', 'name'], ['s', 'system', 1]]);
+        var slotHtml = '';
+        for (var L = 0; L <= 6; L++) {
+            FIELDS.push('sl' + L + 'k', 'sl' + L + 'd', 'sl' + L + 'u');
+            slotHtml += '<tr><td class="c"><b>' + (L === 0 ? '0' : L + (L === 1 ? 'st' : L === 2 ? 'nd' : L === 3 ? 'rd' : 'th')) + '</b></td>' +
+                '<td class="c"><input type="text" name="sl' + L + 'k" maxlength="2" aria-label="Level ' + L + ' spells known"></td>' +
+                '<td class="c"><input type="text" name="sl' + L + 'd" maxlength="2" aria-label="Level ' + L + ' spells per day"' + (L === 0 ? ' placeholder="∞"' : '') + '></td>' +
+                '<td class="c"><input type="text" name="sl' + L + 'u" maxlength="2" aria-label="Level ' + L + ' spells used"></td>' +
+                '<td class="c"><span class="out" data-out="dc' + L + '"></span></td></tr>';
+        }
+        $('slots').innerHTML = slotHtml;
+
+        // ----- rules -----
+        var num = function (v) { var x = parseFloat(String(v == null ? '' : v).replace('−', '-').replace('+', '')); return isNaN(x) ? 0 : x; };
+        var has = function (get, k) { return String(get(k) == null ? '' : get(k)).trim() !== ''; };
+        var sgn = function (n) { return (n >= 0 ? '+' : '−') + Math.abs(n); };
+        function cls(name) {
+            var n = String(name || '').trim().toLowerCase();
+            for (var k in CLASSES) if (k.toLowerCase() === n) return CLASSES[k];
+            return null;
+        }
+        function mod(get, a) { return has(get, a) ? Math.floor((num(get(a)) - 10) / 2) : null; }
+        function bulkOf(v) {
+            var s = String(v == null ? '' : v).trim().toUpperCase();
+            if (s === 'L') return 0.1;
+            if (s === '' || s === '-' || s === '—') return 0;
+            return num(s);
+        }
+        function derive(get) {
+            var o = {}, m = {}, dash = '—';
+            ABIL.forEach(function (a) { m[a[0]] = mod(get, a[0]); o['m_' + a[0]] = m[a[0]] == null ? dash : sgn(m[a[0]]); });
+            var parts = [[cls(get('cls1')), num(get('lvl1'))], [cls(get('cls2')), num(get('lvl2'))]].filter(function (p) { return p[1] > 0; });
+            var level = parts.reduce(function (t, p) { return t + p[1]; }, 0);
+            var known = parts.length > 0 && parts.every(function (p) { return p[0]; });
+            var key = get('keyAbil') || (parts[0] && parts[0][0] ? parts[0][0].key : '');
+            var mk = key ? m[key] : null, z = function (x) { return x == null ? 0 : x; };
+            o.lvlNote = level ? 'level ' + level : '';
+            var bab = null, base = null;
+            if (known) {
+                bab = 0; base = { fort: 0, ref: 0, will: 0 };
+                parts.forEach(function (p) {
+                    var c = p[0], l = p[1];
+                    bab += c.bab === 'f' ? l : Math.floor(l * 3 / 4);
+                    ['fort', 'ref', 'will'].forEach(function (s) { base[s] += c.good.indexOf(s) >= 0 ? 2 + Math.floor(l / 2) : Math.floor(l / 3); });
+                });
+            }
+            o.bab = bab == null ? dash : sgn(bab);
+            o.melee = bab == null || m.str == null ? dash : sgn(bab + m.str);
+            o.thrown = o.melee;
+            o.ranged = bab == null || m.dex == null ? dash : sgn(bab + m.dex);
+            [['fort', 'con'], ['ref', 'dex'], ['will', 'wis']].forEach(function (s) {
+                o[s[0]] = base == null || m[s[1]] == null ? dash : sgn(base[s[0]] + m[s[1]] + num(get(s[0] + 'Misc')));
+            });
+            o.init = m.dex == null ? dash : sgn(m.dex + num(get('initMisc')));
+            if (m.dex != null) {
+                var dexAc = has(get, 'armorMaxDex') ? Math.min(m.dex, num(get('armorMaxDex'))) : m.dex;
+                var eac = 10 + num(get('armorEac')) + dexAc + num(get('eacMisc')), kac = 10 + num(get('armorKac')) + dexAc + num(get('kacMisc'));
+                o.eac = String(eac); o.kac = String(kac); o.cmd = String(kac + 8);
+            } else { o.eac = o.kac = o.cmd = dash; }
+            if (known && has(get, 'raceHp')) o.hpMax = String(num(get('raceHp')) + parts.reduce(function (t, p) { return t + p[0].hp * p[1]; }, 0) + num(get('hpMisc')));
+            else o.hpMax = dash;
+            o.spMax = known && m.con != null ? String(Math.max(0, parts.reduce(function (t, p) { return t + (p[0].hp + m.con) * p[1]; }, 0)) + num(get('spMisc'))) : dash;
+            o.rpMax = level && mk != null ? String(Math.max(1, Math.floor(level / 2)) + mk + num(get('rpMisc'))) : dash;
+            // skills
+            var acp = Math.abs(num(get('armorAcp'))), spent = 0;
+            SKILLS.forEach(function (s, i) {
+                var id = 'sk' + i, r = num(get(id + 'r')), ab = s[1] === 'pro' ? get(id + 'a') : s[1];
+                spent += r;
+                if (!ab || m[ab] == null || (s[2] && r < 1)) { o[id] = s[2] && r < 1 && m[ab] != null ? '' : (r || has(get, id + 'm') ? dash : ''); return; }
+                var t = r + m[ab] + (get(id + 'c') === true && r >= 1 ? 3 : 0) + num(get(id + 'm')) - (s[3] ? acp : 0);
+                o[id] = sgn(t);
+            });
+            if (known && m.int != null) {
+                var avail = parts.reduce(function (t, p) { return t + Math.max(1, p[0].ranks + m.int) * p[1]; }, 0);
+                if (/^\s*human\s*$/i.test(String(get('race') || ''))) avail += level;
+                o.ranksAvail = String(avail);
+            } else o.ranksAvail = dash;
+            o.ranksSpent = String(spent);
+            // bulk
+            var bulk = 0;
+            for (var g = 1; g <= 14; g++) bulk += bulkOf(get('g' + g + 'b'));
+            bulk = Math.floor(bulk + 1e-9);
+            o.bulk = String(bulk);
+            if (has(get, 'str')) {
+                var st = num(get('str')), half = Math.floor(st / 2);
+                o.bulkNote = 'Bulk ' + bulk + ' (10 light items = 1). Unencumbered up to ' + half + ', encumbered above ' + half + ', overburdened above ' + st + '.' +
+                    (bulk > st ? ' You are overburdened.' : bulk > half ? ' You are encumbered.' : '');
+            } else o.bulkNote = 'Bulk ' + bulk + ' (10 light items = 1). Enter STR to see your limits.';
+            for (var L = 0; L <= 6; L++) o['dc' + L] = mk == null ? '' : String(10 + L + mk);
+            return o;
+        }
+        function paint(root, get) {
+            var o = derive(get);
+            root.querySelectorAll('[data-out]').forEach(function (el) { var k = el.getAttribute('data-out'); if (o[k] != null) el.textContent = o[k]; });
+            root.querySelectorAll('[data-mirror]').forEach(function (el) { el.textContent = get(el.getAttribute('data-mirror')) || ''; });
+        }
+
+        // ----- form plumbing -----
+        function field(nm) { return sheet.querySelector('[name="' + nm + '"]'); }
+        function getVal(nm) { var el = field(nm); return !el ? '' : el.type === 'checkbox' ? el.checked : el.value; }
+        function setVal(nm, v) { var el = field(nm); if (!el) return; if (el.type === 'checkbox') el.checked = v === true || v === 'true'; else el.value = v == null ? '' : String(v); }
+        function currentName() { return String(getVal('name')).trim(); }
+        function say(msg) { $('status').textContent = msg; }
+        function sanitize(raw) {
+            if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+            var out = {};
+            FIELDS.forEach(function (f) { var v = raw[f]; out[f] = BOOLS[f] ? (v === true || v === 'true') : ((typeof v === 'string' || typeof v === 'number') ? String(v).slice(0, 6000) : ''); });
+            return out;
+        }
+        function safeName(x) { return typeof x === 'string' && x.trim() !== '' && ['__proto__', 'constructor', 'prototype'].indexOf(x) < 0; }
+        function load() {
+            var out = {};
+            try {
+                var p = JSON.parse(localStorage.getItem(KEY));
+                if (p && typeof p === 'object' && !Array.isArray(p)) Object.keys(p).forEach(function (k) { var d = sanitize(p[k]); if (safeName(k) && d) out[k] = d; });
+            } catch (err) { /* storage blocked or corrupt */ }
+            return out;
+        }
+        function store(all) { try { localStorage.setItem(KEY, JSON.stringify(all)); return true; } catch (err) { say('Could not save: browser storage is unavailable or full.'); return false; } }
+        function read() { var d = {}; FIELDS.forEach(function (f) { d[f] = getVal(f); }); return d; }
+        function repaint() { paint(sheet, getVal); }
+        function clearAll() { FIELDS.forEach(function (f) { setVal(f, BOOLS[f] ? false : ''); }); repaint(); }
+        function fill(d) { clearAll(); FIELDS.forEach(function (f) { setVal(f, d[f]); }); repaint(); }
+        function refreshSelect(sel) {
+            var all = load();
+            select.innerHTML = '<option value="">— Select Sheet —</option>';
+            Object.keys(all).sort().forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = k; if (k === sel) o.selected = true; select.appendChild(o); });
+        }
+        var currentKey = null, timer = null, armed = false;
+        function disarm() { armed = false; $('deleteBtn').classList.remove('armed'); $('deleteBtn').textContent = '🗑️ Delete'; }
+        function storeCurrent(name) {
+            var all = load();
+            if (currentKey && currentKey !== name) delete all[currentKey];
+            all[name] = read();
+            if (!store(all)) return false;
+            currentKey = name; refreshSelect(name); return true;
+        }
+        function autoSave() {
+            timer = null;
+            var name = currentName();
+            if (!safeName(name)) return;
+            var all = load();
+            if (all[name] && name !== currentKey) { say('A sheet named “' + name + '” already exists. Rename this one, or press Save to replace it.'); return; }
+            if (storeCurrent(name)) say('Saved “' + name + '”.');
+        }
+        function flush() { if (timer) { clearTimeout(timer); autoSave(); } }
+        function onEdit() { disarm(); repaint(); clearTimeout(timer); timer = setTimeout(autoSave, 800); }
+        sheet.addEventListener('input', onEdit);
+        sheet.addEventListener('change', onEdit);
+
+        $('fillCs').addEventListener('click', function () {
+            var list = [];
+            ['cls1', 'cls2'].forEach(function (f) { var c = cls(getVal(f)); if (c) list = list.concat(c.cs); });
+            if (!list.length) { say('Enter a class on the Character page first.'); return; }
+            SKILLS.forEach(function (s, i) { if (list.indexOf(s[0]) >= 0) setVal('sk' + i + 'c', true); });
+            onEdit(); say('Class skills marked.');
+        });
+
+        var tabs = document.querySelectorAll('.tabs [role="tab"]');
+        function show(page) {
+            sheet.setAttribute('data-page', page);
+            tabs.forEach(function (t) { var on = t.getAttribute('data-page') === page; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
+        }
+        tabs.forEach(function (t, i) {
+            t.addEventListener('click', function () { show(t.getAttribute('data-page')); });
+            t.addEventListener('keydown', function (ev) {
+                if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+                var nx = tabs[(i + (ev.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]; nx.focus(); show(nx.getAttribute('data-page'));
+            });
+        });
+
+        $('newBtn').addEventListener('click', function () { flush(); clearAll(); currentKey = null; select.value = ''; disarm(); show('main'); field('name').focus(); say('New blank sheet.'); });
+        $('saveBtn').addEventListener('click', function () {
+            clearTimeout(timer); timer = null;
+            var name = currentName();
+            if (!safeName(name)) { say('Give the character a name first.'); show('main'); field('name').focus(); return; }
+            if (storeCurrent(name)) say('Saved “' + name + '”.');
+        });
+        $('copyBtn').addEventListener('click', function () {
+            flush();
+            var base = currentName();
+            if (!base) { say('Give the character a name first.'); return; }
+            var all = load(), name = base + ' (copy)', i = 2;
+            while (all[name]) name = base + ' (copy ' + (i++) + ')';
+            var d = read(); d.name = name; all[name] = d;
+            if (!store(all)) return;
+            fill(d); currentKey = name; refreshSelect(name); say('Copied as “' + name + '”.');
+        });
+        $('deleteBtn').addEventListener('click', function () {
+            var name = select.value;
+            if (!name) { say('Choose a saved sheet to delete.'); return; }
+            if (!armed) { armed = true; this.classList.add('armed'); this.textContent = '🗑️ Click again to delete'; say('Click Delete again to remove “' + name + '”.'); return; }
+            clearTimeout(timer); timer = null;
+            var all = load(); delete all[name];
+            if (!store(all)) return;
+            clearAll(); currentKey = null; refreshSelect(''); disarm(); say('Deleted “' + name + '”.');
+        });
+        select.addEventListener('change', function () {
+            flush(); disarm();
+            var name = select.value, all = load();
+            if (!name || !all[name]) { clearAll(); currentKey = null; return; }
+            fill(all[name]); currentKey = name; refreshSelect(name); say('Loaded “' + name + '”.');
+        });
+
+        // ----- print: clone the form and turn every field into plain text -----
+        function staticSheet(d) {
+            var cl = sheet.cloneNode(true), get = function (k) { return d[k] == null ? '' : d[k]; };
+            cl.removeAttribute('id'); cl.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+            cl.querySelectorAll('button').forEach(function (el) { el.remove(); });
+            cl.querySelectorAll('input, select, textarea').forEach(function (el) {
+                var nm = el.getAttribute('name'), v = d[nm];
+                if (el.type === 'checkbox') { var mk = document.createElement('span'); mk.className = 'mark'; mk.textContent = v === true ? '✓' : ''; el.replaceWith(mk); return; }
+                var span = document.createElement('span');
+                span.className = 'val' + (el.tagName === 'TEXTAREA' ? ' tx' : '') + (el.classList.contains('pn') ? ' pn' : '') + (el.tagName === 'SELECT' && /^sk\d+a$/.test(nm) ? ' pa' : '');
+                if (el.tagName === 'SELECT') { var opt = [].filter.call(el.options, function (o) { return o.value === String(v == null ? '' : v); })[0]; span.textContent = opt && opt.value !== '' ? opt.textContent : ''; }
+                else span.textContent = v == null ? '' : String(v);
+                el.replaceWith(span);
+            });
+            paint(cl, get);
+            return cl;
+        }
+        function doPrint(list) {
+            var box = $('printContainer'); box.innerHTML = '';
+            list.forEach(function (d) { box.appendChild(staticSheet(d)); });
+            window.print();
+        }
+        window.addEventListener('afterprint', function () { $('printContainer').innerHTML = ''; });
+        $('printBtn').addEventListener('click', function () { if (!currentName()) { say('Give the character a name first.'); return; } doPrint([read()]); });
+        $('printAllBtn').addEventListener('click', function () {
+            var all = load(), names = Object.keys(all).sort();
+            if (!names.length) { say('No saved sheets to print yet.'); return; }
+            doPrint(names.map(function (k) { return all[k]; }));
+        });
+        $('blankBtn').addEventListener('click', function () { doPrint([{}]); });
+
+        // ----- export / import (local JSON files) -----
+        $('exportBtn').addEventListener('click', function () {
+            flush();
+            var all = load(), cnt = Object.keys(all).length;
+            if (!cnt) { say('No sheets to export yet.'); return; }
+            var url = URL.createObjectURL(new Blob([JSON.stringify(all, null, 2)], { type: 'application/json' }));
+            var a = document.createElement('a'); a.href = url; a.download = 'starfinder-character-sheets.json';
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+            say('Exported ' + cnt + (cnt === 1 ? ' sheet.' : ' sheets.'));
+        });
+        $('importBtn').addEventListener('click', function () { $('importFile').click(); });
+        $('importFile').addEventListener('change', function (ev) {
+            var file = ev.target.files && ev.target.files[0];
+            ev.target.value = '';
+            if (!file) return;
+            if (file.size > 5 * 1024 * 1024) { say('That file is too large to be a sheet file.'); return; }
+            flush();
+            var r = new FileReader();
+            r.onload = function () {
+                try {
+                    var data = JSON.parse(r.result);
+                    if (!data || typeof data !== 'object' || Array.isArray(data)) { say('That is not a sheet file.'); return; }
+                    var all = load(), count = 0;
+                    Object.keys(data).forEach(function (k) {
+                        var d = sanitize(data[k]); if (!d) return;
+                        var name = String(d.name || '').trim().slice(0, 200);
+                        if (!safeName(name)) return;
+                        all[name] = d; count++;
+                    });
+                    if (!count) { say('No valid sheets found in that file.'); return; }
+                    if (!store(all)) return;
+                    refreshSelect(currentKey || ''); say('Imported ' + count + (count === 1 ? ' sheet.' : ' sheets.'));
+                } catch (err) { say('Could not read that file.'); }
+            };
+            r.onerror = function () { say('Could not read that file.'); };
+            r.readAsText(file);
+        });
+
+        window.sfSheet = { derive: derive, classes: CLASSES, skills: SKILLS };
+        clearAll(); refreshSelect('');
+    })();
+    </script>
+</body>
+</html>
