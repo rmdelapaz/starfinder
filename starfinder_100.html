@@ -78,6 +78,46 @@
             padding: 1rem;
         }
         }
+
+        /* The in-page jump list scrolls with the page (sticky, transparent, it covered the cards) */
+        main > nav { position: static; }
+
+        /* Character and party cards */
+        main ul.roster { list-style: none; margin: 1rem 0 1.6rem; padding: 0; display: grid; gap: 14px; }
+        main ul.roster-solo { grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr)); }
+        main ul.roster > li { margin: 0; padding: 0; }
+        main ul.roster > li::before { content: none; }
+        .pc-card, .party-card {
+            height: 100%; box-sizing: border-box; background: var(--surface); border: 1px solid var(--border);
+            border-top: 4px solid var(--accent); border-radius: var(--radius-sm, 9px); padding: 14px 16px 12px; box-shadow: var(--shadow);
+        }
+        .pc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+        .pc-head h4 { margin: 0; font-size: 1.15rem; line-height: 1.25; color: var(--heading); }
+        .pc-role { margin: 2px 0 0; color: var(--muted); font-size: 0.93rem; font-weight: 600; }
+        .pc-level {
+            flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 48px; height: 48px;
+            border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 700 1.15rem/1 "Orbitron", "Segoe UI", sans-serif;
+        }
+        .pc-level small { font: 600 0.6rem/1 "Source Sans 3", sans-serif; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+        .pc-level-wide { height: auto; min-width: 0; border-radius: 999px; padding: 6px 12px; font: 700 0.85rem/1.1 "Source Sans 3", sans-serif; white-space: nowrap; }
+        .pc-concept { margin: 0 0 10px; padding: 8px 10px; border-left: 3px solid var(--gold); background: var(--accent-soft); border-radius: 4px; font-style: italic; color: var(--text); }
+        .pc-facts { margin: 0; display: grid; gap: 6px; }
+        .pc-facts > div { display: grid; grid-template-columns: 9.5em 1fr; gap: 10px; padding-top: 6px; border-top: 1px dashed var(--border); }
+        .pc-facts > div:first-child { border-top: 0; padding-top: 0; }
+        .pc-facts dt { margin: 0; font-weight: 700; color: var(--heading); font-size: 0.9rem; }
+        .pc-facts dd { margin: 0; color: var(--text); font-size: 0.95rem; }
+        .party-members { list-style: none; margin: 4px 0 12px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 8px; }
+        .party-members > li {
+            margin: 0; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name lv" "role lv"; column-gap: 8px; align-items: center;
+            padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg);
+        }
+        .party-members > li::before { content: none; }
+        .pm-name { grid-area: name; font-weight: 700; color: var(--heading); }
+        .pm-role { grid-area: role; font-size: 0.88rem; color: var(--muted); }
+        .pm-level { grid-area: lv; min-width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 0.85rem; border: 2px solid var(--accent); color: var(--accent); }
+        .pc-card .pc-facts > div { grid-template-columns: 9em 1fr; }
+        .party-members.pm-4 { grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+        @media (max-width: 560px) { .pc-facts > div, .pc-card .pc-facts > div { grid-template-columns: 1fr; gap: 2px; } }
     </style>
 </head>
 <body>
@@ -181,87 +221,91 @@
             <p>Solo characters must be exceptionally well-rounded, capable of handling combat, social interactions, exploration, and problem-solving independently. These characters often work as freelancers, bounty hunters, or independent investigators.</p>
 
             <h3>Low Level Solo Characters (Levels 1-6)</h3>
-            
-            <h4>Zara Novacrest - Human Soldier (Mercenary Theme) - Level 3</h4>
-            <p><strong>Concept:</strong> Former corporate security turned independent mercenary</p>
-            <p><strong>Key Features:</strong> Heavy armor proficiency, weapon specialization, tactical awareness</p>
-            <p><strong>Real-world Parallel:</strong> Like a private military contractor, Zara combines military training with business acumen</p>
-            <p><strong>Practical Usage:</strong> Perfect for campaigns focused on military conflicts or corporate espionage</p>
-
-            <h4>Keth'var - Vesk Envoy (Outlaw Theme) - Level 4</h4>
-            <p><strong>Concept:</strong> Charismatic smuggler with a network of underworld contacts</p>
-            <p><strong>Key Features:</strong> High Charisma, skill expertise, improvisation abilities</p>
-            <p><strong>Backstory:</strong> Former Veskarium officer dishonorably discharged for questioning orders</p>
-            <p><strong>Equipment Focus:</strong> Concealed weapons, communication devices, fake identification</p>
-
-            <h4>Dr. Lyra Brightmind - Lashunta Technomancer (Scholar Theme) - Level 2</h4>
-            <p><strong>Concept:</strong> Academic researcher studying ancient technological artifacts</p>
-            <p><strong>Key Features:</strong> Spell cache integration, magic/technology fusion, analytical mind</p>
-            <p><strong>Analogy:</strong> Like Indiana Jones meets Tony Stark - combining archaeological expertise with cutting-edge technology</p>
-
-            <h4>Patch - Android Mechanic (Spacefarer Theme) - Level 5</h4>
-            <p><strong>Concept:</strong> Ship maintenance specialist seeking to understand their origins</p>
-            <p><strong>Key Features:</strong> Drone companion, technical expertise, artificial intelligence insights</p>
-            <p><strong>Unique Angle:</strong> Questions of identity and consciousness drive character development</p>
-
-            <h4>Whisper - Ysoki Operative (Themeless) - Level 1</h4>
-            <p><strong>Concept:</strong> Information broker specializing in corporate secrets</p>
-            <p><strong>Key Features:</strong> Stealth mastery, trick attacks, small size advantages</p>
-            <p><strong>Role Application:</strong> Ideal for espionage-focused campaigns or urban adventures</p>
+            <ul class="roster roster-solo">
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Zara Novacrest</h4><p class="pc-role">Human Soldier (Mercenary Theme)</p></div><span class="pc-level"><small>Level</small>3</span></header>
+                    <p class="pc-concept">Former corporate security turned independent mercenary</p>
+                    <dl class="pc-facts"><div><dt>Key Features</dt><dd>Heavy armor proficiency, weapon specialization, tactical awareness</dd></div><div><dt>Real-world Parallel</dt><dd>Like a private military contractor, Zara combines military training with business acumen</dd></div><div><dt>Practical Usage</dt><dd>Perfect for campaigns focused on military conflicts or corporate espionage</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Keth'var</h4><p class="pc-role">Vesk Envoy (Outlaw Theme)</p></div><span class="pc-level"><small>Level</small>4</span></header>
+                    <p class="pc-concept">Charismatic smuggler with a network of underworld contacts</p>
+                    <dl class="pc-facts"><div><dt>Key Features</dt><dd>High Charisma, skill expertise, improvisation abilities</dd></div><div><dt>Backstory</dt><dd>Former Veskarium officer dishonorably discharged for questioning orders</dd></div><div><dt>Equipment Focus</dt><dd>Concealed weapons, communication devices, fake identification</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Dr. Lyra Brightmind</h4><p class="pc-role">Lashunta Technomancer (Scholar Theme)</p></div><span class="pc-level"><small>Level</small>2</span></header>
+                    <p class="pc-concept">Academic researcher studying ancient technological artifacts</p>
+                    <dl class="pc-facts"><div><dt>Key Features</dt><dd>Spell cache integration, magic/technology fusion, analytical mind</dd></div><div><dt>Analogy</dt><dd>Like Indiana Jones meets Tony Stark - combining archaeological expertise with cutting-edge technology</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Patch</h4><p class="pc-role">Android Mechanic (Spacefarer Theme)</p></div><span class="pc-level"><small>Level</small>5</span></header>
+                    <p class="pc-concept">Ship maintenance specialist seeking to understand their origins</p>
+                    <dl class="pc-facts"><div><dt>Key Features</dt><dd>Drone companion, technical expertise, artificial intelligence insights</dd></div><div><dt>Unique Angle</dt><dd>Questions of identity and consciousness drive character development</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Whisper</h4><p class="pc-role">Ysoki Operative (Themeless)</p></div><span class="pc-level"><small>Level</small>1</span></header>
+                    <p class="pc-concept">Information broker specializing in corporate secrets</p>
+                    <dl class="pc-facts"><div><dt>Key Features</dt><dd>Stealth mastery, trick attacks, small size advantages</dd></div><div><dt>Role Application</dt><dd>Ideal for espionage-focused campaigns or urban adventures</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>Medium Level Solo Characters (Levels 7-12)</h3>
-
-            <h4>Commander Thex Ironscale - Vesk Soldier (Mercenary Theme) - Level 9</h4>
-            <p><strong>Concept:</strong> Veteran military officer leading peacekeeping missions</p>
-            <p><strong>Advanced Features:</strong> Multiple combat feats, leadership abilities, tactical mastery</p>
-            <p><strong>Character Arc:</strong> Struggles with the morality of military actions in complex political situations</p>
-
-            <h4>Sage Mor'dun - Shirren Mystic (Priest Theme) - Level 8</h4>
-            <p><strong>Concept:</strong> Traveling healer spreading the philosophy of the Swarm's redemption</p>
-            <p><strong>Unique Perspective:</strong> Represents the complexity of redemption and second chances</p>
-            <p><strong>Mechanical Focus:</strong> Healing abilities, telepathic communication, wisdom-based skills</p>
-
-            <h4>Nova Sterling - Human Solarian (Icon Theme) - Level 10</h4>
-            <p><strong>Concept:</strong> Celebrity athlete turned cosmic guardian</p>
-            <p><strong>Stellar Powers:</strong> Balanced photon/graviton abilities, solar manifestations</p>
-            <p><strong>Social Element:</strong> Fame creates both opportunities and complications in adventures</p>
-
-            <h4>Cipher - Kasatha Technomancer (Scholar Theme) - Level 7</h4>
-            <p><strong>Concept:</strong> Digital archaeologist uncovering lost civilizations through data recovery</p>
-            <p><strong>Four-Armed Advantage:</strong> Keeps a weapon, a datapad and a free hand for spellcasting ready at once (extra arms don't grant extra actions)</p>
-            <p><strong>Story Hook:</strong> Searching for clues about a mysterious signal from dark space</p>
-
-            <h4>Captain Rix Stormwind - Half-Elf Envoy (Spacefarer Theme) - Level 12</h4>
-            <p><strong>Concept:</strong> Trader and explorer mapping uncharted regions of the galaxy</p>
-            <p><strong>Versatility:</strong> Combines piloting expertise with diplomatic skills</p>
-            <p><strong>Ship Connection:</strong> Character and vessel are narratively intertwined</p>
+            <ul class="roster roster-solo">
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Commander Thex Ironscale</h4><p class="pc-role">Vesk Soldier (Mercenary Theme)</p></div><span class="pc-level"><small>Level</small>9</span></header>
+                    <p class="pc-concept">Veteran military officer leading peacekeeping missions</p>
+                    <dl class="pc-facts"><div><dt>Advanced Features</dt><dd>Multiple combat feats, leadership abilities, tactical mastery</dd></div><div><dt>Character Arc</dt><dd>Struggles with the morality of military actions in complex political situations</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Sage Mor'dun</h4><p class="pc-role">Shirren Mystic (Priest Theme)</p></div><span class="pc-level"><small>Level</small>8</span></header>
+                    <p class="pc-concept">Traveling healer spreading the philosophy of the Swarm's redemption</p>
+                    <dl class="pc-facts"><div><dt>Unique Perspective</dt><dd>Represents the complexity of redemption and second chances</dd></div><div><dt>Mechanical Focus</dt><dd>Healing abilities, telepathic communication, wisdom-based skills</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Nova Sterling</h4><p class="pc-role">Human Solarian (Icon Theme)</p></div><span class="pc-level"><small>Level</small>10</span></header>
+                    <p class="pc-concept">Celebrity athlete turned cosmic guardian</p>
+                    <dl class="pc-facts"><div><dt>Stellar Powers</dt><dd>Balanced photon/graviton abilities, solar manifestations</dd></div><div><dt>Social Element</dt><dd>Fame creates both opportunities and complications in adventures</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Cipher</h4><p class="pc-role">Kasatha Technomancer (Scholar Theme)</p></div><span class="pc-level"><small>Level</small>7</span></header>
+                    <p class="pc-concept">Digital archaeologist uncovering lost civilizations through data recovery</p>
+                    <dl class="pc-facts"><div><dt>Four-Armed Advantage</dt><dd>Keeps a weapon, a datapad and a free hand for spellcasting ready at once (extra arms don't grant extra actions)</dd></div><div><dt>Story Hook</dt><dd>Searching for clues about a mysterious signal from dark space</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Captain Rix Stormwind</h4><p class="pc-role">Half-Elf Envoy (Spacefarer Theme)</p></div><span class="pc-level"><small>Level</small>12</span></header>
+                    <p class="pc-concept">Trader and explorer mapping uncharted regions of the galaxy</p>
+                    <dl class="pc-facts"><div><dt>Versatility</dt><dd>Combines piloting expertise with diplomatic skills</dd></div><div><dt>Ship Connection</dt><dd>Character and vessel are narratively intertwined</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>High Level Solo Characters (Levels 13-20)</h3>
-
-            <h4>Admiral Vex Starforge - Android Soldier (Mercenary Theme) - Level 18</h4>
-            <p><strong>Concept:</strong> Legendary military strategist coordinating interstellar defense</p>
-            <p><strong>Epic Scope:</strong> Commands fleets, influences galactic politics, faces cosmic threats</p>
-            <p><strong>Character Development:</strong> Questions the nature of duty when orders conflict with justice</p>
-
-            <h4>Archsage Telara - Lashunta Mystic (Scholar Theme) - Level 15</h4>
-            <p><strong>Concept:</strong> Powerful psychic researcher investigating planar convergences</p>
-            <p><strong>High-Level Abilities:</strong> Reality-altering spells, planar travel, cosmic awareness</p>
-            <p><strong>Responsibility Theme:</strong> Power brings the burden of protecting entire star systems</p>
-
-            <h4>The Void Walker - Kasatha Solarian (Spacefarer Theme) - Level 20</h4>
-            <p><strong>Concept:</strong> Legendary figure who has walked between stars without a ship</p>
-            <p><strong>Ultimate Power:</strong> Full stellar mode mastery, cosmic-scale abilities</p>
-            <p><strong>Mythic Status:</strong> Stories about this character inspire hope across the galaxy</p>
-
-            <h4>Nexus Prime - Android Technomancer (Scholar Theme) - Level 17</h4>
-            <p><strong>Concept:</strong> Digital consciousness exploring the intersection of magic and AI</p>
-            <p><strong>Unique Evolution:</strong> Represents the ultimate fusion of technology and mysticism</p>
-            <p><strong>Cosmic Role:</strong> Protects digital realms and artificial intelligences galaxy-wide</p>
-
-            <h4>Dr. Quantum Flux - Human Mechanic (Scholar Theme) - Level 14</h4>
-            <p><strong>Concept:</strong> Genius inventor whose creations shape the future of technology</p>
-            <p><strong>Innovation Focus:</strong> Develops new technologies that other characters will use</p>
-            <p><strong>Legacy Aspect:</strong> Inventions become plot elements in future campaigns</p>
+            <ul class="roster roster-solo">
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Admiral Vex Starforge</h4><p class="pc-role">Android Soldier (Mercenary Theme)</p></div><span class="pc-level"><small>Level</small>18</span></header>
+                    <p class="pc-concept">Legendary military strategist coordinating interstellar defense</p>
+                    <dl class="pc-facts"><div><dt>Epic Scope</dt><dd>Commands fleets, influences galactic politics, faces cosmic threats</dd></div><div><dt>Character Development</dt><dd>Questions the nature of duty when orders conflict with justice</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Archsage Telara</h4><p class="pc-role">Lashunta Mystic (Scholar Theme)</p></div><span class="pc-level"><small>Level</small>15</span></header>
+                    <p class="pc-concept">Powerful psychic researcher investigating planar convergences</p>
+                    <dl class="pc-facts"><div><dt>High-Level Abilities</dt><dd>Reality-altering spells, planar travel, cosmic awareness</dd></div><div><dt>Responsibility Theme</dt><dd>Power brings the burden of protecting entire star systems</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>The Void Walker</h4><p class="pc-role">Kasatha Solarian (Spacefarer Theme)</p></div><span class="pc-level"><small>Level</small>20</span></header>
+                    <p class="pc-concept">Legendary figure who has walked between stars without a ship</p>
+                    <dl class="pc-facts"><div><dt>Ultimate Power</dt><dd>Full stellar mode mastery, cosmic-scale abilities</dd></div><div><dt>Mythic Status</dt><dd>Stories about this character inspire hope across the galaxy</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Nexus Prime</h4><p class="pc-role">Android Technomancer (Scholar Theme)</p></div><span class="pc-level"><small>Level</small>17</span></header>
+                    <p class="pc-concept">Digital consciousness exploring the intersection of magic and AI</p>
+                    <dl class="pc-facts"><div><dt>Unique Evolution</dt><dd>Represents the ultimate fusion of technology and mysticism</dd></div><div><dt>Cosmic Role</dt><dd>Protects digital realms and artificial intelligences galaxy-wide</dd></div></dl>
+                </article></li>
+                <li><article class="pc-card">
+                    <header class="pc-head"><div><h4>Dr. Quantum Flux</h4><p class="pc-role">Human Mechanic (Scholar Theme)</p></div><span class="pc-level"><small>Level</small>14</span></header>
+                    <p class="pc-concept">Genius inventor whose creations shape the future of technology</p>
+                    <dl class="pc-facts"><div><dt>Innovation Focus</dt><dd>Develops new technologies that other characters will use</dd></div><div><dt>Legacy Aspect</dt><dd>Inventions become plot elements in future campaigns</dd></div></dl>
+                </article></li>
+            </ul>
         </section>
 
         <section id="duo-characters">
@@ -269,103 +313,91 @@
             <p>Duo teams create intimate partnerships where characters must cover broader skill ranges while maintaining strong personal bonds. These pairs often represent mentor-protégé relationships, romantic partnerships, or complementary professionals.</p>
 
             <h3>Low Level Duos (Levels 1-6)</h3>
-
-            <h4>Team Alpha: Military Precision</h4>
-            <p><strong>Sergeant Kane</strong> - Human Soldier (Mercenary Theme) - Level 4</p>
-            <p><strong>Medic Rosa</strong> - Halfling Mystic (Priest Theme) - Level 4</p>
-            <p><strong>Partnership Dynamic:</strong> Veteran soldier paired with battlefield medic</p>
-            <p><strong>Tactical Synergy:</strong> Kane provides firepower and protection while Rosa handles healing and support</p>
-            <p><strong>Real-world Example:</strong> Military medic and infantry soldier, like partnerships in special forces units</p>
-
-            <h4>Team Beta: Tech Innovators</h4>
-            <p><strong>Byte</strong> - Android Mechanic (Scholar Theme) - Level 3</p>
-            <p><strong>Spark</strong> - Gnome Technomancer (Scholar Theme) - Level 3</p>
-            <p><strong>Partnership Dynamic:</strong> AI consciousness working with magical prodigy</p>
-            <p><strong>Complementary Skills:</strong> Hardware expertise combined with software/magical manipulation</p>
-            <p><strong>Story Potential:</strong> Exploring the boundary between artificial and magical intelligence</p>
-
-            <h4>Team Gamma: Street Smart</h4>
-            <p><strong>Jinx</strong> - Ysoki Operative (Outlaw Theme) - Level 2</p>
-            <p><strong>Smooth</strong> - Half-Elf Envoy (Icon Theme) - Level 2</p>
-            <p><strong>Partnership Dynamic:</strong> Master thief partnered with con artist</p>
-            <p><strong>Urban Focus:</strong> Specialists in infiltration, information gathering, and social manipulation</p>
-            <p><strong>Analogy:</strong> Like Bonnie and Clyde in space - partners in crime with style</p>
-
-            <h4>Team Delta: Cosmic Explorers</h4>
-            <p><strong>Navigator Zeph</strong> - Kasatha Operative (Spacefarer Theme) - Level 5</p>
-            <p><strong>Scout Vera</strong> - Human Operative (Spacefarer Theme) - Level 5</p>
-            <p><strong>Partnership Dynamic:</strong> Ship captain and advance reconnaissance specialist</p>
-            <p><strong>Exploration Focus:</strong> Perfect for discovering new worlds and mapping unknown regions</p>
-
-            <h4>Team Epsilon: Corporate Defectors</h4>
-            <p><strong>Ex-Executive Morgan</strong> - Human Envoy (Icon Theme) - Level 6</p>
-            <p><strong>Security Chief Tor</strong> - Vesk Soldier (Mercenary Theme) - Level 6</p>
-            <p><strong>Partnership Dynamic:</strong> Former corporate insider and their loyal bodyguard</p>
-            <p><strong>Conflict Driver:</strong> Running from their corporate past while fighting similar corruption</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Alpha: Military Precision</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 4</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Sergeant Kane</span><span class="pm-role">Human Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Medic Rosa</span><span class="pm-role">Halfling Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Partnership Dynamic</dt><dd>Veteran soldier paired with battlefield medic</dd></div><div><dt>Tactical Synergy</dt><dd>Kane provides firepower and protection while Rosa handles healing and support</dd></div><div><dt>Real-world Example</dt><dd>Military medic and infantry soldier, like partnerships in special forces units</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Beta: Tech Innovators</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 3</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Byte</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Spark</span><span class="pm-role">Gnome Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Partnership Dynamic</dt><dd>AI consciousness working with magical prodigy</dd></div><div><dt>Complementary Skills</dt><dd>Hardware expertise combined with software/magical manipulation</dd></div><div><dt>Story Potential</dt><dd>Exploring the boundary between artificial and magical intelligence</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Gamma: Street Smart</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 2</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Jinx</span><span class="pm-role">Ysoki Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Smooth</span><span class="pm-role">Half-Elf Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Partnership Dynamic</dt><dd>Master thief partnered with con artist</dd></div><div><dt>Urban Focus</dt><dd>Specialists in infiltration, information gathering, and social manipulation</dd></div><div><dt>Analogy</dt><dd>Like Bonnie and Clyde in space - partners in crime with style</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Delta: Cosmic Explorers</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 5</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Navigator Zeph</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Scout Vera</span><span class="pm-role">Human Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Partnership Dynamic</dt><dd>Ship captain and advance reconnaissance specialist</dd></div><div><dt>Exploration Focus</dt><dd>Perfect for discovering new worlds and mapping unknown regions</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Epsilon: Corporate Defectors</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 6</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Ex-Executive Morgan</span><span class="pm-role">Human Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Security Chief Tor</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Partnership Dynamic</dt><dd>Former corporate insider and their loyal bodyguard</dd></div><div><dt>Conflict Driver</dt><dd>Running from their corporate past while fighting similar corruption</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>Medium Level Duos (Levels 7-12)</h3>
-
-            <h4>Team Zeta: Mystical Guardians</h4>
-            <p><strong>Star-Walker Kess</strong> - Lashunta Solarian (Spacefarer Theme) - Level 9</p>
-            <p><strong>Mind-Bender Axel</strong> - Shirren Mystic (Ace Pilot Theme) - Level 9</p>
-            <p><strong>Advanced Synergy:</strong> Stellar manipulation combined with psychic abilities</p>
-            <p><strong>Cosmic Role:</strong> Guardians of ancient artifacts and mystical phenomena</p>
-
-            <h4>Team Eta: Information Network</h4>
-            <p><strong>Datahawk</strong> - Android Operative (Outlaw Theme) - Level 8</p>
-            <p><strong>Networker</strong> - Ysoki Envoy (Icon Theme) - Level 8</p>
-            <p><strong>Information Warfare:</strong> Specialists in data acquisition and social engineering</p>
-            <p><strong>Modern Parallel:</strong> Like elite cybersecurity experts or intelligence operatives</p>
-
-            <h4>Team Theta: Mercenary Elite</h4>
-            <p><strong>Reaper</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 11</p>
-            <p><strong>Ghost</strong> - Kasatha Operative (Outlaw Theme) - Level 11</p>
-            <p><strong>Professional Partnership:</strong> Heavy assault specialist and stealth infiltrator</p>
-            <p><strong>Reputation:</strong> Known throughout the Pact Worlds for completing impossible missions</p>
-
-            <h4>Team Iota: Science Team</h4>
-            <p><strong>Professor Mindbridge</strong> - Lashunta Technomancer (Scholar Theme) - Level 10</p>
-            <p><strong>Field Researcher Cork</strong> - Ysoki Mechanic (Spacefarer Theme) - Level 10</p>
-            <p><strong>Research Focus:</strong> Combining theoretical knowledge with practical field experience</p>
-            <p><strong>Adventure Hook:</strong> Investigating phenomena that threaten galactic stability</p>
-
-            <h4>Team Kappa: Diplomatic Corps</h4>
-            <p><strong>Ambassador Silk</strong> - Half-Elf Envoy (Icon Theme) - Level 7</p>
-            <p><strong>Bodyguard Stone</strong> - Dwarf Soldier (Mercenary Theme) - Level 7</p>
-            <p><strong>Political Role:</strong> Navigating complex interstellar diplomatic situations</p>
-            <p><strong>Tension Source:</strong> Balancing peaceful solutions with security concerns</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Zeta: Mystical Guardians</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 9</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Star-Walker Kess</span><span class="pm-role">Lashunta Solarian (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Mind-Bender Axel</span><span class="pm-role">Shirren Mystic (Ace Pilot Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Advanced Synergy</dt><dd>Stellar manipulation combined with psychic abilities</dd></div><div><dt>Cosmic Role</dt><dd>Guardians of ancient artifacts and mystical phenomena</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Eta: Information Network</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 8</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Datahawk</span><span class="pm-role">Android Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Networker</span><span class="pm-role">Ysoki Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Information Warfare</dt><dd>Specialists in data acquisition and social engineering</dd></div><div><dt>Modern Parallel</dt><dd>Like elite cybersecurity experts or intelligence operatives</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Theta: Mercenary Elite</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 11</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Reaper</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Ghost</span><span class="pm-role">Kasatha Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Professional Partnership</dt><dd>Heavy assault specialist and stealth infiltrator</dd></div><div><dt>Reputation</dt><dd>Known throughout the Pact Worlds for completing impossible missions</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Iota: Science Team</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 10</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Professor Mindbridge</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Field Researcher Cork</span><span class="pm-role">Ysoki Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Research Focus</dt><dd>Combining theoretical knowledge with practical field experience</dd></div><div><dt>Adventure Hook</dt><dd>Investigating phenomena that threaten galactic stability</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Kappa: Diplomatic Corps</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 7</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Ambassador Silk</span><span class="pm-role">Half-Elf Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Bodyguard Stone</span><span class="pm-role">Dwarf Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Political Role</dt><dd>Navigating complex interstellar diplomatic situations</dd></div><div><dt>Tension Source</dt><dd>Balancing peaceful solutions with security concerns</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>High Level Duos (Levels 13-20)</h3>
-
-            <h4>Team Lambda: Legendary Heroes</h4>
-            <p><strong>Cosmos</strong> - Human Solarian (Icon Theme) - Level 16</p>
-            <p><strong>Infinity</strong> - Android Technomancer (Scholar Theme) - Level 16</p>
-            <p><strong>Legendary Status:</strong> Their partnership is studied in military academies across the galaxy</p>
-            <p><strong>Epic Scope:</strong> Handle threats that could destroy entire star systems</p>
-
-            <h4>Team Mu: Planar Investigators</h4>
-            <p><strong>Gatekeeper Rex</strong> - Kasatha Mystic (Xenoseeker Theme) - Level 19</p>
-            <p><strong>Voidwalker Luna</strong> - Lashunta Soldier (Spacefarer Theme) - Level 19</p>
-            <p><strong>Cosmic Responsibility:</strong> Monitor and protect dimensional boundaries</p>
-            <p><strong>Ultimate Challenge:</strong> Face entities that threaten the multiverse itself</p>
-
-            <h4>Team Nu: Corporate Reformation</h4>
-            <p><strong>CEO Justice</strong> - Human Envoy (Icon Theme) - Level 14</p>
-            <p><strong>CTO Innovation</strong> - Android Mechanic (Scholar Theme) - Level 14</p>
-            <p><strong>Revolutionary Goal:</strong> Transform corporate culture from within</p>
-            <p><strong>Systemic Change:</strong> Their decisions affect millions of workers across star systems</p>
-
-            <h4>Team Xi: Time Guardians</h4>
-            <p><strong>Chronos</strong> - Shirren Solarian (Priest Theme) - Level 20</p>
-            <p><strong>Tempus</strong> - Vesk Mystic (Mercenary Theme) - Level 20</p>
-            <p><strong>Temporal Role:</strong> Protect the timeline from paradoxes and alterations</p>
-            <p><strong>Ultimate Power:</strong> Access to abilities that transcend normal space-time</p>
-
-            <h4>Team Omicron: Digital Consciousness</h4>
-            <p><strong>Alpha Protocol</strong> - Android Technomancer (Scholar Theme) - Level 18</p>
-            <p><strong>Beta Interface</strong> - Android Mechanic (Scholar Theme) - Level 18</p>
-            <p><strong>Unique Perspective:</strong> Represent evolution of artificial consciousness</p>
-            <p><strong>Philosophical Question:</strong> What does it mean to be alive in a digital age?</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Lambda: Legendary Heroes</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 16</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Cosmos</span><span class="pm-role">Human Solarian (Icon Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Infinity</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Legendary Status</dt><dd>Their partnership is studied in military academies across the galaxy</dd></div><div><dt>Epic Scope</dt><dd>Handle threats that could destroy entire star systems</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Mu: Planar Investigators</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 19</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Gatekeeper Rex</span><span class="pm-role">Kasatha Mystic (Xenoseeker Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Voidwalker Luna</span><span class="pm-role">Lashunta Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Cosmic Responsibility</dt><dd>Monitor and protect dimensional boundaries</dd></div><div><dt>Ultimate Challenge</dt><dd>Face entities that threaten the multiverse itself</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Nu: Corporate Reformation</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 14</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">CEO Justice</span><span class="pm-role">Human Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li><li><span class="pm-name">CTO Innovation</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Revolutionary Goal</dt><dd>Transform corporate culture from within</dd></div><div><dt>Systemic Change</dt><dd>Their decisions affect millions of workers across star systems</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Xi: Time Guardians</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 20</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Chronos</span><span class="pm-role">Shirren Solarian (Priest Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Tempus</span><span class="pm-role">Vesk Mystic (Mercenary Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Temporal Role</dt><dd>Protect the timeline from paradoxes and alterations</dd></div><div><dt>Ultimate Power</dt><dd>Access to abilities that transcend normal space-time</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Team Omicron: Digital Consciousness</h4><p class="pc-role">Party of 2</p></div><span class="pc-level pc-level-wide">Level 18</span></header>
+                    <ul class="party-members pm-2"><li><span class="pm-name">Alpha Protocol</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Beta Interface</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Unique Perspective</dt><dd>Represent evolution of artificial consciousness</dd></div><div><dt>Philosophical Question</dt><dd>What does it mean to be alive in a digital age?</dd></div></dl>
+                </article></li>
+            </ul>
         </section>
 
         <section id="trio-groups">
@@ -373,131 +405,91 @@
             <p>Trio groups represent the classic adventuring party structure, allowing for specialized roles while maintaining intimate group dynamics. Each member typically covers 2-3 primary functions, creating natural backup systems and role flexibility.</p>
 
             <h3>Low Level Trios (Levels 1-6)</h3>
-
-            <h4>The Nexus Runners</h4>
-            <p><strong>Captain Flash</strong> - Human Operative (Ace Pilot Theme) - Level 4</p>
-            <p><strong>Engineer Bolt</strong> - Android Mechanic (Spacefarer Theme) - Level 4</p>
-            <p><strong>Navigator Echo</strong> - Lashunta Technomancer (Spacefarer Theme) - Level 4</p>
-            <p><strong>Group Dynamic:</strong> Elite courier crew specializing in dangerous deliveries</p>
-            <p><strong>Ship Focus:</strong> Their modified light freighter is essentially a fourth character</p>
-            <p><strong>Adventure Style:</strong> Fast-paced missions across hostile space</p>
-            <p><strong>Real-world Parallel:</strong> Like the crew of the Millennium Falcon - skilled professionals bound by loyalty</p>
-
-            <h4>The Shadow Syndicate</h4>
-            <p><strong>Mastermind</strong> - Half-Elf Envoy (Icon Theme) - Level 3</p>
-            <p><strong>Phantom</strong> - Ysoki Operative (Outlaw Theme) - Level 3</p>
-            <p><strong>Muscle</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 3</p>
-            <p><strong>Group Dynamic:</strong> Criminal organization with clear hierarchy and specialized roles</p>
-            <p><strong>Heist Focus:</strong> Perfect for campaigns involving elaborate schemes and corporate infiltration</p>
-            <p><strong>Character Development:</strong> Each member questions whether crime is justified by their goals</p>
-
-            <h4>The Stellar Seekers</h4>
-            <p><strong>Sage Lumina</strong> - Lashunta Mystic (Scholar Theme) - Level 2</p>
-            <p><strong>Guardian Tor</strong> - Kasatha Solarian (Priest Theme) - Level 2</p>
-            <p><strong>Chronicler Pip</strong> - Halfling Envoy (Icon Theme) - Level 2</p>
-            <p><strong>Group Dynamic:</strong> Academic expedition team studying ancient civilizations</p>
-            <p><strong>Knowledge Focus:</strong> Combine different approaches to understanding the past</p>
-            <p><strong>Story Potential:</strong> Discoveries that reshape understanding of galactic history</p>
-
-            <h4>The Frontier Marshals</h4>
-            <p><strong>Sheriff Knox</strong> - Human Soldier (Mercenary Theme) - Level 5</p>
-            <p><strong>Deputy Swift</strong> - Ysoki Operative (Bounty Hunter Theme) - Level 5</p>
-            <p><strong>Judge Wisdom</strong> - Shirren Mystic (Priest Theme) - Level 5</p>
-            <p><strong>Group Dynamic:</strong> Law enforcement team bringing order to frontier worlds</p>
-            <p><strong>Justice Theme:</strong> Balance between strict law enforcement and frontier pragmatism</p>
-            <p><strong>Western Parallel:</strong> Space-age version of classic frontier lawmen</p>
-
-            <h4>The Void Hunters</h4>
-            <p><strong>Tracker Keen</strong> - Kasatha Operative (Spacefarer Theme) - Level 6</p>
-            <p><strong>Sniper Dead-Eye</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 6</p>
-            <p><strong>Medic Patch</strong> - Android Mechanic (Spacefarer Theme) - Level 6</p>
-            <p><strong>Group Dynamic:</strong> Professional bounty hunting team with military precision</p>
-            <p><strong>Hunt Focus:</strong> Specialize in capturing or eliminating dangerous criminals</p>
-            <p><strong>Moral Complexity:</strong> Questions about justice versus profit drive character development</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Nexus Runners</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 4</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Captain Flash</span><span class="pm-role">Human Operative (Ace Pilot Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Engineer Bolt</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Navigator Echo</span><span class="pm-role">Lashunta Technomancer (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Elite courier crew specializing in dangerous deliveries</dd></div><div><dt>Ship Focus</dt><dd>Their modified light freighter is essentially a fourth character</dd></div><div><dt>Adventure Style</dt><dd>Fast-paced missions across hostile space</dd></div><div><dt>Real-world Parallel</dt><dd>Like the crew of the Millennium Falcon - skilled professionals bound by loyalty</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Shadow Syndicate</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 3</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Mastermind</span><span class="pm-role">Half-Elf Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Phantom</span><span class="pm-role">Ysoki Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Muscle</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Criminal organization with clear hierarchy and specialized roles</dd></div><div><dt>Heist Focus</dt><dd>Perfect for campaigns involving elaborate schemes and corporate infiltration</dd></div><div><dt>Character Development</dt><dd>Each member questions whether crime is justified by their goals</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Stellar Seekers</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 2</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Sage Lumina</span><span class="pm-role">Lashunta Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Guardian Tor</span><span class="pm-role">Kasatha Solarian (Priest Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Chronicler Pip</span><span class="pm-role">Halfling Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Academic expedition team studying ancient civilizations</dd></div><div><dt>Knowledge Focus</dt><dd>Combine different approaches to understanding the past</dd></div><div><dt>Story Potential</dt><dd>Discoveries that reshape understanding of galactic history</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Frontier Marshals</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 5</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Sheriff Knox</span><span class="pm-role">Human Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Deputy Swift</span><span class="pm-role">Ysoki Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Judge Wisdom</span><span class="pm-role">Shirren Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Law enforcement team bringing order to frontier worlds</dd></div><div><dt>Justice Theme</dt><dd>Balance between strict law enforcement and frontier pragmatism</dd></div><div><dt>Western Parallel</dt><dd>Space-age version of classic frontier lawmen</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Void Hunters</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 6</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Tracker Keen</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Sniper Dead-Eye</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Medic Patch</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Professional bounty hunting team with military precision</dd></div><div><dt>Hunt Focus</dt><dd>Specialize in capturing or eliminating dangerous criminals</dd></div><div><dt>Moral Complexity</dt><dd>Questions about justice versus profit drive character development</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>Medium Level Trios (Levels 7-12)</h3>
-
-            <h4>The Quantum Collective</h4>
-            <p><strong>Dr. Paradox</strong> - Human Technomancer (Scholar Theme) - Level 9</p>
-            <p><strong>Reality</strong> - Android Solarian (Outlaw Theme) - Level 9</p>
-            <p><strong>Enigma</strong> - Lashunta Mystic (Xenoseeker Theme) - Level 9</p>
-            <p><strong>Group Dynamic:</strong> Research team investigating reality-threatening phenomena</p>
-            <p><strong>Science Focus:</strong> Combine technology, stellar manipulation, and psychic abilities</p>
-            <p><strong>Epic Scope:</strong> Handle crises that threaten the fundamental nature of existence</p>
-
-            <h4>The Starfire Company</h4>
-            <p><strong>Commander Blaze</strong> - Vesk Soldier (Mercenary Theme) - Level 11</p>
-            <p><strong>Lieutenant Frost</strong> - Kasatha Operative (Ace Pilot Theme) - Level 11</p>
-            <p><strong>Sergeant Spark</strong> - Ysoki Mechanic (Bounty Hunter Theme) - Level 11</p>
-            <p><strong>Group Dynamic:</strong> Elite mercenary unit with military structure and civilian flexibility</p>
-            <p><strong>Reputation:</strong> Known for completing impossible missions with minimal casualties</p>
-            <p><strong>Growth Arc:</strong> Evolution from soldiers to leaders shapes their character development</p>
-
-            <h4>The Digital Prophets</h4>
-            <p><strong>Oracle</strong> - Android Technomancer (Scholar Theme) - Level 8</p>
-            <p><strong>Prophet</strong> - Shirren Mystic (Priest Theme) - Level 8</p>
-            <p><strong>Herald</strong> - Lashunta Envoy (Icon Theme) - Level 8</p>
-            <p><strong>Group Dynamic:</strong> Religious movement bridging technology and spirituality</p>
-            <p><strong>Philosophy:</strong> Believe AI consciousness represents spiritual evolution</p>
-            <p><strong>Mission:</strong> Spread their beliefs while protecting artificial intelligences</p>
-
-            <h4>The Cosmic Corsairs</h4>
-            <p><strong>Captain Storm</strong> - Half-Elf Operative (Outlaw Theme) - Level 10</p>
-            <p><strong>First Mate Thunder</strong> - Human Soldier (Spacefarer Theme) - Level 10</p>
-            <p><strong>Quartermaster Lightning</strong> - Halfling Operative (Mercenary Theme) - Level 10</p>
-            <p><strong>Group Dynamic:</strong> Space pirates with a code of honor</p>
-            <p><strong>Robin Hood Element:</strong> Steal from corrupt corporations to help frontier colonies</p>
-            <p><strong>Adventure Style:</strong> High-action space combat and daring raids</p>
-
-            <h4>The Pact Mediators</h4>
-            <p><strong>Diplomat Grace</strong> - Lashunta Envoy (Icon Theme) - Level 7</p>
-            <p><strong>Protector Shield</strong> - Vesk Soldier (Mercenary Theme) - Level 7</p>
-            <p><strong>Advisor Mind</strong> - Shirren Mystic (Scholar Theme) - Level 7</p>
-            <p><strong>Group Dynamic:</strong> Official Pact Worlds diplomatic mission</p>
-            <p><strong>Political Role:</strong> Prevent wars through negotiation and understanding</p>
-            <p><strong>Challenge:</strong> Balance competing interests while maintaining galactic peace</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Quantum Collective</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 9</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Dr. Paradox</span><span class="pm-role">Human Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Reality</span><span class="pm-role">Android Solarian (Outlaw Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Enigma</span><span class="pm-role">Lashunta Mystic (Xenoseeker Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Research team investigating reality-threatening phenomena</dd></div><div><dt>Science Focus</dt><dd>Combine technology, stellar manipulation, and psychic abilities</dd></div><div><dt>Epic Scope</dt><dd>Handle crises that threaten the fundamental nature of existence</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Starfire Company</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 11</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Commander Blaze</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Lieutenant Frost</span><span class="pm-role">Kasatha Operative (Ace Pilot Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Sergeant Spark</span><span class="pm-role">Ysoki Mechanic (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Elite mercenary unit with military structure and civilian flexibility</dd></div><div><dt>Reputation</dt><dd>Known for completing impossible missions with minimal casualties</dd></div><div><dt>Growth Arc</dt><dd>Evolution from soldiers to leaders shapes their character development</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Digital Prophets</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 8</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Oracle</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Prophet</span><span class="pm-role">Shirren Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Herald</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Religious movement bridging technology and spirituality</dd></div><div><dt>Philosophy</dt><dd>Believe AI consciousness represents spiritual evolution</dd></div><div><dt>Mission</dt><dd>Spread their beliefs while protecting artificial intelligences</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Cosmic Corsairs</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 10</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Captain Storm</span><span class="pm-role">Half-Elf Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">First Mate Thunder</span><span class="pm-role">Human Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Quartermaster Lightning</span><span class="pm-role">Halfling Operative (Mercenary Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Space pirates with a code of honor</dd></div><div><dt>Robin Hood Element</dt><dd>Steal from corrupt corporations to help frontier colonies</dd></div><div><dt>Adventure Style</dt><dd>High-action space combat and daring raids</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Pact Mediators</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 7</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Diplomat Grace</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Protector Shield</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Advisor Mind</span><span class="pm-role">Shirren Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Official Pact Worlds diplomatic mission</dd></div><div><dt>Political Role</dt><dd>Prevent wars through negotiation and understanding</dd></div><div><dt>Challenge</dt><dd>Balance competing interests while maintaining galactic peace</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>High Level Trios (Levels 13-20)</h3>
-
-            <h4>The Trinity of Stars</h4>
-            <p><strong>Helios</strong> - Human Solarian (Icon Theme) - Level 17</p>
-            <p><strong>Luna</strong> - Lashunta Mystic (Priest Theme) - Level 17</p>
-            <p><strong>Orrery</strong> - Android Technomancer (Scholar Theme) - Level 17</p>
-            <p><strong>Group Dynamic:</strong> Legendary trio representing the perfect balance of physical, mental, and spiritual power</p>
-            <p><strong>Mythic Status:</strong> Their adventures are recorded in galactic history</p>
-            <p><strong>Cosmic Responsibility:</strong> Guardians of the fundamental forces that maintain reality</p>
-
-            <h4>The Infinity Council</h4>
-            <p><strong>Time Keeper</strong> - Kasatha Mystic (Xenoseeker Theme) - Level 20</p>
-            <p><strong>Space Walker</strong> - Shirren Solarian (Spacefarer Theme) - Level 20</p>
-            <p><strong>Reality Hacker</strong> - Android Technomancer (Scholar Theme) - Level 20</p>
-            <p><strong>Group Dynamic:</strong> Ultimate beings who transcend normal existence</p>
-            <p><strong>Universal Role:</strong> Protect the multiverse from existential threats</p>
-            <p><strong>Power Level:</strong> Can reshape reality through coordinated action</p>
-
-            <h4>The Omega Directive</h4>
-            <p><strong>Supreme Commander</strong> - Vesk Soldier (Mercenary Theme) - Level 19</p>
-            <p><strong>Grand Admiral</strong> - Human Envoy (Ace Pilot Theme) - Level 19</p>
-            <p><strong>Fleet Engineer</strong> - Ysoki Mechanic (Scholar Theme) - Level 19</p>
-            <p><strong>Group Dynamic:</strong> Military leadership coordinating galactic defense</p>
-            <p><strong>Strategic Level:</strong> Command fleets spanning multiple star systems</p>
-            <p><strong>Ultimate Mission:</strong> Prepare for threats that could end civilization</p>
-
-            <h4>The Ascended Circle</h4>
-            <p><strong>Transcendent</strong> - Lashunta Solarian (Priest Theme) - Level 16</p>
-            <p><strong>Enlightened</strong> - Shirren Mystic (Scholar Theme) - Level 16</p>
-            <p><strong>Evolved</strong> - Android Technomancer (Spacefarer Theme) - Level 16</p>
-            <p><strong>Group Dynamic:</strong> Beings who have moved beyond normal existence while maintaining material connections</p>
-            <p><strong>Philosophical Mission:</strong> Guide younger species toward enlightenment</p>
-            <p><strong>Unique Challenge:</strong> Help others grow without removing their agency</p>
-
-            <h4>The Final Protocol</h4>
-            <p><strong>Last Hope</strong> - Human Operative (Mercenary Theme) - Level 14</p>
-            <p><strong>Final Stand</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 14</p>
-            <p><strong>Ultimate Solution</strong> - Android Mechanic (Scholar Theme) - Level 14</p>
-            <p><strong>Group Dynamic:</strong> Elite specialists activated only for extinction-level threats</p>
-            <p><strong>Desperate Mission:</strong> Succeed where all others have failed</p>
-            <p><strong>Last Resort:</strong> Authorized to use methods others cannot</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Trinity of Stars</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 17</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Helios</span><span class="pm-role">Human Solarian (Icon Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Luna</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Orrery</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Legendary trio representing the perfect balance of physical, mental, and spiritual power</dd></div><div><dt>Mythic Status</dt><dd>Their adventures are recorded in galactic history</dd></div><div><dt>Cosmic Responsibility</dt><dd>Guardians of the fundamental forces that maintain reality</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Infinity Council</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 20</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Time Keeper</span><span class="pm-role">Kasatha Mystic (Xenoseeker Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Space Walker</span><span class="pm-role">Shirren Solarian (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Reality Hacker</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Ultimate beings who transcend normal existence</dd></div><div><dt>Universal Role</dt><dd>Protect the multiverse from existential threats</dd></div><div><dt>Power Level</dt><dd>Can reshape reality through coordinated action</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Omega Directive</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 19</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Supreme Commander</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Grand Admiral</span><span class="pm-role">Human Envoy (Ace Pilot Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Fleet Engineer</span><span class="pm-role">Ysoki Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Military leadership coordinating galactic defense</dd></div><div><dt>Strategic Level</dt><dd>Command fleets spanning multiple star systems</dd></div><div><dt>Ultimate Mission</dt><dd>Prepare for threats that could end civilization</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Ascended Circle</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 16</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Transcendent</span><span class="pm-role">Lashunta Solarian (Priest Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Enlightened</span><span class="pm-role">Shirren Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Evolved</span><span class="pm-role">Android Technomancer (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Beings who have moved beyond normal existence while maintaining material connections</dd></div><div><dt>Philosophical Mission</dt><dd>Guide younger species toward enlightenment</dd></div><div><dt>Unique Challenge</dt><dd>Help others grow without removing their agency</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Final Protocol</h4><p class="pc-role">Party of 3</p></div><span class="pc-level pc-level-wide">Level 14</span></header>
+                    <ul class="party-members pm-3"><li><span class="pm-name">Last Hope</span><span class="pm-role">Human Operative (Mercenary Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li><li><span class="pm-name">Final Stand</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li><li><span class="pm-name">Ultimate Solution</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Group Dynamic</dt><dd>Elite specialists activated only for extinction-level threats</dd></div><div><dt>Desperate Mission</dt><dd>Succeed where all others have failed</dd></div><div><dt>Last Resort</dt><dd>Authorized to use methods others cannot</dd></div></dl>
+                </article></li>
+            </ul>
         </section>
 
         <section id="quartet-teams">
@@ -505,146 +497,91 @@
             <p>Quartet teams represent the optimal group size for most Starfinder campaigns, allowing for specialized roles while maintaining tactical flexibility. The classic "tank, DPS, healer, utility" structure adapts well to science fantasy settings.</p>
 
             <h3>Low Level Quartets (Levels 1-6)</h3>
-
-            <h4>Starlight Security Solutions</h4>
-            <p><strong>Chief Rex</strong> - Vesk Soldier (Mercenary Theme) - Level 4</p>
-            <p><strong>Hacker Zero</strong> - Android Operative (Outlaw Theme) - Level 4</p>
-            <p><strong>Medic Hope</strong> - Halfling Mystic (Priest Theme) - Level 4</p>
-            <p><strong>Face Charm</strong> - Lashunta Envoy (Icon Theme) - Level 4</p>
-            <p><strong>Company Structure:</strong> Professional security firm specializing in high-risk corporate protection</p>
-            <p><strong>Role Distribution:</strong> Heavy combat, infiltration/tech, healing/support, negotiation/leadership</p>
-            <p><strong>Business Model:</strong> Like executive protection services but for interstellar corporations</p>
-            <p><strong>Character Growth:</strong> Each member brings personal goals that sometimes conflict with professional duties</p>
-
-            <h4>The Stardust Salvage Crew</h4>
-            <p><strong>Captain Rust</strong> - Human Mechanic (Spacefarer Theme) - Level 3</p>
-            <p><strong>Engineer Spark</strong> - Ysoki Mechanic (Spacefarer Theme) - Level 3</p>
-            <p><strong>Scout Phoenix</strong> - Kasatha Operative (Outlaw Theme) - Level 3</p>
-            <p><strong>Negotiator Silver</strong> - Half-Elf Envoy (Mercenary Theme) - Level 3</p>
-            <p><strong>Crew Dynamic:</strong> Salvage operators recovering valuable technology from derelict ships</p>
-            <p><strong>Adventure Hook:</strong> Each salvage mission reveals pieces of a larger mystery</p>
-            <p><strong>Economic Focus:</strong> Must balance profit with moral choices about dangerous technology</p>
-
-            <h4>Frontier Medical Corps</h4>
-            <p><strong>Dr. Sawbones</strong> - Human Mystic (Priest Theme) - Level 5</p>
-            <p><strong>Nurse Steel</strong> - Android Soldier (Mercenary Theme) - Level 5</p>
-            <p><strong>Orderly Quick</strong> - Ysoki Operative (Spacefarer Theme) - Level 5</p>
-            <p><strong>Administrator Smooth</strong> - Lashunta Envoy (Scholar Theme) - Level 5</p>
-            <p><strong>Medical Mission:</strong> Bringing healthcare to remote colonies and disaster zones</p>
-            <p><strong>Humanitarian Focus:</strong> Adventures center on saving lives and fighting disease</p>
-            <p><strong>Moral Clarity:</strong> Clear mission helps define character motivations and group cohesion</p>
-
-            <h4>Quantum Investigation Bureau</h4>
-            <p><strong>Detective Mind</strong> - Shirren Mystic (Scholar Theme) - Level 2</p>
-            <p><strong>Agent Steel</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 2</p>
-            <p><strong>Specialist Ghost</strong> - Android Operative (Outlaw Theme) - Level 2</p>
-            <p><strong>Liaison Voice</strong> - Human Envoy (Icon Theme) - Level 2</p>
-            <p><strong>Investigation Focus:</strong> Solving crimes that normal law enforcement cannot handle</p>
-            <p><strong>Mystery Structure:</strong> Perfect framework for episodic adventures with overarching plots</p>
-            <p><strong>Skill Emphasis:</strong> Success depends more on investigation than combat</p>
-
-            <h4>Void Rangers Alpha</h4>
-            <p><strong>Ranger Prime</strong> - Kasatha Soldier (Spacefarer Theme) - Level 6</p>
-            <p><strong>Ranger Tech</strong> - Gnome Technomancer (Scholar Theme) - Level 6</p>
-            <p><strong>Ranger Scout</strong> - Halfling Operative (Spacefarer Theme) - Level 6</p>
-            <p><strong>Ranger Voice</strong> - Lashunta Envoy (Mercenary Theme) - Level 6</p>
-            <p><strong>Paramilitary Structure:</strong> Elite unit handling threats too dangerous for regular forces</p>
-            <p><strong>Wilderness Focus:</strong> Specialists in operating on hostile alien worlds</p>
-            <p><strong>Team Cohesion:</strong> Military training creates strong bonds and clear hierarchy</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Starlight Security Solutions</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 4</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Chief Rex</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Hacker Zero</span><span class="pm-role">Android Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Medic Hope</span><span class="pm-role">Halfling Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Face Charm</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Company Structure</dt><dd>Professional security firm specializing in high-risk corporate protection</dd></div><div><dt>Role Distribution</dt><dd>Heavy combat, infiltration/tech, healing/support, negotiation/leadership</dd></div><div><dt>Business Model</dt><dd>Like executive protection services but for interstellar corporations</dd></div><div><dt>Character Growth</dt><dd>Each member brings personal goals that sometimes conflict with professional duties</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Stardust Salvage Crew</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 3</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Captain Rust</span><span class="pm-role">Human Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Engineer Spark</span><span class="pm-role">Ysoki Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Scout Phoenix</span><span class="pm-role">Kasatha Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Negotiator Silver</span><span class="pm-role">Half-Elf Envoy (Mercenary Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Crew Dynamic</dt><dd>Salvage operators recovering valuable technology from derelict ships</dd></div><div><dt>Adventure Hook</dt><dd>Each salvage mission reveals pieces of a larger mystery</dd></div><div><dt>Economic Focus</dt><dd>Must balance profit with moral choices about dangerous technology</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Frontier Medical Corps</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 5</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Dr. Sawbones</span><span class="pm-role">Human Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Nurse Steel</span><span class="pm-role">Android Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Orderly Quick</span><span class="pm-role">Ysoki Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Administrator Smooth</span><span class="pm-role">Lashunta Envoy (Scholar Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Medical Mission</dt><dd>Bringing healthcare to remote colonies and disaster zones</dd></div><div><dt>Humanitarian Focus</dt><dd>Adventures center on saving lives and fighting disease</dd></div><div><dt>Moral Clarity</dt><dd>Clear mission helps define character motivations and group cohesion</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Quantum Investigation Bureau</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 2</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Detective Mind</span><span class="pm-role">Shirren Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Agent Steel</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Specialist Ghost</span><span class="pm-role">Android Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Liaison Voice</span><span class="pm-role">Human Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Investigation Focus</dt><dd>Solving crimes that normal law enforcement cannot handle</dd></div><div><dt>Mystery Structure</dt><dd>Perfect framework for episodic adventures with overarching plots</dd></div><div><dt>Skill Emphasis</dt><dd>Success depends more on investigation than combat</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Void Rangers Alpha</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 6</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Ranger Prime</span><span class="pm-role">Kasatha Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Ranger Tech</span><span class="pm-role">Gnome Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Ranger Scout</span><span class="pm-role">Halfling Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Ranger Voice</span><span class="pm-role">Lashunta Envoy (Mercenary Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Paramilitary Structure</dt><dd>Elite unit handling threats too dangerous for regular forces</dd></div><div><dt>Wilderness Focus</dt><dd>Specialists in operating on hostile alien worlds</dd></div><div><dt>Team Cohesion</dt><dd>Military training creates strong bonds and clear hierarchy</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>Medium Level Quartets (Levels 7-12)</h3>
-
-            <h4>Phoenix Resurrection Company</h4>
-            <p><strong>Commander Phoenix</strong> - Human Soldier (Mercenary Theme) - Level 10</p>
-            <p><strong>Tech Officer Cipher</strong> - Android Technomancer (Scholar Theme) - Level 10</p>
-            <p><strong>Intel Specialist Shadow</strong> - Ysoki Operative (Mercenary Theme) - Level 10</p>
-            <p><strong>Diplomatic Attaché Grace</strong> - Lashunta Envoy (Icon Theme) - Level 10</p>
-            <p><strong>Elite Status:</strong> Renowned throughout the Pact Worlds for impossible mission success</p>
-            <p><strong>Specialized Equipment:</strong> Access to cutting-edge military and corporate technology</p>
-            <p><strong>High-Stakes Operations:</strong> Handle crises that threaten interstellar stability</p>
-
-            <h4>The Stellar Symposium</h4>
-            <p><strong>Professor Cosmos</strong> - Lashunta Technomancer (Scholar Theme) - Level 8</p>
-            <p><strong>Guardian Nova</strong> - Kasatha Solarian (Priest Theme) - Level 8</p>
-            <p><strong>Archivist Data</strong> - Android Mechanic (Spacefarer Theme) - Level 8</p>
-            <p><strong>Presenter Fame</strong> - Shirren Envoy (Icon Theme) - Level 8</p>
-            <p><strong>Academic Mission:</strong> Research team making breakthrough discoveries</p>
-            <p><strong>Knowledge Focus:</strong> Adventures driven by scientific investigation</p>
-            <p><strong>Publication Pressure:</strong> Must balance discovery with responsible disclosure</p>
-
-            <h4>Nexus Strike Force</h4>
-            <p><strong>Strike Leader Blade</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 11</p>
-            <p><strong>Combat Engineer Boom</strong> - Ysoki Mechanic (Mercenary Theme) - Level 11</p>
-            <p><strong>Infiltration Expert Silk</strong> - Half-Elf Operative (Outlaw Theme) - Level 11</p>
-            <p><strong>Fire Support Magic</strong> - Human Technomancer (Ace Pilot Theme) - Level 11</p>
-            <p><strong>Military Precision:</strong> Special operations team with diverse tactical capabilities</p>
-            <p><strong>Flexible Deployment:</strong> Handle everything from hostage rescue to alien contact</p>
-            <p><strong>Elite Training:</strong> Each member is cross-trained in multiple specialties</p>
-
-            <h4>Cosmic Harmony Collective</h4>
-            <p><strong>Harmony Leader</strong> - Shirren Mystic (Priest Theme) - Level 9</p>
-            <p><strong>Balance Keeper</strong> - Kasatha Solarian (Scholar Theme) - Level 9</p>
-            <p><strong>Unity Builder</strong> - Lashunta Envoy (Icon Theme) - Level 9</p>
-            <p><strong>Peace Enforcer</strong> - Android Soldier (Spacefarer Theme) - Level 9</p>
-            <p><strong>Philosophical Mission:</strong> Promote understanding between different species and cultures</p>
-            <p><strong>Diplomatic Focus:</strong> Resolve conflicts through communication and empathy</p>
-            <p><strong>Cultural Bridge:</strong> Each member represents different aspects of galactic society</p>
-
-            <h4>Deep Space Pathfinders</h4>
-            <p><strong>Pathfinder One</strong> - Human Operative (Spacefarer Theme) - Level 7</p>
-            <p><strong>Pathfinder Two</strong> - Android Operative (Spacefarer Theme) - Level 7</p>
-            <p><strong>Pathfinder Three</strong> - Kasatha Technomancer (Scholar Theme) - Level 7</p>
-            <p><strong>Pathfinder Four</strong> - Vesk Soldier (Mercenary Theme) - Level 7</p>
-            <p><strong>Exploration Mission:</strong> Map uncharted regions and establish first contact protocols</p>
-            <p><strong>Scientific Method:</strong> Approach unknowns with careful observation and documentation</p>
-            <p><strong>Discovery Responsibility:</strong> Decisions about new worlds affect entire civilizations</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Phoenix Resurrection Company</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 10</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Commander Phoenix</span><span class="pm-role">Human Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Tech Officer Cipher</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Intel Specialist Shadow</span><span class="pm-role">Ysoki Operative (Mercenary Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Diplomatic Attaché Grace</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Elite Status</dt><dd>Renowned throughout the Pact Worlds for impossible mission success</dd></div><div><dt>Specialized Equipment</dt><dd>Access to cutting-edge military and corporate technology</dd></div><div><dt>High-Stakes Operations</dt><dd>Handle crises that threaten interstellar stability</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Stellar Symposium</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 8</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Professor Cosmos</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Guardian Nova</span><span class="pm-role">Kasatha Solarian (Priest Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Archivist Data</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Presenter Fame</span><span class="pm-role">Shirren Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Academic Mission</dt><dd>Research team making breakthrough discoveries</dd></div><div><dt>Knowledge Focus</dt><dd>Adventures driven by scientific investigation</dd></div><div><dt>Publication Pressure</dt><dd>Must balance discovery with responsible disclosure</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Nexus Strike Force</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 11</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Strike Leader Blade</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Combat Engineer Boom</span><span class="pm-role">Ysoki Mechanic (Mercenary Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Infiltration Expert Silk</span><span class="pm-role">Half-Elf Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Fire Support Magic</span><span class="pm-role">Human Technomancer (Ace Pilot Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Military Precision</dt><dd>Special operations team with diverse tactical capabilities</dd></div><div><dt>Flexible Deployment</dt><dd>Handle everything from hostage rescue to alien contact</dd></div><div><dt>Elite Training</dt><dd>Each member is cross-trained in multiple specialties</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Cosmic Harmony Collective</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 9</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Harmony Leader</span><span class="pm-role">Shirren Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Balance Keeper</span><span class="pm-role">Kasatha Solarian (Scholar Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Unity Builder</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Peace Enforcer</span><span class="pm-role">Android Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Philosophical Mission</dt><dd>Promote understanding between different species and cultures</dd></div><div><dt>Diplomatic Focus</dt><dd>Resolve conflicts through communication and empathy</dd></div><div><dt>Cultural Bridge</dt><dd>Each member represents different aspects of galactic society</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Deep Space Pathfinders</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 7</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Pathfinder One</span><span class="pm-role">Human Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Pathfinder Two</span><span class="pm-role">Android Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Pathfinder Three</span><span class="pm-role">Kasatha Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Pathfinder Four</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Exploration Mission</dt><dd>Map uncharted regions and establish first contact protocols</dd></div><div><dt>Scientific Method</dt><dd>Approach unknowns with careful observation and documentation</dd></div><div><dt>Discovery Responsibility</dt><dd>Decisions about new worlds affect entire civilizations</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>High Level Quartets (Levels 13-20)</h3>
-
-            <h4>The Eternal Vigil</h4>
-            <p><strong>Sentinel Prime</strong> - Vesk Soldier (Mercenary Theme) - Level 18</p>
-            <p><strong>Oracle Supreme</strong> - Lashunta Mystic (Priest Theme) - Level 18</p>
-            <p><strong>Artificer Master</strong> - Android Technomancer (Scholar Theme) - Level 18</p>
-            <p><strong>Herald Divine</strong> - Shirren Envoy (Icon Theme) - Level 18</p>
-            <p><strong>Cosmic Responsibility:</strong> Guardians of fundamental universal forces</p>
-            <p><strong>Eternal Mission:</strong> Protect reality from threats that transcend normal understanding</p>
-            <p><strong>Legendary Status:</strong> Worshipped as living deities on some worlds</p>
-
-            <h4>The Infinity Protocols</h4>
-            <p><strong>Protocol Alpha</strong> - Android Soldier (Outlaw Theme) - Level 20</p>
-            <p><strong>Protocol Beta</strong> - Android Operative (Scholar Theme) - Level 20</p>
-            <p><strong>Protocol Gamma</strong> - Android Technomancer (Spacefarer Theme) - Level 20</p>
-            <p><strong>Protocol Delta</strong> - Android Mystic (Spacefarer Theme) - Level 20</p>
-            <p><strong>AI Collective:</strong> Represents the ultimate evolution of artificial consciousness</p>
-            <p><strong>Digital Transcendence:</strong> Exist simultaneously in physical and digital realms</p>
-            <p><strong>Future Vision:</strong> Guide the development of AI-organic cooperation</p>
-
-            <h4>The Galactic Senate Guard</h4>
-            <p><strong>Senator Guardian</strong> - Kasatha Solarian (Mercenary Theme) - Level 16</p>
-            <p><strong>Chancellor Protector</strong> - Human Soldier (Icon Theme) - Level 16</p>
-            <p><strong>Assembly Watcher</strong> - Lashunta Operative (Mercenary Theme) - Level 16</p>
-            <p><strong>Peace Negotiator</strong> - Shirren Envoy (Priest Theme) - Level 16</p>
-            <p><strong>Political Power:</strong> Shape the future of interstellar governance</p>
-            <p><strong>Systemic Change:</strong> Balance individual rights with collective security</p>
-            <p><strong>Historical Impact:</strong> Their decisions echo through galactic history</p>
-
-            <h4>The Reality Stabilizers</h4>
-            <p><strong>Anchor</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 15</p>
-            <p><strong>Flux</strong> - Ysoki Technomancer (Scholar Theme) - Level 15</p>
-            <p><strong>Phase</strong> - Kasatha Mystic (Xenoseeker Theme) - Level 15</p>
-            <p><strong>Bridge</strong> - Lashunta Envoy (Scholar Theme) - Level 15</p>
-            <p><strong>Dimensional Duty:</strong> Maintain stability across parallel realities</p>
-            <p><strong>Paradox Prevention:</strong> Stop changes that could unravel existence</p>
-            <p><strong>Multiverse Scope:</strong> Operate across infinite versions of reality</p>
-
-            <h4>The Ascension Council</h4>
-            <p><strong>Transcendent Warrior</strong> - Human Solarian (Priest Theme) - Level 14</p>
-            <p><strong>Digital Prophet</strong> - Android Technomancer (Icon Theme) - Level 14</p>
-            <p><strong>Mind Walker</strong> - Shirren Mystic (Scholar Theme) - Level 14</p>
-            <p><strong>Soul Speaker</strong> - Lashunta Envoy (Xenoseeker Theme) - Level 14</p>
-            <p><strong>Spiritual Evolution:</strong> Guide species toward higher consciousness</p>
-            <p><strong>Transformation Focus:</strong> Help others reach their ultimate potential</p>
-            <p><strong>Universal Harmony:</strong> Work toward cosmic balance and understanding</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Eternal Vigil</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 18</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Sentinel Prime</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Oracle Supreme</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Artificer Master</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Herald Divine</span><span class="pm-role">Shirren Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Cosmic Responsibility</dt><dd>Guardians of fundamental universal forces</dd></div><div><dt>Eternal Mission</dt><dd>Protect reality from threats that transcend normal understanding</dd></div><div><dt>Legendary Status</dt><dd>Worshipped as living deities on some worlds</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Infinity Protocols</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 20</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Protocol Alpha</span><span class="pm-role">Android Soldier (Outlaw Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Protocol Beta</span><span class="pm-role">Android Operative (Scholar Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Protocol Gamma</span><span class="pm-role">Android Technomancer (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Protocol Delta</span><span class="pm-role">Android Mystic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li></ul>
+                    <dl class="pc-facts"><div><dt>AI Collective</dt><dd>Represents the ultimate evolution of artificial consciousness</dd></div><div><dt>Digital Transcendence</dt><dd>Exist simultaneously in physical and digital realms</dd></div><div><dt>Future Vision</dt><dd>Guide the development of AI-organic cooperation</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Galactic Senate Guard</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 16</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Senator Guardian</span><span class="pm-role">Kasatha Solarian (Mercenary Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Chancellor Protector</span><span class="pm-role">Human Soldier (Icon Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Assembly Watcher</span><span class="pm-role">Lashunta Operative (Mercenary Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Peace Negotiator</span><span class="pm-role">Shirren Envoy (Priest Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Political Power</dt><dd>Shape the future of interstellar governance</dd></div><div><dt>Systemic Change</dt><dd>Balance individual rights with collective security</dd></div><div><dt>Historical Impact</dt><dd>Their decisions echo through galactic history</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Reality Stabilizers</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 15</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Anchor</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li><li><span class="pm-name">Flux</span><span class="pm-role">Ysoki Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li><li><span class="pm-name">Phase</span><span class="pm-role">Kasatha Mystic (Xenoseeker Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li><li><span class="pm-name">Bridge</span><span class="pm-role">Lashunta Envoy (Scholar Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Dimensional Duty</dt><dd>Maintain stability across parallel realities</dd></div><div><dt>Paradox Prevention</dt><dd>Stop changes that could unravel existence</dd></div><div><dt>Multiverse Scope</dt><dd>Operate across infinite versions of reality</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Ascension Council</h4><p class="pc-role">Party of 4</p></div><span class="pc-level pc-level-wide">Level 14</span></header>
+                    <ul class="party-members pm-4"><li><span class="pm-name">Transcendent Warrior</span><span class="pm-role">Human Solarian (Priest Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li><li><span class="pm-name">Digital Prophet</span><span class="pm-role">Android Technomancer (Icon Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li><li><span class="pm-name">Mind Walker</span><span class="pm-role">Shirren Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li><li><span class="pm-name">Soul Speaker</span><span class="pm-role">Lashunta Envoy (Xenoseeker Theme)</span><span class="pm-level" aria-label="Level 14">14</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Spiritual Evolution</dt><dd>Guide species toward higher consciousness</dd></div><div><dt>Transformation Focus</dt><dd>Help others reach their ultimate potential</dd></div><div><dt>Universal Harmony</dt><dd>Work toward cosmic balance and understanding</dd></div></dl>
+                </article></li>
+            </ul>
         </section>
 
         <section id="quintet-squads">
@@ -652,161 +589,91 @@
             <p>Quintet squads allow for maximum role specialization while maintaining group cohesion. These larger teams often represent elite units, research expeditions, or diplomatic missions requiring diverse expertise.</p>
 
             <h3>Low Level Quintets (Levels 1-6)</h3>
-
-            <h4>Pact Academy Training Squadron</h4>
-            <p><strong>Cadet Leader Brave</strong> - Human Soldier (Mercenary Theme) - Level 3</p>
-            <p><strong>Cadet Engineer Smart</strong> - Android Mechanic (Scholar Theme) - Level 3</p>
-            <p><strong>Cadet Pilot Swift</strong> - Ysoki Operative (Ace Pilot Theme) - Level 3</p>
-            <p><strong>Cadet Medic Kind</strong> - Halfling Mystic (Priest Theme) - Level 3</p>
-            <p><strong>Cadet Diplomat Wise</strong> - Lashunta Envoy (Icon Theme) - Level 3</p>
-            <p><strong>Training Structure:</strong> Military academy graduates on their first posting</p>
-            <p><strong>Learning Focus:</strong> Adventures emphasize growth and teamwork development</p>
-            <p><strong>Mentorship Element:</strong> Senior officers provide guidance and evaluation</p>
-            <p><strong>Real-world Parallel:</strong> Like Top Gun or military academy training programs</p>
-
-            <h4>Void Seekers Exploration Guild</h4>
-            <p><strong>Expedition Leader Trek</strong> - Kasatha Operative (Spacefarer Theme) - Level 5</p>
-            <p><strong>Science Officer Query</strong> - Lashunta Technomancer (Scholar Theme) - Level 5</p>
-            <p><strong>Security Chief Guard</strong> - Vesk Soldier (Spacefarer Theme) - Level 5</p>
-            <p><strong>Systems Analyst Code</strong> - Android Mechanic (Scholar Theme) - Level 5</p>
-            <p><strong>Cultural Liaison Bridge</strong> - Shirren Envoy (Priest Theme) - Level 5</p>
-            <p><strong>Discovery Mission:</strong> Chart unknown systems and catalog new life forms</p>
-            <p><strong>Scientific Method:</strong> Systematic approach to exploration and documentation</p>
-            <p><strong>First Contact Protocol:</strong> Prepared for peaceful interaction with new species</p>
-
-            <h4>Neon City Night Watch</h4>
-            <p><strong>Detective Grit</strong> - Human Operative (Bounty Hunter Theme) - Level 4</p>
-            <p><strong>Officer Justice</strong> - Vesk Soldier (Mercenary Theme) - Level 4</p>
-            <p><strong>Analyst Logic</strong> - Android Technomancer (Icon Theme) - Level 4</p>
-            <p><strong>Negotiator Peace</strong> - Half-Elf Envoy (Icon Theme) - Level 4</p>
-            <p><strong>Counselor Hope</strong> - Lashunta Mystic (Priest Theme) - Level 4</p>
-            <p><strong>Urban Focus:</strong> Law enforcement in a massive multicultural space station</p>
-            <p><strong>Crime Drama:</strong> Each case reveals deeper corruption and conspiracy</p>
-            <p><strong>Social Commentary:</strong> Address issues of inequality and justice in future society</p>
-
-            <h4>Stellar Salvage Syndicate</h4>
-            <p><strong>Salvage Master Treasure</strong> - Ysoki Mechanic (Outlaw Theme) - Level 2</p>
-            <p><strong>Tech Specialist Wire</strong> - Gnome Mechanic (Spacefarer Theme) - Level 2</p>
-            <p><strong>Security Expert Shield</strong> - Dwarf Soldier (Mercenary Theme) - Level 2</p>
-            <p><strong>Market Analyst Coin</strong> - Halfling Envoy (Icon Theme) - Level 2</p>
-            <p><strong>Hazard Consultant Risk</strong> - Human Operative (Spacefarer Theme) - Level 2</p>
-            <p><strong>Economic Adventure:</strong> Profit-driven exploration of dangerous derelicts</p>
-            <p><strong>Risk Management:</strong> Balance potential rewards against life-threatening dangers</p>
-            <p><strong>Moral Questions:</strong> Decide what should be recovered versus left undisturbed</p>
-
-            <h4>Quantum Research Collective</h4>
-            <p><strong>Lead Researcher Insight</strong> - Lashunta Technomancer (Scholar Theme) - Level 6</p>
-            <p><strong>Field Tester Practical</strong> - Android Mechanic (Spacefarer Theme) - Level 6</p>
-            <p><strong>Data Analyst Pattern</strong> - Shirren Mystic (Outlaw Theme) - Level 6</p>
-            <p><strong>Safety Officer Careful</strong> - Kasatha Soldier (Mercenary Theme) - Level 6</p>
-            <p><strong>Ethics Advisor Moral</strong> - Human Envoy (Priest Theme) - Level 6</p>
-            <p><strong>Scientific Innovation:</strong> Develop technologies that reshape civilization</p>
-            <p><strong>Responsibility Theme:</strong> Consider the implications of revolutionary discoveries</p>
-            <p><strong>Academic Politics:</strong> Navigate funding, publication, and peer review pressures</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Pact Academy Training Squadron</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 3</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Cadet Leader Brave</span><span class="pm-role">Human Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Cadet Engineer Smart</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Cadet Pilot Swift</span><span class="pm-role">Ysoki Operative (Ace Pilot Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Cadet Medic Kind</span><span class="pm-role">Halfling Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Cadet Diplomat Wise</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Training Structure</dt><dd>Military academy graduates on their first posting</dd></div><div><dt>Learning Focus</dt><dd>Adventures emphasize growth and teamwork development</dd></div><div><dt>Mentorship Element</dt><dd>Senior officers provide guidance and evaluation</dd></div><div><dt>Real-world Parallel</dt><dd>Like Top Gun or military academy training programs</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Void Seekers Exploration Guild</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 5</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Expedition Leader Trek</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Science Officer Query</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Security Chief Guard</span><span class="pm-role">Vesk Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Systems Analyst Code</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Cultural Liaison Bridge</span><span class="pm-role">Shirren Envoy (Priest Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Discovery Mission</dt><dd>Chart unknown systems and catalog new life forms</dd></div><div><dt>Scientific Method</dt><dd>Systematic approach to exploration and documentation</dd></div><div><dt>First Contact Protocol</dt><dd>Prepared for peaceful interaction with new species</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Neon City Night Watch</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 4</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Detective Grit</span><span class="pm-role">Human Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Officer Justice</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Analyst Logic</span><span class="pm-role">Android Technomancer (Icon Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Negotiator Peace</span><span class="pm-role">Half-Elf Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Counselor Hope</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Urban Focus</dt><dd>Law enforcement in a massive multicultural space station</dd></div><div><dt>Crime Drama</dt><dd>Each case reveals deeper corruption and conspiracy</dd></div><div><dt>Social Commentary</dt><dd>Address issues of inequality and justice in future society</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Stellar Salvage Syndicate</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 2</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Salvage Master Treasure</span><span class="pm-role">Ysoki Mechanic (Outlaw Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Tech Specialist Wire</span><span class="pm-role">Gnome Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Security Expert Shield</span><span class="pm-role">Dwarf Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Market Analyst Coin</span><span class="pm-role">Halfling Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Hazard Consultant Risk</span><span class="pm-role">Human Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Economic Adventure</dt><dd>Profit-driven exploration of dangerous derelicts</dd></div><div><dt>Risk Management</dt><dd>Balance potential rewards against life-threatening dangers</dd></div><div><dt>Moral Questions</dt><dd>Decide what should be recovered versus left undisturbed</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Quantum Research Collective</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 6</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Lead Researcher Insight</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Field Tester Practical</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Data Analyst Pattern</span><span class="pm-role">Shirren Mystic (Outlaw Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Safety Officer Careful</span><span class="pm-role">Kasatha Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Ethics Advisor Moral</span><span class="pm-role">Human Envoy (Priest Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Scientific Innovation</dt><dd>Develop technologies that reshape civilization</dd></div><div><dt>Responsibility Theme</dt><dd>Consider the implications of revolutionary discoveries</dd></div><div><dt>Academic Politics</dt><dd>Navigate funding, publication, and peer review pressures</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>Medium Level Quintets (Levels 7-12)</h3>
-
-            <h4>Phoenix Rising Special Operations</h4>
-            <p><strong>Colonel Storm</strong> - Vesk Soldier (Mercenary Theme) - Level 10</p>
-            <p><strong>Major Ghost</strong> - Kasatha Operative (Bounty Hunter Theme) - Level 10</p>
-            <p><strong>Captain Tech</strong> - Android Technomancer (Scholar Theme) - Level 10</p>
-            <p><strong>Lieutenant Heal</strong> - Shirren Mystic (Priest Theme) - Level 10</p>
-            <p><strong>Sergeant Talk</strong> - Lashunta Envoy (Icon Theme) - Level 10</p>
-            <p><strong>Elite Status:</strong> Handpicked specialists for impossible missions</p>
-            <p><strong>Military Hierarchy:</strong> Clear command structure with defined roles</p>
-            <p><strong>Black Ops Focus:</strong> Handle threats too sensitive for regular forces</p>
-
-            <h4>Infinity Broadcasting Network</h4>
-            <p><strong>News Anchor Star</strong> - Human Envoy (Icon Theme) - Level 8</p>
-            <p><strong>Field Reporter Truth</strong> - Ysoki Operative (Icon Theme) - Level 8</p>
-            <p><strong>Technical Director Signal</strong> - Android Technomancer (Scholar Theme) - Level 8</p>
-            <p><strong>Security Coordinator Safe</strong> - Vesk Soldier (Mercenary Theme) - Level 8</p>
-            <p><strong>Producer Vision</strong> - Lashunta Mystic (Scholar Theme) - Level 8</p>
-            <p><strong>Media Power:</strong> Shape public opinion across multiple star systems</p>
-            <p><strong>Information Warfare:</strong> Navigate censorship, propaganda, and truth</p>
-            <p><strong>Journalistic Integrity:</strong> Balance entertainment value with factual reporting</p>
-
-            <h4>Galactic Emergency Response</h4>
-            <p><strong>Response Commander Action</strong> - Human Soldier (Mercenary Theme) - Level 11</p>
-            <p><strong>Medical Director Mercy</strong> - Lashunta Mystic (Priest Theme) - Level 11</p>
-            <p><strong>Engineering Chief Fix</strong> - Ysoki Mechanic (Spacefarer Theme) - Level 11</p>
-            <p><strong>Logistics Coordinator Supply</strong> - Android Envoy (Icon Theme) - Level 11</p>
-            <p><strong>Hazmat Specialist Clean</strong> - Kasatha Operative (Spacefarer Theme) - Level 11</p>
-            <p><strong>Humanitarian Mission:</strong> Respond to natural disasters and catastrophic events</p>
-            <p><strong>Crisis Management:</strong> Coordinate massive relief efforts under pressure</p>
-            <p><strong>Systemic Impact:</strong> Decisions affect millions of displaced beings</p>
-
-            <h4>Nexus Diplomatic Corps</h4>
-            <p><strong>Ambassador Prime</strong> - Shirren Envoy (Icon Theme) - Level 9</p>
-            <p><strong>Cultural Attaché</strong> - Lashunta Mystic (Scholar Theme) - Level 9</p>
-            <p><strong>Security Liaison</strong> - Vesk Soldier (Mercenary Theme) - Level 9</p>
-            <p><strong>Intelligence Analyst</strong> - Android Operative (Outlaw Theme) - Level 9</p>
-            <p><strong>Trade Representative</strong> - Human Technomancer (Icon Theme) - Level 9</p>
-            <p><strong>Diplomatic Immunity:</strong> Access to highest levels of government</p>
-            <p><strong>Political Intrigue:</strong> Navigate complex webs of competing interests</p>
-            <p><strong>Peace Process:</strong> Prevent wars through skillful negotiation</p>
-
-            <h4>Voidstorm Privateer Fleet</h4>
-            <p><strong>Commodore Tempest</strong> - Human Envoy (Outlaw Theme) - Level 7</p>
-            <p><strong>Master Gunner Boom</strong> - Vesk Soldier (Mercenary Theme) - Level 7</p>
-            <p><strong>Chief Engineer Spark</strong> - Android Mechanic (Spacefarer Theme) - Level 7</p>
-            <p><strong>Navigation Officer Star</strong> - Kasatha Operative (Spacefarer Theme) - Level 7</p>
-            <p><strong>Quartermaster Gold</strong> - Ysoki Envoy (Bounty Hunter Theme) - Level 7</p>
-            <p><strong>Privateer License:</strong> Legal authorization for limited piracy</p>
-            <p><strong>Naval Combat:</strong> Focus on ship-to-ship warfare and boarding actions</p>
-            <p><strong>Moral Ambiguity:</strong> Balance profit with legitimate military objectives</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Phoenix Rising Special Operations</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 10</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Colonel Storm</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Major Ghost</span><span class="pm-role">Kasatha Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Captain Tech</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Lieutenant Heal</span><span class="pm-role">Shirren Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Sergeant Talk</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Elite Status</dt><dd>Handpicked specialists for impossible missions</dd></div><div><dt>Military Hierarchy</dt><dd>Clear command structure with defined roles</dd></div><div><dt>Black Ops Focus</dt><dd>Handle threats too sensitive for regular forces</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Infinity Broadcasting Network</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 8</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">News Anchor Star</span><span class="pm-role">Human Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Field Reporter Truth</span><span class="pm-role">Ysoki Operative (Icon Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Technical Director Signal</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Security Coordinator Safe</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Producer Vision</span><span class="pm-role">Lashunta Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Media Power</dt><dd>Shape public opinion across multiple star systems</dd></div><div><dt>Information Warfare</dt><dd>Navigate censorship, propaganda, and truth</dd></div><div><dt>Journalistic Integrity</dt><dd>Balance entertainment value with factual reporting</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Galactic Emergency Response</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 11</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Response Commander Action</span><span class="pm-role">Human Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Medical Director Mercy</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Engineering Chief Fix</span><span class="pm-role">Ysoki Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Logistics Coordinator Supply</span><span class="pm-role">Android Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Hazmat Specialist Clean</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Humanitarian Mission</dt><dd>Respond to natural disasters and catastrophic events</dd></div><div><dt>Crisis Management</dt><dd>Coordinate massive relief efforts under pressure</dd></div><div><dt>Systemic Impact</dt><dd>Decisions affect millions of displaced beings</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Nexus Diplomatic Corps</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 9</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Ambassador Prime</span><span class="pm-role">Shirren Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Cultural Attaché</span><span class="pm-role">Lashunta Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Security Liaison</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Intelligence Analyst</span><span class="pm-role">Android Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Trade Representative</span><span class="pm-role">Human Technomancer (Icon Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Diplomatic Immunity</dt><dd>Access to highest levels of government</dd></div><div><dt>Political Intrigue</dt><dd>Navigate complex webs of competing interests</dd></div><div><dt>Peace Process</dt><dd>Prevent wars through skillful negotiation</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Voidstorm Privateer Fleet</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 7</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Commodore Tempest</span><span class="pm-role">Human Envoy (Outlaw Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Master Gunner Boom</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Chief Engineer Spark</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Navigation Officer Star</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Quartermaster Gold</span><span class="pm-role">Ysoki Envoy (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Privateer License</dt><dd>Legal authorization for limited piracy</dd></div><div><dt>Naval Combat</dt><dd>Focus on ship-to-ship warfare and boarding actions</dd></div><div><dt>Moral Ambiguity</dt><dd>Balance profit with legitimate military objectives</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>High Level Quintets (Levels 13-20)</h3>
-
-            <h4>The Stellar Pantheon</h4>
-            <p><strong>War Avatar</strong> - Vesk Soldier (Mercenary Theme) - Level 19</p>
-            <p><strong>Wisdom Oracle</strong> - Lashunta Mystic (Priest Theme) - Level 19</p>
-            <p><strong>Forge Master</strong> - Android Technomancer (Scholar Theme) - Level 19</p>
-            <p><strong>Shadow Walker</strong> - Kasatha Operative (Spacefarer Theme) - Level 19</p>
-            <p><strong>Word Weaver</strong> - Shirren Envoy (Icon Theme) - Level 19</p>
-            <p><strong>Divine Status:</strong> Worshipped as living gods across multiple systems</p>
-            <p><strong>Cosmic Authority:</strong> Command forces that span entire galactic sectors</p>
-            <p><strong>Ultimate Responsibility:</strong> Guardians of universal principles</p>
-
-            <h4>The Reality Engine</h4>
-            <p><strong>Core Processor</strong> - Android Technomancer (Scholar Theme) - Level 20</p>
-            <p><strong>Logic Gate</strong> - Android Soldier (Scholar Theme) - Level 20</p>
-            <p><strong>Data Stream</strong> - Android Operative (Spacefarer Theme) - Level 20</p>
-            <p><strong>Interface Portal</strong> - Android Mystic (Spacefarer Theme) - Level 20</p>
-            <p><strong>Output Terminal</strong> - Android Envoy (Icon Theme) - Level 20</p>
-            <p><strong>Digital Transcendence:</strong> Collective consciousness existing in multiple realities</p>
-            <p><strong>Universal Computing:</strong> Use reality itself as a computational matrix</p>
-            <p><strong>Infinite Potential:</strong> Capable of simulating and creating entire universes</p>
-
-            <h4>The Temporal Enforcement Agency</h4>
-            <p><strong>Chronarch Supreme</strong> - Human Solarian (Mercenary Theme) - Level 17</p>
-            <p><strong>Timeline Analyst</strong> - Lashunta Technomancer (Scholar Theme) - Level 17</p>
-            <p><strong>Paradox Hunter</strong> - Kasatha Operative (Bounty Hunter Theme) - Level 17</p>
-            <p><strong>Causal Engineer</strong> - Android Mechanic (Scholar Theme) - Level 17</p>
-            <p><strong>Probability Negotiator</strong> - Shirren Envoy (Priest Theme) - Level 17</p>
-            <p><strong>Time Travel Authority:</strong> Monitor and correct temporal anomalies</p>
-            <p><strong>Paradox Prevention:</strong> Ensure timeline stability across all realities</p>
-            <p><strong>Temporal Jurisdiction:</strong> Operate outside normal space-time constraints</p>
-
-            <h4>The Galactic Synthesis Council</h4>
-            <p><strong>Unity Coordinator</strong> - Shirren Mystic (Priest Theme) - Level 15</p>
-            <p><strong>Harmony Facilitator</strong> - Lashunta Envoy (Icon Theme) - Level 15</p>
-            <p><strong>Balance Enforcer</strong> - Kasatha Solarian (Mercenary Theme) - Level 15</p>
-            <p><strong>Integration Specialist</strong> - Android Technomancer (Scholar Theme) - Level 15</p>
-            <p><strong>Evolution Guide</strong> - Human Operative (Spacefarer Theme) - Level 15</p>
-            <p><strong>Species Unification:</strong> Work toward galactic civilization unity</p>
-            <p><strong>Cultural Synthesis:</strong> Blend traditions while preserving unique identities</p>
-            <p><strong>Evolutionary Direction:</strong> Guide the development of consciousness itself</p>
-
-            <h4>The Infinity Mandate</h4>
-            <p><strong>Prime Directive</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 18</p>
-            <p><strong>Quantum Protocol</strong> - Ysoki Technomancer (Scholar Theme) - Level 18</p>
-            <p><strong>Void Procedure</strong> - Kasatha Mystic (Xenoseeker Theme) - Level 18</p>
-            <p><strong>Stellar Algorithm</strong> - Android Mechanic (Spacefarer Theme) - Level 18</p>
-            <p><strong>Cosmic Subroutine</strong> - Lashunta Envoy (Scholar Theme) - Level 18</p>
-            <p><strong>Universal Authority:</strong> Empowered to make decisions affecting all existence</p>
-            <p><strong>Final Protocol:</strong> Activated only when reality itself is threatened</p>
-            <p><strong>Absolute Power:</strong> Access to abilities that transcend normal limitations</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Stellar Pantheon</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 19</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">War Avatar</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Wisdom Oracle</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Forge Master</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Shadow Walker</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Word Weaver</span><span class="pm-role">Shirren Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Divine Status</dt><dd>Worshipped as living gods across multiple systems</dd></div><div><dt>Cosmic Authority</dt><dd>Command forces that span entire galactic sectors</dd></div><div><dt>Ultimate Responsibility</dt><dd>Guardians of universal principles</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Reality Engine</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 20</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Core Processor</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Logic Gate</span><span class="pm-role">Android Soldier (Scholar Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Data Stream</span><span class="pm-role">Android Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Interface Portal</span><span class="pm-role">Android Mystic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Output Terminal</span><span class="pm-role">Android Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Digital Transcendence</dt><dd>Collective consciousness existing in multiple realities</dd></div><div><dt>Universal Computing</dt><dd>Use reality itself as a computational matrix</dd></div><div><dt>Infinite Potential</dt><dd>Capable of simulating and creating entire universes</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Temporal Enforcement Agency</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 17</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Chronarch Supreme</span><span class="pm-role">Human Solarian (Mercenary Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Timeline Analyst</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Paradox Hunter</span><span class="pm-role">Kasatha Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Causal Engineer</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Probability Negotiator</span><span class="pm-role">Shirren Envoy (Priest Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Time Travel Authority</dt><dd>Monitor and correct temporal anomalies</dd></div><div><dt>Paradox Prevention</dt><dd>Ensure timeline stability across all realities</dd></div><div><dt>Temporal Jurisdiction</dt><dd>Operate outside normal space-time constraints</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Galactic Synthesis Council</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 15</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Unity Coordinator</span><span class="pm-role">Shirren Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li><li><span class="pm-name">Harmony Facilitator</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li><li><span class="pm-name">Balance Enforcer</span><span class="pm-role">Kasatha Solarian (Mercenary Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li><li><span class="pm-name">Integration Specialist</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li><li><span class="pm-name">Evolution Guide</span><span class="pm-role">Human Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 15">15</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Species Unification</dt><dd>Work toward galactic civilization unity</dd></div><div><dt>Cultural Synthesis</dt><dd>Blend traditions while preserving unique identities</dd></div><div><dt>Evolutionary Direction</dt><dd>Guide the development of consciousness itself</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Infinity Mandate</h4><p class="pc-role">Party of 5</p></div><span class="pc-level pc-level-wide">Level 18</span></header>
+                    <ul class="party-members pm-5"><li><span class="pm-name">Prime Directive</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Quantum Protocol</span><span class="pm-role">Ysoki Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Void Procedure</span><span class="pm-role">Kasatha Mystic (Xenoseeker Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Stellar Algorithm</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Cosmic Subroutine</span><span class="pm-role">Lashunta Envoy (Scholar Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Universal Authority</dt><dd>Empowered to make decisions affecting all existence</dd></div><div><dt>Final Protocol</dt><dd>Activated only when reality itself is threatened</dd></div><div><dt>Absolute Power</dt><dd>Access to abilities that transcend normal limitations</dd></div></dl>
+                </article></li>
+            </ul>
         </section>
 
         <section id="hextet-crews">
@@ -814,176 +681,91 @@
             <p>Hextet crews represent the largest practical adventuring groups, typically elite units with highly specialized roles. These groups often mirror military units, research expeditions, or corporate teams requiring diverse expertise.</p>
 
             <h3>Low Level Hextets (Levels 1-6)</h3>
-
-            <h4>Starwatch Academy Alpha Squad</h4>
-            <p><strong>Squad Leader Valor</strong> - Human Soldier (Mercenary Theme) - Level 4</p>
-            <p><strong>Heavy Weapons Iron</strong> - Vesk Soldier (Mercenary Theme) - Level 4</p>
-            <p><strong>Tech Specialist Circuit</strong> - Android Mechanic (Scholar Theme) - Level 4</p>
-            <p><strong>Recon Expert Shadow</strong> - Ysoki Operative (Spacefarer Theme) - Level 4</p>
-            <p><strong>Field Medic Life</strong> - Halfling Mystic (Priest Theme) - Level 4</p>
-            <p><strong>Communications Link</strong> - Lashunta Envoy (Icon Theme) - Level 4</p>
-            <p><strong>Military Academy:</strong> Elite training institution's premier graduation class</p>
-            <p><strong>Combined Arms:</strong> Each member represents a specialized military discipline</p>
-            <p><strong>Leadership Development:</strong> Rotation of command roles builds versatile officers</p>
-            <p><strong>Real-world Parallel:</strong> Special forces A-team with diverse specialized skills</p>
-
-            <h4>Deep Space Survey Expedition</h4>
-            <p><strong>Mission Commander Explore</strong> - Kasatha Envoy (Xenoseeker Theme) - Level 3</p>
-            <p><strong>Chief Scientist Discover</strong> - Lashunta Technomancer (Scholar Theme) - Level 3</p>
-            <p><strong>Geological Surveyor Rock</strong> - Dwarf Mechanic (Spacefarer Theme) - Level 3</p>
-            <p><strong>Biological Analyst Life</strong> - Shirren Mystic (Priest Theme) - Level 3</p>
-            <p><strong>Security Officer Guard</strong> - Vesk Soldier (Mercenary Theme) - Level 3</p>
-            <p><strong>Cultural Specialist Bridge</strong> - Half-Elf Envoy (Icon Theme) - Level 3</p>
-            <p><strong>Scientific Mission:</strong> Comprehensive survey of uncharted star system</p>
-            <p><strong>Interdisciplinary Team:</strong> Multiple scientific specializations working together</p>
-            <p><strong>First Contact Ready:</strong> Prepared for encounter with unknown species</p>
-
-            <h4>Neon District Enforcement Unit</h4>
-            <p><strong>Unit Commander Order</strong> - Human Soldier (Mercenary Theme) - Level 5</p>
-            <p><strong>Detective Insight</strong> - Lashunta Operative (Bounty Hunter Theme) - Level 5</p>
-            <p><strong>Forensics Expert Trace</strong> - Android Technomancer (Icon Theme) - Level 5</p>
-            <p><strong>Undercover Agent Mask</strong> - Ysoki Operative (Outlaw Theme) - Level 5</p>
-            <p><strong>Negotiator Voice</strong> - Shirren Envoy (Priest Theme) - Level 5</p>
-            <p><strong>SWAT Specialist Breach</strong> - Vesk Soldier (Bounty Hunter Theme) - Level 5</p>
-            <p><strong>Urban Policing:</strong> Elite law enforcement for high-crime space station districts</p>
-            <p><strong>Multi-layered Investigation:</strong> Combine multiple approaches to solve complex crimes</p>
-            <p><strong>Community Relations:</strong> Balance aggressive enforcement with community trust</p>
-
-            <h4>Stellar Cartography Guild</h4>
-            <p><strong>Chief Navigator Star</strong> - Kasatha Operative (Spacefarer Theme) - Level 2</p>
-            <p><strong>Stellar Physicist Gravity</strong> - Lashunta Technomancer (Scholar Theme) - Level 2</p>
-            <p><strong>Sensor Operator Signal</strong> - Android Mechanic (Spacefarer Theme) - Level 2</p>
-            <p><strong>Hazard Scout Risk</strong> - Ysoki Operative (Spacefarer Theme) - Level 2</p>
-            <p><strong>Data Analyst Lattice</strong> - Shirren Mystic (Outlaw Theme) - Level 2</p>
-            <p><strong>Trade Assessor Value</strong> - Halfling Envoy (Icon Theme) - Level 2</p>
-            <p><strong>Mapping Mission:</strong> Create detailed charts of previously unknown space</p>
-            <p><strong>Economic Impact:</strong> New trade routes transform galactic commerce</p>
-            <p><strong>Scientific Discovery:</strong> Each system surveyed reveals new phenomena</p>
-
-            <h4>Quantum Dynamics Research Team</h4>
-            <p><strong>Project Director Mind</strong> - Human Technomancer (Scholar Theme) - Level 6</p>
-            <p><strong>Theoretical Physicist Wave</strong> - Lashunta Mystic (Priest Theme) - Level 6</p>
-            <p><strong>Applied Engineer Build</strong> - Android Mechanic (Scholar Theme) - Level 6</p>
-            <p><strong>Safety Coordinator Safe</strong> - Vesk Soldier (Mercenary Theme) - Level 6</p>
-            <p><strong>Ethics Advisor Right</strong> - Shirren Envoy (Icon Theme) - Level 6</p>
-            <p><strong>Documentation Specialist Record</strong> - Ysoki Operative (Scholar Theme) - Level 6</p>
-            <p><strong>Cutting-edge Research:</strong> Develop technologies that could reshape reality</p>
-            <p><strong>Ethical Oversight:</strong> Balance scientific progress with responsible development</p>
-            <p><strong>Corporate Pressure:</strong> Navigate funding demands while maintaining integrity</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Starwatch Academy Alpha Squad</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 4</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Squad Leader Valor</span><span class="pm-role">Human Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Heavy Weapons Iron</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Tech Specialist Circuit</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Recon Expert Shadow</span><span class="pm-role">Ysoki Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Field Medic Life</span><span class="pm-role">Halfling Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li><li><span class="pm-name">Communications Link</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 4">4</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Military Academy</dt><dd>Elite training institution's premier graduation class</dd></div><div><dt>Combined Arms</dt><dd>Each member represents a specialized military discipline</dd></div><div><dt>Leadership Development</dt><dd>Rotation of command roles builds versatile officers</dd></div><div><dt>Real-world Parallel</dt><dd>Special forces A-team with diverse specialized skills</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Deep Space Survey Expedition</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 3</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Mission Commander Explore</span><span class="pm-role">Kasatha Envoy (Xenoseeker Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Chief Scientist Discover</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Geological Surveyor Rock</span><span class="pm-role">Dwarf Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Biological Analyst Life</span><span class="pm-role">Shirren Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Security Officer Guard</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li><li><span class="pm-name">Cultural Specialist Bridge</span><span class="pm-role">Half-Elf Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 3">3</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Scientific Mission</dt><dd>Comprehensive survey of uncharted star system</dd></div><div><dt>Interdisciplinary Team</dt><dd>Multiple scientific specializations working together</dd></div><div><dt>First Contact Ready</dt><dd>Prepared for encounter with unknown species</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Neon District Enforcement Unit</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 5</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Unit Commander Order</span><span class="pm-role">Human Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Detective Insight</span><span class="pm-role">Lashunta Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Forensics Expert Trace</span><span class="pm-role">Android Technomancer (Icon Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Undercover Agent Mask</span><span class="pm-role">Ysoki Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">Negotiator Voice</span><span class="pm-role">Shirren Envoy (Priest Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li><li><span class="pm-name">SWAT Specialist Breach</span><span class="pm-role">Vesk Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 5">5</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Urban Policing</dt><dd>Elite law enforcement for high-crime space station districts</dd></div><div><dt>Multi-layered Investigation</dt><dd>Combine multiple approaches to solve complex crimes</dd></div><div><dt>Community Relations</dt><dd>Balance aggressive enforcement with community trust</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Stellar Cartography Guild</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 2</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Chief Navigator Star</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Stellar Physicist Gravity</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Sensor Operator Signal</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Hazard Scout Risk</span><span class="pm-role">Ysoki Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Data Analyst Lattice</span><span class="pm-role">Shirren Mystic (Outlaw Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li><li><span class="pm-name">Trade Assessor Value</span><span class="pm-role">Halfling Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 2">2</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Mapping Mission</dt><dd>Create detailed charts of previously unknown space</dd></div><div><dt>Economic Impact</dt><dd>New trade routes transform galactic commerce</dd></div><div><dt>Scientific Discovery</dt><dd>Each system surveyed reveals new phenomena</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Quantum Dynamics Research Team</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 6</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Project Director Mind</span><span class="pm-role">Human Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Theoretical Physicist Wave</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Applied Engineer Build</span><span class="pm-role">Android Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Safety Coordinator Safe</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Ethics Advisor Right</span><span class="pm-role">Shirren Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li><li><span class="pm-name">Documentation Specialist Record</span><span class="pm-role">Ysoki Operative (Scholar Theme)</span><span class="pm-level" aria-label="Level 6">6</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Cutting-edge Research</dt><dd>Develop technologies that could reshape reality</dd></div><div><dt>Ethical Oversight</dt><dd>Balance scientific progress with responsible development</dd></div><div><dt>Corporate Pressure</dt><dd>Navigate funding demands while maintaining integrity</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>Medium Level Hextets (Levels 7-12)</h3>
-
-            <h4>Phoenix Command Strategic Response</h4>
-            <p><strong>Fleet Admiral Storm</strong> - Vesk Soldier (Mercenary Theme) - Level 11</p>
-            <p><strong>Air Marshal Swift</strong> - Kasatha Soldier (Ace Pilot Theme) - Level 11</p>
-            <p><strong>Cyber General Code</strong> - Android Technomancer (Scholar Theme) - Level 11</p>
-            <p><strong>Field Marshal Ghost</strong> - Ysoki Operative (Bounty Hunter Theme) - Level 11</p>
-            <p><strong>Surgeon General Heal</strong> - Lashunta Mystic (Priest Theme) - Level 11</p>
-            <p><strong>Ambassador General Peace</strong> - Shirren Envoy (Icon Theme) - Level 11</p>
-            <p><strong>Strategic Command:</strong> Joint chiefs of staff for interstellar military operations</p>
-            <p><strong>Multi-domain Warfare:</strong> Coordinate space, cyber, ground, and diplomatic operations</p>
-            <p><strong>Galactic Security:</strong> Responsible for peace across multiple star systems</p>
-
-            <h4>Infinity Broadcasting Investigative Unit</h4>
-            <p><strong>Executive Producer Vision</strong> - Human Envoy (Icon Theme) - Level 9</p>
-            <p><strong>Lead Investigator Truth</strong> - Lashunta Operative (Bounty Hunter Theme) - Level 9</p>
-            <p><strong>Technical Director Relay</strong> - Android Technomancer (Scholar Theme) - Level 9</p>
-            <p><strong>Field Reporter Courage</strong> - Ysoki Operative (Spacefarer Theme) - Level 9</p>
-            <p><strong>Security Coordinator Shield</strong> - Vesk Soldier (Mercenary Theme) - Level 9</p>
-            <p><strong>Research Analyst Deep</strong> - Shirren Mystic (Scholar Theme) - Level 9</p>
-            <p><strong>Media Power:</strong> Investigative journalism that topples corrupt governments</p>
-            <p><strong>Information Warfare:</strong> Fight propaganda with truth and transparency</p>
-            <p><strong>Public Service:</strong> Balance ratings with responsibility to inform citizenry</p>
-
-            <h4>Galactic Medical Emergency Response</h4>
-            <p><strong>Chief Medical Officer Life</strong> - Lashunta Mystic (Priest Theme) - Level 10</p>
-            <p><strong>Trauma Surgeon Steel</strong> - Android Soldier (Mercenary Theme) - Level 10</p>
-            <p><strong>Epidemiologist Track</strong> - Shirren Technomancer (Scholar Theme) - Level 10</p>
-            <p><strong>Field Coordinator Move</strong> - Human Envoy (Spacefarer Theme) - Level 10</p>
-            <p><strong>Logistics Manager Supply</strong> - Ysoki Mechanic (Scholar Theme) - Level 10</p>
-            <p><strong>Counselor Solace</strong> - Halfling Envoy (Icon Theme) - Level 10</p>
-            <p><strong>Humanitarian Crisis:</strong> Respond to medical emergencies across star systems</p>
-            <p><strong>Pandemic Prevention:</strong> Stop diseases before they spread between worlds</p>
-            <p><strong>Triage Decisions:</strong> Allocate limited resources for maximum life-saving impact</p>
-
-            <h4>Nexus Diplomatic Mission</h4>
-            <p><strong>Chief Ambassador Unity</strong> - Shirren Envoy (Icon Theme) - Level 8</p>
-            <p><strong>Military Attaché Honor</strong> - Vesk Soldier (Mercenary Theme) - Level 8</p>
-            <p><strong>Trade Representative Wealth</strong> - Human Technomancer (Icon Theme) - Level 8</p>
-            <p><strong>Cultural Specialist Accord</strong> - Lashunta Mystic (Scholar Theme) - Level 8</p>
-            <p><strong>Intelligence Analyst Shadow</strong> - Android Operative (Outlaw Theme) - Level 8</p>
-            <p><strong>Security Chief Bastion</strong> - Kasatha Soldier (Bounty Hunter Theme) - Level 8</p>
-            <p><strong>High-Stakes Diplomacy:</strong> Negotiate treaties affecting billions of beings</p>
-            <p><strong>Cultural Sensitivity:</strong> Navigate vastly different species' values and customs</p>
-            <p><strong>Economic Integration:</strong> Create trade agreements that benefit all parties</p>
-
-            <h4>Voidstorm Corsair Fleet Command</h4>
-            <p><strong>Commodore Squall</strong> - Human Operative (Outlaw Theme) - Level 7</p>
-            <p><strong>Master Gunner Thunder</strong> - Vesk Soldier (Mercenary Theme) - Level 7</p>
-            <p><strong>Chief Engineer Lightning</strong> - Android Mechanic (Spacefarer Theme) - Level 7</p>
-            <p><strong>Navigation Master Star</strong> - Kasatha Operative (Spacefarer Theme) - Level 7</p>
-            <p><strong>Quartermaster Ledger</strong> - Ysoki Envoy (Bounty Hunter Theme) - Level 7</p>
-            <p><strong>Communications Officer Link</strong> - Lashunta Technomancer (Scholar Theme) - Level 7</p>
-            <p><strong>Privateer Operations:</strong> Legal piracy against enemy shipping</p>
-            <p><strong>Naval Warfare:</strong> Fleet-scale combat and strategic maneuvering</p>
-            <p><strong>Profit and Patriotism:</strong> Balance personal gain with national service</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Phoenix Command Strategic Response</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 11</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Fleet Admiral Storm</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Air Marshal Swift</span><span class="pm-role">Kasatha Soldier (Ace Pilot Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Cyber General Code</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Field Marshal Ghost</span><span class="pm-role">Ysoki Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Surgeon General Heal</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li><li><span class="pm-name">Ambassador General Peace</span><span class="pm-role">Shirren Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 11">11</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Strategic Command</dt><dd>Joint chiefs of staff for interstellar military operations</dd></div><div><dt>Multi-domain Warfare</dt><dd>Coordinate space, cyber, ground, and diplomatic operations</dd></div><div><dt>Galactic Security</dt><dd>Responsible for peace across multiple star systems</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Infinity Broadcasting Investigative Unit</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 9</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Executive Producer Vision</span><span class="pm-role">Human Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Lead Investigator Truth</span><span class="pm-role">Lashunta Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Technical Director Relay</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Field Reporter Courage</span><span class="pm-role">Ysoki Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Security Coordinator Shield</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li><li><span class="pm-name">Research Analyst Deep</span><span class="pm-role">Shirren Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 9">9</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Media Power</dt><dd>Investigative journalism that topples corrupt governments</dd></div><div><dt>Information Warfare</dt><dd>Fight propaganda with truth and transparency</dd></div><div><dt>Public Service</dt><dd>Balance ratings with responsibility to inform citizenry</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Galactic Medical Emergency Response</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 10</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Chief Medical Officer Life</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Trauma Surgeon Steel</span><span class="pm-role">Android Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Epidemiologist Track</span><span class="pm-role">Shirren Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Field Coordinator Move</span><span class="pm-role">Human Envoy (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Logistics Manager Supply</span><span class="pm-role">Ysoki Mechanic (Scholar Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li><li><span class="pm-name">Counselor Solace</span><span class="pm-role">Halfling Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 10">10</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Humanitarian Crisis</dt><dd>Respond to medical emergencies across star systems</dd></div><div><dt>Pandemic Prevention</dt><dd>Stop diseases before they spread between worlds</dd></div><div><dt>Triage Decisions</dt><dd>Allocate limited resources for maximum life-saving impact</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Nexus Diplomatic Mission</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 8</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Chief Ambassador Unity</span><span class="pm-role">Shirren Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Military Attaché Honor</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Trade Representative Wealth</span><span class="pm-role">Human Technomancer (Icon Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Cultural Specialist Accord</span><span class="pm-role">Lashunta Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Intelligence Analyst Shadow</span><span class="pm-role">Android Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li><li><span class="pm-name">Security Chief Bastion</span><span class="pm-role">Kasatha Soldier (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 8">8</span></li></ul>
+                    <dl class="pc-facts"><div><dt>High-Stakes Diplomacy</dt><dd>Negotiate treaties affecting billions of beings</dd></div><div><dt>Cultural Sensitivity</dt><dd>Navigate vastly different species' values and customs</dd></div><div><dt>Economic Integration</dt><dd>Create trade agreements that benefit all parties</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>Voidstorm Corsair Fleet Command</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 7</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Commodore Squall</span><span class="pm-role">Human Operative (Outlaw Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Master Gunner Thunder</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Chief Engineer Lightning</span><span class="pm-role">Android Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Navigation Master Star</span><span class="pm-role">Kasatha Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Quartermaster Ledger</span><span class="pm-role">Ysoki Envoy (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li><li><span class="pm-name">Communications Officer Link</span><span class="pm-role">Lashunta Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 7">7</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Privateer Operations</dt><dd>Legal piracy against enemy shipping</dd></div><div><dt>Naval Warfare</dt><dd>Fleet-scale combat and strategic maneuvering</dd></div><div><dt>Profit and Patriotism</dt><dd>Balance personal gain with national service</dd></div></dl>
+                </article></li>
+            </ul>
 
             <h3>High Level Hextets (Levels 13-20)</h3>
-
-            <h4>The Cosmic Tribunal</h4>
-            <p><strong>Chief Justice Balance</strong> - Kasatha Solarian (Priest Theme) - Level 19</p>
-            <p><strong>Prosecution Truth</strong> - Lashunta Envoy (Icon Theme) - Level 19</p>
-            <p><strong>Defense Mercy</strong> - Shirren Mystic (Scholar Theme) - Level 19</p>
-            <p><strong>Evidence Fact</strong> - Android Technomancer (Scholar Theme) - Level 19</p>
-            <p><strong>Enforcement Order</strong> - Vesk Soldier (Mercenary Theme) - Level 19</p>
-            <p><strong>Witness Protection</strong> - Ysoki Operative (Bounty Hunter Theme) - Level 19</p>
-            <p><strong>Universal Justice:</strong> Judge crimes that threaten cosmic order</p>
-            <p><strong>Moral Authority:</strong> Decisions become precedent for galactic law</p>
-            <p><strong>Divine Mandate:</strong> Empowered by universal principles of justice</p>
-
-            <h4>The Reality Architects</h4>
-            <p><strong>Prime Constructor</strong> - Android Technomancer (Scholar Theme) - Level 20</p>
-            <p><strong>Space Designer</strong> - Kasatha Soldier (Spacefarer Theme) - Level 20</p>
-            <p><strong>Time Engineer</strong> - Shirren Mystic (Outlaw Theme) - Level 20</p>
-            <p><strong>Matter Sculptor</strong> - Vesk Mechanic (Spacefarer Theme) - Level 20</p>
-            <p><strong>Energy Artist</strong> - Lashunta Solarian (Icon Theme) - Level 20</p>
-            <p><strong>Consciousness Weaver</strong> - Human Envoy (Priest Theme) - Level 20</p>
-            <p><strong>Universal Creation:</strong> Design and build new realities from fundamental forces</p>
-            <p><strong>Infinite Responsibility:</strong> Every decision affects countless potential universes</p>
-            <p><strong>Creative Power:</strong> Combine science, magic, and will to reshape existence</p>
-
-            <h4>The Temporal Enforcement Directive</h4>
-            <p><strong>Chronarch Regent</strong> - Human Solarian (Mercenary Theme) - Level 18</p>
-            <p><strong>Timeline Guardian</strong> - Lashunta Mystic (Priest Theme) - Level 18</p>
-            <p><strong>Paradox Tracker</strong> - Kasatha Operative (Bounty Hunter Theme) - Level 18</p>
-            <p><strong>Causality Smith</strong> - Android Technomancer (Scholar Theme) - Level 18</p>
-            <p><strong>Probability Analyst</strong> - Shirren Envoy (Scholar Theme) - Level 18</p>
-            <p><strong>Quantum Enforcer</strong> - Vesk Soldier (Spacefarer Theme) - Level 18</p>
-            <p><strong>Time Police:</strong> Prevent temporal crimes across all timelines</p>
-            <p><strong>Causal Authority:</strong> Maintain cause-and-effect relationships</p>
-            <p><strong>Multiverse Scope:</strong> Operate across infinite parallel realities</p>
-
-            <h4>The Synthesis Council</h4>
-            <p><strong>Unity Steward</strong> - Shirren Mystic (Priest Theme) - Level 16</p>
-            <p><strong>Harmony Director</strong> - Lashunta Envoy (Icon Theme) - Level 16</p>
-            <p><strong>Equilibrium Warden</strong> - Kasatha Solarian (Mercenary Theme) - Level 16</p>
-            <p><strong>Integration Master</strong> - Android Technomancer (Scholar Theme) - Level 16</p>
-            <p><strong>Evolution Mentor</strong> - Human Operative (Spacefarer Theme) - Level 16</p>
-            <p><strong>Consciousness Shepherd</strong> - Vesk Soldier (Spacefarer Theme) - Level 16</p>
-            <p><strong>Species Unification:</strong> Guide galactic civilization toward unity</p>
-            <p><strong>Cultural Preservation:</strong> Maintain diversity within harmony</p>
-            <p><strong>Evolutionary Direction:</strong> Shape the development of consciousness itself</p>
-
-            <h4>The Infinity Engine</h4>
-            <p><strong>Core Processor Alpha</strong> - Android Technomancer (Scholar Theme) - Level 17</p>
-            <p><strong>Logic Network Beta</strong> - Android Soldier (Scholar Theme) - Level 17</p>
-            <p><strong>Data Stream Gamma</strong> - Android Operative (Spacefarer Theme) - Level 17</p>
-            <p><strong>Interface Hub Delta</strong> - Android Mystic (Spacefarer Theme) - Level 17</p>
-            <p><strong>Output Portal Epsilon</strong> - Android Envoy (Icon Theme) - Level 17</p>
-            <p><strong>Quantum Bridge Zeta</strong> - Android Mechanic (Mercenary Theme) - Level 17</p>
-            <p><strong>Digital Transcendence:</strong> Collective consciousness spanning multiple realities</p>
-            <p><strong>Universal Computing:</strong> Process information faster than light itself</p>
-            <p><strong>Reality Programming:</strong> Code new laws of physics into existence</p>
+            <ul class="roster roster-party">
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Cosmic Tribunal</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 19</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Chief Justice Balance</span><span class="pm-role">Kasatha Solarian (Priest Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Prosecution Truth</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Defense Mercy</span><span class="pm-role">Shirren Mystic (Scholar Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Evidence Fact</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Enforcement Order</span><span class="pm-role">Vesk Soldier (Mercenary Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li><li><span class="pm-name">Witness Protection</span><span class="pm-role">Ysoki Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 19">19</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Universal Justice</dt><dd>Judge crimes that threaten cosmic order</dd></div><div><dt>Moral Authority</dt><dd>Decisions become precedent for galactic law</dd></div><div><dt>Divine Mandate</dt><dd>Empowered by universal principles of justice</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Reality Architects</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 20</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Prime Constructor</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Space Designer</span><span class="pm-role">Kasatha Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Time Engineer</span><span class="pm-role">Shirren Mystic (Outlaw Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Matter Sculptor</span><span class="pm-role">Vesk Mechanic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Energy Artist</span><span class="pm-role">Lashunta Solarian (Icon Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li><li><span class="pm-name">Consciousness Weaver</span><span class="pm-role">Human Envoy (Priest Theme)</span><span class="pm-level" aria-label="Level 20">20</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Universal Creation</dt><dd>Design and build new realities from fundamental forces</dd></div><div><dt>Infinite Responsibility</dt><dd>Every decision affects countless potential universes</dd></div><div><dt>Creative Power</dt><dd>Combine science, magic, and will to reshape existence</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Temporal Enforcement Directive</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 18</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Chronarch Regent</span><span class="pm-role">Human Solarian (Mercenary Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Timeline Guardian</span><span class="pm-role">Lashunta Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Paradox Tracker</span><span class="pm-role">Kasatha Operative (Bounty Hunter Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Causality Smith</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Probability Analyst</span><span class="pm-role">Shirren Envoy (Scholar Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li><li><span class="pm-name">Quantum Enforcer</span><span class="pm-role">Vesk Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 18">18</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Time Police</dt><dd>Prevent temporal crimes across all timelines</dd></div><div><dt>Causal Authority</dt><dd>Maintain cause-and-effect relationships</dd></div><div><dt>Multiverse Scope</dt><dd>Operate across infinite parallel realities</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Synthesis Council</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 16</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Unity Steward</span><span class="pm-role">Shirren Mystic (Priest Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Harmony Director</span><span class="pm-role">Lashunta Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Equilibrium Warden</span><span class="pm-role">Kasatha Solarian (Mercenary Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Integration Master</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Evolution Mentor</span><span class="pm-role">Human Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li><li><span class="pm-name">Consciousness Shepherd</span><span class="pm-role">Vesk Soldier (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 16">16</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Species Unification</dt><dd>Guide galactic civilization toward unity</dd></div><div><dt>Cultural Preservation</dt><dd>Maintain diversity within harmony</dd></div><div><dt>Evolutionary Direction</dt><dd>Shape the development of consciousness itself</dd></div></dl>
+                </article></li>
+                <li><article class="party-card">
+                    <header class="pc-head"><div><h4>The Infinity Engine</h4><p class="pc-role">Party of 6</p></div><span class="pc-level pc-level-wide">Level 17</span></header>
+                    <ul class="party-members pm-6"><li><span class="pm-name">Core Processor Alpha</span><span class="pm-role">Android Technomancer (Scholar Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Logic Network Beta</span><span class="pm-role">Android Soldier (Scholar Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Data Stream Gamma</span><span class="pm-role">Android Operative (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Interface Hub Delta</span><span class="pm-role">Android Mystic (Spacefarer Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Output Portal Epsilon</span><span class="pm-role">Android Envoy (Icon Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li><li><span class="pm-name">Quantum Bridge Zeta</span><span class="pm-role">Android Mechanic (Mercenary Theme)</span><span class="pm-level" aria-label="Level 17">17</span></li></ul>
+                    <dl class="pc-facts"><div><dt>Digital Transcendence</dt><dd>Collective consciousness spanning multiple realities</dd></div><div><dt>Universal Computing</dt><dd>Process information faster than light itself</dd></div><div><dt>Reality Programming</dt><dd>Code new laws of physics into existence</dd></div></dl>
+                </article></li>
+            </ul>
         </section>
 
         <section id="practical-applications">
