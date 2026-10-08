@@ -12,6 +12,11 @@
     <script type="module" src="/js/diagrams.js?v=1"></script>
     <link rel="stylesheet" href="/styles/main.css?v=1">
     <link rel="icon" href="/favicon.png" type="image/png">
+    <style>
+        /* Sample-sheet key numbers (generated from starfinder_sample_sheets.json) */
+        .sheet-keys { margin: 8px 0; padding: 8px 10px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 4px; font-size: 0.92rem; overflow-wrap: anywhere; }
+        .crew-keys { display: block; font-size: 0.86rem; color: var(--muted); overflow-wrap: anywhere; }
+    </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -56,6 +61,9 @@
 
             <section class="individual-characters">
                 <h2>Individual Character Examples</h2>
+                <div class="callout callout-blue callout-edge" id="load-sample-sheets">
+                    <p><strong>Load them into your sheets.</strong> The six heroes and all 26 crew members on this page are ready-made <a href="/starfinder_character_sheet.html">Character Sheets</a>: press <a href="/starfinder_character_sheet.html#sampleBtn"><strong>Load sample characters</strong></a> there, or <a href="/starfinder_sample_sheets.json" download>download the sample sheet file</a> and use Import. The six heroes keep the scores and numbers worked out below; crew members, whose level and theme aren't given, are built at 1st level with a theme that fits their job (marked as GM choices on each sheet). Every sheet lists its key numbers here: EAC and KAC, Hit Points, Stamina, Resolve and main weapon.</p>
+                </div>
                 
                 <div class="character-example">
                     <h3>Commander Zara "Comet" Vex - Human Soldier</h3>
@@ -67,6 +75,7 @@
                         <p><strong>1st-level scores (point buy):</strong> STR 12, DEX 18, CON 12, INT 10, WIS 11, CHA 10 (human +2 DEX, mercenary +1 STR, then +6 DEX, +2 CON, +1 STR, +1 WIS)</p>
                         <p><strong>1st-level numbers:</strong> DEX-based soldier (key ability DEX +4). HP 4 + 7 = 11; SP 7 + 1 = 8; RP 1 + 4 = 5; EAC 15, KAC 16; 4 skill ranks per level (4 + INT 0), plus 1 more for being human</p>
                     </div>
+                    <p class="sheet-keys"><strong>Sample sheet:</strong> EAC 15 · KAC 16 · HP 11 · SP 8 · RP 5 · Laser Rifle, Azimuth +6 (1d8 F)</p>
                     <p><strong>Role in Crew:</strong> The unbreakable shield—like the hull of a dreadnought, she absorbs punishment while coordinating tactical strikes. Her military experience makes her a natural leader when plasma starts flying.</p>
                     <svg width="350" height="180" viewBox="0 0 350 180">
                         <rect x="50" y="40" width="70" height="90" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
@@ -95,6 +104,7 @@
                         <p><strong>1st-level scores (point buy):</strong> STR 11, DEX 18, CON 12, INT 12, WIS 12, CHA 8 (android +2 DEX, +2 INT, −2 CHA; outlaw +1 DEX; then +5 DEX, +2 CON, +2 WIS, +1 STR)</p>
                         <p><strong>1st-level numbers:</strong> key ability DEX +4. HP 4 + 6 = 10; SP 6 + 1 = 7; RP 1 + 4 = 5; EAC 15, KAC 16; 9 skill ranks per level (8 + INT 1)</p>
                     </div>
+                    <p class="sheet-keys"><strong>Sample sheet:</strong> EAC 15 · KAC 16 · HP 10 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +5 (1d6 P)</p>
                     <p><strong>Role in Crew:</strong> The phantom in the machine—slipping through security systems like data through fiber optic cables. Their synthetic nature allows access to restricted networks while their growing humanity provides unexpected insights.</p>
                 </div>
 
@@ -108,6 +118,7 @@
                         <p><strong>1st-level scores (point buy):</strong> STR 10, DEX 10, CON 10, INT 13, WIS 18, CHA 12 (damaya lashunta +2 CHA, +2 INT, −2 CON; scholar +1 INT; then +8 WIS, +2 CON)</p>
                         <p><strong>1st-level numbers:</strong> key ability WIS +4. HP 4 + 6 = 10; SP 6 + 0 = 6; RP 1 + 4 = 5; EAC 11, KAC 12; 7 skill ranks per level (6 + INT 1)</p>
                     </div>
+                    <p class="sheet-keys"><strong>Sample sheet:</strong> EAC 11 · KAC 12 · HP 10 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +0 (1d6 P)</p>
                     <p><strong>Role in Crew:</strong> The cosmic conduit—channeling the universe's fundamental forces like a living antenna tuned to frequencies beyond normal perception. Her telepathic abilities make her the crew's emotional compass and mystical navigator.</p>
                 </div>
 
@@ -121,6 +132,7 @@
                         <p><strong>1st-level scores (point buy):</strong> STR 8, DEX 14, CON 12, INT 18, WIS 11, CHA 10 (ysoki +2 DEX, +2 INT, −2 STR; spacefarer +1 CON; then +6 INT, +2 DEX, +1 CON, +1 WIS)</p>
                         <p><strong>1st-level numbers:</strong> key ability INT +4. HP 2 + 6 = 8; SP 6 + 1 = 7; RP 1 + 4 = 5; EAC 13, KAC 14; 8 skill ranks per level (4 + INT 4)</p>
                     </div>
+                    <p class="sheet-keys"><strong>Sample sheet:</strong> EAC 13 · KAC 14 · HP 8 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +3 (1d6 P)</p>
                     <p><strong>Role in Crew:</strong> The miracle worker—transforming scrap metal into functioning miracles like an alchemist of the stars. When systems fail in the black of space, she's the difference between life and cold vacuum.</p>
                 </div>
 
@@ -134,6 +146,7 @@
                         <p><strong>1st-level scores (point buy):</strong> STR 12, DEX 12, CON 11, INT 8, WIS 12, CHA 18 (kasatha +2 STR, +2 WIS, −2 INT; spacefarer +1 CON; then +8 CHA, +2 DEX)</p>
                         <p><strong>1st-level numbers:</strong> key ability CHA +4. HP 4 + 6 = 10; SP 6 + 0 = 6; RP 1 + 4 = 5; EAC 12, KAC 13; 7 skill ranks per level (8 + INT −1)</p>
                     </div>
+                    <p class="sheet-keys"><strong>Sample sheet:</strong> EAC 12 · KAC 13 · HP 10 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +2 (1d6 P)</p>
                     <p><strong>Role in Crew:</strong> The bridge between worlds—turning potential conflicts into opportunities like a master navigator charting safe passage through political asteroid fields. His four arms gesture as eloquently as his words flow.</p>
                 </div>
 
@@ -147,6 +160,7 @@
                         <p><strong>1st-level scores (point buy):</strong> STR 11, DEX 12, CON 12, INT 18, WIS 12, CHA 8 (shirren +2 CON, +2 WIS, −2 CHA; ace pilot +1 DEX; then +8 INT, +1 DEX, +1 STR)</p>
                         <p><strong>1st-level numbers:</strong> key ability INT +4. HP 6 + 5 = 11; SP 5 + 1 = 6; RP 1 + 4 = 5; EAC 12, KAC 13; 8 skill ranks per level (4 + INT 4)</p>
                     </div>
+                    <p class="sheet-keys"><strong>Sample sheet:</strong> EAC 12 · KAC 13 · HP 11 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +1 (1d6 P)</p>
                     <p><strong>Role in Crew:</strong> The digital sorcerer—weaving code and cosmic energy into reality-bending programs like a wizard casting spells through circuit boards. Their hive-mind background makes them exceptional at multitasking complex ship operations.</p>
                 </div>
             </section>
@@ -163,10 +177,10 @@
                     <h3>The Drift Runners</h3>
                     <p><em>Independent cargo haulers with hearts of gold and cargo holds full of secrets</em></p>
                     <ul>
-                        <li><strong>Captain Rex Starfall</strong> - Human Envoy (Leadership/Diplomacy)</li>
-                        <li><strong>Chief Engineer Maya Sparkplug</strong> - Ysoki Mechanic (Ship Systems/Repair)</li>
-                        <li><strong>Security Chief Korvan Ironhide</strong> - Vesk Soldier (Combat/Protection)</li>
-                        <li><strong>Navigator Zephyr Mindsight</strong> - Lashunta Mystic (Piloting/Healing)</li>
+                        <li><strong>Captain Rex Starfall</strong> - Human Envoy (Leadership/Diplomacy)<span class="crew-keys">EAC 13 · KAC 14 · HP 10 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +3 (1d6 P)</span></li>
+                        <li><strong>Chief Engineer Maya Sparkplug</strong> - Ysoki Mechanic (Ship Systems/Repair)<span class="crew-keys">EAC 13 · KAC 14 · HP 8 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +3 (1d6 P)</span></li>
+                        <li><strong>Security Chief Korvan Ironhide</strong> - Vesk Soldier (Combat/Protection)<span class="crew-keys">EAC 15 · KAC 17 · HP 13 · SP 8 · RP 5 · Hunting Rifle +4 (1d8 P)</span></li>
+                        <li><strong>Navigator Zephyr Mindsight</strong> - Lashunta Mystic (Piloting/Healing)<span class="crew-keys">EAC 12 · KAC 13 · HP 10 · SP 5 · RP 5 · Semi-Auto Pistol, Tactical +1 (1d6 P)</span></li>
                     </ul>
                     <p>This crew moves through space like a well-oiled machine, each member essential to survival in the lawless frontier where one wrong jump could mean death or worse—corporate employment.</p>
                 </div>
@@ -176,11 +190,11 @@
                     <p><em>Scientific expedition team pushing the boundaries of known space</em></p>
                     <p>This crew and the next two mix in races from the Alien Archive books (ikeshti, barathu, contemplative, dragonkin, SRO, pahtra). They aren't Core Rulebook races, so check with your GM before playing one.</p>
                     <ul>
-                        <li><strong>Dr. Elena Quantumdrive</strong> - Human Technomancer (Research/Magic-Tech)</li>
-                        <li><strong>Field Agent X-42</strong> - Android Operative (Infiltration/Data Recovery)</li>
-                        <li><strong>Professor Chirp Featherbrook</strong> - Ysoki Mechanic (Equipment/Engineering)</li>
-                        <li><strong>Guide Thornscale</strong> - Ikeshti Soldier (Survival/Protection)</li>
-                        <li><strong>Coordinator Vel'tar</strong> - Shirren Envoy (Organization/Communications)</li>
+                        <li><strong>Dr. Elena Quantumdrive</strong> - Human Technomancer (Research/Magic-Tech)<span class="crew-keys">EAC 13 · KAC 14 · HP 9 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +2 (1d6 P)</span></li>
+                        <li><strong>Field Agent X-42</strong> - Android Operative (Infiltration/Data Recovery)<span class="crew-keys">EAC 15 · KAC 16 · HP 10 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +5 (1d6 P)</span></li>
+                        <li><strong>Professor Chirp Featherbrook</strong> - Ysoki Mechanic (Equipment/Engineering)<span class="crew-keys">EAC 13 · KAC 14 · HP 8 · SP 7 · RP 5 · Hunting Rifle +3 (1d8 P)</span></li>
+                        <li><strong>Guide Thornscale</strong> - Ikeshti Soldier (Survival/Protection)<span class="crew-keys">EAC 15 · KAC 16 · HP 11 · SP 8 · RP 5 · Laser Rifle, Azimuth +6 (1d8 F)</span></li>
+                        <li><strong>Coordinator Vel'tar</strong> - Shirren Envoy (Organization/Communications)<span class="crew-keys">EAC 11 · KAC 12 · HP 12 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +1 (1d6 P)</span></li>
                     </ul>
                     <p>Like a mobile laboratory wrapped in armor plating, this team ventures into uncharted space seeking knowledge that could revolutionize galactic understanding—or destroy everything they hold dear.</p>
                 </div>
@@ -189,12 +203,12 @@
                     <h3>The Corporate Shadows</h3>
                     <p><em>Elite operatives navigating the treacherous world of mega-corporation politics</em></p>
                     <ul>
-                        <li><strong>Agent Silver</strong> - Lashunta Operative (Espionage/Infiltration)</li>
-                        <li><strong>Enforcer Titanstrike</strong> - Vesk Soldier (Heavy Combat/Intimidation)</li>
-                        <li><strong>Analyst Quantum</strong> - Android Technomancer (Data/Hacking)</li>
-                        <li><strong>Facilitator Goldtongue</strong> - Human Envoy (Negotiation/Social Engineering)</li>
-                        <li><strong>Specialist Wrench</strong> - Ysoki Mechanic (Technical Support/Gadgets)</li>
-                        <li><strong>Advisor Mistral</strong> - Barathu Mystic (Foresight/Guidance)</li>
+                        <li><strong>Agent Silver</strong> - Lashunta Operative (Espionage/Infiltration)<span class="crew-keys">EAC 15 · KAC 16 · HP 10 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +5 (1d6 P)</span></li>
+                        <li><strong>Enforcer Titanstrike</strong> - Vesk Soldier (Heavy Combat/Intimidation)<span class="crew-keys">EAC 15 · KAC 17 · HP 13 · SP 8 · RP 5 · Reaction Cannon, Light +4 (1d10 P)</span></li>
+                        <li><strong>Analyst Quantum</strong> - Android Technomancer (Data/Hacking)<span class="crew-keys">EAC 13 · KAC 14 · HP 9 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +2 (1d6 P)</span></li>
+                        <li><strong>Facilitator Goldtongue</strong> - Human Envoy (Negotiation/Social Engineering)<span class="crew-keys">EAC 13 · KAC 14 · HP 10 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +3 (1d6 P)</span></li>
+                        <li><strong>Specialist Wrench</strong> - Ysoki Mechanic (Technical Support/Gadgets)<span class="crew-keys">EAC 13 · KAC 14 · HP 8 · SP 7 · RP 5 · Hunting Rifle +3 (1d8 P)</span></li>
+                        <li><strong>Advisor Mistral</strong> - Barathu Mystic (Foresight/Guidance)<span class="crew-keys">EAC 12 · KAC 13 · HP 12 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +1 (1d6 P)</span></li>
                     </ul>
                     <p>Operating in the shadows of gleaming corporate towers, they are the scalpel that cuts through red tape and the hammer that drives home corporate will, whether for justice or profit.</p>
                 </div>
@@ -203,11 +217,11 @@
                     <h3>The Xenoseeker Expedition</h3>
                     <p><em>Diverse team dedicated to understanding alien civilizations and phenomena</em></p>
                     <ul>
-                        <li><strong>Commander Starbright</strong> - Kasatha Envoy (First Contact/Diplomacy)</li>
-                        <li><strong>Chief Analyst Vex</strong> - Contemplative Mystic (Telepathic Communication)</li>
-                        <li><strong>Security Specialist Razorclaw</strong> - Dragonkin Soldier (Combat/Intimidation)</li>
-                        <li><strong>Systems Expert Datastream</strong> - SRO Technomancer (Technology/Analysis)</li>
-                        <li><strong>Field Medic Softwhisper</strong> - Pahtra Operative (Stealth/Medicine)</li>
+                        <li><strong>Commander Starbright</strong> - Kasatha Envoy (First Contact/Diplomacy)<span class="crew-keys">EAC 12 · KAC 13 · HP 10 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +2 (1d6 P)</span></li>
+                        <li><strong>Chief Analyst Vex</strong> - Contemplative Mystic (Telepathic Communication)<span class="crew-keys">EAC 12 · KAC 13 · HP 8 · SP 5 · RP 5 · Semi-Auto Pistol, Tactical +1 (1d6 P)</span></li>
+                        <li><strong>Security Specialist Razorclaw</strong> - Dragonkin Soldier (Combat/Intimidation)<span class="crew-keys">EAC 13 · KAC 15 · HP 13 · SP 8 · RP 5 · Longsword, Standard +6 (1d8 S +4)</span></li>
+                        <li><strong>Systems Expert Datastream</strong> - SRO Technomancer (Technology/Analysis)<span class="crew-keys">EAC 13 · KAC 14 · HP 7 · SP 5 · RP 5 · Semi-Auto Pistol, Tactical +2 (1d6 P)</span></li>
+                        <li><strong>Field Medic Softwhisper</strong> - Pahtra Operative (Stealth/Medicine)<span class="crew-keys">EAC 15 · KAC 16 · HP 10 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +5 (1d6 P)</span></li>
                     </ul>
                     <p>Each member represents a different approach to understanding the unknown, their combined perspectives creating a lens through which the galaxy's mysteries become comprehensible.</p>
                 </div>
@@ -217,12 +231,12 @@
                     <p><em>Charismatic outlaws with their own code of honor</em></p>
                     <p>This crew uses the Core Rulebook's legacy races (dwarf, elf, gnome, half-orc, halfling) alongside a human.</p>
                     <ul>
-                        <li><strong>Captain Voidheart</strong> - Half-Orc Envoy (Leadership/Intimidation)</li>
-                        <li><strong>First Mate Ironwill</strong> - Dwarf Soldier (Combat/Tactics)</li>
-                        <li><strong>Navigator Starwhisper</strong> - Elf Mystic (Piloting/Cosmic Awareness)</li>
-                        <li><strong>Chief Engineer Boombox</strong> - Halfling Mechanic (Weapons/Explosives)</li>
-                        <li><strong>Intelligence Officer Shadowstep</strong> - Gnome Operative (Infiltration/Information)</li>
-                        <li><strong>Cyber-Specialist Netrunner</strong> - Human Technomancer (Hacking/Digital Warfare)</li>
+                        <li><strong>Captain Voidheart</strong> - Half-Orc Envoy (Leadership/Intimidation)<span class="crew-keys">EAC 13 · KAC 14 · HP 12 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +3 (1d6 P)</span></li>
+                        <li><strong>First Mate Ironwill</strong> - Dwarf Soldier (Combat/Tactics)<span class="crew-keys">EAC 15 · KAC 16 · HP 13 · SP 8 · RP 5 · Laser Rifle, Azimuth +6 (1d8 F)</span></li>
+                        <li><strong>Navigator Starwhisper</strong> - Elf Mystic (Piloting/Cosmic Awareness)<span class="crew-keys">EAC 13 · KAC 14 · HP 10 · SP 5 · RP 5 · Semi-Auto Pistol, Tactical +2 (1d6 P)</span></li>
+                        <li><strong>Chief Engineer Boombox</strong> - Halfling Mechanic (Weapons/Explosives)<span class="crew-keys">EAC 13 · KAC 14 · HP 8 · SP 6 · RP 5 · Hunting Rifle +3 (1d8 P)</span></li>
+                        <li><strong>Intelligence Officer Shadowstep</strong> - Gnome Operative (Infiltration/Information)<span class="crew-keys">EAC 15 · KAC 16 · HP 10 · SP 7 · RP 5 · Semi-Auto Pistol, Tactical +5 (1d6 P)</span></li>
+                        <li><strong>Cyber-Specialist Netrunner</strong> - Human Technomancer (Hacking/Digital Warfare)<span class="crew-keys">EAC 13 · KAC 14 · HP 9 · SP 6 · RP 5 · Semi-Auto Pistol, Tactical +2 (1d6 P)</span></li>
                     </ul>
                     <p>United by freedom and bound by loyalty, they steal from the corrupt elite and survive in the spaces between law and chaos, like comets blazing their own trail through the void.</p>
                 </div>

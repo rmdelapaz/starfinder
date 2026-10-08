@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Sheets - The Starfinder Guide</title>
-    <meta name="description" content="Fillable Starfinder first edition character sheets: ability modifiers, Stamina, Hit Points and Resolve, EAC and KAC, saves, attack bonuses, every skill total, bulk and spells worked out for you, with save, print and file import/export.">
+    <meta name="description" content="Fillable Starfinder first edition character sheets: ability modifiers, Stamina, Hit Points and Resolve, EAC and KAC, saves, attack bonuses, every skill total, bulk and spells worked out for you, with save, print, file import/export, 347 ready-made sample characters and Hephaistos import.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -26,6 +26,19 @@
         main .sheet-controls button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
         main .sheet-controls button.primary:hover { color: var(--accent-ink); background: var(--accent); filter: brightness(1.08); }
         main .sheet-controls button.armed { background: #a3161a; border-color: #a3161a; color: #fff; }
+        main .sheet-controls button:disabled { opacity: 0.6; cursor: wait; }
+        /* ===== Hephaistos import panel ===== */
+        main .hx-panel { max-width: 860px; margin: 10px auto 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 16px; box-shadow: var(--shadow); }
+        main .hx-panel > summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+        main .hx-panel p, main .hx-panel ol { margin: 0.6rem 0; }
+        main .hx-panel .hx-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+        main .hx-panel textarea { width: 100%; min-height: 80px; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; background: var(--bg); color: var(--text); border: 1px solid var(--border-strong); border-radius: 8px; padding: 6px 8px; box-sizing: border-box; }
+        main .hx-panel button { min-height: 40px; padding: 7px 14px; margin: 0; border-radius: 8px; font: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer; background: var(--surface); color: var(--heading); border: 1px solid var(--border-strong); width: auto; }
+        main .hx-panel button:hover { border-color: var(--accent); color: var(--accent); background: var(--surface); }
+        main .hx-panel button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+        main .hx-panel button.primary:hover { color: var(--accent-ink); background: var(--accent); filter: brightness(1.08); }
+        main .hx-panel .hx-note { color: var(--muted); font-size: 0.9rem; }
+        #hxFile { display: none; }
         main .tabs { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 12px auto 0; background: none; border: 0; box-shadow: none; padding: 0; }
         html body > main > div.tabs[role="tablist"][aria-label] { background: none; border: 0; box-shadow: none; padding: 0; border-radius: 0; margin: 12px auto 0; }
         main .tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
@@ -120,7 +133,7 @@
         .print-container { display: none; }
         @media print {
             @page { size: letter portrait; margin: 0.35in; }
-            .site-nav, .skip-link, body > header, .sheet-controls, .tabs, .sheet-status, .sheet-help, #sheet, footer, .site-footer { display: none !important; }
+            .site-nav, .skip-link, body > header, .sheet-controls, .hx-panel, .tabs, .sheet-status, .sheet-help, #sheet, footer, .site-footer { display: none !important; }
             html, body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
             main { margin: 0 !important; padding: 0 !important; width: auto !important; max-width: none !important; }
             .print-container { display: block !important; border: 0 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; background: none !important; border-radius: 0 !important; }
@@ -168,9 +181,21 @@
             <button type="button" id="blankBtn">📄 Print Blank</button>
             <button type="button" id="exportBtn">📤 Export</button>
             <button type="button" id="importBtn">📥 Import</button>
+            <button type="button" id="sampleBtn">🗂️ Load sample characters</button>
             <input type="file" id="importFile" accept=".json,application/json">
         </div>
         <p class="sheet-status" id="status" role="status" aria-live="polite"></p>
+
+        <details class="hx-panel" id="hxPanel">
+            <summary>🛠️ Import from Hephaistos</summary>
+            <ol>
+                <li>On <a href="https://hephaistos.online/" target="_blank" rel="noopener">Hephaistos</a>, open your character and use the menu at the top left to download its JSON file.</li>
+                <li>Choose that file here, or open it in a text editor, copy everything and paste it below, then press <strong>Import</strong>.</li>
+            </ol>
+            <textarea id="hxJson" rows="4" placeholder='{"version":{"major":1,…},"name":…}' aria-label="Pasted Hephaistos character data"></textarea>
+            <div class="hx-row"><button type="button" class="primary" id="hxPaste">Import</button><button type="button" id="hxFileBtn">Choose File</button><input type="file" id="hxFile" accept=".json,.txt,application/json"></div>
+            <p class="hx-note">The file is read in your browser and never sent anywhere. Importing the same character again updates its sheet. Hephaistos is a separate fan-made builder; this import is unofficial.</p>
+        </details>
         <div class="tabs" role="tablist" aria-label="Sheet pages">
             <button type="button" role="tab" id="tab-main" aria-controls="sheet" aria-selected="true" data-page="main">🚀 Character</button>
             <button type="button" role="tab" id="tab-skills" aria-controls="sheet" aria-selected="false" data-page="skills">🎯 Skills &amp; Feats</button>
@@ -181,14 +206,14 @@
             <!-- ===================== PAGE 1: CHARACTER ===================== -->
             <div class="page p-main">
                 <div class="head">
-                    <label class="name"><span class="lbl">Character Name</span><input type="text" name="name" maxlength="60" placeholder="Navasi"></label>
-                    <div class="mini"><label><small class="k">Class</small><input type="text" name="cls1" list="classes" placeholder="Envoy"></label><label><small class="k">Level</small><input type="text" name="lvl1" maxlength="2" inputmode="numeric" placeholder="1"></label></div>
+                    <label class="name"><span class="lbl">Character Name</span><input type="text" name="name" maxlength="60"></label>
+                    <div class="mini"><label><small class="k">Class</small><input type="text" name="cls1" list="classes"></label><label><small class="k">Level</small><input type="text" name="lvl1" maxlength="2" inputmode="numeric"></label></div>
                     <div class="mini"><label><small class="k">2nd class</small><input type="text" name="cls2" list="classes"></label><label><small class="k">Level</small><input type="text" name="lvl2" maxlength="2" inputmode="numeric"></label></div>
-                    <label><small class="k">Race</small><input type="text" name="race" list="races" placeholder="Human"></label>
-                    <label><small class="k">Race HP</small><input type="text" name="raceHp" maxlength="2" inputmode="numeric" placeholder="4"></label>
-                    <label><small class="k">Theme</small><input type="text" name="theme" placeholder="Ace Pilot"></label>
+                    <label><small class="k">Race</small><input type="text" name="race" list="races"></label>
+                    <label><small class="k">Race HP</small><input type="text" name="raceHp" maxlength="2" inputmode="numeric"></label>
+                    <label><small class="k">Theme</small><input type="text" name="theme"></label>
                     <label><small class="k">Key ability</small><select name="keyAbil"><option value=""></option><option value="str">STR</option><option value="dex">DEX</option><option value="con">CON</option><option value="int">INT</option><option value="wis">WIS</option><option value="cha">CHA</option></select></label>
-                    <label><small class="k">Size / Speed</small><input type="text" name="size" placeholder="Medium / 30 ft."></label>
+                    <label><small class="k">Size / Speed</small><input type="text" name="size"></label>
                     <label><small class="k">Homeworld</small><input type="text" name="homeworld"></label>
                     <label><small class="k">Alignment / Deity</small><input type="text" name="alignment"></label>
                     <label><small class="k">Experience</small><input type="text" name="xp"></label>
@@ -230,7 +255,7 @@
                 <div class="box" style="margin-top:8px">
                     <span class="lbl">Armor</span>
                     <div class="scroll"><table class="t wide"><thead><tr><th>Armor &amp; upgrades</th><th class="c">Level</th><th class="c">EAC bonus</th><th class="c">KAC bonus</th><th class="c">Max Dex</th><th class="c">Check pen.</th><th class="c">Speed adj.</th></tr></thead>
-                    <tbody><tr><td><input type="text" name="armorName" placeholder="Second skin" aria-label="Armor"></td><td class="c"><input type="text" name="armorLvl" aria-label="Armor level"></td><td class="c"><input type="text" name="armorEac" placeholder="1" aria-label="Armor EAC bonus"></td><td class="c"><input type="text" name="armorKac" placeholder="2" aria-label="Armor KAC bonus"></td><td class="c"><input type="text" name="armorMaxDex" placeholder="5" aria-label="Armor maximum Dex bonus"></td><td class="c"><input type="text" name="armorAcp" placeholder="0" aria-label="Armor check penalty"></td><td class="c"><input type="text" name="armorSpeed" aria-label="Armor speed adjustment"></td></tr></tbody></table></div>
+                    <tbody><tr><td><input type="text" name="armorName" aria-label="Armor"></td><td class="c"><input type="text" name="armorLvl" aria-label="Armor level"></td><td class="c"><input type="text" name="armorEac" aria-label="Armor EAC bonus"></td><td class="c"><input type="text" name="armorKac" aria-label="Armor KAC bonus"></td><td class="c"><input type="text" name="armorMaxDex" aria-label="Armor maximum Dex bonus"></td><td class="c"><input type="text" name="armorAcp" aria-label="Armor check penalty"></td><td class="c"><input type="text" name="armorSpeed" aria-label="Armor speed adjustment"></td></tr></tbody></table></div>
                     <div class="grid3" style="margin-top:4px">
                         <label><small class="k">Damage reduction</small><input type="text" name="dr"></label>
                         <label><small class="k">Energy resistance</small><input type="text" name="resist"></label>
@@ -263,7 +288,7 @@
                         <div class="box grow"><span class="lbl">Feats</span><textarea name="feats" rows="5"></textarea></div>
                         <div class="box grow"><span class="lbl">Class Features</span><textarea name="classFeatures" rows="5"></textarea></div>
                         <div class="box grow"><span class="lbl">Racial Traits &amp; Theme Benefits</span><textarea name="racialTraits" rows="4"></textarea></div>
-                        <div class="box"><span class="lbl">Languages</span><input type="text" name="languages" placeholder="Common"></div>
+                        <div class="box"><span class="lbl">Languages</span><input type="text" name="languages"></div>
                     </div>
                 </div>
             </div>
@@ -295,7 +320,7 @@
                             <table class="t"><thead><tr><th class="c">Spell level</th><th class="c">Known</th><th class="c">Per day</th><th class="c">Used</th><th class="c">Save DC</th></tr></thead><tbody id="slots"></tbody></table>
                             <p class="note">Save DC = 10 + spell level + key ability modifier.</p>
                         </div>
-                        <div class="box grow"><span class="lbl">Spells Known</span><textarea name="spells" rows="8" placeholder="0: detect magic, telekinetic projectile&#10;1st: mystic cure, magic missile"></textarea></div>
+                        <div class="box grow"><span class="lbl">Spells Known</span><textarea name="spells" rows="8"></textarea></div>
                         <div class="box grow"><span class="lbl">Notes</span><textarea name="notes2" rows="4"></textarea></div>
                     </div>
                 </div>
@@ -307,6 +332,8 @@
 
         <div class="sheet-help">
             <p><strong>How it works.</strong> A sheet auto-saves in this browser once it has a name. Renaming a sheet renames its save. Use the tabs to move between the three pages. <strong>Print</strong> prints all three pages of the current character, one per US Letter sheet, and <strong>Print Blank</strong> prints an empty set. <strong>Export</strong> downloads every sheet as a JSON file and <strong>Import</strong> merges a file like that back in (a sheet with the same name is replaced). Nothing leaves your browser.</p>
+            <p><strong>Sample sheets.</strong> <strong>Load sample characters</strong> adds every character from <a href="/starfinder_100.html">Sample Characters</a> (the 15 solo heroes and all 300 party members) and from <a href="/starfinder_character_examples.html">Character Examples</a> (the six heroes and the 26 crew members), replacing any saved sheet with the same name just as Import does and leaving your other sheets alone. Each is a full build at its level, with gear bought from the Core Rulebook wealth for that level; party and crew details are in the Notes on the third page. You can also <a href="/starfinder_sample_sheets.json" download>download the sample sheet file</a> and import it yourself.</p>
+            <p><strong>Import from Hephaistos.</strong> Open the panel above, then choose or paste the JSON file Hephaistos downloads for a character. Its abilities, race, theme, classes and levels, Hit Points, Stamina, Resolve, EAC and KAC, saves, skills with ranks, feats, class features, weapons, armor, equipment, augmentations, credits and spells fill the sheet. Where Hephaistos counts a bonus this sheet doesn't (such as feats or class features), the difference goes into the misc boxes so the totals match. The main <strong>Import</strong> button accepts a Hephaistos file too.</p>
             <p><strong>Worked out for you.</strong> An ability modifier is (score − 10) ÷ 2, rounded down. Enter a class and level (and a second class if you multiclass) to get base attack bonus and base saves; the seven core classes and the six expansion classes are built in. Key ability defaults to the class's; change it for a soldier, biohacker or evolutionist who uses the other option. Hit Points are your race's HP (once) plus the class HP for each level; Stamina is the class SP + CON modifier for each level; Resolve is half your level (minimum 1) + your key ability modifier. EAC and KAC are 10 + your armor's bonus + DEX modifier (capped by the armor's maximum Dex), and your AC against combat maneuvers is KAC + 8. A skill total is ranks + ability modifier, +3 for a class skill with at least one rank, minus the armor check penalty where it applies. Bulk counts 10 light (L) items as 1; you are encumbered above half your STR score and overburdened above your STR score. See <a href="/starfinder_char.html">Character Creation</a>, <a href="/starfinder_classes.html">Classes</a> and the <a href="/starfinder_dice_roller.html">Dice Roller</a>.</p>
         </div>
 
@@ -359,7 +386,7 @@
 
         ABIL.forEach(function (a) {
             FIELDS.push(a[0]);
-            $('abil').insertAdjacentHTML('beforeend', '<div class="ab"><span class="lbl">' + a[1] + '</span><label><input type="text" name="' + a[0] + '" maxlength="2" inputmode="numeric" placeholder="10" aria-label="' + a[2] + ' score"><small>score</small></label><span class="out" data-out="m_' + a[0] + '">—</span></div>');
+            $('abil').insertAdjacentHTML('beforeend', '<div class="ab"><span class="lbl">' + a[1] + '</span><label><input type="text" name="' + a[0] + '" maxlength="2" inputmode="numeric" aria-label="' + a[2] + ' score"><small>score</small></label><span class="out" data-out="m_' + a[0] + '">—</span></div>');
         });
         Object.keys(CLASSES).forEach(function (c) { $('classes').insertAdjacentHTML('beforeend', '<option>' + c + '</option>'); });
         var proOpts = '<option value=""></option><option value="cha">CHA</option><option value="int">INT</option><option value="wis">WIS</option>';
@@ -632,35 +659,234 @@
             setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
             say('Exported ' + cnt + (cnt === 1 ? ' sheet.' : ' sheets.'));
         });
-        $('importBtn').addEventListener('click', function () { $('importFile').click(); });
-        $('importFile').addEventListener('change', function (ev) {
-            var file = ev.target.files && ev.target.files[0];
-            ev.target.value = '';
+        // Merge a {name: sheet} object into saved sheets; a sheet with the same name is replaced and other sheets are kept.
+        // Returns { count, added, replaced }, or null if storage failed.
+        function mergeSheets(data) {
+            var all = load(), before = {}, seen = {}, count = 0, replaced = 0;
+            Object.keys(all).forEach(function (k) { before[k] = true; });
+            Object.keys(data).forEach(function (k) {
+                var d = sanitize(data[k]); if (!d) return;
+                var name = String(d.name || '').trim().slice(0, 200);
+                if (!safeName(name)) return;
+                d.name = name;
+                if (!seen[name]) { seen[name] = true; count++; if (before[name]) replaced++; }
+                all[name] = d;
+            });
+            if (!count) return { count: 0, added: 0, replaced: 0 };
+            if (!store(all)) return null;
+            if (currentKey && seen[currentKey] && all[currentKey]) fill(all[currentKey]);   // the open sheet was replaced: show the new copy
+            refreshSelect(currentKey || '');
+            return { count: count, added: count - replaced, replaced: replaced };
+        }
+        function readFile(file, done) {
             if (!file) return;
-            if (file.size > 5 * 1024 * 1024) { say('That file is too large to be a sheet file.'); return; }
-            flush();
+            if (file.size > 5 * 1024 * 1024) { say('That file is too large to be a character file.'); return; }
             var r = new FileReader();
-            r.onload = function () {
-                try {
-                    var data = JSON.parse(r.result);
-                    if (!data || typeof data !== 'object' || Array.isArray(data)) { say('That is not a sheet file.'); return; }
-                    var all = load(), count = 0;
-                    Object.keys(data).forEach(function (k) {
-                        var d = sanitize(data[k]); if (!d) return;
-                        var name = String(d.name || '').trim().slice(0, 200);
-                        if (!safeName(name)) return;
-                        all[name] = d; count++;
-                    });
-                    if (!count) { say('No valid sheets found in that file.'); return; }
-                    if (!store(all)) return;
-                    refreshSelect(currentKey || ''); say('Imported ' + count + (count === 1 ? ' sheet.' : ' sheets.'));
-                } catch (err) { say('Could not read that file.'); }
-            };
+            r.onload = function () { var j; try { j = JSON.parse(r.result); } catch (e) { say('Could not read that file: it is not JSON.'); return; } done(j); };
             r.onerror = function () { say('Could not read that file.'); };
             r.readAsText(file);
+        }
+
+        // ===== Hephaistos import =====
+        // Converts a Hephaistos (hephaistos.online) character JSON download into this sheet's fields. Every value is copied as
+        // plain text into form fields and run through sanitize(); nothing from the file is ever treated as HTML or code.
+        function isHephaistos(j) {
+            return !!(j && typeof j === 'object' && !Array.isArray(j) && j.version && typeof j.version === 'object' && j.abilityScores && Array.isArray(j.classes));
+        }
+        function fromHephaistos(json) {
+            var j = json;
+            if (j && typeof j.json === 'string') j = JSON.parse(j.json);   // a raw API record {name, json:"…"}
+            if (!isHephaistos(j)) throw new Error('not a Hephaistos character');
+            if (j.type && j.type !== 'character') throw new Error('Hephaistos ' + j.type + ' files are not characters');
+            var str = function (v) { return v == null ? '' : (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') ? String(v) : ''; };
+            var arr = function (v) { return Array.isArray(v) ? v : []; };
+            var obj = function (v) { return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; };
+            var n = function (v) { var x = Number(v); return isFinite(x) ? x : 0; };
+            var ab3 = function (v) { var t = str(v).toLowerCase().slice(0, 3); return ABIL.some(function (a) { return a[0] === t; }) ? t : ''; };
+            var bulkTxt = function (b, q) { b = n(b); q = Math.max(1, n(q) || 1); if (!b) return '—'; var t = Math.round(b * q * 10) / 10; return (b < 1 && q === 1) ? 'L' : String(t); };
+            var out = {}, extra = [];
+            out.name = str(j.name).trim().slice(0, 60);
+            var classes = arr(j.classes).map(obj);
+            classes.slice(0, 2).forEach(function (c, i) { out['cls' + (i + 1)] = str(c.name); out['lvl' + (i + 1)] = str(n(c.levels) || ''); });
+            if (classes.length > 2) extra.push('More classes: ' + classes.slice(2).map(function (c) { return str(c.name) + ' ' + n(c.levels); }).join(', ') + ' (this sheet holds two).');
+            if (classes[0]) out.keyAbil = ab3(classes[0].keyAbility);
+            var race = obj(j.race), theme = obj(j.theme), sp = obj(j.speed);
+            out.race = str(race.name) + (race.abilityAdjustment && str(race.abilityAdjustment.name) && !/^standard/i.test(str(race.abilityAdjustment.name)) ? ' (' + str(race.abilityAdjustment.name) + ')' : '');
+            out.raceHp = race.hitPoints != null ? str(n(race.hitPoints)) : '';
+            out.theme = str(theme.name);
+            var speeds = Object.keys(sp).filter(function (k) { return k !== 'land' && k !== 'notes' && n(sp[k]); }).map(function (k) { return k.replace(/^fly/, 'fly ').toLowerCase() + ' ' + n(sp[k]) + ' ft.'; });
+            out.size = (str(race.size) || '') + (sp.land != null ? ' / ' + n(sp.land) + ' ft.' : '') + (speeds.length ? ', ' + speeds.join(', ') : '');
+            out.homeworld = str(j.homeworld);
+            out.alignment = str(j.alignment) + (str(j.deity) ? ' / ' + str(j.deity) : '');
+            out.languages = str(j.languages);
+            var as = obj(j.abilityScores);
+            [['str', 'strength'], ['dex', 'dexterity'], ['con', 'constitution'], ['int', 'intelligence'], ['wis', 'wisdom'], ['cha', 'charisma']].forEach(function (p) {
+                var a = obj(as[p[1]]); var v = a.override != null && a.override !== '' ? n(a.override) : n(a.total);
+                if (v) out[p[0]] = String(v);
+            });
+            // armor
+            var inv = arr(j.inventory).map(obj);
+            var byId = {}; inv.forEach(function (it) { if (it.id != null) byId[str(it.id)] = it; });
+            var armors = inv.filter(function (it) { return it.type === 'Armor'; });
+            var armor = armors.filter(function (it) { return it.isEquipped; })[0] || armors[0];
+            var used = {};
+            if (armor) {
+                used[str(armor.id)] = true;
+                var ups = arr(armor.upgradeIds).map(function (id) { used[str(id)] = true; return byId[str(id)] ? str(byId[str(id)].name) : ''; }).filter(Boolean);
+                out.armorName = str(armor.name) + (ups.length ? ' + ' + ups.join(', ') : '');
+                out.armorLvl = str(armor.level); out.armorEac = str(n(armor.eacBonus)); out.armorKac = str(n(armor.kacBonus));
+                out.armorMaxDex = armor.maxDexBonus != null ? str(n(armor.maxDexBonus)) : '';
+                out.armorAcp = str(n(armor.armorCheckPenalty)); out.armorSpeed = n(armor.speedAdjustment) ? n(armor.speedAdjustment) + ' ft.' : '';
+            }
+            var res = obj(j.resistances);
+            var rlist = function (o) { o = obj(o); return Object.keys(o).filter(function (k) { return n(obj(o[k]).value); }).map(function (k) { return k + ' ' + n(obj(o[k]).value); }).join(', '); };
+            out.dr = rlist(res.dr); out.resist = rlist(res.er); out.sr = n(res.sr) ? 'SR ' + n(res.sr) : '';
+            // weapons (equipped first)
+            var weps = inv.filter(function (it) { return it.type === 'Weapon'; });
+            weps.sort(function (a, b) { return (b.isEquipped ? 1 : 0) - (a.isEquipped ? 1 : 0) + (a.id === 'Unarmed Strike' ? 1 : 0) - (b.id === 'Unarmed Strike' ? 1 : 0); });
+            weps.slice(0, 5).forEach(function (w, i) {
+                var k = 'w' + (i + 1), dm = obj(w.damage), dc = obj(dm.dice);
+                used[str(w.id)] = true;
+                out[k + 'n'] = str(w.name) + (n(w.quantity) > 1 ? ' ×' + n(w.quantity) : '');
+                out[k + 'l'] = str(w.level);
+                out[k + 'a'] = w.toHit != null ? (n(w.toHit) >= 0 ? '+' : '−') + Math.abs(n(w.toHit)) : '';
+                out[k + 'd'] = dc.count ? n(dc.count) + 'd' + n(dc.sides) + ' ' + arr(dm.damage).map(str).join(' & ') + (n(w.damageBonus) ? ' ' + (n(w.damageBonus) > 0 ? '+' : '−') + Math.abs(n(w.damageBonus)) : '') : '—';
+                out[k + 'r'] = n(w.range) ? n(w.range) + ' ft.' : '—';
+                var cr = obj(w.critical); out[k + 'c'] = str(cr.name) ? str(cr.name) + (str(cr.additionalInfo) ? ' ' + str(cr.additionalInfo) : '') : '—';
+                out[k + 'u'] = n(w.capacity) ? n(w.capacity) + (str(w.ammunitionType) ? ' ' + str(w.ammunitionType).toLowerCase() : '') + (str(w.usage) ? ', ' + str(w.usage) + '/use' : '') : '—';
+                out[k + 'x'] = arr(w.special).map(function (x) { x = obj(x); return str(x.name) + (str(x.additionalInfo) ? ' ' + str(x.additionalInfo) : ''); }).join(', ');
+            });
+            if (weps.length > 5) extra.push('More weapons: ' + weps.slice(5).map(function (w) { return str(w.name); }).join(', ') + '.');
+            // augmentations and equipment
+            var augs = inv.filter(function (it) { return it.type === 'Augmentation'; });
+            augs.slice(0, 4).forEach(function (a, i) { out['a' + (i + 1) + 'n'] = str(a.name); out['a' + (i + 1) + 's'] = arr(a.systems).map(function (x) { return arr(x).map(str).join(' / '); }).join(', ') || str(a.augmentationType); used[str(a.id)] = true; });
+            if (augs.length > 4) extra.push('More augmentations: ' + augs.slice(4).map(function (a) { return str(a.name); }).join(', ') + '.');
+            var gear = inv.filter(function (it) { return !used[str(it.id)]; });
+            gear.slice(0, 14).forEach(function (it, i) {
+                var k = 'g' + (i + 1), q = n(it.quantity) || 1;
+                out[k + 'n'] = str(it.name) + (q > 1 ? ' ×' + q : '');
+                out[k + 'l'] = str(it.level); out[k + 'b'] = bulkTxt(it.bulk, q);
+                out[k + 'x'] = [it.type === 'ArmorUpgrade' ? 'armor upgrade' : '', it.isEquipped ? 'equipped' : '', it.stashed ? 'stashed' : '', str(it.notes)].filter(Boolean).join(', ');
+            });
+            if (gear.length > 14) extra.push('More equipment: ' + gear.slice(14).map(function (it) { return str(it.name) + (n(it.quantity) > 1 ? ' ×' + n(it.quantity) : ''); }).join(', ') + '.');
+            out.credits = str(n(j.credits)); out.upb = n(j.upbs) ? str(n(j.upbs)) : '';
+            // feats, class features, racial traits & theme
+            var opts = function (o) { var s = arr(obj(o).selectedOptions).map(function (x) { return str(obj(x).name); }).filter(Boolean); return s.length ? ' (' + s.join(', ') + ')' : ''; };
+            out.feats = arr(obj(j.feats).acquiredFeats).map(function (f) { return str(obj(f).name) + opts(f); }).join('\n');
+            out.classFeatures = classes.map(function (c) {
+                return str(c.name) + ' ' + n(c.levels) + ': ' + arr(c.features).map(function (f) {
+                    f = obj(f); var o = arr(f.options).map(function (x) { return str(obj(x).name); }).filter(Boolean);
+                    return str(f.name) + (o.length ? ' (' + o.join(', ') + ')' : '');
+                }).join('; ');
+            }).join('\n');
+            out.racialTraits = [str(race.name) + (arr(race.selectedTraits).length ? ': ' + arr(race.selectedTraits).map(function (t) { return str(obj(t).name) + opts(t); }).join('; ') : ''),
+                str(theme.name) ? str(theme.name) + ' theme: ' + arr(theme.benefits).map(function (t) { return str(obj(t).name) + opts(t); }).join('; ') : ''].filter(Boolean).join('\n');
+            // skills: ranks and class-skill marks; the misc box is set below so totals match Hephaistos
+            var prof = 0, skillTotals = {};
+            arr(j.skills).map(obj).forEach(function (sk) {
+                var name = str(sk.skill), idx = -1;
+                if (name === 'Profession') { if (prof >= 2) return; idx = 19 + prof++; out['sk' + idx + 'n'] = str(sk.name); out['sk' + idx + 'a'] = ab3(sk.ability); }
+                else SKILLS.forEach(function (s, i) { if (i < 19 && s[0].toLowerCase() === name.toLowerCase()) idx = i; });
+                if (idx < 0) return;
+                out['sk' + idx + 'r'] = n(sk.ranks) ? String(n(sk.ranks)) : '';
+                out['sk' + idx + 'c'] = !!sk.classSkill;
+                skillTotals[idx] = sk.override != null && sk.override !== '' ? n(sk.override) : n(sk.total);
+            });
+            // spells
+            var spl = {};
+            classes.forEach(function (c) {
+                arr(c.spellsKnown).forEach(function (v, L) { if (L <= 6 && n(v) > 0) out['sl' + L + 'k'] = String(n(out['sl' + L + 'k']) + n(v)); });
+                arr(c.spellsPerDay).forEach(function (v, L) { if (L >= 1 && L <= 6 && n(v) > 0) out['sl' + L + 'd'] = String(n(out['sl' + L + 'd']) + n(v)); });
+                arr(c.spellsUsed).forEach(function (v, L) { if (L <= 6 && n(v) > 0) out['sl' + L + 'u'] = String(n(out['sl' + L + 'u']) + n(v)); });
+                arr(c.spells).map(obj).forEach(function (s) {
+                    var lv = arr(s.level).map(obj), mine = lv.filter(function (x) { return str(x.class) === str(c.name); })[0] || lv[0];
+                    var L = mine ? n(mine.level) : 0; (spl[L] = spl[L] || []).push(str(s.name));
+                });
+            });
+            out.spells = Object.keys(spl).sort().map(function (L) { return (L === '0' ? '0' : L + (L === '1' ? 'st' : L === '2' ? 'nd' : L === '3' ? 'rd' : 'th')) + ': ' + spl[L].join(', '); }).join('\n');
+            // conditions and notes
+            var cond = obj(j.conditions);
+            var active = Object.keys(cond).filter(function (k) { return obj(cond[k]).active; });
+            out.notes = active.length ? 'Conditions: ' + active.join(', ') : '';
+            var dr = obj(j.drone);
+            out.ship = j.drone ? 'Drone: ' + str(dr.name) + (obj(dr.chassis).name ? ' (' + str(obj(dr.chassis).name) + ')' : '') : '';
+            out.notes2 = ['Imported from Hephaistos.', str(j.description), str(j.quickNotes), str(j.campaignNotes)].concat(extra).filter(Boolean).join('\n');
+            // pools, defenses and totals: put Hephaistos's extra bonuses into the misc boxes so the sheet's totals match
+            var d = sanitize(out), get = function (k) { return d[k]; };
+            var o = derive(get), vit = obj(j.vitals), diff = function (want, have) { have = parseFloat(String(have).replace('−', '-')); return isFinite(have) && want - have ? String(want - have) : ''; };
+            [['hpMisc', 'hpMax', obj(vit.health)], ['spMisc', 'spMax', obj(vit.stamina)], ['rpMisc', 'rpMax', obj(vit.resolve)]].forEach(function (p) {
+                if (p[2].max == null) return;
+                var want = p[2].override != null && p[2].override !== '' ? n(p[2].override) : n(p[2].max);
+                d[p[0]] = diff(want, o[p[1]]);
+                d[p[0].replace('Misc', 'Cur')] = String(Math.max(0, want - n(p[2].damage)));
+            });
+            var ac = obj(j.armorClass), sv = obj(j.saves);
+            [['eacMisc', 'eac', obj(ac.eac)], ['kacMisc', 'kac', obj(ac.kac)], ['initMisc', 'init', obj(j.initiative)],
+             ['fortMisc', 'fort', obj(sv.fortitude)], ['refMisc', 'ref', obj(sv.reflex)], ['willMisc', 'will', obj(sv.will)]].forEach(function (p) {
+                if (p[2].total == null) return;
+                var want = p[2].override != null && p[2].override !== '' ? n(p[2].override) : n(p[2].total);
+                d[p[0]] = diff(want, o[p[1]]);
+            });
+            o = derive(get);
+            Object.keys(skillTotals).forEach(function (i) { if (o['sk' + i]) d['sk' + i + 'm'] = diff(skillTotals[i], o['sk' + i]); });
+            return sanitize(d);
+        }
+        function importHx(json) {
+            var d = fromHephaistos(json), name = String(d.name || '').trim();
+            if (!safeName(name)) throw new Error('This character has no name.');
+            d.name = name;
+            var all = load(), existed = !!all[name];
+            all[name] = d;
+            if (!store(all)) return;
+            fill(d); currentKey = name; refreshSelect(name); show('main');
+            say((existed ? 'Updated “' : 'Imported “') + name + '” from Hephaistos.');
+            $('hxPanel').open = false;
+        }
+        function hxFail(e) { say(e && /^(Hephaistos|This character)/.test(e.message) ? e.message.replace(/\.?$/, '.') : 'That does not look like a Hephaistos character file. Download it from the menu at the top left of the character in Hephaistos.'); }
+        $('hxPaste').addEventListener('click', function () {
+            var txt = $('hxJson').value.trim();
+            if (!txt) { say('Paste the Hephaistos character file first.'); return; }
+            var j;
+            try { j = JSON.parse(txt); } catch (e) { say('That is not valid JSON. Copy the whole file, starting with {.'); return; }
+            try { flush(); importHx(j); $('hxJson').value = ''; } catch (e) { hxFail(e); }
+        });
+        $('hxFileBtn').addEventListener('click', function () { $('hxFile').click(); });
+        $('hxFile').addEventListener('change', function (ev) {
+            var f = ev.target.files && ev.target.files[0]; ev.target.value = '';
+            readFile(f, function (j) { try { flush(); importHx(j); } catch (e) { hxFail(e); } });
         });
 
-        window.sfSheet = { derive: derive, classes: CLASSES, skills: SKILLS };
+        // ----- import (sheet files, or a Hephaistos file) and sample sheets -----
+        $('importBtn').addEventListener('click', function () { $('importFile').click(); });
+        $('importFile').addEventListener('change', function (ev) {
+            var f = ev.target.files && ev.target.files[0]; ev.target.value = '';
+            readFile(f, function (data) {
+                flush();
+                if (isHephaistos(data) || (data && typeof data.json === 'string')) { try { importHx(data); } catch (e) { hxFail(e); } return; }
+                if (!data || typeof data !== 'object' || Array.isArray(data)) { say('That is not a sheet file.'); return; }
+                var res = mergeSheets(data);
+                if (!res) return;
+                if (!res.count) { say('No valid sheets found in that file.'); return; }
+                say('Imported ' + res.count + (res.count === 1 ? ' sheet.' : ' sheets.'));
+            });
+        });
+        $('sampleBtn').addEventListener('click', function () {
+            var btn = this;
+            flush(); disarm(); btn.disabled = true; say('Loading the sample sheets…');
+            fetch('/starfinder_sample_sheets.json', { cache: 'no-cache' })
+                .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+                .then(function (data) {
+                    if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('bad file');
+                    var res = mergeSheets(data);
+                    if (!res) return;
+                    if (!res.count) { say('No valid sheets found in the sample file.'); return; }
+                    say('Loaded ' + res.count + ' sample sheets: ' + res.added + ' added, ' + res.replaced + ' replaced.');
+                })
+                .catch(function () { say('Could not load the sample sheets. Check your connection, or download the file and use Import.'); })
+                .then(function () { btn.disabled = false; });
+        });
+
+        window.sfSheet = { derive: derive, classes: CLASSES, skills: SKILLS, sanitize: sanitize, fields: FIELDS, bools: BOOLS, fromHephaistos: fromHephaistos };
         clearAll(); refreshSelect('');
     })();
     </script>
